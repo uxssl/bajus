@@ -1,0 +1,1044 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apply for Membership — BAJUS</title>
+  <meta name="description"
+    content="Apply for BAJUS membership. Submit your owner, shop, and address details to join the Bangladesh Jewellers' Association." />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Hind+Siliguri:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body>
+  <div id="bajus-header"></div>
+
+  <section class="page-hero py-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <nav class="text-[11px] uppercase tracking-widest text-zinc-400 mb-5">
+        <a href="./index.html" class="hover:text-gold">Home</a><span class="px-2">/</span><span class="text-gold">Apply
+          for Membership</span>
+      </nav>
+      <h1 class="font-serif text-4xl md:text-5xl leading-tight max-w-3xl">Apply for BAJUS <span
+          class="italic text-gold">Membership</span></h1>
+      <p class="mt-5 text-zinc-300 max-w-2xl">Complete the form below. All fields marked * are required. You can save
+        your progress at any step.</p>
+    </div>
+  </section>
+
+  <!-- STEPPER -->
+  <section class="bg-cream-50 border-b border-zinc-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
+      <div
+        class="flex flex-nowrap items-center justify-between gap-1 sm:gap-x-4 text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest font-semibold">
+        <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          <span
+            class="size-6 sm:size-7 grid place-items-center bg-gold text-cream rounded-full shrink-0 text-[11px] sm:text-xs">1</span><span
+            class="text-gold whitespace-nowrap">Owner</span>
+        </div>
+        <span class="text-zinc-300 shrink-0 sm:hidden">—</span>
+        <span class="text-zinc-300 shrink-0 hidden sm:inline">———</span>
+        <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          <span
+            class="size-6 sm:size-7 grid place-items-center border border-zinc-300 rounded-full text-zinc-500 shrink-0 text-[11px] sm:text-xs">2</span><span
+            class="text-zinc-500 whitespace-nowrap">Shop</span>
+        </div>
+        <span class="text-zinc-300 shrink-0 sm:hidden">—</span>
+        <span class="text-zinc-300 shrink-0 hidden sm:inline">———</span>
+        <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          <span
+            class="size-6 sm:size-7 grid place-items-center border border-zinc-300 rounded-full text-zinc-500 shrink-0 text-[11px] sm:text-xs">3</span><span
+            class="text-zinc-500 whitespace-nowrap">Address</span>
+        </div>
+        <span class="text-zinc-300 shrink-0 sm:hidden">—</span>
+        <span class="text-zinc-300 shrink-0 hidden sm:inline">———</span>
+        <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          <span
+            class="size-6 sm:size-7 grid place-items-center border border-zinc-300 rounded-full text-zinc-500 shrink-0 text-[11px] sm:text-xs">4</span><span
+            class="text-zinc-500 whitespace-nowrap">Review</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="py-20">
+    <form class="max-w-5xl mx-auto px-6 space-y-16"
+      onsubmit="event.preventDefault(); alert('Application submitted successfully.\n(Mockup — backend not connected.)');">
+
+      <!-- OWNER DETAILS -->
+      <div class="border border-zinc-200/80 p-8 bg-white rounded-sm relative">
+        <div class="mb-6 pb-4 border-b border-zinc-200">
+          <h2 class="font-serif text-2xl md:text-3xl text-charcoal">Owner Details</h2>
+          <p class="text-sm text-zinc-500 mt-1">Personal information of the membership applicant.</p>
+        </div>
+
+        <div class="space-y-10">
+          <div class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div><label class="form-label">Name (English) *</label><input name="owner_name_en" class="form-input"
+                  type="text" placeholder="As per NID / Passport" required /></div>
+              <div><label class="form-label">Name (বাংলা) *</label><input name="owner_name_bn" class="form-input"
+                  type="text" placeholder="জাতীয় পরিচয়পত্র অনুযায়ী" required /></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div><label class="form-label">Mobile *</label><input name="owner_mobile" class="form-input" type="tel"
+                  placeholder="01XXXXXXXXX" required /></div>
+              <div><label class="form-label">Email *</label><input name="owner_email" class="form-input" type="email"
+                  placeholder="your@email.com" required /></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+              <div><label class="form-label">NID *</label><input name="owner_nid" class="form-input" type="text"
+                  placeholder="10 or 17 digit NID" required /></div>
+              <div><label class="form-label">TIN</label><input name="owner_tin" class="form-input" type="text"
+                  placeholder="Tax Identification Number" /></div>
+              <div><label class="form-label">Date of Birth *</label><input name="owner_dob" class="form-input"
+                  type="date" required />
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div><label class="form-label">Parent / Husband Name</label><input name="owner_parent_name"
+                  class="form-input" type="text" placeholder="Parent or Husband Name" /></div>
+              <div><label class="form-label">Dealing License (if applicable)</label><input name="owner_dealing_license"
+                  class="form-input" type="text" placeholder="If applicable" /></div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="font-serif text-lg text-charcoal font-medium mb-4">Document Uploads</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+              <div>
+                <label class="form-label mb-2 block">Owner Photo <span class="text-red-500">*</span></label>
+                <label
+                  class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
+                  <input name="owner_photo" class="hidden file-upload-input" type="file" accept="image/*" required />
+                  <div
+                    class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
+                    <i class="bi bi-camera text-3xl"></i>
+                  </div>
+                  <span
+                    class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
+                    Photo</span>
+                  <span class="upload-help-text text-[10px] text-zinc-400">JPG/PNG, max 2MB</span>
+                </label>
+              </div>
+              <div>
+                <label class="form-label mb-2 block">NID Copy <span class="text-red-500">*</span></label>
+                <label
+                  class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
+                  <input name="owner_nid_file" class="hidden file-upload-input" type="file" accept="image/*,.pdf"
+                    required />
+                  <div
+                    class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
+                    <i class="bi bi-person-vcard text-3xl"></i>
+                  </div>
+                  <span
+                    class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
+                    NID</span>
+                  <span class="upload-help-text text-[10px] text-zinc-400">PDF/JPG/PNG, max 5MB</span>
+                </label>
+              </div>
+              <div>
+                <label class="form-label mb-2 block">TIN Certificate</label>
+                <label
+                  class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
+                  <input name="owner_tin_file" class="hidden file-upload-input" type="file" accept="image/*,.pdf" />
+                  <div
+                    class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
+                    <i class="bi bi-file-earmark-text text-3xl"></i>
+                  </div>
+                  <span
+                    class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
+                    TIN</span>
+                  <span class="upload-help-text text-[10px] text-zinc-400">PDF/JPG/PNG, max 5MB</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STORES SECTION -->
+      <div class="border border-zinc-200/80 p-8 bg-white rounded-sm relative">
+        <div class="mb-6 pb-4 border-b border-zinc-200">
+          <h2 class="font-serif text-2xl md:text-3xl text-charcoal">Stores</h2>
+          <p class="text-sm text-zinc-500 mt-1">Details of your jewellery establishments.</p>
+        </div>
+        <div id="stores-container" class="space-y-6">
+          <div class="store-block border border-zinc-200/80 bg-white rounded-sm relative overflow-hidden"
+            data-store-index="1">
+            <div class="store-header committee-card__header cursor-pointer select-none">
+              <div>
+                <div class="store-title committee-card__name">Store #1</div>
+                <div class="committee-card__mandate">Shop Registration Details</div>
+              </div>
+              <div class="store-actions flex items-center gap-4">
+                <div class="store-chevron committee-card__toggle transition-transform duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="18 15 12 9 6 15"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="store-content space-y-10 p-8">
+              <!-- SHOP PROFILE -->
+              <div class="mb-10">
+                <div class="mb-6">
+                  <h4 class="font-serif text-lg text-charcoal font-medium">Shop Profile</h4>
+                  <p class="text-xs text-zinc-500 mt-0.5">Registration details of your jewellery establishment.</p>
+                </div>
+                <div class="space-y-6">
+                  <div class="grid md:grid-cols-2 gap-6">
+                    <div><label class="form-label">Shop Name *</label><input class="form-input shop-name-input"
+                        type="text" placeholder="Official business name" required /></div>
+                    <div><label class="form-label">Shop Name (বাংলা) *</label><input
+                        class="form-input shop-name-bn-input" type="text" placeholder="দোকানের বাংলা নাম" required />
+                    </div>
+                  </div>
+
+                  <div class="grid md:grid-cols-2 gap-6">
+                    <div><label class="form-label">Mobile *</label><input class="form-input shop-mobile-input"
+                        type="tel" placeholder="01XXXXXXXXX" required /></div>
+                    <div><label class="form-label">Email</label><input class="form-input shop-email-input" type="email"
+                        placeholder="shop@email.com" /></div>
+                  </div>
+
+                  <div class="grid md:grid-cols-3 gap-6">
+                    <div><label class="form-label">Trade License No. *</label><input
+                        class="form-input shop-trade-license-input" type="text" placeholder="Trade license number"
+                        required /></div>
+                    <div><label class="form-label">Trade License Expiry Date *</label><input
+                        class="form-input shop-trade-license-expiry-input" type="date" required /></div>
+                    <div><label class="form-label">VAT / BIN</label><input class="form-input shop-vat-input" type="text"
+                        placeholder="VAT registration number" /></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SHOP DOCUMENT UPLOADS -->
+              <div class="mb-10">
+                <h4 class="font-serif text-lg text-charcoal font-medium mb-4">Shop Document Uploads</h4>
+                <div class="grid md:grid-cols-3 gap-6">
+                  <div>
+                    <label class="form-label mb-2 block">Trade License <span class="text-red-500">*</span></label>
+                    <label
+                      class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
+                      <input class="hidden file-upload-input shop-trade-license-file-input" type="file"
+                        accept="image/*,.pdf" required />
+                      <div
+                        class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
+                        <i class="bi bi-file-earmark-check text-3xl"></i>
+                      </div>
+                      <span
+                        class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
+                        Trade License</span>
+                      <span class="upload-help-text text-[10px] text-zinc-400">PDF/JPG/PNG, max 5MB</span>
+                    </label>
+                  </div>
+                  <div>
+                    <label class="form-label mb-2 block">Dealing License</label>
+                    <label
+                      class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
+                      <input class="hidden file-upload-input shop-dealing-license-file-input" type="file"
+                        accept="image/*,.pdf" />
+                      <div
+                        class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
+                        <i class="bi bi-file-earmark-text text-3xl"></i>
+                      </div>
+                      <span
+                        class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
+                        Dealing License</span>
+                      <span class="upload-help-text text-[10px] text-zinc-400">PDF/JPG/PNG, max 5MB</span>
+                    </label>
+                  </div>
+                  <div>
+                    <label class="form-label mb-2 block">VAT Registration</label>
+                    <label
+                      class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
+                      <input class="hidden file-upload-input shop-vat-file-input" type="file" accept="image/*,.pdf" />
+                      <div
+                        class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
+                        <i class="bi bi-receipt text-3xl"></i>
+                      </div>
+                      <span
+                        class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
+                        VAT Reg</span>
+                      <span class="upload-help-text text-[10px] text-zinc-400">PDF/JPG/PNG, max 5MB</span>
+                    </label>
+                  </div>
+                  <div>
+                    <label class="form-label mb-2 block">Visiting Card</label>
+                    <label
+                      class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
+                      <input class="hidden file-upload-input shop-visiting-card-file-input" type="file"
+                        accept="image/*,.pdf" />
+                      <div
+                        class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
+                        <i class="bi bi-person-badge text-3xl"></i>
+                      </div>
+                      <span
+                        class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
+                        Visiting Card</span>
+                      <span class="upload-help-text text-[10px] text-zinc-400">PDF/JPG/PNG, max 5MB</span>
+                    </label>
+                  </div>
+                  <div>
+                    <label class="form-label mb-2 block">Partnership Agreement</label>
+                    <label
+                      class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
+                      <input class="hidden file-upload-input shop-partnership-file-input" type="file"
+                        accept="image/*,.pdf" />
+                      <div
+                        class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
+                        <i class="bi bi-file-earmark-post text-3xl"></i>
+                      </div>
+                      <span
+                        class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
+                        Agreement</span>
+                      <span class="upload-help-text text-[10px] text-zinc-400">PDF/JPG/PNG, max 5MB</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SHOP ADDRESS -->
+              <div>
+                <div class="mb-6">
+                  <h4 class="font-serif text-lg text-charcoal font-medium">Shop Address</h4>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6">
+                  <div><label class="form-label">Street *</label><input class="form-input shop-street-input" type="text"
+                      placeholder="House, Road, Area" required /></div>
+                  <div><label class="form-label">City *</label><input class="form-input shop-city-input" type="text"
+                      placeholder="e.g. Dhaka" required /></div>
+                  <div><label class="form-label">Street (বাংলা)</label><input class="form-input shop-street-bn-input"
+                      type="text" placeholder="বাড়ি, রোড, এলাকা" /></div>
+                  <div><label class="form-label">City (বাংলা)</label><input class="form-input shop-city-bn-input"
+                      type="text" placeholder="যেমন: ঢাকা" /></div>
+                  <div>
+                    <label class="form-label">District *</label>
+                    <div class="relative w-full">
+                      <select class="form-input shop-district-input appearance-none !pr-10" required>
+                        <option value="">Select district</option>
+                        <option>Dhaka</option>
+                        <option>Chittagong</option>
+                        <option>Khulna</option>
+                        <option>Rajshahi</option>
+                        <option>Sylhet</option>
+                        <option>Barishal</option>
+                        <option>Rangpur</option>
+                        <option>Mymensingh</option>
+                      </select>
+                      <span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-zinc-400">
+                        <i class="bi bi-chevron-down text-sm"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div><label class="form-label">Division / State *</label><input class="form-input shop-division-input"
+                      type="text" required /></div>
+                  <div><label class="form-label">ZIP Code *</label><input class="form-input shop-zip-input" type="text"
+                      placeholder="e.g. 1000" required /></div>
+                  <div>
+                    <label class="form-label">Country *</label>
+                    <div class="relative w-full">
+                      <select class="form-input shop-country-input appearance-none !pr-10" required>
+                        <option>Bangladesh</option>
+                      </select>
+                      <span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-zinc-400">
+                        <i class="bi bi-chevron-down text-sm"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADD STORE BUTTON -->
+        <div class="mt-8 flex justify-center ">
+          <button type="button" id="add-store-btn"
+            class="btn-outline flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold border-gold hover:bg-gold hover:text-cream py-3 px-6 transition-all duration-300">
+            <i class="bi bi-plus-lg text-sm"></i>
+            Add Another Store
+          </button>
+        </div>
+      </div>
+
+      <!-- TERMS + SUBMIT -->
+      <div class="!mt-8">
+        <label class="flex items-start gap-3 text-sm text-zinc-600 mb-8">
+          <input type="checkbox" class="size-4 mt-1 accent-[#b8860b]" required />
+          <span>I confirm that the information provided is accurate, and I agree to abide by the BAJUS Constitution,
+            code of conduct, and hallmark standards.</span>
+        </label>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <button type="submit" class="btn-gold w-full sm:w-auto">Submit Application</button>
+          <button type="button" class="btn-outline w-full sm:w-auto">Save Draft</button>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <!-- Preview & Confirm Modal -->
+  <div id="preview-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+    <!-- Backdrop overlay -->
+    <div id="preview-modal-overlay"
+      class="absolute inset-0 bg-zinc-950/60 backdrop-blur-sm transition-opacity duration-300 opacity-0"></div>
+
+    <!-- Modal Box -->
+    <div id="preview-modal-box"
+      class="relative bg-white max-w-4xl w-full mx-4 rounded-sm border border-zinc-200 shadow-2xl transition-all duration-300 transform scale-95 opacity-0 flex flex-col max-h-[90vh] z-10">
+      <!-- Modal Header -->
+      <div class="px-8 py-6 border-b border-zinc-200 flex items-center justify-between shrink-0 bg-zinc-50">
+        <div>
+          <h2 class="font-serif text-2xl text-charcoal font-medium">Review & Confirm Application</h2>
+          <p class="text-xs text-zinc-500 mt-1">Please check your details carefully before final submission.</p>
+        </div>
+        <button id="close-preview-modal-x" type="button"
+          class="w-8 h-8 flex items-center justify-center rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-500 hover:text-zinc-800 transition-colors focus:outline-none"
+          aria-label="Close modal">
+          <i class="bi bi-x-lg text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="flex-1 overflow-y-auto p-8 bg-cream-50 space-y-8">
+
+        <!-- OWNER PROFILE REVIEW -->
+        <div class="border border-zinc-200/80 p-6 bg-white rounded-sm">
+          <div class="mb-4 pb-3 border-b border-zinc-200 flex items-center gap-2">
+            <i class="bi bi-person text-gold text-lg"></i>
+            <h3 class="font-serif text-lg text-charcoal font-medium">Owner Profile</h3>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-y-4 gap-x-6 text-sm">
+            <div>
+              <span class="text-xs text-zinc-400 block uppercase tracking-wider">Name (English)</span>
+              <span id="preview-owner-name-en" class="font-medium text-charcoal">-</span>
+            </div>
+            <div>
+              <span class="text-xs text-zinc-400 block uppercase tracking-wider">Name (বাংলা)</span>
+              <span id="preview-owner-name-bn" class="font-medium text-charcoal">-</span>
+            </div>
+            <div>
+              <span class="text-xs text-zinc-400 block uppercase tracking-wider">Mobile</span>
+              <span id="preview-owner-mobile" class="font-medium text-charcoal">-</span>
+            </div>
+            <div>
+              <span class="text-xs text-zinc-400 block uppercase tracking-wider">Email</span>
+              <span id="preview-owner-email" class="font-medium text-charcoal">-</span>
+            </div>
+            <div>
+              <span class="text-xs text-zinc-400 block uppercase tracking-wider">NID</span>
+              <span id="preview-owner-nid" class="font-medium text-charcoal">-</span>
+            </div>
+            <div>
+              <span class="text-xs text-zinc-400 block uppercase tracking-wider">TIN</span>
+              <span id="preview-owner-tin" class="font-medium text-charcoal">-</span>
+            </div>
+            <div>
+              <span class="text-xs text-zinc-400 block uppercase tracking-wider">Date of Birth</span>
+              <span id="preview-owner-dob" class="font-medium text-charcoal">-</span>
+            </div>
+            <div>
+              <span class="text-xs text-zinc-400 block uppercase tracking-wider">Parent / Husband Name</span>
+              <span id="preview-owner-parent" class="font-medium text-charcoal">-</span>
+            </div>
+            <div class="md:col-span-2">
+              <span class="text-xs text-zinc-400 block uppercase tracking-wider">Dealing License</span>
+              <span id="preview-owner-dealing" class="font-medium text-charcoal">-</span>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-zinc-100">
+            <span class="text-xs text-zinc-400 block uppercase tracking-wider mb-2">Uploaded Documents</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="flex items-center gap-3 p-3 border border-zinc-200/80 rounded-sm bg-zinc-50">
+                <div id="preview-owner-photo-thumb"
+                  class="size-10 bg-amber-50 border border-amber-200/50 flex items-center justify-center font-serif text-base font-bold text-[#8b6914] shrink-0 rounded-sm overflow-hidden">
+                  <i class="bi bi-camera text-gold"></i>
+                </div>
+                <div class="min-w-0">
+                  <span class="text-xs font-semibold block truncate">Owner Photo</span>
+                  <span id="preview-file-owner-photo" class="text-[10px] text-zinc-500 truncate block">No file</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 p-3 border border-zinc-200/80 rounded-sm bg-zinc-50">
+                <div id="preview-owner-nid-thumb"
+                  class="size-10 bg-amber-50 border border-amber-200/50 flex items-center justify-center shrink-0 rounded-sm overflow-hidden">
+                  <i class="bi bi-person-vcard text-gold text-lg"></i>
+                </div>
+                <div class="min-w-0">
+                  <span class="text-xs font-semibold block truncate">NID Copy</span>
+                  <span id="preview-file-owner-nid" class="text-[10px] text-zinc-500 truncate block">No file</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 p-3 border border-zinc-200/80 rounded-sm bg-zinc-50">
+                <div id="preview-owner-tin-thumb"
+                  class="size-10 bg-amber-50 border border-amber-200/50 flex items-center justify-center shrink-0 rounded-sm overflow-hidden">
+                  <i class="bi bi-file-earmark-text text-gold text-lg"></i>
+                </div>
+                <div class="min-w-0">
+                  <span class="text-xs font-semibold block truncate">TIN Certificate</span>
+                  <span id="preview-file-owner-tin" class="text-[10px] text-zinc-500 truncate block">No file</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STORES REVIEW -->
+        <div class="space-y-6">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <i class="bi bi-shop text-gold text-lg"></i>
+              <h3 class="font-serif text-lg text-charcoal font-medium">Jewellery Establishments</h3>
+            </div>
+            <span id="preview-stores-count"
+              class=" text-gold text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider"></span>
+          </div>
+          <div id="preview-stores-container" class="space-y-6">
+            <!-- Dynamic store preview cards go here -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div
+        class="px-8 py-5 border-t border-zinc-200 flex flex-wrap items-center justify-between gap-4 shrink-0 bg-white">
+        <p class="text-[11px] text-zinc-500 max-w-sm">By clicking Confirm & Submit, you certify that all information
+          given is complete and accurate.</p>
+        <div class="flex gap-3">
+          <button type="button" id="edit-preview-modal-btn"
+            class="btn-outline text-xs font-semibold uppercase tracking-widest py-3 px-6 transition-all duration-300">
+            Edit Details
+          </button>
+          <button type="button" id="confirm-submit-modal-btn"
+            class="btn-gold text-xs font-semibold uppercase tracking-widest py-3 px-6 transition-all duration-300">
+            Confirm & Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="bajus-footer"></div>
+  <script src="./js/include.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Setup file upload inputs
+      function setupUploadInput(input) {
+        const label = input.closest('label');
+        const textSpan = label.querySelector('.upload-btn-text');
+        const iconWrapper = label.querySelector('.upload-icon-wrapper');
+
+        // Save original states if they aren't already saved
+        if (textSpan && !textSpan.hasAttribute('data-orig-text')) {
+          textSpan.setAttribute('data-orig-text', textSpan.textContent);
+        }
+        if (iconWrapper && !iconWrapper.hasAttribute('data-orig-icon')) {
+          iconWrapper.setAttribute('data-orig-icon', iconWrapper.innerHTML);
+        }
+
+        input.addEventListener('change', function (e) {
+          const file = e.target.files[0];
+          const helpSpan = label.querySelector('.upload-help-text');
+          if (file) {
+            textSpan.textContent = "File Selected";
+            textSpan.className = "upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block";
+            helpSpan.textContent = file.name;
+            helpSpan.className = "upload-help-text text-[10px] text-zinc-600 font-medium truncate max-w-full px-2";
+            label.classList.add('border-gold/50', 'bg-gold/[0.02]');
+            label.classList.remove('border-zinc-200');
+
+            if (file.type.startsWith('image/')) {
+              const imgUrl = URL.createObjectURL(file);
+              iconWrapper.innerHTML = `<img src="${imgUrl}" class="size-14 object-cover rounded-sm border border-zinc-200 shadow-sm" alt="Preview" />`;
+            } else {
+              iconWrapper.innerHTML = `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-gold"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`;
+            }
+          }
+        });
+      }
+
+      // Setup store toggle collapse/expand
+      function setupStoreToggle(block) {
+        const header = block.querySelector(".store-header");
+        const content = block.querySelector(".store-content");
+        const chevron = block.querySelector(".store-chevron");
+        const mandate = block.querySelector(".committee-card__mandate");
+        const shopNameInput = block.querySelector(".shop-name-input");
+
+        if (shopNameInput && mandate) {
+          shopNameInput.addEventListener("input", function () {
+            mandate.textContent = shopNameInput.value.trim() || "Shop Registration Details";
+          });
+        }
+
+        if (header && content && chevron) {
+          header.addEventListener("click", function (e) {
+            // Don't collapse if clicking a button (like Remove)
+            if (e.target.closest("button") || e.target.closest("input")) return;
+
+            const isCollapsed = content.classList.contains("hidden");
+            if (isCollapsed) {
+              content.classList.remove("hidden");
+              chevron.classList.remove("-rotate-180");
+            } else {
+              content.classList.add("hidden");
+              chevron.classList.add("-rotate-180");
+            }
+          });
+        }
+      }
+
+      // Initialize all upload fields
+      document.querySelectorAll('.file-upload-input').forEach(setupUploadInput);
+
+      // Initialize toggles for existing blocks
+      document.querySelectorAll('.store-block').forEach(setupStoreToggle);
+
+      // Handle Adding Multiple Stores
+      const addBtn = document.getElementById("add-store-btn");
+      const container = document.getElementById("stores-container");
+
+      if (addBtn && container) {
+        addBtn.addEventListener("click", function () {
+          const firstBlock = container.querySelector(".store-block");
+          const clone = firstBlock.cloneNode(true);
+
+          // Increment store index
+          const index = container.querySelectorAll(".store-block").length + 1;
+          clone.setAttribute("data-store-index", index);
+
+          const headerTitle = clone.querySelector(".store-title");
+          if (headerTitle) headerTitle.textContent = `Store #${index}`;
+
+          // Make sure cloned store content is open (not collapsed)
+          const content = clone.querySelector(".store-content");
+          const chevron = clone.querySelector(".store-chevron");
+          const mandate = clone.querySelector(".committee-card__mandate");
+          if (content) content.classList.remove("hidden");
+          if (chevron) chevron.classList.remove("-rotate-180");
+          if (mandate) mandate.textContent = "Shop Registration Details";
+
+          // Clear text fields, date fields, checkboxes and select options
+          clone.querySelectorAll("input").forEach(input => {
+            if (input.type === "file") {
+              input.value = "";
+              // Reset file upload container state
+              const label = input.closest('label');
+              const textSpan = label.querySelector('.upload-btn-text');
+              const helpSpan = label.querySelector('.upload-help-text');
+              const iconWrapper = label.querySelector('.upload-icon-wrapper');
+
+              if (textSpan) {
+                textSpan.textContent = textSpan.getAttribute("data-orig-text") || textSpan.textContent;
+                textSpan.className = "upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block";
+              }
+              if (helpSpan) {
+                helpSpan.textContent = "PDF/JPG/PNG, max 5MB";
+                helpSpan.className = "upload-help-text text-[10px] text-zinc-400";
+              }
+              if (iconWrapper) {
+                const origIcon = iconWrapper.getAttribute("data-orig-icon");
+                if (origIcon) iconWrapper.innerHTML = origIcon;
+              }
+
+              label.className = "flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2";
+            } else {
+              input.value = "";
+            }
+          });
+
+          clone.querySelectorAll("select").forEach(select => {
+            select.selectedIndex = 0;
+          });
+
+          // Clean existing headers in clone to add the correct Remove Button
+          const header = clone.querySelector(".store-header");
+          const existingRemove = header.querySelector("button");
+          if (existingRemove) existingRemove.remove(); // Remove cloned remove button
+
+          // Add Remove Button to the new store block
+          const removeBtn = document.createElement("button");
+          removeBtn.type = "button";
+          removeBtn.className = "text-xs font-semibold uppercase tracking-wider text-red-500 hover:text-red-700 transition-colors flex items-center gap-1.5 focus:outline-none";
+          removeBtn.innerHTML = `
+            <i class="bi bi-trash3 text-sm"></i>
+            Remove
+          `;
+          removeBtn.addEventListener("click", function (e) {
+            e.stopPropagation(); // Avoid triggering collapse on header click
+            clone.remove();
+            // Re-index remaining stores
+            container.querySelectorAll(".store-block").forEach((block, idx) => {
+              block.setAttribute("data-store-index", idx + 1);
+              const title = block.querySelector(".store-title");
+              if (title) title.textContent = `Store #${idx + 1}`;
+            });
+          });
+          const actionsContainer = header.querySelector('.store-actions') || header;
+          actionsContainer.insertBefore(removeBtn, actionsContainer.firstElementChild);
+
+          // Re-bind file upload input listeners
+          clone.querySelectorAll(".file-upload-input").forEach(setupUploadInput);
+
+          // Setup collapse/expand toggle on the clone
+          setupStoreToggle(clone);
+
+          container.appendChild(clone);
+        });
+      }
+
+      // Modal DOM Elements
+      const form = document.querySelector("form");
+      const previewModal = document.getElementById("preview-modal");
+      const previewOverlay = document.getElementById("preview-modal-overlay");
+      const previewBox = document.getElementById("preview-modal-box");
+      const closeX = document.getElementById("close-preview-modal-x");
+      const editBtn = document.getElementById("edit-preview-modal-btn");
+      const confirmSubmitBtn = document.getElementById("confirm-submit-modal-btn");
+
+      // Elements to populate in Preview Modal
+      const pOwnerNameEn = document.getElementById("preview-owner-name-en");
+      const pOwnerNameBn = document.getElementById("preview-owner-name-bn");
+      const pOwnerMobile = document.getElementById("preview-owner-mobile");
+      const pOwnerEmail = document.getElementById("preview-owner-email");
+      const pOwnerNid = document.getElementById("preview-owner-nid");
+      const pOwnerTin = document.getElementById("preview-owner-tin");
+      const pOwnerDob = document.getElementById("preview-owner-dob");
+      const pOwnerParent = document.getElementById("preview-owner-parent");
+      const pOwnerDealing = document.getElementById("preview-owner-dealing");
+
+      const pFileOwnerPhoto = document.getElementById("preview-file-owner-photo");
+      const pFileOwnerNid = document.getElementById("preview-file-owner-nid");
+      const pFileOwnerTin = document.getElementById("preview-file-owner-tin");
+      const pOwnerPhotoThumb = document.getElementById("preview-owner-photo-thumb");
+
+      const pStoresContainer = document.getElementById("preview-stores-container");
+
+      function getInputValue(name) {
+        const input = form.querySelector(`[name="${name}"]`);
+        return input ? input.value.trim() : "";
+      }
+
+      function getFileName(name) {
+        const input = form.querySelector(`[name="${name}"]`);
+        return input && input.files && input.files[0] ? input.files[0].name : "No file uploaded";
+      }
+
+      function openModal() {
+        // 1. Populate Owner Details
+        pOwnerNameEn.textContent = getInputValue("owner_name_en") || "-";
+        pOwnerNameBn.textContent = getInputValue("owner_name_bn") || "-";
+        pOwnerMobile.textContent = getInputValue("owner_mobile") || "-";
+        pOwnerEmail.textContent = getInputValue("owner_email") || "-";
+        pOwnerNid.textContent = getInputValue("owner_nid") || "-";
+        pOwnerTin.textContent = getInputValue("owner_tin") || "-";
+        pOwnerDob.textContent = getInputValue("owner_dob") || "-";
+        pOwnerParent.textContent = getInputValue("owner_parent_name") || "-";
+        pOwnerDealing.textContent = getInputValue("owner_dealing_license") || "-";
+
+        // 2. Populate Owner Documents
+        pFileOwnerPhoto.textContent = getFileName("owner_photo");
+        pFileOwnerNid.textContent = getFileName("owner_nid_file");
+        pFileOwnerTin.textContent = getFileName("owner_tin_file");
+
+        // 3. Setup Thumbnails
+        function setDocThumbnail(inputName, thumbId, defaultIconClass) {
+          const thumbEl = document.getElementById(thumbId);
+          if (!thumbEl) return;
+          const input = form.querySelector(`[name="${inputName}"]`);
+          if (input && input.files && input.files[0]) {
+            const file = input.files[0];
+            if (file.type.startsWith("image/")) {
+              const imgUrl = URL.createObjectURL(file);
+              thumbEl.innerHTML = `<img src="${imgUrl}" class="size-full object-cover" alt="Document" />`;
+            } else {
+              thumbEl.innerHTML = `<i class="bi bi-file-earmark-pdf text-gold text-lg"></i>`;
+            }
+          } else {
+            thumbEl.innerHTML = `<i class="${defaultIconClass} text-gold text-lg"></i>`;
+          }
+        }
+
+        setDocThumbnail("owner_photo", "preview-owner-photo-thumb", "bi bi-camera");
+        setDocThumbnail("owner_nid_file", "preview-owner-nid-thumb", "bi bi-person-vcard");
+        setDocThumbnail("owner_tin_file", "preview-owner-tin-thumb", "bi bi-file-earmark-text");
+
+        // 4. Populate Dynamic Stores Details
+        pStoresContainer.innerHTML = "";
+        const storeBlocks = form.querySelectorAll(".store-block");
+
+        const storeCountEl = document.getElementById("preview-stores-count");
+        if (storeCountEl) {
+          storeCountEl.textContent = storeBlocks.length + (storeBlocks.length === 1 ? " Store" : " Stores");
+        }
+
+        storeBlocks.forEach((block, idx) => {
+          const index = block.getAttribute("data-store-index") || (idx + 1);
+
+          const shopNameInput = block.querySelector(".shop-name-input");
+          const shopName = shopNameInput ? shopNameInput.value.trim() : "";
+
+          const shopNameBnInput = block.querySelector(".shop-name-bn-input");
+          const shopNameBn = shopNameBnInput ? shopNameBnInput.value.trim() : "";
+
+          const mobileInput = block.querySelector(".shop-mobile-input");
+          const mobile = mobileInput ? mobileInput.value.trim() : "";
+
+          const emailInput = block.querySelector(".shop-email-input");
+          const email = emailInput ? emailInput.value.trim() : "";
+
+          const tradeInput = block.querySelector(".shop-trade-license-input");
+          const tradeLicense = tradeInput ? tradeInput.value.trim() : "";
+
+          const expiryInput = block.querySelector(".shop-trade-license-expiry-input");
+          const tradeLicenseExpiry = expiryInput ? expiryInput.value.trim() : "";
+
+          const vatInput = block.querySelector(".shop-vat-input");
+          const vatBin = vatInput ? vatInput.value.trim() : "";
+
+          const streetInput = block.querySelector(".shop-street-input");
+          const street = streetInput ? streetInput.value.trim() : "";
+
+          const cityInput = block.querySelector(".shop-city-input");
+          const city = cityInput ? cityInput.value.trim() : "";
+
+          const streetBnInput = block.querySelector(".shop-street-bn-input");
+          const streetBn = streetBnInput ? streetBnInput.value.trim() : "";
+
+          const cityBnInput = block.querySelector(".shop-city-bn-input");
+          const cityBn = cityBnInput ? cityBnInput.value.trim() : "";
+
+          const districtSelect = block.querySelector(".shop-district-input");
+          const district = districtSelect ? districtSelect.value : "";
+
+          const divisionInput = block.querySelector(".shop-division-input");
+          const division = divisionInput ? divisionInput.value.trim() : "";
+
+          const zipInput = block.querySelector(".shop-zip-input");
+          const zip = zipInput ? zipInput.value.trim() : "";
+
+          const countrySelect = block.querySelector(".shop-country-input");
+          const country = countrySelect ? countrySelect.value : "";
+
+          // Shop documents files
+          const fTrade = block.querySelector(".shop-trade-license-file-input");
+          const fDealing = block.querySelector(".shop-dealing-license-file-input");
+          const fVat = block.querySelector(".shop-vat-file-input");
+          const fVisiting = block.querySelector(".shop-visiting-card-file-input");
+          const fPartnership = block.querySelector(".shop-partnership-file-input");
+
+          function makeDocItem(label, fileInput, defaultIconClass = "bi-file-earmark") {
+            const file = fileInput && fileInput.files ? fileInput.files[0] : null;
+            const name = file ? file.name : "No file uploaded";
+            const textClass = file ? "text-zinc-700 font-medium" : "text-zinc-400 italic";
+
+            let thumbHtml = "";
+            if (file) {
+              if (file.type.startsWith("image/")) {
+                const imgUrl = URL.createObjectURL(file);
+                thumbHtml = `<img src="${imgUrl}" class="size-8 object-cover rounded-sm border border-zinc-200" alt="${label}" />`;
+              } else {
+                thumbHtml = `<div class="size-8 bg-gold/[0.02] border border-gold/50 flex items-center justify-center rounded-sm shrink-0"><i class="bi bi-file-earmark-pdf text-gold"></i></div>`;
+              }
+            } else {
+              thumbHtml = `<div class="size-8 bg-zinc-100 border border-zinc-200 flex items-center justify-center rounded-sm shrink-0"><i class="bi ${defaultIconClass} text-zinc-300"></i></div>`;
+            }
+
+            return `
+              <div class="flex items-center gap-2.5 p-2.5 border border-zinc-150 rounded-sm bg-zinc-50/50">
+                ${thumbHtml}
+                <div class="min-w-0 flex-1">
+                  <span class="text-[9px] font-semibold text-zinc-400 block leading-none uppercase tracking-wider">${label}</span>
+                  <span class="text-[10px] ${textClass} truncate block leading-tight mt-1" title="${name}">${name}</span>
+                </div>
+              </div>
+            `;
+          }
+
+          const storeCard = document.createElement("div");
+          storeCard.className = "border border-zinc-200/80 bg-white rounded-sm overflow-hidden shadow-sm preview-store-card";
+          storeCard.innerHTML = `
+            <button type="button" class="w-full px-6 py-4 bg-zinc-50 border-b border-zinc-200 flex items-center justify-between hover:bg-zinc-100 transition-colors preview-store-header">
+              <span class="font-serif font-semibold text-charcoal text-left">Store #${index}: ${shopName || "Unnamed Store"}</span>
+              <div class="flex items-center gap-3 shrink-0">
+                <span class="text-[9px] uppercase tracking-widest bg-gold-soft text-gold px-2.5 py-1 font-bold rounded-sm hidden sm:inline-block">Establishment Profile</span>
+                <i class="bi bi-chevron-down text-zinc-400 transition-transform duration-200 preview-store-chevron"></i>
+              </div>
+            </button>
+            <div class="p-6 space-y-6 preview-store-content">
+              <div class="grid md:grid-cols-3 gap-y-4 gap-x-6 text-xs text-charcoal">
+                <div><span class="text-zinc-400 block uppercase tracking-wider text-[10px] mb-0.5">Shop Name (বাংলা)</span><span class="font-medium">${shopNameBn || "-"}</span></div>
+                <div><span class="text-zinc-400 block uppercase tracking-wider text-[10px] mb-0.5">Mobile</span><span class="font-medium">${mobile || "-"}</span></div>
+                <div><span class="text-zinc-400 block uppercase tracking-wider text-[10px] mb-0.5">Email</span><span class="font-medium">${email || "-"}</span></div>
+                <div><span class="text-zinc-400 block uppercase tracking-wider text-[10px] mb-0.5">Trade License No.</span><span class="font-medium">${tradeLicense || "-"}</span></div>
+                <div><span class="text-zinc-400 block uppercase tracking-wider text-[10px] mb-0.5">Trade Expiry Date</span><span class="font-medium">${tradeLicenseExpiry || "-"}</span></div>
+                <div><span class="text-zinc-400 block uppercase tracking-wider text-[10px] mb-0.5">VAT / BIN</span><span class="font-medium">${vatBin || "-"}</span></div>
+              </div>
+              
+              <div class="pt-4 border-t border-zinc-100">
+                <h4 class="text-xs font-semibold text-zinc-700 uppercase tracking-wider mb-3">Address Information</h4>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-y-4 gap-x-6 text-xs text-charcoal">
+                  <div><span class="text-zinc-400 block uppercase tracking-wider text-[10px] mb-0.5">Street</span><span class="font-medium">${street || "-"}</span></div>
+                  <div><span class="text-zinc-400 block uppercase tracking-wider text-[10px] mb-0.5">Street (বাংলা)</span><span class="font-medium">${streetBn || "-"}</span></div>
+                  <div><span class="text-zinc-400 block uppercase tracking-wider text-[10px] mb-0.5">City</span><span class="font-medium">${city || "-"}</span></div>
+                  <div><span class="text-zinc-400 block uppercase tracking-wider text-[10px] mb-0.5">City (বাংলা)</span><span class="font-medium">${cityBn || "-"}</span></div>
+                  <div><span class="text-zinc-400 block uppercase tracking-wider text-[10px] mb-0.5">District</span><span class="font-medium">${district || "-"}</span></div>
+                  <div><span class="text-zinc-400 block uppercase tracking-wider text-[10px] mb-0.5">Division / State</span><span class="font-medium">${division || "-"}</span></div>
+                  <div><span class="text-zinc-400 block uppercase tracking-wider text-[10px] mb-0.5">ZIP Code</span><span class="font-medium">${zip || "-"}</span></div>
+                  <div><span class="text-zinc-400 block uppercase tracking-wider text-[10px] mb-0.5">Country</span><span class="font-medium">${country || "-"}</span></div>
+                </div>
+              </div>
+              
+              <div class="pt-4 border-t border-zinc-100">
+                <h4 class="text-xs font-semibold text-zinc-700 uppercase tracking-wider mb-3">Uploaded Documents</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                  ${makeDocItem("Trade License", fTrade, "bi-briefcase")}
+                  ${makeDocItem("Dealing License", fDealing, "bi-shield-check")}
+                  ${makeDocItem("VAT Reg", fVat, "bi-receipt")}
+                  ${makeDocItem("Visiting Card", fVisiting, "bi-person-badge")}
+                  ${makeDocItem("Agreement", fPartnership, "bi-file-earmark-text")}
+                </div>
+              </div>
+            </div>
+          `;
+
+          const headerBtn = storeCard.querySelector(".preview-store-header");
+          const contentDiv = storeCard.querySelector(".preview-store-content");
+          const chevronIcon = storeCard.querySelector(".preview-store-chevron");
+
+          headerBtn.addEventListener("click", () => {
+            const isHidden = contentDiv.classList.contains("hidden");
+            if (isHidden) {
+              contentDiv.classList.remove("hidden");
+              chevronIcon.classList.remove("-rotate-180");
+            } else {
+              contentDiv.classList.add("hidden");
+              chevronIcon.classList.add("-rotate-180");
+            }
+          });
+
+          pStoresContainer.appendChild(storeCard);
+        });
+
+        // 5. Open animations
+        previewModal.classList.remove("hidden");
+        // Force reflow
+        previewModal.offsetHeight;
+
+        previewOverlay.classList.remove("opacity-0");
+        previewOverlay.classList.add("opacity-100");
+        previewBox.classList.remove("scale-95", "opacity-0");
+        previewBox.classList.add("scale-100", "opacity-100");
+        document.body.style.overflow = "hidden"; // Prevent background scroll
+      }
+
+      function closeModal() {
+        previewOverlay.classList.remove("opacity-100");
+        previewOverlay.classList.add("opacity-0");
+        previewBox.classList.remove("scale-100", "opacity-100");
+        previewBox.classList.add("scale-95", "opacity-0");
+        document.body.style.overflow = "";
+
+        setTimeout(() => {
+          previewModal.classList.add("hidden");
+        }, 300);
+      }
+
+      // Submit interception
+      if (form) {
+        // Remove the inline onsubmit attribute if it's there
+        form.removeAttribute("onsubmit");
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          openModal();
+        });
+      }
+
+      // Close events
+      if (closeX) closeX.addEventListener("click", closeModal);
+      if (editBtn) editBtn.addEventListener("click", closeModal);
+      if (previewOverlay) previewOverlay.addEventListener("click", closeModal);
+
+      // Confirm Submit
+      if (confirmSubmitBtn) {
+        confirmSubmitBtn.addEventListener("click", function () {
+          closeModal();
+          setTimeout(() => {
+            alert("Application submitted successfully!\nYour files and information have been registered. (Mockup — backend not connected.)");
+            form.reset();
+
+            // Reset all file input indicators to their default states
+            document.querySelectorAll('.file-upload-input').forEach(input => {
+              const label = input.closest('label');
+              if (!label) return;
+              const textSpan = label.querySelector('.upload-btn-text');
+              const helpSpan = label.querySelector('.upload-help-text');
+              const iconWrapper = label.querySelector('.upload-icon-wrapper');
+
+              if (textSpan) {
+                textSpan.textContent = textSpan.getAttribute("data-orig-text") || textSpan.textContent;
+                textSpan.className = "upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block";
+              }
+              if (helpSpan) {
+                if (label.innerHTML.includes("Photo")) {
+                  helpSpan.textContent = "JPG/PNG, max 2MB";
+                } else {
+                  helpSpan.textContent = "PDF/JPG/PNG, max 5MB";
+                }
+                helpSpan.className = "upload-help-text text-[10px] text-zinc-400";
+              }
+              if (iconWrapper) {
+                const origIcon = iconWrapper.getAttribute("data-orig-icon");
+                if (origIcon) iconWrapper.innerHTML = origIcon;
+              }
+              label.className = "flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2";
+            });
+
+            // Reset dynamic stores back to just 1 store
+            const storeBlocks = container.querySelectorAll(".store-block");
+            for (let i = 1; i < storeBlocks.length; i++) {
+              storeBlocks[i].remove();
+            }
+
+            // Reset first store title and mandate
+            const firstBlock = container.querySelector(".store-block");
+            if (firstBlock) {
+              const title = firstBlock.querySelector(".store-title");
+              const mandate = firstBlock.querySelector(".committee-card__mandate");
+              if (title) title.textContent = "Store #1";
+              if (mandate) mandate.textContent = "Shop Registration Details";
+
+              // Ensure store block is expanded
+              const content = firstBlock.querySelector(".store-content");
+              const chevron = firstBlock.querySelector(".store-chevron");
+              if (content) content.classList.remove("hidden");
+              if (chevron) chevron.classList.remove("-rotate-180");
+            }
+          }, 350);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

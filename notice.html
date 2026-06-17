@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notices &amp; Circulars — BAJUS</title>
+  <meta name="description" content="Official notices, compliance circulars, downloadable membership forms, and archives from the Bangladesh Jewellers' Association." />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body class="bg-cream text-charcoal">
+  <div id="bajus-header"></div>
+
+  <!-- HERO SECTION -->
+  <section class="page-hero py-24 bg-zinc-900 text-cream relative overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('./assets/hero.jpg');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-zinc-900/95 via-zinc-900/65 to-transparent"></div>
+    <div class="relative max-w-7xl mx-auto px-6">
+      <nav class="text-[11px] uppercase tracking-widest text-zinc-400 mb-6">
+        <a href="./index.html" class="hover:text-gold transition-colors">Home</a>
+        <span class="px-2">/</span>
+        <span class="text-gold">Notice</span>
+      </nav>
+      <h1 class="font-serif text-4xl md:text-6xl leading-tight max-w-3xl">Notices &amp; <span class="italic text-gold">Circulars</span></h1>
+      <p class="mt-6 text-lg text-zinc-300 max-w-2xl leading-relaxed font-light">Official announcements, regulatory policy directives, and downloadable documents from BAJUS.</p>
+    </div>
+  </section>
+
+  <!-- NOTICES SECTION -->
+  <section class="py-20 max-w-7xl mx-auto px-6">
+    <!-- Sub-navigation Tabs -->
+    <div class="flex border-b border-zinc-200 overflow-x-auto gap-8 mb-12 scrollbar-none text-xs uppercase tracking-widest font-semibold">
+      <button onclick="switchTab('all')" id="tab-all" class="py-4 border-b-2 border-gold text-gold font-bold whitespace-nowrap focus:outline-none transition-all">All Notices</button>
+      <button onclick="switchTab('circulars')" id="tab-circulars" class="py-4 border-b-2 border-transparent hover:text-gold text-zinc-500 whitespace-nowrap focus:outline-none transition-all">Circulars</button>
+      <button onclick="switchTab('urgent')" id="tab-urgent" class="py-4 border-b-2 border-transparent hover:text-gold text-zinc-500 whitespace-nowrap focus:outline-none transition-all">Urgent / Pinned</button>
+      <button onclick="switchTab('forms')" id="tab-forms" class="py-4 border-b-2 border-transparent hover:text-gold text-zinc-500 whitespace-nowrap focus:outline-none transition-all">Forms &amp; Downloads</button>
+      <button onclick="switchTab('archive')" id="tab-archive" class="py-4 border-b-2 border-transparent hover:text-gold text-zinc-500 whitespace-nowrap focus:outline-none transition-all">Archive</button>
+    </div>
+
+    <!-- Active Tab Contents Wrapper -->
+    <div class="grid lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- Primary List Area (Left Column - Spans 8 cols) -->
+      <div class="lg:col-span-8 space-y-6">
+
+        <!-- NOTICE FILTER BAR (Visible for All, Circulars, Urgent) -->
+        <div id="notice-filters" class="member-filter-bar reveal">
+          <div class="grid md:grid-cols-3 gap-4 items-end">
+            <div>
+              <label class="block text-[11px] uppercase tracking-widest text-zinc-500 font-semibold mb-2">Search Notices</label>
+              <div class="relative w-full">
+                <input type="text" id="search-input" onkeyup="filterNotices()" placeholder="Search notices and circulars..." class="w-full bg-white border border-zinc-200 pl-4 pr-10 py-3 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-widest text-zinc-500 font-semibold mb-2">Category</label>
+              <div class="relative w-full">
+                <select id="category-select" onchange="filterNotices()" class="w-full bg-white border border-zinc-200 px-4 py-3 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all appearance-none !pr-10">
+                  <option value="">All Categories</option>
+                  <option value="circular">Circular</option>
+                  <option value="policy">Policy</option>
+                  <option value="urgent">Urgent</option>
+                  <option value="general">General</option>
+                </select>
+                <span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-zinc-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-widest text-zinc-500 font-semibold mb-2">Year</label>
+              <div class="relative w-full">
+                <select id="year-select" onchange="filterNotices()" class="w-full bg-white border border-zinc-200 px-4 py-3 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all appearance-none !pr-10">
+                  <option value="">All Years</option>
+                  <option value="2026">2026</option>
+                  <option value="2025">2025</option>
+                  <option value="2024">2024</option>
+                </select>
+                <span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-zinc-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- URGENT ALERTS SECTION -->
+        <div id="urgent-pinned-alert" class="bg-red-50 border-l-4 border-red-600 p-5 rounded-sm mb-6 flex items-start gap-4 shadow-sm reveal">
+          <i class="ph ph-warning-circle text-red-600 text-2xl flex-shrink-0 mt-0.5"></i>
+          <div>
+            <h4 class="font-semibold text-red-800 text-sm uppercase tracking-wider mb-1">Critical Requirement Notice</h4>
+            <p class="text-sm text-red-700 leading-relaxed mb-3">Trade License Renewal Deadline is **June 30, 2026**. All members must submit their renewed licenses to the BAJUS secretariat to avoid trade suspension.</p>
+            <a href="#forms" onclick="switchTab('forms')" class="inline-flex items-center gap-1 text-xs font-bold text-red-800 hover:text-red-950 underline uppercase tracking-wider">
+              Download Renewal Form <i class="ph ph-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- NOTICE LIST PANEL (Contains actual list of notices) -->
+        <div id="notice-list-panel" class="space-y-4">
+          <!-- Notice Item 1 -->
+          <div class="notice-item bg-white border border-zinc-200 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-md hover:border-gold transition-all duration-300 reveal" data-category="circular" data-year="2026" data-urgent="false">
+            <div class="flex items-start gap-5">
+              <div class="w-16 bg-zinc-900 text-center py-3.5 rounded-sm flex-shrink-0">
+                <span class="block font-serif text-2xl font-bold text-gold leading-none">03</span>
+                <span class="block text-[9px] text-zinc-400 uppercase tracking-widest mt-1">Jun 2026</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+                  <span class="text-[10px] font-bold text-gold uppercase tracking-wider">Official Circular</span>
+                  <span class="bg-gold/10 text-gold text-[9px] px-2 py-0.5 font-bold uppercase tracking-wider rounded-[2px]">New</span>
+                </div>
+                <h3 class="text-base font-semibold text-charcoal hover:text-gold transition-colors leading-snug">
+                  <a href="#">Updated Gold Price Rate — Effective June 3, 2026 (Circular No. BAJUS/GP/2026/142)</a>
+                </h3>
+                <div class="flex flex-wrap items-center gap-4 text-xs text-zinc-500 mt-3">
+                  <span class="flex items-center gap-1.5"><i class="ph ph-calendar-blank text-gold"></i> June 3, 2026</span>
+                  <span class="flex items-center gap-1.5"><i class="ph ph-tag text-gold"></i> Gold Price</span>
+                  <span class="flex items-center gap-1.5"><i class="ph ph-file-pdf text-gold"></i> PDF (340 KB)</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 w-full md:w-auto justify-end border-t md:border-t-0 pt-4 md:pt-0">
+              <a href="#" class="px-4 py-2 border border-zinc-200 text-xs font-semibold uppercase tracking-wider text-zinc-600 hover:border-gold hover:text-gold transition-colors">View</a>
+              <a href="#" class="px-4 py-2 bg-zinc-900 hover:bg-gold text-cream text-xs font-semibold uppercase tracking-wider transition-colors inline-flex items-center gap-1.5"><i class="ph ph-download"></i> Download</a>
+            </div>
+          </div>
+
+          <!-- Notice Item 2 -->
+          <div class="notice-item bg-white border border-zinc-200 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-md hover:border-gold transition-all duration-300 reveal" data-category="policy" data-year="2026" data-urgent="false">
+            <div class="flex items-start gap-5">
+              <div class="w-16 bg-zinc-900 text-center py-3.5 rounded-sm flex-shrink-0">
+                <span class="block font-serif text-2xl font-bold text-gold leading-none">28</span>
+                <span class="block text-[9px] text-zinc-400 uppercase tracking-widest mt-1">May 2026</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+                  <span class="text-[10px] font-bold text-gold uppercase tracking-wider">Policy Notice</span>
+                </div>
+                <h3 class="text-base font-semibold text-charcoal hover:text-gold transition-colors leading-snug">
+                  <a href="#">Hallmarking Compliance Requirements for Financial Year 2026–27</a>
+                </h3>
+                <div class="flex flex-wrap items-center gap-4 text-xs text-zinc-500 mt-3">
+                  <span class="flex items-center gap-1.5"><i class="ph ph-calendar-blank text-gold"></i> May 28, 2026</span>
+                  <span class="flex items-center gap-1.5"><i class="ph ph-tag text-gold"></i> Compliance</span>
+                  <span class="flex items-center gap-1.5"><i class="ph ph-file-pdf text-gold"></i> PDF (1.1 MB)</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 w-full md:w-auto justify-end border-t md:border-t-0 pt-4 md:pt-0">
+              <a href="#" class="px-4 py-2 border border-zinc-200 text-xs font-semibold uppercase tracking-wider text-zinc-600 hover:border-gold hover:text-gold transition-colors">View</a>
+              <a href="#" class="px-4 py-2 bg-zinc-900 hover:bg-gold text-cream text-xs font-semibold uppercase tracking-wider transition-colors inline-flex items-center gap-1.5"><i class="ph ph-download"></i> Download</a>
+            </div>
+          </div>
+
+          <!-- Notice Item 3 -->
+          <div class="notice-item bg-white border border-zinc-200 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-md hover:border-gold transition-all duration-300 reveal" data-category="urgent" data-year="2026" data-urgent="true">
+            <div class="flex items-start gap-5">
+              <div class="w-16 bg-zinc-900 text-center py-3.5 rounded-sm flex-shrink-0">
+                <span class="block font-serif text-2xl font-bold text-gold leading-none">20</span>
+                <span class="block text-[9px] text-zinc-400 uppercase tracking-widest mt-1">May 2026</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+                  <span class="text-[10px] font-bold text-red-600 uppercase tracking-wider flex items-center gap-1"><i class="ph ph-warning-circle"></i> Urgent Notice</span>
+                  <span class="bg-red-100 text-red-800 text-[9px] px-2 py-0.5 font-bold uppercase tracking-wider rounded-[2px]">Action Required</span>
+                </div>
+                <h3 class="text-base font-semibold text-charcoal hover:text-gold transition-colors leading-snug">
+                  <a href="#">Trade License Renewal Deadline — Final Notice (All Members)</a>
+                </h3>
+                <div class="flex flex-wrap items-center gap-4 text-xs text-zinc-500 mt-3">
+                  <span class="flex items-center gap-1.5"><i class="ph ph-calendar-blank text-gold"></i> May 20, 2026</span>
+                  <span class="flex items-center gap-1.5"><i class="ph ph-tag text-gold"></i> Administrative</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 w-full md:w-auto justify-end border-t md:border-t-0 pt-4 md:pt-0">
+              <a href="#" class="px-4 py-2 bg-zinc-900 hover:bg-gold text-cream text-xs font-semibold uppercase tracking-wider transition-colors inline-flex items-center gap-1.5"><i class="ph ph-download"></i> Download Form</a>
+            </div>
+          </div>
+
+          <!-- Notice Item 4 -->
+          <div class="notice-item bg-white border border-zinc-200 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-md hover:border-gold transition-all duration-300 reveal" data-category="general" data-year="2026" data-urgent="false">
+            <div class="flex items-start gap-5">
+              <div class="w-16 bg-zinc-900 text-center py-3.5 rounded-sm flex-shrink-0">
+                <span class="block font-serif text-2xl font-bold text-gold leading-none">15</span>
+                <span class="block text-[9px] text-zinc-400 uppercase tracking-widest mt-1">May 2026</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+                  <span class="text-[10px] font-bold text-gold uppercase tracking-wider">AGM Notice</span>
+                </div>
+                <h3 class="text-base font-semibold text-charcoal hover:text-gold transition-colors leading-snug">
+                  <a href="#">Annual General Meeting 2026 — Notice and Agenda (June 25, 2026)</a>
+                </h3>
+                <div class="flex flex-wrap items-center gap-4 text-xs text-zinc-500 mt-3">
+                  <span class="flex items-center gap-1.5"><i class="ph ph-calendar-blank text-gold"></i> May 15, 2026</span>
+                  <span class="flex items-center gap-1.5"><i class="ph ph-tag text-gold"></i> Meetings</span>
+                  <span class="flex items-center gap-1.5"><i class="ph ph-file-pdf text-gold"></i> PDF (1.8 MB)</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 w-full md:w-auto justify-end border-t md:border-t-0 pt-4 md:pt-0">
+              <a href="#" class="px-4 py-2 border border-zinc-200 text-xs font-semibold uppercase tracking-wider text-zinc-600 hover:border-gold hover:text-gold transition-colors">View</a>
+              <a href="#" class="px-4 py-2 bg-zinc-900 hover:bg-gold text-cream text-xs font-semibold uppercase tracking-wider transition-colors inline-flex items-center gap-1.5"><i class="ph ph-download"></i> Download</a>
+            </div>
+          </div>
+
+          <!-- Notice Item 5 -->
+          <div class="notice-item bg-white border border-zinc-200 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-md hover:border-gold transition-all duration-300 reveal" data-category="policy" data-year="2026" data-urgent="false">
+            <div class="flex items-start gap-5">
+              <div class="w-16 bg-zinc-900 text-center py-3.5 rounded-sm flex-shrink-0">
+                <span class="block font-serif text-2xl font-bold text-gold leading-none">10</span>
+                <span class="block text-[9px] text-zinc-400 uppercase tracking-widest mt-1">May 2026</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+                  <span class="text-[10px] font-bold text-gold uppercase tracking-wider">Policy Notice</span>
+                </div>
+                <h3 class="text-base font-semibold text-charcoal hover:text-gold transition-colors leading-snug">
+                  <a href="#">New VAT Structure for Jewellery Retail — Effective from July 1, 2026</a>
+                </h3>
+                <div class="flex flex-wrap items-center gap-4 text-xs text-zinc-500 mt-3">
+                  <span class="flex items-center gap-1.5"><i class="ph ph-calendar-blank text-gold"></i> May 10, 2026</span>
+                  <span class="flex items-center gap-1.5"><i class="ph ph-tag text-gold"></i> VAT / Taxation</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 w-full md:w-auto justify-end border-t md:border-t-0 pt-4 md:pt-0">
+              <a href="#" class="px-4 py-2 bg-zinc-900 hover:bg-gold text-cream text-xs font-semibold uppercase tracking-wider transition-colors inline-flex items-center gap-1.5"><i class="ph ph-download"></i> Download</a>
+            </div>
+          </div>
+
+          <!-- Notice Item 6 -->
+          <div class="notice-item bg-white border border-zinc-200 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-md hover:border-gold transition-all duration-300 reveal" data-category="circular" data-year="2026" data-urgent="false">
+            <div class="flex items-start gap-5">
+              <div class="w-16 bg-zinc-900 text-center py-3.5 rounded-sm flex-shrink-0">
+                <span class="block font-serif text-2xl font-bold text-gold leading-none">02</span>
+                <span class="block text-[9px] text-zinc-400 uppercase tracking-widest mt-1">May 2026</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+                  <span class="text-[10px] font-bold text-gold uppercase tracking-wider">Official Circular</span>
+                </div>
+                <h3 class="text-base font-semibold text-charcoal hover:text-gold transition-colors leading-snug">
+                  <a href="#">Import Duty Guidelines for Gold Bullion — Bangladesh Bank Circular</a>
+                </h3>
+                <div class="flex flex-wrap items-center gap-4 text-xs text-zinc-500 mt-3">
+                  <span class="flex items-center gap-1.5"><i class="ph ph-calendar-blank text-gold"></i> May 2, 2026</span>
+                  <span class="flex items-center gap-1.5"><i class="ph ph-tag text-gold"></i> Gold Import</span>
+                  <span class="flex items-center gap-1.5"><i class="ph ph-file-pdf text-gold"></i> PDF (890 KB)</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 w-full md:w-auto justify-end border-t md:border-t-0 pt-4 md:pt-0">
+              <a href="#" class="px-4 py-2 border border-zinc-200 text-xs font-semibold uppercase tracking-wider text-zinc-600 hover:border-gold hover:text-gold transition-colors">View</a>
+              <a href="#" class="px-4 py-2 bg-zinc-900 hover:bg-gold text-cream text-xs font-semibold uppercase tracking-wider transition-colors inline-flex items-center gap-1.5"><i class="ph ph-download"></i> Download</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- No Notices State -->
+        <div id="no-notices" class="hidden text-center py-12 bg-white border border-zinc-200 text-zinc-400">
+          <i class="ph ph-file-text text-5xl mb-3 block text-zinc-300"></i>
+          <p class="text-sm">No notices found matching the search criteria.</p>
+        </div>
+
+        <!-- FORMS PANEL (Forms list grid, hidden initially) -->
+        <div id="forms-panel" class="hidden space-y-6">
+          <div class="mb-4">
+            <span class="inline-block w-14 h-[2px] bg-gold mb-3"></span>
+            <h2 class="font-serif text-2xl text-charcoal">Official Registration Forms</h2>
+            <p class="text-sm text-zinc-500 mt-1">Download official forms to apply, renew, or request certificates. Fill and submit physically or via email.</p>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            <!-- Form Item 1 -->
+            <div class="bg-white border border-zinc-200 p-6 flex items-start gap-4 hover:shadow-md hover:border-gold transition-all duration-300 reveal">
+              <div class="size-12 bg-gold/10 text-gold flex items-center justify-center rounded-sm text-2xl flex-shrink-0">
+                <i class="ph ph-identification-card"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold text-charcoal text-sm mb-1">Membership Application Form</h3>
+                <p class="text-xs text-zinc-500 leading-relaxed mb-4">Registration form for new jewellers wishing to join BAJUS.</p>
+                <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold text-gold hover:text-gold-light uppercase tracking-wider"><i class="ph ph-download-simple text-sm"></i> PDF (1.2 MB)</a>
+              </div>
+            </div>
+
+            <!-- Form Item 2 -->
+            <div class="bg-white border border-zinc-200 p-6 flex items-start gap-4 hover:shadow-md hover:border-gold transition-all duration-300 reveal">
+              <div class="size-12 bg-gold/10 text-gold flex items-center justify-center rounded-sm text-2xl flex-shrink-0">
+                <i class="ph ph-arrows-counter-clockwise"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold text-charcoal text-sm mb-1">Membership Renewal Form</h3>
+                <p class="text-xs text-zinc-500 leading-relaxed mb-4">Annual renewal form for existing BAJUS members. Must submit before deadline.</p>
+                <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold text-gold hover:text-gold-light uppercase tracking-wider"><i class="ph ph-download-simple text-sm"></i> PDF (850 KB)</a>
+              </div>
+            </div>
+
+            <!-- Form Item 3 -->
+            <div class="bg-white border border-zinc-200 p-6 flex items-start gap-4 hover:shadow-md hover:border-gold transition-all duration-300 reveal">
+              <div class="size-12 bg-gold/10 text-gold flex items-center justify-center rounded-sm text-2xl flex-shrink-0">
+                <i class="ph ph-certificate"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold text-charcoal text-sm mb-1">Membership Certificate Request</h3>
+                <p class="text-xs text-zinc-500 leading-relaxed mb-4">Form to request a replacement or duplicate BAJUS Membership Certificate.</p>
+                <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold text-gold hover:text-gold-light uppercase tracking-wider"><i class="ph ph-download-simple text-sm"></i> PDF (400 KB)</a>
+              </div>
+            </div>
+
+            <!-- Form Item 4 -->
+            <div class="bg-white border border-zinc-200 p-6 flex items-start gap-4 hover:shadow-md hover:border-gold transition-all duration-300 reveal">
+              <div class="size-12 bg-gold/10 text-gold flex items-center justify-center rounded-sm text-2xl flex-shrink-0">
+                <i class="ph ph-handshake"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold text-charcoal text-sm mb-1">Grievance &amp; Complaint Form</h3>
+                <p class="text-xs text-zinc-500 leading-relaxed mb-4">File a formal dispute, trade malpractice complaint, or ethical grievance.</p>
+                <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold text-gold hover:text-gold-light uppercase tracking-wider"><i class="ph ph-download-simple text-sm"></i> PDF (720 KB)</a>
+              </div>
+            </div>
+
+            <!-- Form Item 5 -->
+            <div class="bg-white border border-zinc-200 p-6 flex items-start gap-4 hover:shadow-md hover:border-gold transition-all duration-300 reveal">
+              <div class="size-12 bg-gold/10 text-gold flex items-center justify-center rounded-sm text-2xl flex-shrink-0">
+                <i class="ph ph-graduation-cap"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold text-charcoal text-sm mb-1">Training Registration Form</h3>
+                <p class="text-xs text-zinc-500 leading-relaxed mb-4">Register for courses, masterclasses and skills development at the BAJUS Institute.</p>
+                <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold text-gold hover:text-gold-light uppercase tracking-wider"><i class="ph ph-download-simple text-sm"></i> PDF (1.4 MB)</a>
+              </div>
+            </div>
+
+            <!-- Form Item 6 -->
+            <div class="bg-white border border-zinc-200 p-6 flex items-start gap-4 hover:shadow-md hover:border-gold transition-all duration-300 reveal">
+              <div class="size-12 bg-gold/10 text-gold flex items-center justify-center rounded-sm text-2xl flex-shrink-0">
+                <i class="ph ph-calendar-check"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold text-charcoal text-sm mb-1">Event Exhibition Booking Form</h3>
+                <p class="text-xs text-zinc-500 leading-relaxed mb-4">Exhibitor space booking application form for upcoming BAJUS Expos.</p>
+                <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold text-gold hover:text-gold-light uppercase tracking-wider"><i class="ph ph-download-simple text-sm"></i> PDF (2.1 MB)</a>
+              </div>
+            </div>
+
+            <!-- Form Item 7 -->
+            <div class="bg-white border border-zinc-200 p-6 flex items-start gap-4 hover:shadow-md hover:border-gold transition-all duration-300 col-span-1 md:col-span-2 reveal">
+              <div class="size-12 bg-gold/10 text-gold flex items-center justify-center rounded-sm text-2xl flex-shrink-0">
+                <i class="ph ph-truck"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold text-charcoal text-sm mb-1">Import/Export Recommendation Request</h3>
+                <p class="text-xs text-zinc-500 leading-relaxed mb-4">Request standard letter of support recommendation from BAJUS for import compliance or custom clearance.</p>
+                <a href="#" class="inline-flex items-center gap-1.5 text-xs font-bold text-gold hover:text-gold-light uppercase tracking-wider"><i class="ph ph-download-simple text-sm"></i> PDF (630 KB)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ARCHIVE PANEL (Year-based lookup, hidden initially) -->
+        <div id="archive-panel" class="hidden space-y-6">
+          <div class="mb-4">
+            <span class="inline-block w-14 h-[2px] bg-gold mb-3"></span>
+            <h2 class="font-serif text-2xl text-charcoal">Historical Archives</h2>
+            <p class="text-sm text-zinc-500 mt-1">Search or browse historical records, circulars and notices issued by BAJUS dating back to 2015.</p>
+          </div>
+
+          <div class="member-filter-bar reveal">
+            <form onsubmit="searchArchive(event)">
+              <div class="grid md:grid-cols-3 gap-4 items-end">
+                <div>
+                  <label class="block text-[11px] uppercase tracking-widest text-zinc-500 font-semibold mb-2">Select Target Year</label>
+                  <div class="relative w-full">
+                    <select id="archive-year" class="w-full bg-white border border-zinc-200 px-4 py-3 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all appearance-none !pr-10" required>
+                      <option value="2025">2025</option>
+                      <option value="2024">2024</option>
+                      <option value="2023">2023</option>
+                      <option value="2022">2022</option>
+                      <option value="2021">2021</option>
+                      <option value="2020">2020</option>
+                    </select>
+                    <span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-zinc-400">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-[11px] uppercase tracking-widest text-zinc-500 font-semibold mb-2">Select Category</label>
+                  <div class="relative w-full">
+                    <select id="archive-category" class="w-full bg-white border border-zinc-200 px-4 py-3 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all appearance-none !pr-10">
+                      <option value="">All Types</option>
+                      <option value="circular">Circulars</option>
+                      <option value="policy">Policy directives</option>
+                      <option value="meetings">Meeting notices / minutes</option>
+                    </select>
+                    <span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-zinc-400">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+                <button type="submit" class="btn-gold w-full">Search</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Archive results container -->
+          <div id="archive-results" class="hidden space-y-4">
+            <div class="flex items-center justify-between border-b border-zinc-200 pb-2">
+              <span class="text-xs uppercase tracking-widest text-zinc-500 font-bold">Search Results</span>
+              <span id="archive-count" class="text-xs text-zinc-400">0 records found</span>
+            </div>
+            <div id="archive-results-list" class="space-y-3">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sidebar Area (Right Column - Spans 4 cols) -->
+      <div class="lg:col-span-4 space-y-8">
+        
+        <!-- SIDEBAR WIDGET 1: BAJUS Pricing Committee -->
+        <div class="bg-zinc-900 text-cream p-8 border border-zinc-800 shadow-sm hover:border-gold/30 transition-all duration-300">
+          <span class="text-[10px] font-bold text-gold uppercase tracking-widest mb-2 block">Standing Committee</span>
+          <h3 class="font-serif text-xl mb-4">Pricing &amp; Monitoring</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed mb-6">Determines and releases official gold prices based on domestic market feedback and international pricing standards.</p>
+          <div class="border-t border-zinc-800 pt-4 flex justify-between items-center text-xs">
+            <span class="text-zinc-500">Convener</span>
+            <span class="font-semibold text-gold">Sayem Sobhan Anvir</span>
+          </div>
+        </div>
+
+        <!-- SIDEBAR WIDGET 2: Documents and Guidelines -->
+        <div class="bg-white border border-zinc-200 p-8 shadow-sm">
+          <h3 class="font-serif text-lg text-charcoal mb-4">Resources</h3>
+          <ul class="space-y-4 text-xs font-semibold uppercase tracking-wider text-zinc-600">
+            <li>
+              <a href="#" class="flex justify-between items-center group hover:text-gold transition-colors">
+                <span>BAJUS Constitution 2026</span>
+                <i class="ph ph-arrow-right text-zinc-400 group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="flex justify-between items-center group hover:text-gold transition-colors">
+                <span>Hallmarking Code of Practice</span>
+                <i class="ph ph-arrow-right text-zinc-400 group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="flex justify-between items-center group hover:text-gold transition-colors">
+                <span>Gold Import Policy Guidelines</span>
+                <i class="ph ph-arrow-right text-zinc-400 group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="bajus-footer"></div>
+
+  <!-- SCRIPTS -->
+  <script src="./js/include.js"></script>
+  <script src="./js/main.js"></script>
+  
+  <script>
+    // Handles dynamic switching of notices tabs
+    function switchTab(tabId) {
+      // Hide all panels
+      document.getElementById('notice-filters').classList.add('hidden');
+      document.getElementById('notice-list-panel').classList.add('hidden');
+      document.getElementById('urgent-pinned-alert').classList.add('hidden');
+      document.getElementById('forms-panel').classList.add('hidden');
+      document.getElementById('archive-panel').classList.add('hidden');
+      document.getElementById('no-notices').classList.add('hidden');
+
+      // Reset all buttons styling
+      const buttons = document.querySelectorAll('[id^="tab-"]');
+      buttons.forEach(btn => {
+        btn.classList.remove('border-gold', 'text-gold', 'font-bold');
+        btn.classList.add('border-transparent', 'text-zinc-500');
+      });
+
+      // Highlight active button
+      const activeBtn = document.getElementById('tab-' + tabId);
+      if (activeBtn) {
+        activeBtn.classList.remove('border-transparent', 'text-zinc-500');
+        activeBtn.classList.add('border-gold', 'text-gold', 'font-bold');
+      }
+
+      // Show the selected panel
+      if (tabId === 'all') {
+        document.getElementById('notice-filters').classList.remove('hidden');
+        document.getElementById('notice-list-panel').classList.remove('hidden');
+        document.getElementById('urgent-pinned-alert').classList.remove('hidden');
+        resetFilters();
+      } else if (tabId === 'circulars') {
+        document.getElementById('notice-filters').classList.remove('hidden');
+        document.getElementById('notice-list-panel').classList.remove('hidden');
+        // Show only circulars & policy
+        filterTabItems(['circular', 'policy']);
+      } else if (tabId === 'urgent') {
+        document.getElementById('notice-filters').classList.remove('hidden');
+        document.getElementById('notice-list-panel').classList.remove('hidden');
+        // Show only urgent items
+        filterTabItems(['urgent']);
+      } else if (tabId === 'forms') {
+        document.getElementById('forms-panel').classList.remove('hidden');
+      } else if (tabId === 'archive') {
+        document.getElementById('archive-panel').classList.remove('hidden');
+      }
+
+      // Update location hash silently
+      window.history.replaceState(null, null, '#' + tabId);
+    }
+
+    let activeFilterCategories = null;
+
+    // Filter items based on tab selection
+    function filterTabItems(categories) {
+      activeFilterCategories = categories;
+      filterNotices();
+    }
+
+    function resetFilters() {
+      activeFilterCategories = null;
+      document.getElementById('search-input').value = '';
+      document.getElementById('category-select').value = '';
+      document.getElementById('year-select').value = '';
+      filterNotices();
+    }
+
+    // Filter notices based on input search/select criteria
+    function filterNotices() {
+      const searchVal = document.getElementById('search-input').value.toLowerCase().trim();
+      const catVal = document.getElementById('category-select').value;
+      const yearVal = document.getElementById('year-select').value;
+
+      const items = document.querySelectorAll('.notice-item');
+      let visibleCount = 0;
+
+      items.forEach(item => {
+        const title = item.querySelector('h3').textContent.toLowerCase();
+        const category = item.getAttribute('data-category');
+        const year = item.getAttribute('data-year');
+        const urgent = item.getAttribute('data-urgent');
+
+        // Check if item fits current active tab category constraints
+        let fitsTab = true;
+        if (activeFilterCategories) {
+          fitsTab = activeFilterCategories.includes(category) || (activeFilterCategories.includes('urgent') && urgent === 'true');
+        }
+
+        // Check search string, select category, select year
+        const matchesSearch = searchVal === '' || title.includes(searchVal);
+        const matchesCat = catVal === '' || category === catVal || (catVal === 'urgent' && urgent === 'true');
+        const matchesYear = yearVal === '' || year === yearVal;
+
+        if (fitsTab && matchesSearch && matchesCat && matchesYear) {
+          item.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      // Show "No Notices" state if needed
+      const noNotices = document.getElementById('no-notices');
+      if (visibleCount === 0) {
+        noNotices.classList.remove('hidden');
+        document.getElementById('notice-list-panel').classList.add('hidden');
+      } else {
+        noNotices.classList.add('hidden');
+        document.getElementById('notice-list-panel').classList.remove('hidden');
+      }
+    }
+
+    // Handle historical archives form search
+    function searchArchive(e) {
+      e.preventDefault();
+      const year = document.getElementById('archive-year').value;
+      const category = document.getElementById('archive-category').value;
+      const list = document.getElementById('archive-results-list');
+      const count = document.getElementById('archive-count');
+      const container = document.getElementById('archive-results');
+
+      // Sample mock data for historical archive results
+      const mockRecords = [
+        { date: '12 Dec', year: '2025', category: 'circular', title: 'BAJUS AGM Resolution and Constitutional Amendment Approval (No. 402/2025)' },
+        { date: '22 Oct', year: '2025', category: 'policy', title: 'District Committee Formation Guidelines and Directives for Q4 2025' },
+        { date: '15 Jul', year: '2025', category: 'circular', title: 'Official Gold Rates Adjustment - Budget Revision circular' },
+        { date: '04 Jun', year: '2024', category: 'circular', title: 'VAT Enforcement &amp; Invoicing compliance standard checklist for retailers' },
+        { date: '19 Jan', year: '2024', category: 'meetings', title: 'Executive Committee Meeting Minutes and Member Declarations' }
+      ];
+
+      // Filter based on form fields
+      const filtered = mockRecords.filter(item => {
+        return item.year === year && (category === '' || item.category === category);
+      });
+
+      // Clear & render
+      list.innerHTML = '';
+      if (filtered.length > 0) {
+        filtered.forEach(record => {
+          let badgeColor = 'bg-gold/10 text-gold';
+          let catLabel = 'Circular';
+          if (record.category === 'policy') { catLabel = 'Policy'; badgeColor = 'bg-zinc-800/10 text-zinc-700'; }
+          if (record.category === 'meetings') { catLabel = 'Meeting'; badgeColor = 'bg-amber-800/10 text-amber-800'; }
+
+          list.innerHTML += `
+            <div class="bg-white border border-zinc-200 p-5 rounded-sm flex items-center justify-between gap-4 hover:border-gold transition-colors">
+              <div>
+                <span class="${badgeColor} text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-[2px]">${catLabel}</span>
+                <h4 class="font-semibold text-charcoal text-sm mt-2 hover:text-gold transition-colors"><a href="#">${record.title}</a></h4>
+                <p class="text-xs text-zinc-400 mt-1"><i class="ph ph-calendar-blank"></i> ${record.date}, ${record.year}</p>
+              </div>
+              <a href="#" class="size-9 bg-zinc-900 hover:bg-gold text-cream flex items-center justify-center rounded-sm transition-colors" title="Download Record"><i class="ph ph-download-simple"></i></a>
+            </div>
+          `;
+        });
+        count.textContent = `${filtered.length} record(s) found`;
+      } else {
+        list.innerHTML = `
+          <div class="text-center py-8 text-zinc-400 bg-white border border-zinc-200 rounded-sm">
+            <i class="ph ph-folder-open text-4xl block text-zinc-300 mb-2"></i>
+            No records found for year ${year} in this category.
+          </div>
+        `;
+        count.textContent = `0 records found`;
+      }
+
+      container.classList.remove('hidden');
+    }
+
+    // Auto-switch tabs based on URL Hash (e.g. from nav submenus)
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash && ['all', 'circulars', 'urgent', 'forms', 'archive'].includes(hash)) {
+        switchTab(hash);
+      } else {
+        switchTab('all');
+      }
+    });
+
+    // Watch for hash change events
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash && ['all', 'circulars', 'urgent', 'forms', 'archive'].includes(hash)) {
+        switchTab(hash);
+      }
+    });
+  </script>
+</body>
+</html>

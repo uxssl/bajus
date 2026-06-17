@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BAJUS — Bangladesh Jewellers' Association</title>
+  <meta name="description"
+    content="The Bangladesh Jewellers' Association (BAJUS) is the apex trade body of the jewellery industry in Bangladesh — fostering excellence, integrity, and trust since 1972." />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body>
+  <div id="bajus-header" class="dark-header0"></div>
+
+  <!-- HERO SLIDER -->
+  <section class="relative h-[60vh] min-h-[480px] overflow-hidden bg-zinc-900">
+    <!-- Slide 1 -->
+    <div class="hero-slide absolute inset-0">
+      <img src="./assets/hero.jpg" alt="Master jeweller crafting gold ornaments"
+        class="absolute inset-0 w-full h-full object-cover opacity-70" />
+      <div class="absolute inset-0 bg-gradient-to-r from-zinc-900/85 via-zinc-900/55 to-transparent"></div>
+      <div class="relative h-full max-w-7xl mx-auto px-6 flex items-center">
+        <div class="max-w-2xl text-cream">
+          <span
+            class="inline-block mb-5 px-3 py-1 bg-gold text-cream text-[10px] font-bold tracking-[0.25em] uppercase">Featured
+            Announcement</span>
+          <h1 class="font-serif text-4xl md:text-6xl leading-[1.05] mb-6">
+            Guardian of the National <span class="italic text-gold">Golden Heritage</span>
+          </h1>
+          <p class="text-sm md:text-base opacity-90 mb-8 max-w-xl leading-relaxed font-light">
+            BAJUS represents 40,000+ jewellers across 64 districts — advocating for transparent hallmarking, ethical
+            trade, and a globally competitive Bangladeshi jewellery industry.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="./member-become.html" class="btn-gold">Become a Member</a>
+            <a href="./about-presidents-message.html"
+              class="btn-outline text-cream border-white/30 hover:text-cream hover:border-gold">Read Chief Advisor's
+              Message</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="hero-slide absolute inset-0 is-hidden">
+      <img src="./assets/news1.jpg" alt="BAJUS general assembly"
+        class="absolute inset-0 w-full h-full object-cover opacity-60" />
+      <div class="absolute inset-0 bg-gradient-to-r from-zinc-900/85 via-zinc-900/55 to-transparent"></div>
+      <div class="relative h-full max-w-7xl mx-auto px-6 flex items-center">
+        <div class="max-w-2xl text-cream">
+          <span
+            class="inline-block mb-5 px-3 py-1 bg-gold text-cream text-[10px] font-bold tracking-[0.25em] uppercase">Leadership</span>
+          <h1 class="font-serif text-4xl md:text-6xl leading-[1.05] mb-6">
+            New 2025–2027 Executive Board <span class="italic text-gold">takes charge</span>
+          </h1>
+          <p class="text-sm md:text-base opacity-90 mb-8 max-w-xl leading-relaxed font-light">
+            Chief Advisor Enamul Haque Khan formally assumes office at the official handover ceremony alongside the
+            newly
+            elected directors.
+          </p>
+          <a href="./news.html" class="btn-gold">Read the Story</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="hero-slide absolute inset-0 is-hidden">
+      <img src="./assets/news3.jpg" alt="National jewellery exhibition hall"
+        class="absolute inset-0 w-full h-full object-cover opacity-60" />
+      <div class="absolute inset-0 bg-gradient-to-r from-zinc-900/85 via-zinc-900/55 to-transparent"></div>
+      <div class="relative h-full max-w-7xl mx-auto px-6 flex items-center">
+        <div class="max-w-2xl text-cream">
+          <span
+            class="inline-block mb-5 px-3 py-1 bg-gold text-cream text-[10px] font-bold tracking-[0.25em] uppercase">Upcoming
+            Event</span>
+          <h1 class="font-serif text-4xl md:text-6xl leading-[1.05] mb-6">
+            BAJUS Jewellery Expo — <span class="italic text-gold">2026 Edition</span>
+          </h1>
+          <p class="text-sm md:text-base opacity-90 mb-8 max-w-xl leading-relaxed font-light">
+            Bangladesh's largest convening of jewellery manufacturers, designers, and trade partners. Three days. One
+            industry.
+          </p>
+          <a href="./events.html" class="btn-gold">View Programme</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dots -->
+    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+      <button
+        class="hero-dot h-6 w-16 bg-gold border-y-[11px] border-transparent bg-clip-content hover:bg-gold/60 transition-all duration-300"
+        aria-label="Slide 1"></button>
+      <button
+        class="hero-dot h-6 w-8 bg-white/30 border-y-[11px] border-transparent bg-clip-content hover:bg-gold/60 transition-all duration-300"
+        aria-label="Slide 2"></button>
+      <button
+        class="hero-dot h-6 w-8 bg-white/30 border-y-[11px] border-transparent bg-clip-content hover:bg-gold/60 transition-all duration-300"
+        aria-label="Slide 3"></button>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="border-b border-zinc-200 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-2 lg:grid-cols-4 border-0 lg:border lg:border-zinc-200">
+        <div
+          class="bg-white py-6 sm:py-10 px-2 sm:px-4 text-center reveal min-w-0 border-r border-b border-zinc-200 lg:border-b-0"
+        >
+          <div
+            class="text-2xl sm:text-3xl lg:text-4xl font-serif text-gold mb-1 leading-tight break-words"
+          >
+            40,000+
+          </div>
+          <div
+            class="text-[10px] sm:text-[11px] uppercase tracking-wide sm:tracking-widest text-zinc-500 font-semibold leading-snug break-words"
+          >
+            Active Members
+          </div>
+        </div>
+        <div
+          class="bg-white py-6 sm:py-10 px-2 sm:px-4 text-center reveal min-w-0 border-b border-zinc-200 lg:border-b-0 lg:border-r"
+        >
+          <div
+            class="text-2xl sm:text-3xl lg:text-4xl font-serif text-gold mb-1 leading-tight break-words"
+          >
+            53 Years
+          </div>
+          <div
+            class="text-[10px] sm:text-[11px] uppercase tracking-wide sm:tracking-widest text-zinc-500 font-semibold leading-snug break-words"
+          >
+            Of Legacy
+          </div>
+        </div>
+        <div
+          class="bg-white py-6 sm:py-10 px-2 sm:px-4 text-center reveal min-w-0 border-r border-zinc-200 lg:border-b-0"
+        >
+          <div
+            class="text-2xl sm:text-3xl lg:text-4xl font-serif text-gold mb-1 leading-tight break-words"
+          >
+            64
+          </div>
+          <div
+            class="text-[10px] sm:text-[11px] uppercase tracking-wide sm:tracking-widest text-zinc-500 font-semibold leading-snug break-words"
+          >
+            Districts Represented
+          </div>
+        </div>
+        <div class="bg-white py-6 sm:py-10 px-2 sm:px-4 text-center reveal min-w-0">
+          <div
+            class="text-2xl sm:text-3xl lg:text-4xl font-serif text-gold mb-1 leading-tight break-words"
+          >
+            Hallmark
+          </div>
+          <div
+            class="text-[10px] sm:text-[11px] uppercase tracking-wide sm:tracking-widest text-zinc-500 font-semibold leading-snug break-words"
+          >
+            Certified Standards
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TODAY'S RATES -->
+  <section class="bg-zinc-900 text-cream py-20 border-b border-zinc-800">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 reveal">
+        <div>
+          <span class="text-gold font-semibold uppercase tracking-[0.25em] text-xs mb-5 block">Standing Committee on
+            Price Monitoring</span>
+          <h2 class="text-3xl md:text-4xl font-serif mb-2">Today's Gold & Silver Rate</h2>
+          <div class="text-xs text-zinc-400 font-light tracking-wide">
+            Effective from 03 June 2026, 11:00 AM · Per gram (BDT)
+          </div>
+        </div>
+        <a href="./gold-price.html" class="hidden md:inline-flex btn-text-link">View Full Rates & History <svg
+            width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg></a>
+      </div>
+
+      <div
+        class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-zinc-800 border border-zinc-800 rounded-[2px] overflow-hidden reveal">
+        <!-- 22K Gold -->
+        <div
+          class="bg-zinc-950/40 p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between hover:bg-zinc-900/40 transition-colors duration-300">
+          <div>
+            <img src="./assets/gold.png" alt="22K Gold"
+              class="w-full h-14 sm:h-20 object-contain object-left mb-3 sm:mb-5 rounded-[2px] opacity-90 hover:opacity-100 transition-opacity duration-300"
+              loading="lazy" />
+            <div class="text-[10px] font-bold text-gold uppercase tracking-[0.2em] mb-1">Gold</div>
+            <div class="text-[11px] sm:text-xs text-zinc-400 font-light leading-snug">22 Karat · Hallmarked</div>
+            <div class="font-serif text-2xl sm:text-3xl lg:text-4xl mt-4 sm:mt-6 mb-2 text-cream leading-tight">
+              <span class="font-bangla">৳</span>12,008
+            </div>
+            <div class="text-[10px] sm:text-[11px] text-zinc-500 tracking-wide leading-snug">
+              per gram · <span class="font-sans">৳</span>140,089 / bhori
+            </div>
+          </div>
+          <div
+            class="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 sm:px-2.5 py-1 rounded-full mt-4 sm:mt-6 w-fit uppercase tracking-wider">
+            <svg class="w-3 h-3 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75" />
+            </svg>
+            <span class="font-sans">৳</span>350 today
+          </div>
+        </div>
+
+        <!-- 21K Gold -->
+        <div
+          class="bg-zinc-950/40 p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between hover:bg-zinc-900/40 transition-colors duration-300">
+          <div>
+            <img src="./assets/gold-2.png" alt="21K Gold"
+              class="w-full h-14 sm:h-20 object-contain object-left mb-3 sm:mb-5 rounded-[2px] opacity-90 hover:opacity-100 transition-opacity duration-300"
+              loading="lazy" />
+            <div class="text-[10px] font-bold text-gold uppercase tracking-[0.2em] mb-1">Gold</div>
+            <div class="text-[11px] sm:text-xs text-zinc-400 font-light leading-snug">21 Karat · Hallmarked</div>
+            <div class="font-serif text-2xl sm:text-3xl lg:text-4xl mt-4 sm:mt-6 mb-2 text-cream leading-tight">
+              <span class="font-bangla">৳</span>11,463
+            </div>
+            <div class="text-[10px] sm:text-[11px] text-zinc-500 tracking-wide leading-snug">
+              per gram · <span class="font-sans">৳</span>133,727 / bhori
+            </div>
+          </div>
+          <div
+            class="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 sm:px-2.5 py-1 rounded-full mt-4 sm:mt-6 w-fit uppercase tracking-wider">
+            <svg class="w-3 h-3 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75" />
+            </svg>
+            <span class="font-sans">৳</span>333 today
+          </div>
+        </div>
+
+        <!-- 18K Gold -->
+        <div
+          class="bg-zinc-950/40 p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between hover:bg-zinc-900/40 transition-colors duration-300">
+          <div>
+            <img src="./assets/gold-3.png" alt="18K Gold"
+              class="w-full h-14 sm:h-20 object-contain object-left mb-3 sm:mb-5 rounded-[2px] opacity-90 hover:opacity-100 transition-opacity duration-300"
+              loading="lazy" />
+            <div class="text-[10px] font-bold text-gold uppercase tracking-[0.2em] mb-1">Gold</div>
+            <div class="text-[11px] sm:text-xs text-zinc-400 font-light leading-snug">18 Karat · Hallmarked</div>
+            <div class="font-serif text-2xl sm:text-3xl lg:text-4xl mt-4 sm:mt-6 mb-2 text-cream leading-tight">
+              <span class="font-bangla">৳</span>9,825
+            </div>
+            <div class="text-[10px] sm:text-[11px] text-zinc-500 tracking-wide leading-snug">
+              per gram · <span class="font-sans">৳</span>114,617 / bhori
+            </div>
+          </div>
+          <div
+            class="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-rose-400 bg-rose-500/10 px-2 sm:px-2.5 py-1 rounded-full mt-4 sm:mt-6 w-fit uppercase tracking-wider">
+            <svg class="w-3 h-3 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m0 0l-6.75-6.75M12 19.5l6.75-6.75" />
+            </svg>
+            <span class="font-sans">৳</span>120 today
+          </div>
+        </div>
+
+        <!-- Silver -->
+        <div
+          class="bg-zinc-950/40 p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between hover:bg-zinc-900/40 transition-colors duration-300">
+          <div>
+            <img src="./assets/gold.png" alt="Silver"
+              class="w-full h-14 sm:h-20 object-contain object-left mb-3 sm:mb-5 rounded-[2px] filter grayscale brightness-110 contrast-125 opacity-90 hover:opacity-100 transition-opacity duration-300"
+              loading="lazy" />
+            <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-[0.2em] mb-1">Silver</div>
+            <div class="text-[11px] sm:text-xs text-zinc-400 font-light leading-snug">
+              22K / 21K / 18K · Hallmarked
+            </div>
+            <div class="font-serif text-xl sm:text-2xl lg:text-3xl mt-4 sm:mt-7 mb-2 text-cream leading-tight">
+              <span class="font-bangla">৳</span>180<span class="text-zinc-500 text-sm sm:text-lg">
+                / <span class="font-bangla">৳</span>172 / <span class="font-bangla">৳</span>147</span>
+            </div>
+            <div class="text-[10px] sm:text-[11px] text-zinc-500 tracking-wide leading-snug">
+              per gram · Traditional silver <span class="font-sans">৳</span>110/g
+            </div>
+          </div>
+          <div
+            class="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 sm:px-2.5 py-1 rounded-full mt-4 sm:mt-6 w-fit uppercase tracking-wider">
+            <svg class="w-3 h-3 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75" />
+            </svg>
+            <span class="font-sans">৳</span>2 today
+          </div>
+        </div>
+      </div>
+
+      <div class="md:hidden mt-10 reveal">
+        <a href="./gold-price.html"
+          class="btn-outline w-full block text-center text-cream border-white/20 hover:text-gold hover:border-gold">View Full Rates & History</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="py-24 max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-12 gap-16 items-center">
+      <div class="lg:col-span-7 reveal">
+        <span class="text-gold font-semibold uppercase tracking-[0.25em] text-xs mb-5 block">About the
+          Association</span>
+        <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-8">The Apex Body of Bangladesh's Jewellery Industry
+        </h2>
+        <div class="space-y-5 text-zinc-600 leading-relaxed text-[15px]">
+          <p>Founded in 1972, the Bangladesh Jewellers' Association (BAJUS) is the national trade body representing the
+            interests of over 40,000 jewellers, manufacturers, and traders across the country. We serve as the
+            authoritative voice of the industry in policy, regulation, and international engagement.</p>
+          <p>Our mandate is to safeguard ethical practices, modernise the local jewellery manufacturing process, and
+            position Bangladesh as a premier exporter of fine craftsmanship through unified standards and continuous
+            advocacy.</p>
+        </div>
+        <div class="mt-10">
+          <a href="./about.html" class="inline-flex btn-text-link">
+            Read Our Full Story
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="lg:col-span-5 reveal">
+        <div class="relative">
+          <img src="./assets/craft.jpg" alt="Bangladeshi gold craftsmanship" class="w-full aspect-[4/5] object-cover"
+            loading="lazy" />
+          <div
+            class="absolute bottom-4 left-4 right-4 md:-bottom-6 md:-left-6 md:right-auto md:max-w-[80%] bg-gold text-cream p-6 md:p-7 shadow-lg">
+            <p class="text-[11px] uppercase tracking-[0.2em] font-semibold opacity-80 mb-2">Our Promise</p>
+            <p class="font-serif text-xl leading-snug">Transparency in every gram. Trust in every transaction.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST NEWS -->
+  <section class="py-24 bg-cream-50 border-y border-zinc-200">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-end justify-between mb-12 border-b border-zinc-200 pb-5">
+        <div>
+          <span class="text-gold font-semibold uppercase tracking-[0.25em] text-xs mb-3 block">Newsroom</span>
+          <h2 class="text-3xl md:text-4xl font-serif">Latest Announcements</h2>
+        </div>
+        <a href="./news.html" class="hidden md:inline-flex btn-text-link">View News Archive <svg width="14" height="14"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg></a>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-10">
+        <article class="group reveal">
+          <a href="./news.html" class="block">
+            <div class="aspect-[4/3] mb-6 overflow-hidden">
+              <img src="./assets/news1.jpg" alt=""
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy" />
+            </div>
+            <div class="text-[11px] font-bold text-gold uppercase tracking-widest mb-3">Leadership</div>
+            <h3 class="text-xl font-serif leading-snug mb-3 group-hover:text-gold transition-colors">
+              বাজুসের (২০২৫-২০২৭) মেয়াদের নির্বাচিত পরিচালনা পর্ষদ'র নিকট দায়িত্ব হস্তান্তর
+            </h3>
+            <p class="text-sm text-zinc-500 leading-relaxed mb-4">Handover ceremony of responsibilities to the newly
+              elected 2025–2027 BAJUS Executive Board.</p>
+            <span class="text-[11px] uppercase tracking-widest text-zinc-400">November 03, 2025</span>
+          </a>
+        </article>
+
+        <article class="group reveal">
+          <a href="./news.html" class="block">
+            <div class="aspect-[4/3] mb-6 overflow-hidden">
+              <img src="./assets/news2.jpg" alt=""
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy" />
+            </div>
+            <div class="text-[11px] font-bold text-gold uppercase tracking-widest mb-3">Policy Update</div>
+            <h3 class="text-xl font-serif leading-snug mb-3 group-hover:text-gold transition-colors">
+              স্বর্ণ আমদানিতে স্বচ্ছতা নিশ্চিত করতে নতুন নীতিমালা ঘোষণা
+            </h3>
+            <p class="text-sm text-zinc-500 leading-relaxed mb-4">New guidelines announced to ensure transparency in
+              gold imports through official channels.</p>
+            <span class="text-[11px] uppercase tracking-widest text-zinc-400">October 20, 2025</span>
+          </a>
+        </article>
+
+        <article class="group reveal">
+          <a href="./news.html" class="block">
+            <div class="aspect-[4/3] mb-6 overflow-hidden">
+              <img src="./assets/news3.jpg" alt=""
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy" />
+            </div>
+            <div class="text-[11px] font-bold text-gold uppercase tracking-widest mb-3">Events</div>
+            <h3 class="text-xl font-serif leading-snug mb-3 group-hover:text-gold transition-colors">
+              BAJUS Jewellery Expo 2026 — দিনক্ষণ ঘোষণা
+            </h3>
+            <p class="text-sm text-zinc-500 leading-relaxed mb-4">Dates announced for the largest national jewellery
+              exhibition organised by BAJUS.</p>
+            <span class="text-[11px] uppercase tracking-widest text-zinc-400">October 12, 2025</span>
+          </a>
+        </article>
+      </div>
+
+      <div class="md:hidden mt-10">
+        <a href="./news.html" class="btn-outline w-full block text-center">View News Archive</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHIEF ADVISOR'S MESSAGE -->
+  <section class="bg-zinc-900 text-cream py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-12 gap-16 items-center">
+        <div class="lg:col-span-5 relative reveal">
+          <img src="./assets/members/enamul_haque_khan.jpg" alt="Chief Advisor of BAJUS — Enamul Haque Khan"
+            class="w-full aspect-[4/5] object-cover" loading="lazy" />
+          <div
+            class="absolute bottom-4 left-4 right-4 md:-bottom-6 md:-right-6 md:left-auto md:max-w-xs bg-gold p-6 md:p-7 ring-8 ring-zinc-900 shadow-lg">
+            <div class="text-[11px] font-semibold uppercase tracking-widest mb-1 opacity-80">Chief Advisor, BAJUS</div>
+            <div class="text-xl font-serif font-semibold">Enamul Haque Khan</div>
+          </div>
+        </div>
+        <div class="lg:col-span-7 reveal">
+          <svg class="size-12 text-gold/40 mb-7" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-4.765 2.627-4.765 5.645h3.77v7.204h-9.204zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.154c-2.433.917-4.782 2.627-4.782 5.642h3.997v7.204h-9.211z" />
+          </svg>
+          <h2 class="text-2xl md:text-3xl font-serif italic mb-8 leading-snug">
+            "Our mission is to transform the jewellery industry of Bangladesh into a globally competitive, ethical, and
+            modern powerhouse — built on the trust of every customer and every craftsperson."
+          </h2>
+          <div class="space-y-5 text-zinc-400 text-[15px] leading-relaxed max-w-xl">
+            <p>Under the new leadership, BAJUS is embarking on a journey of complete modernisation — laboratory-tested
+              hallmarking, transparent daily pricing, and stronger protection for both jewellers and consumers across
+              the country.</p>
+            <p class="font-bangla text-zinc-300">স্বর্ণ শিল্পের অধিকার রক্ষা এবং এই শিল্পের প্রসারে আমরা নিরলসভাবে কাজ
+              করে যাচ্ছি। ডিজিটাল সোনার বাজার এবং রপ্তানিযোগ্য অলংকার তৈরিতে আমরা এখন বিশ্বমানের প্রযুক্তির দিকে
+              এগোচ্ছি।</p>
+          </div>
+          <a href="./about-presidents-message.html" class="mt-9 inline-flex btn-text-link">
+            Read the Full Vision
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIP BENEFITS -->
+  <section class="py-24 bg-cream">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <span class="text-gold font-semibold uppercase tracking-[0.25em] text-xs mb-3 block">Membership & Growth</span>
+        <h2 class="text-3xl md:text-4xl font-serif mb-5">Join the Voice of the Industry</h2>
+        <p class="text-zinc-500 max-w-2xl mx-auto leading-relaxed">Joining BAJUS provides more than a certificate; it
+          offers a platform for advocacy, training, networking, and industry credibility recognised nationwide.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-px bg-zinc-200">
+        <div class="p-10 bg-cream hover:bg-cream-50 transition-colors card-shadow reveal">
+          <div class="text-gold mb-6">
+            <i class="bi bi-shield-check text-4xl"></i>
+          </div>
+          <h3 class="text-xl font-serif mb-3">Legal Advocacy</h3>
+          <p class="text-sm text-zinc-500 leading-relaxed">Representation in government policy discussions, legal
+            support for trade disputes, and protection against unfair regulation.</p>
+        </div>
+        <div class="p-10 bg-cream hover:bg-cream-50 transition-colors card-shadow reveal">
+          <div class="text-gold mb-6">
+            <i class="bi bi-graph-up-arrow text-4xl"></i>
+          </div>
+          <h3 class="text-xl font-serif mb-3">Market Intelligence</h3>
+          <p class="text-sm text-zinc-500 leading-relaxed">Daily official gold and silver prices, exclusive research
+            reports, and tracking of international trends and tariffs.</p>
+        </div>
+        <div class="p-10 bg-cream hover:bg-cream-50 transition-colors card-shadow reveal">
+          <div class="text-gold mb-6">
+            <i class="bi bi-people text-4xl"></i>
+          </div>
+          <h3 class="text-xl font-serif mb-3">Networking</h3>
+          <p class="text-sm text-zinc-500 leading-relaxed">Connect with 40,000+ industry professionals through national
+            conferences, regional committees, and trade missions abroad.</p>
+        </div>
+      </div>
+
+      <!-- Merged CTA Content -->
+      <div class="mt-20 text-center max-w-3xl mx-auto reveal">
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="./member-become.html" class="btn-gold w-full sm:w-auto block text-center"
+            >Apply for Membership</a
+          >
+          <a
+            href="./contact.html"
+            class="btn-outline w-full sm:w-auto block text-center text-charcoal border-zinc-300 hover:text-gold hover:border-gold"
+            >Contact the Secretariat</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPCOMING EVENTS -->
+  <section class="py-24 bg-zinc-100 border-t border-zinc-200">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-end justify-between mb-12 border-b border-zinc-300 pb-5">
+        <div>
+          <span class="text-gold font-semibold uppercase tracking-[0.25em] text-xs mb-3 block">Calendar</span>
+          <h2 class="text-3xl md:text-4xl font-serif">Upcoming Events</h2>
+        </div>
+        <a href="./events.html" class="hidden md:inline-flex btn-text-link">All Events <svg width="14" height="14"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg></a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <a href="./events.html" class="bg-cream flex card-shadow reveal group overflow-hidden">
+          <div class="w-28 sm:w-36 md:w-40 shrink-0 overflow-hidden bg-zinc-200">
+            <img src="./assets/news3.jpg" alt="BAJUS Jewellery Expo 2026"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              loading="lazy" />
+          </div>
+          <div class="p-6 md:p-8 flex gap-4 md:gap-6 flex-1 min-w-0">
+            <div class="text-center w-16 md:w-20 shrink-0">
+              <div class="text-[11px] uppercase tracking-widest text-gold font-bold">Feb</div>
+              <div class="text-4xl md:text-5xl font-serif text-charcoal leading-none mt-1">14</div>
+              <div class="text-[11px] uppercase tracking-widest text-zinc-400 mt-1">2026</div>
+            </div>
+            <div class="border-l border-zinc-200 pl-4 md:pl-6 flex flex-col justify-between flex-1 min-w-0">
+              <div>
+                <div class="text-[11px] font-bold text-gold uppercase tracking-widest mb-1 md:mb-2">Trade Expo</div>
+                <h3 class="text-lg md:text-xl font-serif mb-1 md:mb-2 truncate">BAJUS Jewellery Expo 2026</h3>
+                <p class="text-xs md:text-sm text-zinc-500 leading-relaxed mb-2 md:mb-3 line-clamp-2">Three-day national
+                  exhibition of Bangladeshi jewellery design, manufacturing technology, and trade partnerships.</p>
+              </div>
+              <div class="text-[10px] md:text-[12px] uppercase tracking-widest text-zinc-400 truncate">International
+                Convention City Bashundhara, Dhaka</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="./events.html" class="bg-cream flex card-shadow reveal group overflow-hidden">
+          <div class="w-28 sm:w-36 md:w-40 shrink-0 overflow-hidden bg-zinc-200">
+            <img src="./assets/news2.jpg" alt="National Hallmarking Conference"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              loading="lazy" />
+          </div>
+          <div class="p-6 md:p-8 flex gap-4 md:gap-6 flex-1 min-w-0">
+            <div class="text-center w-16 md:w-20 shrink-0">
+              <div class="text-[11px] uppercase tracking-widest text-gold font-bold">Mar</div>
+              <div class="text-4xl md:text-5xl font-serif text-charcoal leading-none mt-1">08</div>
+              <div class="text-[11px] uppercase tracking-widest text-zinc-400 mt-1">2026</div>
+            </div>
+            <div class="border-l border-zinc-200 pl-4 md:pl-6 flex flex-col justify-between flex-1 min-w-0">
+              <div>
+                <div class="text-[11px] font-bold text-gold uppercase tracking-widest mb-1 md:mb-2">Conference</div>
+                <h3 class="text-lg md:text-xl font-serif mb-1 md:mb-2 truncate">National Hallmarking Conference</h3>
+                <p class="text-xs md:text-sm text-zinc-500 leading-relaxed mb-2 md:mb-3 line-clamp-2">Industry leaders
+                  convene to align on the next phase of mandatory hallmarking certification across all 64 districts.</p>
+              </div>
+              <div class="text-[10px] md:text-[12px] uppercase tracking-widest text-zinc-400 truncate">BAJUS Bhaban,
+                Baitul Mukarram, Dhaka</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="md:hidden mt-10">
+        <a href="./events.html" class="btn-outline w-full block text-center">All Events</a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <div id="bajus-footer"></div>
+  <script src="./js/include.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

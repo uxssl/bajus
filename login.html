@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login — BAJUS Member Portal</title>
+  <meta name="description" content="Login to the BAJUS Member Portal." />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body class="min-h-screen flex flex-col">
+  <div id="bajus-header"></div>
+
+  <main class="flex-1 grid lg:grid-cols-2">
+    <!-- LEFT: Image -->
+    <div class="relative hidden lg:block">
+      <img src="./assets/craft.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy"/>
+      <div class="absolute inset-0 bg-gradient-to-br from-zinc-900/70 to-zinc-900/30"></div>
+      <div class="relative h-full flex items-end p-16 text-cream">
+        <div>
+          <h2 class="font-serif text-4xl mb-4 leading-tight">Welcome back to the apex body of Bangladesh's jewellery industry.</h2>
+          <p class="text-zinc-300 max-w-md">Access your membership records, payment history, and the official BAJUS member portal.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div class="flex items-center justify-center p-8 lg:p-16 bg-cream">
+      <div class="w-full max-w-md">
+        <div class="text-center mb-10">
+          <h1 id="login-title" class="font-serif text-3xl md:text-4xl mb-2">Member Login</h1>
+          <p id="login-subtitle" class="text-sm text-zinc-500">Sign in with your registered mobile number.</p>
+        </div>
+
+        <form id="loginForm" class="space-y-5" onsubmit="event.preventDefault(); handleLogin();">
+          <div>
+            <label class="form-label">Mobile Number</label>
+            <input class="form-input" type="tel" placeholder="01XXXXXXXXX" required />
+          </div>
+
+          <div id="passwordRow">
+            <div class="flex items-center justify-between mb-1">
+              <label class="form-label !mb-0">Password</label>
+              <a href="#" class="text-[11px] text-gold hover:underline tracking-widest uppercase">Forgot?</a>
+            </div>
+            <input class="form-input" type="password" placeholder="••••••••" required />
+          </div>
+
+          <div class="flex items-center justify-between">
+            <label class="flex items-center gap-2 text-sm text-zinc-600">
+              <input type="checkbox" class="size-4 accent-[#b8860b]" /> Keep me signed in
+            </label>
+            <div class="flex items-center gap-2 select-none">
+              <span id="login-toggle-text" class="text-[11px] font-semibold uppercase tracking-wider text-gold hover:underline cursor-pointer transition-all">Login as Store Manager</span>
+              <button type="button" id="login-toggle-btn" class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none bg-zinc-300" role="switch" aria-checked="false">
+                <span id="login-toggle-dot" class="pointer-events-none inline-block h-4 w-4 transform rounded-full bg-cream shadow ring-0 transition duration-200 ease-in-out translate-x-0"></span>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-gold w-full">Sign In</button>
+        </form>
+
+        <p class="mt-8 text-center text-sm text-zinc-500">
+          Not yet a member?
+          <a href="./signup.html" class="text-gold font-semibold hover:underline ml-1">Apply for membership</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- STORE SELECTION & OTP MODAL -->
+  <div id="store-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/60 backdrop-blur-sm hidden transition-all duration-300 opacity-0">
+    <div id="store-modal-container" class="relative w-full max-w-2xl bg-cream border border-gold/20 shadow-2xl rounded-lg overflow-hidden transform scale-95 transition-all duration-300 opacity-0">
+      
+      <!-- Close Button -->
+      <button type="button" onclick="closeStoreModal()" class="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Step 1: Select Store -->
+      <div id="modal-step-select" class="p-6 md:p-8 space-y-6">
+        <div class="text-center">
+          <h3 class="font-serif text-2xl text-zinc-900 mb-2">Select Store</h3>
+          <p class="text-xs text-zinc-500">Please choose the store to manage. We will send a verification code to the registered contact number.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="grid grid-cols-2 gap-3 max-h-[320px] overflow-y-auto pr-1" id="modal-store-cards">
+            <!-- Card 1 (Default selected) -->
+            <div onclick="selectStoreCard(this, 'Anvir Jewellers — Bashundhara City')" class="store-card p-3.5 border border-gold bg-[#b8860b21] rounded-lg cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-between group">
+              <div class="text-left pr-1">
+                <h4 class="font-serif text-sm md:text-base font-semibold text-zinc-900 group-hover:text-gold transition-colors">Anvir Jewellers</h4>
+                <p class="text-xs text-zinc-500">Bashundhara City</p>
+              </div>
+              <div class="w-5 h-5 rounded-full border-[0.5px] border-gold bg-gold flex items-center justify-center select-indicator shrink-0">
+                <div class="w-2.5 h-2.5 rounded-full bg-cream select-dot"></div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div onclick="selectStoreCard(this, 'Anvir Jewellers — Gulshan 2')" class="store-card p-3.5 border border-zinc-200 bg-white text-zinc-900 rounded-lg cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-between group hover:border-[#b8860b]">
+              <div class="text-left pr-1">
+                <h4 class="font-serif text-sm md:text-base font-semibold text-zinc-900 group-hover:text-gold transition-colors">Anvir Jewellers</h4>
+                <p class="text-xs text-zinc-500">Gulshan 2, Dhaka</p>
+              </div>
+              <div class="w-5 h-5 rounded-full border-[0.5px] border-zinc-300 flex items-center justify-center select-indicator shrink-0">
+                <div class="w-2.5 h-2.5 rounded-full bg-cream hidden select-dot"></div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div onclick="selectStoreCard(this, 'Anvir Jewellers — Chittagong')" class="store-card p-3.5 border border-zinc-200 bg-white text-zinc-900 rounded-lg cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-between group hover:border-[#b8860b]">
+              <div class="text-left pr-1">
+                <h4 class="font-serif text-sm md:text-base font-semibold text-zinc-900 group-hover:text-gold transition-colors">Anvir Jewellers</h4>
+                <p class="text-xs text-zinc-500">Chittagong Outlet</p>
+              </div>
+              <div class="w-5 h-5 rounded-full border-[0.5px] border-zinc-300 flex items-center justify-center select-indicator shrink-0">
+                <div class="w-2.5 h-2.5 rounded-full bg-cream hidden select-dot"></div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div onclick="selectStoreCard(this, 'Anvir Jewellers — Sylhet')" class="store-card p-3.5 border border-zinc-200 bg-white text-zinc-900 rounded-lg cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-between group hover:border-[#b8860b]">
+              <div class="text-left pr-1">
+                <h4 class="font-serif text-sm md:text-base font-semibold text-zinc-900 group-hover:text-gold transition-colors">Anvir Jewellers</h4>
+                <p class="text-xs text-zinc-500">Sylhet Outlet</p>
+              </div>
+              <div class="w-5 h-5 rounded-full border-[0.5px] border-zinc-300 flex items-center justify-center select-indicator shrink-0">
+                <div class="w-2.5 h-2.5 rounded-full bg-cream hidden select-dot"></div>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div onclick="selectStoreCard(this, 'Anvir Jewellers — Khulna')" class="store-card p-3.5 border border-zinc-200 bg-white text-zinc-900 rounded-lg cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-between group hover:border-[#b8860b]">
+              <div class="text-left pr-1">
+                <h4 class="font-serif text-sm md:text-base font-semibold text-zinc-900 group-hover:text-gold transition-colors">Anvir Jewellers</h4>
+                <p class="text-xs text-zinc-500">Khulna Branch</p>
+              </div>
+              <div class="w-5 h-5 rounded-full border-[0.5px] border-zinc-300 flex items-center justify-center select-indicator shrink-0">
+                <div class="w-2.5 h-2.5 rounded-full bg-cream hidden select-dot"></div>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div onclick="selectStoreCard(this, 'Anvir Jewellers — Rajshahi')" class="store-card p-3.5 border border-zinc-200 bg-white text-zinc-900 rounded-lg cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-between group hover:border-[#b8860b]">
+              <div class="text-left pr-1">
+                <h4 class="font-serif text-sm md:text-base font-semibold text-zinc-900 group-hover:text-gold transition-colors">Anvir Jewellers</h4>
+                <p class="text-xs text-zinc-500">Rajshahi Outlet</p>
+              </div>
+              <div class="w-5 h-5 rounded-full border-[0.5px] border-zinc-300 flex items-center justify-center select-indicator shrink-0">
+                <div class="w-2.5 h-2.5 rounded-full bg-cream hidden select-dot"></div>
+              </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div onclick="selectStoreCard(this, 'Anvir Jewellers — Barishal')" class="store-card p-3.5 border border-zinc-200 bg-white text-zinc-900 rounded-lg cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-between group hover:border-[#b8860b]">
+              <div class="text-left pr-1">
+                <h4 class="font-serif text-sm md:text-base font-semibold text-zinc-900 group-hover:text-gold transition-colors">Anvir Jewellers</h4>
+                <p class="text-xs text-zinc-500">Barishal Plaza</p>
+              </div>
+              <div class="w-5 h-5 rounded-full border-[0.5px] border-zinc-300 flex items-center justify-center select-indicator shrink-0">
+                <div class="w-2.5 h-2.5 rounded-full bg-cream hidden select-dot"></div>
+              </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div onclick="selectStoreCard(this, 'Anvir Jewellers — Rangpur')" class="store-card p-3.5 border border-zinc-200 bg-white text-zinc-900 rounded-lg cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-between group hover:border-[#b8860b]">
+              <div class="text-left pr-1">
+                <h4 class="font-serif text-sm md:text-base font-semibold text-zinc-900 group-hover:text-gold transition-colors">Anvir Jewellers</h4>
+                <p class="text-xs text-zinc-500">Rangpur Center</p>
+              </div>
+              <div class="w-5 h-5 rounded-full border-[0.5px] border-zinc-300 flex items-center justify-center select-indicator shrink-0">
+                <div class="w-2.5 h-2.5 rounded-full bg-cream hidden select-dot"></div>
+              </div>
+            </div>
+
+            <!-- Card 9 -->
+            <div onclick="selectStoreCard(this, 'Anvir Jewellers — Mymensingh')" class="store-card p-3.5 border border-zinc-200 bg-white text-zinc-900 rounded-lg cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-between group hover:border-[#b8860b]">
+              <div class="text-left pr-1">
+                <h4 class="font-serif text-sm md:text-base font-semibold text-zinc-900 group-hover:text-gold transition-colors">Anvir Jewellers</h4>
+                <p class="text-xs text-zinc-500">Mymensingh Hub</p>
+              </div>
+              <div class="w-5 h-5 rounded-full border-[0.5px] border-zinc-300 flex items-center justify-center select-indicator shrink-0">
+                <div class="w-2.5 h-2.5 rounded-full bg-cream hidden select-dot"></div>
+              </div>
+            </div>
+
+            <!-- Card 10 -->
+            <div onclick="selectStoreCard(this, 'Anvir Jewellers — Uttara')" class="store-card p-3.5 border border-zinc-200 bg-white text-zinc-900 rounded-lg cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-between group hover:border-[#b8860b]">
+              <div class="text-left pr-1">
+                <h4 class="font-serif text-sm md:text-base font-semibold text-zinc-900 group-hover:text-gold transition-colors">Anvir Jewellers</h4>
+                <p class="text-xs text-zinc-500">Uttara, Dhaka</p>
+              </div>
+              <div class="w-5 h-5 rounded-full border-[0.5px] border-zinc-300 flex items-center justify-center select-indicator shrink-0">
+                <div class="w-2.5 h-2.5 rounded-full bg-cream hidden select-dot"></div>
+              </div>
+            </div>
+
+            <!-- Card 11 -->
+            <div onclick="selectStoreCard(this, 'Anvir Jewellers — Dhanmondi')" class="store-card p-3.5 border border-zinc-200 bg-white text-zinc-900 rounded-lg cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-between group hover:border-[#b8860b]">
+              <div class="text-left pr-1">
+                <h4 class="font-serif text-sm md:text-base font-semibold text-zinc-900 group-hover:text-gold transition-colors">Anvir Jewellers</h4>
+                <p class="text-xs text-zinc-500">Dhanmondi, Dhaka</p>
+              </div>
+              <div class="w-5 h-5 rounded-full border-[0.5px] border-zinc-300 flex items-center justify-center select-indicator shrink-0">
+                <div class="w-2.5 h-2.5 rounded-full bg-cream hidden select-dot"></div>
+              </div>
+            </div>
+
+            <!-- Card 12 -->
+            <div onclick="selectStoreCard(this, 'Anvir Jewellers — Cox\'s Bazar')" class="store-card p-3.5 border border-zinc-200 bg-white text-zinc-900 rounded-lg cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-between group hover:border-[#b8860b]">
+              <div class="text-left pr-1">
+                <h4 class="font-serif text-sm md:text-base font-semibold text-zinc-900 group-hover:text-gold transition-colors">Anvir Jewellers</h4>
+                <p class="text-xs text-zinc-500">Cox's Bazar</p>
+              </div>
+              <div class="w-5 h-5 rounded-full border-[0.5px] border-zinc-300 flex items-center justify-center select-indicator shrink-0">
+                <div class="w-2.5 h-2.5 rounded-full bg-cream hidden select-dot"></div>
+              </div>
+            </div>
+
+            <!-- Card 13 -->
+            <div onclick="selectStoreCard(this, 'Anvir Jewellers — Comilla')" class="store-card p-3.5 border border-zinc-200 bg-white text-zinc-900 rounded-lg cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-between group hover:border-[#b8860b]">
+              <div class="text-left pr-1">
+                <h4 class="font-serif text-sm md:text-base font-semibold text-zinc-900 group-hover:text-gold transition-colors">Anvir Jewellers</h4>
+                <p class="text-xs text-zinc-500">Comilla Plaza</p>
+              </div>
+              <div class="w-5 h-5 rounded-full border-[0.5px] border-zinc-300 flex items-center justify-center select-indicator shrink-0">
+                <div class="w-2.5 h-2.5 rounded-full bg-cream hidden select-dot"></div>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" onclick="submitStoreSelection()" class="btn-gold w-full py-3 font-semibold">Send OTP</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Enter OTP -->
+      <div id="modal-step-otp" class="p-6 md:p-8 space-y-6 hidden">
+        <div class="text-center">
+          <h3 class="font-serif text-2xl text-zinc-900 mb-2">Enter OTP</h3>
+          <p class="text-xs text-zinc-500">
+            A 6-digit verification code has been sent to the registered number for 
+            <span id="selected-store-name" class="font-semibold text-zinc-700">Anvir Jewellers</span>.
+          </p>
+        </div>
+
+        <div class="space-y-5">
+          <div>
+            <label class="form-label mb-2 block text-left">6-Digit Code</label>
+            <div class="flex justify-between gap-2" id="otp-inputs-container">
+              <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-bold bg-white border border-zinc-200 rounded focus:border-gold focus:outline-none" />
+              <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-bold bg-white border border-zinc-200 rounded focus:border-gold focus:outline-none" />
+              <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-bold bg-white border border-zinc-200 rounded focus:border-gold focus:outline-none" />
+              <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-bold bg-white border border-zinc-200 rounded focus:border-gold focus:outline-none" />
+              <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-bold bg-white border border-zinc-200 rounded focus:border-gold focus:outline-none" />
+              <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-bold bg-white border border-zinc-200 rounded focus:border-gold focus:outline-none" />
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between text-xs">
+            <button type="button" onclick="backToStoreSelect()" class="text-zinc-500 hover:text-gold transition-colors font-medium">Change Store</button>
+            <button type="button" onclick="resendOTP()" class="text-gold hover:underline font-semibold tracking-wider">Resend OTP</button>
+          </div>
+
+          <button type="button" onclick="verifyOTPAndLogin()" class="btn-gold w-full py-3 font-semibold">Verify & Login</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="bajus-footer"></div>
+  <script src="./js/include.js"></script>
+  <script>
+    // Login type toggle button/switch
+    const toggleBtn = document.getElementById("login-toggle-btn");
+    const toggleDot = document.getElementById("login-toggle-dot");
+    const toggleText = document.getElementById("login-toggle-text");
+    const passwordRow = document.getElementById("passwordRow");
+    const loginTitle = document.getElementById("login-title");
+    const loginSubtitle = document.getElementById("login-subtitle");
+    let mode = "owner";
+
+    const handleToggle = (e) => {
+      e.preventDefault();
+      if (mode === "owner") {
+        mode = "manager";
+        toggleBtn.classList.remove("bg-zinc-300");
+        toggleBtn.classList.add("bg-gold");
+        toggleDot.classList.remove("translate-x-0");
+        toggleDot.classList.add("translate-x-4");
+        toggleBtn.setAttribute("aria-checked", "true");
+        
+        loginTitle.textContent = "Store Manager Login";
+        loginSubtitle.textContent = "Sign in to manage your store.";
+      } else {
+        mode = "owner";
+        toggleBtn.classList.remove("bg-gold");
+        toggleBtn.classList.add("bg-zinc-300");
+        toggleDot.classList.remove("translate-x-4");
+        toggleDot.classList.add("translate-x-0");
+        toggleBtn.setAttribute("aria-checked", "false");
+        
+        loginTitle.textContent = "Member Login";
+        loginSubtitle.textContent = "Sign in with your registered mobile number.";
+      }
+    };
+
+    toggleBtn.addEventListener("click", handleToggle);
+    toggleText.addEventListener("click", handleToggle);
+
+    // Modal elements and logic
+    const storeModal = document.getElementById("store-modal");
+    const modalContainer = document.getElementById("store-modal-container");
+    const otpBoxes = document.querySelectorAll(".otp-box");
+
+    function openStoreModal() {
+      storeModal.classList.remove("hidden");
+      // Force layout repaint to trigger transition
+      storeModal.offsetWidth;
+      
+      storeModal.classList.remove("opacity-0");
+      storeModal.classList.add("opacity-100");
+      modalContainer.classList.remove("opacity-0", "scale-95");
+      modalContainer.classList.add("opacity-100", "scale-100");
+      
+      backToStoreSelect();
+    }
+
+    function closeStoreModal() {
+      storeModal.classList.remove("opacity-100");
+      storeModal.classList.add("opacity-0");
+      modalContainer.classList.remove("opacity-100", "scale-100");
+      modalContainer.classList.add("opacity-0", "scale-95");
+      
+      setTimeout(() => {
+        storeModal.classList.add("hidden");
+      }, 300);
+    }
+
+    let selectedStoreVal = "Anvir Jewellers — Bashundhara City";
+
+    function selectStoreCard(element, storeVal) {
+      selectedStoreVal = storeVal;
+      
+      const cards = document.querySelectorAll(".store-card");
+      cards.forEach(card => {
+        // Reset card state
+        card.classList.remove("border-gold", "bg-[#b8860b21]");
+        card.classList.add("border-zinc-200", "bg-white");
+        
+        // Reset indicator state
+        const indicator = card.querySelector(".select-indicator");
+        indicator.classList.remove("border-gold", "bg-gold");
+        indicator.classList.add("border-zinc-300");
+        indicator.querySelector(".select-dot").classList.add("hidden");
+      });
+      
+      // Set selected card state
+      element.classList.remove("border-zinc-200", "bg-white");
+      element.classList.add("border-gold", "bg-[#b8860b21]");
+      
+      // Set active indicator state
+      const activeIndicator = element.querySelector(".select-indicator");
+      activeIndicator.classList.remove("border-zinc-300");
+      activeIndicator.classList.add("border-gold", "bg-gold");
+      activeIndicator.querySelector(".select-dot").classList.remove("hidden");
+    }
+
+    function submitStoreSelection() {
+      document.getElementById("selected-store-name").textContent = selectedStoreVal;
+      
+      document.getElementById("modal-step-select").classList.add("hidden");
+      document.getElementById("modal-step-otp").classList.remove("hidden");
+      
+      // Auto focus first OTP input box
+      setTimeout(() => {
+        otpBoxes[0].focus();
+      }, 100);
+    }
+
+    function backToStoreSelect() {
+      document.getElementById("modal-step-otp").classList.add("hidden");
+      document.getElementById("modal-step-select").classList.remove("hidden");
+      
+      // Reset card selection to default (first card)
+      const firstCard = document.querySelector(".store-card");
+      if (firstCard) {
+        selectStoreCard(firstCard, "Anvir Jewellers — Bashundhara City");
+      }
+      
+      otpBoxes.forEach(box => box.value = "");
+    }
+
+    function resendOTP() {
+      alert("A new 6-digit verification code has been sent to the store's registered contact number.");
+      otpBoxes.forEach(box => box.value = "");
+      otpBoxes[0].focus();
+    }
+
+    function verifyOTPAndLogin() {
+      const code = Array.from(otpBoxes).map(box => box.value).join("");
+      if (code.length < 6) {
+        alert("Please enter the complete 6-digit verification code.");
+        return;
+      }
+      
+      closeStoreModal();
+      window.location.href = "dashboard.html";
+    }
+
+    // OTP Inputs auto focus behavior
+    otpBoxes.forEach((box, index) => {
+      box.addEventListener("input", (e) => {
+        const val = e.target.value;
+        if (val.length === 1 && index < otpBoxes.length - 1) {
+          otpBoxes[index + 1].focus();
+        }
+      });
+      box.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace" && !box.value && index > 0) {
+          otpBoxes[index - 1].focus();
+        }
+      });
+      box.addEventListener("paste", (e) => {
+        e.preventDefault();
+        const text = e.clipboardData.getData("text").trim();
+        if (/^\d{6}$/.test(text)) {
+          otpBoxes.forEach((b, i) => {
+            b.value = text[i];
+          });
+          otpBoxes[5].focus();
+        }
+      });
+    });
+
+    function handleLogin() {
+      if (mode === "manager") {
+        openStoreModal();
+      } else {
+        window.location.href = "dashboard.html";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Member Directory — BAJUS</title>
+  <meta name="description"
+    content="Search the BAJUS member directory. Find certified jewellers across Bangladesh by division, district, or business name." />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body>
+  <div id="bajus-header"></div>
+
+  <section class="page-hero py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <nav class="text-[11px] uppercase tracking-widest text-zinc-400 mb-6">
+        <a href="./index.html" class="hover:text-gold">Home</a><span class="px-2">/</span>
+        <span class="text-gold">Member Directory</span>
+      </nav>
+      <div class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-4">Members</div>
+      <h1 class="font-serif text-4xl md:text-6xl leading-tight">Member <span class="italic text-gold">Directory</span>
+      </h1>
+    </div>
+  </section>
+
+  <section class="py-24 max-w-7xl mx-auto px-6">
+    <!-- Filter Bar -->
+    <div class="member-filter-bar reveal">
+      <form id="member-filter-form">
+        <div class="grid md:grid-cols-4 lg:grid-cols-5 gap-4 items-end">
+          <div>
+            <label class="block text-[11px] uppercase tracking-widest text-zinc-500 font-semibold mb-2">Search by Name /
+              Shop</label>
+            <div class="relative w-full">
+              <input type="text" id="member-search"
+                class="w-full bg-white border border-zinc-200 pl-4 pr-10 py-3 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all"
+                placeholder="Business name, owner name…" />
+              <button type="button" id="clear-member-search"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-650 focus:outline-none transition-colors hidden"
+                aria-label="Clear search">
+                <i class="fa-solid fa-xmark text-sm"></i>
+              </button>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] uppercase tracking-widest text-zinc-500 font-semibold mb-2">Division</label>
+            <div class="relative w-full">
+              <select id="member-district"
+                class="w-full bg-white border border-zinc-200 px-4 py-3 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all appearance-none !pr-10">
+                <option value="">All Divisions</option>
+                <option value="dhaka">Dhaka</option>
+                <option value="chattogram">Chattogram</option>
+                <option value="rajshahi">Rajshahi</option>
+                <option value="sylhet">Sylhet</option>
+                <option value="khulna">Khulna</option>
+                <option value="barisal">Barisal</option>
+                <option value="rangpur">Rangpur</option>
+                <option value="mymensingh">Mymensingh</option>
+              </select>
+              <span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-zinc-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] uppercase tracking-widest text-zinc-500 font-semibold mb-2">Status</label>
+            <div class="relative w-full">
+              <select id="member-status"
+                class="w-full bg-white border border-zinc-200 px-4 py-3 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all appearance-none !pr-10">
+                <option value="">All Status</option>
+                <option value="Active">Active</option>
+                <option value="Pending Renewal">Pending Renewal</option>
+              </select>
+              <span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-zinc-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] uppercase tracking-widest text-zinc-500 font-semibold mb-2">Membership
+              No.</label>
+            <div class="relative w-full">
+              <input type="text" id="member-id"
+                class="w-full bg-white border border-zinc-200 pl-4 pr-10 py-3 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all"
+                placeholder="BAJUS-XXXX" />
+              <button type="button" id="clear-member-id"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 focus:outline-none transition-colors hidden"
+                aria-label="Clear membership number">
+                <i class="fa-solid fa-xmark text-sm"></i>
+              </button>
+            </div>
+          </div>
+          <button class="btn-gold" type="submit">Search</button>
+        </div>
+      </form>
+
+    </div>
+
+    <!-- Results header -->
+    <div class="flex items-center justify-between mb-5">
+      <div class="text-sm text-zinc-500">Showing <strong id="member-count" class="text-charcoal">3,696</strong>
+        registered members</div>
+    </div>
+
+    <!-- Member List -->
+    <div id="member-list-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Alam Gold House -->
+      <div class="member-card member-row reveal" data-name="alam gold house" data-district="dhaka">
+        <div class="flex items-start justify-between w-full">
+          <div class="member-card__logo">A</div>
+          <div class="flex flex-col items-end">
+            <span
+              class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2.5 py-1 rounded-full">
+              Active
+            </span>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col justify-start">
+          <div class="member-card__id">BAJUS-DH-001247</div>
+          <h3 class="member-card__name">Alam Gold House</h3>
+          <div class="member-card__owner">
+            <i class="fa-solid fa-user text-zinc-400 text-xs shrink-0"></i>
+            <span>Md. Alamgir Hossain (Proprietor)</span>
+          </div>
+          <div class="member-card__location">
+            <i class="fa-solid fa-location-dot text-zinc-400 text-xs mt-0.5 shrink-0"></i>
+            <span>18 Nawab Street, Chawkbazar, Dhaka-1211</span>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-zinc-200/60 flex items-center justify-between text-xs w-full mt-auto">
+          <span class="text-zinc-400">Expires: <strong class="text-zinc-600 font-medium">Dec 31, 2026</strong></span>
+          <button type="button"
+            class="view-details-btn text-gold font-bold hover:underline inline-flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0 focus:outline-none"
+            data-id="BAJUS-DH-001247">
+            View Details <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bismillah Jewellers -->
+      <div class="member-card member-row reveal" data-name="bismillah jewellers" data-district="dhaka">
+        <div class="flex items-start justify-between w-full">
+          <div class="member-card__logo">
+            <img src="./assets/logos/Bismillah%20Jewellers.jpg" alt="Bismillah Jewellers" />
+          </div>
+          <div class="flex flex-col items-end">
+            <span
+              class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2.5 py-1 rounded-full">
+              Active
+            </span>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col justify-start">
+          <div class="member-card__id">BAJUS-DH-002891</div>
+          <h3 class="member-card__name">Bismillah Jewellers</h3>
+          <div class="member-card__owner">
+            <i class="fa-solid fa-user text-zinc-400 text-xs shrink-0"></i>
+            <span>Md. Badiur Rahman (Owner)</span>
+          </div>
+          <div class="member-card__location">
+            <i class="fa-solid fa-location-dot text-zinc-400 text-xs mt-0.5 shrink-0"></i>
+            <span>45 Elephant Road, Hatirpool, Dhaka-1205</span>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-zinc-200/60 flex items-center justify-between text-xs w-full mt-auto">
+          <span class="text-zinc-400">Expires: <strong class="text-zinc-600 font-medium">Dec 31, 2026</strong></span>
+          <button type="button"
+            class="view-details-btn text-gold font-bold hover:underline inline-flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0 focus:outline-none"
+            data-id="BAJUS-DH-002891">
+            View Details <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Chattogram Gold Palace -->
+      <div class="member-card member-row reveal" data-name="chattogram gold palace" data-district="chattogram">
+        <div class="flex items-start justify-between w-full">
+          <div class="member-card__logo">C</div>
+          <div class="flex flex-col items-end">
+            <span
+              class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2.5 py-1 rounded-full">
+              Active
+            </span>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col justify-start">
+          <div class="member-card__id">BAJUS-CT-004512</div>
+          <h3 class="member-card__name">Chattogram Gold Palace</h3>
+          <div class="member-card__owner">
+            <i class="fa-solid fa-user text-zinc-400 text-xs shrink-0"></i>
+            <span>Md. Chowdhury Selim (Managing Partner)</span>
+          </div>
+          <div class="member-card__location">
+            <i class="fa-solid fa-location-dot text-zinc-400 text-xs mt-0.5 shrink-0"></i>
+            <span>23 Agrabad Commercial Area, Chittagong-4100</span>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-zinc-200/60 flex items-center justify-between text-xs w-full mt-auto">
+          <span class="text-zinc-400">Expires: <strong class="text-zinc-600 font-medium">Jun 30, 2026</strong></span>
+          <button type="button"
+            class="view-details-btn text-gold font-bold hover:underline inline-flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0 focus:outline-none"
+            data-id="BAJUS-CT-004512">
+            View Details <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Diamond Jewellery House -->
+      <div class="member-card member-row reveal" data-name="diamond jewellery house" data-district="dhaka">
+        <div class="flex items-start justify-between w-full">
+          <div class="member-card__logo">
+            <img src="./assets/logos/Diamond%20Jewellery%20House.jpg" alt="Diamond Jewellery House" />
+          </div>
+          <div class="flex flex-col items-end">
+            <span
+              class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-red-700 bg-red-50 border border-red-200/50 px-2.5 py-1 rounded-full">
+              Renewal Pending
+            </span>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col justify-start">
+          <div class="member-card__id">BAJUS-DH-006033</div>
+          <h3 class="member-card__name">Diamond Jewellery House</h3>
+          <div class="member-card__owner">
+            <i class="fa-solid fa-user text-zinc-400 text-xs shrink-0"></i>
+            <span>Md. Delwar Hossain (Proprietor)</span>
+          </div>
+          <div class="member-card__location">
+            <i class="fa-solid fa-location-dot text-zinc-400 text-xs mt-0.5 shrink-0"></i>
+            <span>7 Bashundhara City, Level 3, Panthapath, Dhaka-1215</span>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-zinc-200/60 flex items-center justify-between text-xs w-full mt-auto">
+          <div class="flex items-center gap-3 flex-wrap">
+            <span class="text-zinc-400">Expired: <strong class="text-zinc-600 font-medium">Jun 30, 2026</strong></span>
+            <a href="./login.html" hidden
+              class="inline-flex items-center px-3 py-1 bg-gold text-white text-[10px] font-bold uppercase tracking-wider hover:bg-[#a3760a] hover:text-white transition-colors">Renew</a>
+          </div>
+          <button type="button"
+            class="view-details-btn text-gold font-bold hover:underline inline-flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0 focus:outline-none"
+            data-id="BAJUS-DH-006033">
+            View Details <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Eid Jewellers Rajshahi -->
+      <div class="member-card member-row reveal" data-name="eid jewellers rajshahi" data-district="rajshahi">
+        <div class="flex items-start justify-between w-full">
+          <div class="member-card__logo">E</div>
+          <div class="flex flex-col items-end">
+            <span
+              class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2.5 py-1 rounded-full">
+              Active
+            </span>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col justify-start">
+          <div class="member-card__id">BAJUS-RJ-008740</div>
+          <h3 class="member-card__name">Eid Jewellers Rajshahi</h3>
+          <div class="member-card__owner">
+            <i class="fa-solid fa-user text-zinc-400 text-xs shrink-0"></i>
+            <span>Md. Enamul Hoque (Owner)</span>
+          </div>
+          <div class="member-card__location">
+            <i class="fa-solid fa-location-dot text-zinc-400 text-xs mt-0.5 shrink-0"></i>
+            <span>12 Shaheb Bazar, Rajshahi-6100</span>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-zinc-200/60 flex items-center justify-between text-xs w-full mt-auto">
+          <span class="text-zinc-400">Expires: <strong class="text-zinc-600 font-medium">Dec 31, 2026</strong></span>
+          <button type="button"
+            class="view-details-btn text-gold font-bold hover:underline inline-flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0 focus:outline-none"
+            data-id="BAJUS-RJ-008740">
+            View Details <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Fatema Gold House Sylhet -->
+      <div class="member-card member-row reveal" data-name="fatema gold house sylhet" data-district="sylhet">
+        <div class="flex items-start justify-between w-full">
+          <div class="member-card__logo">F</div>
+          <div class="flex flex-col items-end">
+            <span
+              class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2.5 py-1 rounded-full">
+              Active
+            </span>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col justify-start">
+          <div class="member-card__id">BAJUS-SY-012341</div>
+          <h3 class="member-card__name">Fatema Gold House</h3>
+          <div class="member-card__owner">
+            <i class="fa-solid fa-user text-zinc-400 text-xs shrink-0"></i>
+            <span>Md. Fakhrul Islam (Director)</span>
+          </div>
+          <div class="member-card__location">
+            <i class="fa-solid fa-location-dot text-zinc-400 text-xs mt-0.5 shrink-0"></i>
+            <span>Bandarbazar, Sylhet-3100</span>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-zinc-200/60 flex items-center justify-between text-xs w-full mt-auto">
+          <span class="text-zinc-400">Expires: <strong class="text-zinc-600 font-medium">Dec 31, 2026</strong></span>
+          <button type="button"
+            class="view-details-btn text-gold font-bold hover:underline inline-flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0 focus:outline-none"
+            data-id="BAJUS-SY-012341">
+            View Details <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Gitanjali Jewellers -->
+      <div class="member-card member-row reveal" data-name="gitanjali jewellers" data-district="khulna">
+        <div class="flex items-start justify-between w-full">
+          <div class="member-card__logo">G</div>
+          <div class="flex flex-col items-end">
+            <span
+              class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2.5 py-1 rounded-full">
+              Active
+            </span>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col justify-start">
+          <div class="member-card__id">BAJUS-KH-015892</div>
+          <h3 class="member-card__name">Gitanjali Jewellers</h3>
+          <div class="member-card__owner">
+            <i class="fa-solid fa-user text-zinc-400 text-xs shrink-0"></i>
+            <span>Md. Gias Uddin (Proprietor)</span>
+          </div>
+          <div class="member-card__location">
+            <i class="fa-solid fa-location-dot text-zinc-400 text-xs mt-0.5 shrink-0"></i>
+            <span>14 K.D. Ghosh Road, Khulna-9100</span>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-zinc-200/60 flex items-center justify-between text-xs w-full mt-auto">
+          <span class="text-zinc-400">Expires: <strong class="text-zinc-600 font-medium">Dec 31, 2026</strong></span>
+          <button type="button"
+            class="view-details-btn text-gold font-bold hover:underline inline-flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0 focus:outline-none"
+            data-id="BAJUS-KH-015892">
+            View Details <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Habib & Sons -->
+      <div class="member-card member-row reveal" data-name="habib & sons" data-district="barisal">
+        <div class="flex items-start justify-between w-full">
+          <div class="member-card__logo">H</div>
+          <div class="flex flex-col items-end">
+            <span
+              class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2.5 py-1 rounded-full">
+              Active
+            </span>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col justify-start">
+          <div class="member-card__id">BAJUS-BR-019203</div>
+          <h3 class="member-card__name">Habib & Sons</h3>
+          <div class="member-card__owner">
+            <i class="fa-solid fa-user text-zinc-400 text-xs shrink-0"></i>
+            <span>Md. Habib Ullah (Owner)</span>
+          </div>
+          <div class="member-card__location">
+            <i class="fa-solid fa-location-dot text-zinc-400 text-xs mt-0.5 shrink-0"></i>
+            <span>78 Sadar Road, Barisal-8200</span>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-zinc-200/60 flex items-center justify-between text-xs w-full mt-auto">
+          <span class="text-zinc-400">Expires: <strong class="text-zinc-600 font-medium">Dec 31, 2026</strong></span>
+          <button type="button"
+            class="view-details-btn text-gold font-bold hover:underline inline-flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0 focus:outline-none"
+            data-id="BAJUS-BR-019203">
+            View Details <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Imperial Gold Syndicate -->
+      <div class="member-card member-row reveal" data-name="imperial gold syndicate" data-district="rangpur">
+        <div class="flex items-start justify-between w-full">
+          <div class="member-card__logo">I</div>
+          <div class="flex flex-col items-end">
+            <span
+              class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-red-700 bg-red-50 border border-red-200/50 px-2.5 py-1 rounded-full">
+              Renewal Pending
+            </span>
+          </div>
+        </div>
+        <div class="flex-1 flex flex-col justify-start">
+          <div class="member-card__id">BAJUS-RP-022345</div>
+          <h3 class="member-card__name">Imperial Gold Syndicate</h3>
+          <div class="member-card__owner">
+            <i class="fa-solid fa-user text-zinc-400 text-xs shrink-0"></i>
+            <span>Md. Imtiaz Ahmed (Managing Partner)</span>
+          </div>
+          <div class="member-card__location">
+            <i class="fa-solid fa-location-dot text-zinc-400 text-xs mt-0.5 shrink-0"></i>
+            <span>3 Station Road, Rangpur-5400</span>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-zinc-200/60 flex items-center justify-between text-xs w-full mt-auto">
+          <div class="flex items-center gap-3 flex-wrap">
+            <span class="text-zinc-400">Expired: <strong class="text-zinc-600 font-medium">Jun 30, 2026</strong></span>
+            <a href="./login.html" hidden
+              class="inline-flex items-center px-3 py-1 bg-gold text-white text-[10px] font-bold uppercase tracking-wider hover:bg-[#a3760a] hover:text-white transition-colors">Renew</a>
+          </div>
+          <button type="button"
+            class="view-details-btn text-gold font-bold hover:underline inline-flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0 focus:outline-none"
+            data-id="BAJUS-RP-022345">
+            View Details <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center mt-10">
+      <div id="pagination-controls" class="pagination">
+        <!-- Dynamic pagination controls populated by JS -->
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-16 bg-charcoal text-cream p-10 text-center border border-white/10">
+      <div class="text-[11px] uppercase tracking-widest text-gold font-bold mb-3">Not a Member Yet?</div>
+      <h3 class="font-serif text-2xl mb-3">Join Bangladesh's Largest Jewellery Association</h3>
+      <p class="text-zinc-400 max-w-lg mx-auto mb-6">Get your BAJUS membership and appear in the national directory.
+        Access official gold rates, legal support, training, and a network of 50,000+ verified jewellers.</p>
+      <a href="./signup.html" class="btn-gold inline-block">Apply for Membership</a>
+    </div>
+  </section>
+
+  <div id="bajus-footer"></div>
+
+  <!-- Member Detail Modal -->
+  <div id="member-detail-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+    <!-- Backdrop overlay -->
+    <div class="absolute inset-0 bg-zinc-950/40 backdrop-blur-sm transition-opacity duration-300 opacity-0"
+      id="modal-overlay"></div>
+
+    <!-- Modal Box -->
+    <div
+      class="relative bg-white max-w-2xl w-full mx-4 overflow-hidden border border-zinc-200/80 shadow-2xl transition-all duration-300 transform scale-95 opacity-0 flex flex-col md:flex-row max-h-[90vh] md:max-h-none"
+      id="modal-box">
+      <!-- Close Button -->
+      <button id="close-modal-btn"
+        class="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-500 hover:text-zinc-800 transition-colors focus:outline-none"
+        aria-label="Close details">
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
+
+      <!-- Left: Brand Logo & Title -->
+      <div
+        class="w-full md:w-2/5 bg-white p-6 md:p-8 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-zinc-200 shrink-0">
+        <div id="modal-shop-logo-container"
+          class="bg-gradient-to-br from-[#efe6cf] to-[#fdfbf5] border border-amber-200/60 rounded-md flex items-center justify-center font-serif text-3xl font-bold text-[#8b6914] mb-4 shadow-sm overflow-hidden shrink-0">
+        </div>
+        <h2 id="modal-shop-name"
+          class="font-serif text-lg font-bold text-center text-zinc-800 line-clamp-2 leading-tight"></h2>
+        <div id="modal-member-id" class="text-[9px] font-bold tracking-widest text-gold uppercase mt-2"></div>
+        <div id="modal-status-badge" class="mt-4"></div>
+      </div>
+
+      <!-- Right: Detailed Information -->
+      <div class="w-full md:w-3/5 p-6 md:p-8 overflow-y-auto max-h-[60vh] md:max-h-[80vh] bg-[#fcfaf2]">
+        <!-- Personal Information Section -->
+        <div class="mb-4 bg-white border border-zinc-200/60 p-4 rounded-sm">
+          <h3
+            class="text-[9px] font-bold uppercase tracking-widest text-gold mb-3 border-b border-zinc-100 pb-1.5 flex items-center gap-2">
+            Personal Information
+          </h3>
+          <div class="flex items-center gap-3.5">
+            <div id="modal-owner-avatar"
+              class="w-10 h-10 rounded-full bg-amber-50 border border-amber-200/50 flex items-center justify-center font-serif text-base font-bold text-[#8b6914] shrink-0">
+            </div>
+            <div>
+              <div id="modal-owner-name" class="font-serif text-sm font-bold text-zinc-800"></div>
+              <div id="modal-owner-designation" class="text-[11px] text-zinc-500 font-medium"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Institution Details Section -->
+        <div class="mb-4 bg-white border border-zinc-200/60 p-4 rounded-sm">
+          <h3
+            class="text-[9px] font-bold uppercase tracking-widest text-gold mb-3 border-b border-zinc-100 pb-1.5 flex items-center gap-2">
+            Institution Details
+          </h3>
+          <div class="grid grid-cols-2 gap-y-4 gap-x-2 text-[11px]">
+            <div>
+              <div class="text-zinc-400 mb-0.5 uppercase tracking-wider text-[8px] font-bold">Division / District</div>
+              <div id="modal-shop-location" class="font-medium text-zinc-800"></div>
+            </div>
+            <div>
+              <div class="text-zinc-400 mb-0.5 uppercase tracking-wider text-[8px] font-bold">Est. Year</div>
+              <div id="modal-shop-est" class="font-medium text-zinc-800"></div>
+            </div>
+            <div>
+              <div class="text-zinc-400 mb-0.5 uppercase tracking-wider text-[8px] font-bold">Business Category</div>
+              <div class="font-medium text-zinc-800 flex items-center gap-1.5">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-gold"></span> Retail Jeweller
+              </div>
+            </div>
+            <div>
+              <div class="text-zinc-400 mb-0.5 uppercase tracking-wider text-[8px] font-bold">Expiry Date</div>
+              <div id="modal-shop-expiry" class="font-medium text-zinc-800"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact & Address Section -->
+        <div class="bg-white border border-zinc-200/60 p-4 rounded-sm">
+          <h3
+            class="text-[9px] font-bold uppercase tracking-widest text-gold mb-3 border-b border-zinc-100 pb-1.5 flex items-center gap-2">
+            Contact & Address
+          </h3>
+          <div class="space-y-2.5 text-[11px] text-zinc-600">
+            <div class="flex items-center gap-2.5">
+              <i class="fa-solid fa-phone text-zinc-400 shrink-0 w-3.5 text-center"></i>
+              <span id="modal-shop-phone"></span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <i class="fa-solid fa-envelope text-zinc-400 shrink-0 w-3.5 text-center"></i>
+              <span id="modal-shop-email"></span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <i class="fa-solid fa-location-dot text-zinc-400 shrink-0 w-3.5 text-center mt-0.5"></i>
+              <span id="modal-shop-address" class="leading-relaxed"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/members-data.js"></script>
+  <script src="./js/include.js"></script>
+  <script src="./js/main.js"></script>
+  <script>
+    // State variables for search, filter, and pagination
+    let currentPage = 1;
+    const itemsPerPage = 9; // 3 columns * 3 rows
+    let filteredMembers = [...BAJUS_MEMBERS];
+
+    // DOM Elements
+    const gridContainer = document.getElementById('member-list-grid');
+    const paginationContainer = document.getElementById('pagination-controls');
+    const memberCountEl = document.getElementById('member-count');
+    const filterForm = document.getElementById('member-filter-form');
+    const searchInput = document.getElementById('member-search');
+    const divisionSelect = document.getElementById('member-district');
+    const statusSelect = document.getElementById('member-status');
+    const idInput = document.getElementById('member-id');
+
+    // Helper function to create member card element
+    function createMemberCard(member) {
+      const card = document.createElement('div');
+      card.className = 'member-card member-row reveal is-visible';
+      card.setAttribute('data-name', member.name.toLowerCase());
+      card.setAttribute('data-district', member.district.toLowerCase());
+
+      const logoHtml = member.logo
+        ? `<img src="${member.logo}" alt="${member.institution}" />`
+        : member.name.charAt(0).toUpperCase();
+
+      const isPending = member.status !== 'Active';
+
+      const badgeHtml = isPending
+        ? `<span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-red-700 bg-red-50 border border-red-200/50 px-2.5 py-1 rounded-full">
+            Renewal Pending
+          </span>`
+        : `<span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2.5 py-1 rounded-full">
+          Active
+         </span>`;
+
+      const expiryLabel = isPending ? 'Expired' : 'Expires';
+      const renewBtnHtml = ''; // hidden for now
+      const footerLeftHtml = isPending
+        ? `<div class="flex items-center gap-3 flex-wrap">
+            <span class="text-zinc-400">${expiryLabel}: <strong class="text-zinc-600 font-medium">${member.expiry}</strong></span>
+            ${renewBtnHtml}
+          </div>`
+        : `<span class="text-zinc-400">${expiryLabel}: <strong class="text-zinc-600 font-medium">${member.expiry}</strong></span>`;
+
+      card.innerHTML = `
+      <div class="flex items-start justify-between w-full">
+        <div class="member-card__logo">${logoHtml}</div>
+        <div class="flex flex-col items-end">${badgeHtml}</div>
+      </div>
+      <div class="flex-1 flex flex-col justify-start">
+        <div class="member-card__id">${member.id}</div>
+        <h3 class="member-card__name">${member.institution}</h3>
+        <div class="member-card__owner">
+          <i class="fa-solid fa-user text-zinc-400 text-xs shrink-0"></i>
+          <span>${member.name}</span>
+        </div>
+        <div class="member-card__location">
+          <i class="fa-solid fa-location-dot text-zinc-400 text-xs mt-0.5 shrink-0"></i>
+          <span>${member.district ? member.district + ', Bangladesh' : 'Bangladesh'}</span>
+        </div>
+      </div>
+      <div class="pt-4 border-t border-zinc-200/60 flex items-center justify-between text-xs w-full mt-auto">
+        ${footerLeftHtml}
+        <button type="button" class="view-details-btn text-gold font-bold hover:underline inline-flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0 focus:outline-none" data-id="${member.id}">
+          View Details <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </button>
+      </div>
+    `;
+      return card;
+    }
+
+    // Render cards for current page
+    function renderPage(page, performScroll = true) {
+      currentPage = page;
+      gridContainer.innerHTML = '';
+
+      if (filteredMembers.length === 0) {
+        gridContainer.innerHTML = `
+        <div class="col-span-full py-16 text-center text-zinc-400 bg-white border border-zinc-100 rounded-sm">
+          <i class="fa-solid fa-magnifying-glass text-3xl mb-3 block text-zinc-300"></i>
+          <p class="text-sm font-medium">No members found matching your search criteria.</p>
+        </div>
+      `;
+        paginationContainer.innerHTML = '';
+        return;
+      }
+
+      const startIdx = (page - 1) * itemsPerPage;
+      const endIdx = Math.min(startIdx + itemsPerPage, filteredMembers.length);
+      const pageItems = filteredMembers.slice(startIdx, endIdx);
+
+      pageItems.forEach(member => {
+        const cardElement = createMemberCard(member);
+        gridContainer.appendChild(cardElement);
+      });
+
+      renderPagination();
+
+      // Scroll smoothly to top of filter bar when changing pages (not on initial load)
+      if (performScroll) {
+        const filterSection = document.querySelector('.member-filter-bar');
+        if (filterSection && page !== 1) {
+          filterSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+
+    // Render pagination controls
+    function renderPagination() {
+      paginationContainer.innerHTML = '';
+      const totalPages = Math.ceil(filteredMembers.length / itemsPerPage);
+
+      if (totalPages <= 1) return;
+
+      // Previous Button
+      const prevBtn = document.createElement('div');
+      prevBtn.className = `page-btn ${currentPage === 1 ? 'opacity-40 pointer-events-none' : ''}`;
+      prevBtn.innerHTML = '<i class="fa-solid fa-angle-left"></i>';
+      prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) renderPage(currentPage - 1);
+      });
+      paginationContainer.appendChild(prevBtn);
+
+      // Page 1
+      const page1 = document.createElement('div');
+      page1.className = `page-btn ${currentPage === 1 ? 'active' : ''}`;
+      page1.textContent = '1';
+      page1.addEventListener('click', () => renderPage(1));
+      paginationContainer.appendChild(page1);
+
+      if (totalPages <= 5) {
+        // If total pages is small, just render all of them
+        for (let i = 2; i < totalPages; i++) {
+          const pageBtn = document.createElement('div');
+          pageBtn.className = `page-btn ${currentPage === i ? 'active' : ''}`;
+          pageBtn.textContent = i;
+          pageBtn.addEventListener('click', () => renderPage(i));
+          paginationContainer.appendChild(pageBtn);
+        }
+      } else {
+        // Dynamic middle pages
+        let startPage = Math.max(2, currentPage - 1);
+        let endPage = Math.min(totalPages - 1, currentPage + 1);
+
+        if (currentPage <= 3) {
+          endPage = 4;
+        }
+        if (currentPage >= totalPages - 2) {
+          startPage = totalPages - 3;
+        }
+
+        // Ellipsis before
+        if (startPage > 2) {
+          const ellipsis = document.createElement('div');
+          ellipsis.className = 'page-btn pointer-events-none';
+          ellipsis.style.width = 'auto';
+          ellipsis.style.padding = '0 12px';
+          ellipsis.textContent = '…';
+          paginationContainer.appendChild(ellipsis);
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+          const pageBtn = document.createElement('div');
+          pageBtn.className = `page-btn ${currentPage === i ? 'active' : ''}`;
+          pageBtn.textContent = i;
+          pageBtn.addEventListener('click', () => renderPage(i));
+          paginationContainer.appendChild(pageBtn);
+        }
+
+        // Ellipsis after
+        if (endPage < totalPages - 1) {
+          const ellipsis = document.createElement('div');
+          ellipsis.className = 'page-btn pointer-events-none';
+          ellipsis.style.width = 'auto';
+          ellipsis.style.padding = '0 12px';
+          ellipsis.textContent = '…';
+          paginationContainer.appendChild(ellipsis);
+        }
+      }
+
+      // Last Page
+      if (totalPages > 1) {
+        const lastPage = document.createElement('div');
+        lastPage.className = `page-btn ${currentPage === totalPages ? 'active' : ''}`;
+        lastPage.textContent = totalPages;
+        lastPage.addEventListener('click', () => renderPage(totalPages));
+        paginationContainer.appendChild(lastPage);
+      }
+
+      // Next Button
+      const nextBtn = document.createElement('div');
+      nextBtn.className = `page-btn ${currentPage === totalPages ? 'opacity-40 pointer-events-none' : ''}`;
+      nextBtn.innerHTML = '<i class="fa-solid fa-angle-right"></i>';
+      nextBtn.addEventListener('click', () => {
+        if (currentPage < totalPages) renderPage(currentPage + 1);
+      });
+      paginationContainer.appendChild(nextBtn);
+    }
+
+    // Filter application logic
+    function applyFilters(performScroll = true) {
+      const searchQuery = searchInput.value.toLowerCase().trim();
+      const selectedDivision = divisionSelect.value.toLowerCase();
+      const selectedStatus = statusSelect.value;
+      const searchId = idInput.value.trim().toLowerCase();
+
+      filteredMembers = BAJUS_MEMBERS.filter(member => {
+        const matchesQuery = !searchQuery ||
+          member.institution.toLowerCase().includes(searchQuery) ||
+          member.name.toLowerCase().includes(searchQuery);
+
+        const matchesDivision = !selectedDivision || member.division === selectedDivision;
+        const matchesStatus = !selectedStatus || member.status === selectedStatus;
+
+        const matchesId = !searchId ||
+          member.id.toLowerCase().includes(searchId) ||
+          member.id.replace('bajus-dh-', '').toLowerCase().includes(searchId);
+
+        return matchesQuery && matchesDivision && matchesStatus && matchesId;
+      });
+
+      memberCountEl.textContent = filteredMembers.length.toLocaleString();
+      renderPage(1, performScroll);
+    }
+
+    // Clear Buttons Elements
+    const clearSearchBtn = document.getElementById('clear-member-search');
+    const clearIdBtn = document.getElementById('clear-member-id');
+
+    // Toggle clear buttons visibility
+    function toggleClearButton(input, btn) {
+      if (input.value.trim().length > 0) {
+        btn.classList.remove('hidden');
+      } else {
+        btn.classList.add('hidden');
+      }
+    }
+
+    // Event Listeners
+    filterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      applyFilters(true);
+    });
+
+    divisionSelect.addEventListener('change', () => applyFilters(false));
+    statusSelect.addEventListener('change', () => applyFilters(false));
+
+    // Debounced input triggers
+    let searchTimeout;
+    searchInput.addEventListener('input', () => {
+      toggleClearButton(searchInput, clearSearchBtn);
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => applyFilters(false), 300);
+    });
+    idInput.addEventListener('input', () => {
+      toggleClearButton(idInput, clearIdBtn);
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => applyFilters(false), 300);
+    });
+
+    // Clear button click events
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      clearSearchBtn.classList.add('hidden');
+      applyFilters(false);
+      searchInput.focus();
+    });
+
+    clearIdBtn.addEventListener('click', () => {
+      idInput.value = '';
+      clearIdBtn.classList.add('hidden');
+      applyFilters(false);
+      idInput.focus();
+    });
+
+    // Initial load
+    applyFilters(false);
+    toggleClearButton(searchInput, clearSearchBtn);
+    toggleClearButton(idInput, clearIdBtn);
+
+    // Modal Functionality
+    const modal = document.getElementById('member-detail-modal');
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalBox = document.getElementById('modal-box');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+
+    // Modal elements
+    const modalShopLogoContainer = document.getElementById('modal-shop-logo-container');
+    const modalShopName = document.getElementById('modal-shop-name');
+    const modalMemberId = document.getElementById('modal-member-id');
+    const modalStatusBadge = document.getElementById('modal-status-badge');
+    const modalOwnerAvatar = document.getElementById('modal-owner-avatar');
+    const modalOwnerName = document.getElementById('modal-owner-name');
+    const modalOwnerDesignation = document.getElementById('modal-owner-designation');
+    const modalShopLocation = document.getElementById('modal-shop-location');
+    const modalShopEst = document.getElementById('modal-shop-est');
+    const modalShopExpiry = document.getElementById('modal-shop-expiry');
+    const modalShopPhone = document.getElementById('modal-shop-phone');
+    const modalShopEmail = document.getElementById('modal-shop-email');
+    const modalShopAddress = document.getElementById('modal-shop-address');
+
+    // Helper hash function for deterministic mock data
+    function hashString(str) {
+      let hash = 0;
+      for (let i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      return hash;
+    }
+
+    function getDeterministicPhone(str) {
+      const val = Math.abs(hashString(str));
+      const parts = ['017', '018', '019', '015', '016', '013', '014'];
+      const prefix = parts[val % parts.length];
+      const suffix = (val % 90000000 + 10000000).toString().slice(0, 8);
+      return `+880 ${prefix}-${suffix.slice(0, 4)}-${suffix.slice(4)}`;
+    }
+
+    function openModal(memberId) {
+      // Find member
+      let member = BAJUS_MEMBERS.find(m => m.id === memberId);
+
+      // If not found in dynamic members, look up fallback static members
+      if (!member) {
+        const staticFallbacks = {
+          'BAJUS-DH-001247': { id: 'BAJUS-DH-001247', name: 'Md. Alamgir Hossain (Proprietor)', institution: 'Alam Gold House', district: 'Dhaka', division: 'dhaka', status: 'Active', expiry: 'Dec 31, 2026', address: '18 Nawab Street, Chawkbazar, Dhaka-1211' },
+          'BAJUS-DH-002891': { id: 'BAJUS-DH-002891', name: 'Md. Badiur Rahman (Owner)', institution: 'Bismillah Jewellers', district: 'Dhaka', division: 'dhaka', status: 'Active', expiry: 'Dec 31, 2026', logo: './assets/logos/Bismillah%20Jewellers.jpg', address: '45 Elephant Road, Hatirpool, Dhaka-1205' },
+          'BAJUS-CT-004512': { id: 'BAJUS-CT-004512', name: 'Md. Chowdhury Selim (Managing Partner)', institution: 'Chattogram Gold Palace', district: 'Chattogram', division: 'chattogram', status: 'Active', expiry: 'Jun 30, 2026', address: '23 Agrabad Commercial Area, Chittagong-4100' },
+          'BAJUS-DH-006033': { id: 'BAJUS-DH-006033', name: 'Md. Delwar Hossain (Proprietor)', institution: 'Diamond Jewellery House', district: 'Dhaka', division: 'dhaka', status: 'Pending Renewal', expiry: 'Jun 30, 2026', logo: './assets/logos/Diamond%20Jewellery%20House.jpg', address: '7 Bashundhara City, Level 3, Panthapath, Dhaka-1215' },
+          'BAJUS-RJ-008740': { id: 'BAJUS-RJ-008740', name: 'Md. Enamul Hoque (Owner)', institution: 'Eid Jewellers Rajshahi', district: 'Rajshahi', division: 'rajshahi', status: 'Active', expiry: 'Dec 31, 2026', address: '12 Shaheb Bazar, Rajshahi-6100' },
+          'BAJUS-SY-012341': { id: 'BAJUS-SY-012341', name: 'Md. Fakhrul Islam (Director)', institution: 'Fatema Gold House', district: 'Sylhet', division: 'sylhet', status: 'Active', expiry: 'Dec 31, 2026', address: 'Bandarbazar, Sylhet-3100' },
+          'BAJUS-KH-015892': { id: 'BAJUS-KH-015892', name: 'Md. Gias Uddin (Proprietor)', institution: 'Gitanjali Jewellers', district: 'Khulna', division: 'khulna', status: 'Active', expiry: 'Dec 31, 2026', address: '14 K.D. Ghosh Road, Khulna-9100' },
+          'BAJUS-BR-019203': { id: 'BAJUS-BR-019203', name: 'Md. Habib Ullah (Owner)', institution: 'Habib & Sons', district: 'Barishal', division: 'barisal', status: 'Active', expiry: 'Dec 31, 2026', address: '78 Sadar Road, Barisal-8200' },
+          'BAJUS-RP-022345': { id: 'BAJUS-RP-022345', name: 'Md. Imtiaz Ahmed (Managing Partner)', institution: 'Imperial Gold Syndicate', district: 'Rangpur', division: 'rangpur', status: 'Pending Renewal', expiry: 'Jun 30, 2026', address: '3 Station Road, Rangpur-5400' }
+        };
+        member = staticFallbacks[memberId];
+      }
+
+      if (!member) return;
+
+      // Parse Representative Name and Designation
+      let rawName = member.name;
+      let designation = 'Proprietor';
+      const descMatch = rawName.match(/\(([^)]+)\)/);
+      if (descMatch) {
+        designation = descMatch[1];
+        rawName = rawName.replace(/\([^)]+\)/, '').trim();
+      }
+
+      // Dynamic Shop Logo/Initial
+      if (member.logo) {
+        modalShopLogoContainer.innerHTML = `<img src="${member.logo}" alt="${member.institution}" />`;
+      } else {
+        modalShopLogoContainer.innerHTML = member.institution.charAt(0).toUpperCase();
+      }
+
+      // Basic fields
+      modalShopName.textContent = member.institution;
+      modalMemberId.textContent = member.id;
+      modalOwnerName.textContent = rawName;
+      modalOwnerDesignation.textContent = designation;
+
+      // Representative Avatar (First letter of representative name)
+      modalOwnerAvatar.textContent = rawName.charAt(0).toUpperCase();
+
+      // Status Badge
+      if (member.status === 'Active') {
+        modalStatusBadge.innerHTML = `
+        <span class="inline-flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-3 py-1.5 rounded-full">
+          Active Member
+        </span>
+      `;
+      } else {
+        modalStatusBadge.innerHTML = `
+        <span class="inline-flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-wider text-red-700 bg-red-50 border border-red-200/50 px-3 py-1.5 rounded-full">
+          Renewal Pending
+        </span>
+      `;
+      }
+
+      // Location
+      const divisionCapitalized = member.division
+        ? member.division.charAt(0).toUpperCase() + member.division.slice(1)
+        : 'Dhaka';
+      modalShopLocation.textContent = `${member.district || 'Dhaka'}, ${divisionCapitalized}`;
+
+      // Expiry Date
+      modalShopExpiry.textContent = member.expiry || 'Dec 31, 2026';
+
+      // Deterministic mock fields
+      const hashVal = Math.abs(hashString(member.id));
+
+      // Established Year (1990 - 2023)
+      const estYear = 1990 + (hashVal % 34);
+      modalShopEst.textContent = estYear;
+
+      // Phone & Email
+      modalShopPhone.textContent = getDeterministicPhone(member.id);
+      modalShopEmail.textContent = `${member.institution.toLowerCase().replace(/[^a-z0-9]/g, '')}@bajus-member.com`;
+
+      // Address
+      const fallbackAddr = member.district
+        ? `${member.district} Sadar Road, ${member.district}, Bangladesh`
+        : 'Dhaka, Bangladesh';
+      modalShopAddress.textContent = member.address || fallbackAddr;
+
+      // Show modal
+      document.body.classList.add('modal-open');
+      modal.classList.remove('hidden');
+      // Allow thread to register block removal, then transition opacity/scale
+      requestAnimationFrame(() => {
+        modal.classList.add('is-active');
+      });
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-active');
+      document.body.classList.remove('modal-open');
+
+      // Hide container after transitions finish
+      setTimeout(() => {
+        if (!modal.classList.contains('is-active')) {
+          modal.classList.add('hidden');
+        }
+      }, 300);
+    }
+
+    // Event delegation on list grid container
+    gridContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('.view-details-btn');
+      if (btn) {
+        e.preventDefault();
+        const memberId = btn.getAttribute('data-id');
+        if (memberId) openModal(memberId);
+      }
+    });
+
+    // Close triggers
+    closeModalBtn.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
+
+    // Close on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+
+</html>

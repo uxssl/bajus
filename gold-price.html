@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gold & Silver Price — BAJUS</title>
+    <meta
+      name="description"
+      content="Official daily gold and silver rates published by the Bangladesh Jewellers' Association (BAJUS)."
+    />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      .gp-tab {
+        position: relative;
+        padding: 18px 4px;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        color: #71717a;
+        transition: color 0.2s;
+        cursor: pointer;
+        background: none;
+        border: none;
+      }
+
+      @media (max-width: 639px) {
+        .gp-tab {
+          padding: 12px 4px;
+          font-size: 12px;
+          letter-spacing: 0;
+          text-align: center;
+          line-height: 1.35;
+          min-width: 0;
+          white-space: normal;
+          word-break: break-word;
+          overflow-wrap: break-word;
+        }
+      }
+
+      @media (min-width: 640px) {
+        .gp-tab {
+          white-space: nowrap;
+        }
+      }
+
+      .gp-tab:hover {
+        color: #1a1a1a;
+      }
+
+      .gp-tab.is-active {
+        color: #b8860b;
+      }
+
+      .gp-tab.is-active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        height: 3px;
+        background: #b8860b;
+      }
+
+      .gp-panel {
+        display: none;
+      }
+
+      .gp-panel.is-active {
+        display: block;
+      }
+
+      .gp-bullion-table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+      }
+
+      .gp-bullion-table th,
+      .gp-bullion-table td {
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        vertical-align: top;
+      }
+
+      @media (max-width: 639px) {
+        .gp-bullion-table thead th {
+          font-size: 11px;
+          letter-spacing: 0.04em;
+          line-height: 1.4;
+        }
+
+        .gp-bullion-table .gp-cell-product {
+          font-size: 14px;
+          line-height: 1.4;
+        }
+
+        .gp-bullion-table .gp-cell-desc {
+          font-size: 13px;
+          line-height: 1.4;
+        }
+
+        .gp-bullion-table .gp-cell-price {
+          font-size: 15px;
+          line-height: 1.4;
+        }
+
+        .gp-bullion-table .gp-unit {
+          display: block;
+          font-size: 12px;
+          margin-top: 2px;
+        }
+      }
+
+      .gp-input {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid #e4e4e7;
+        background: #fff;
+        font-size: 14px;
+        color: #1a1a1a;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      .gp-input:focus {
+        border-color: #b8860b;
+      }
+
+      .gp-label {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        color: #1a1a1a;
+        margin-bottom: 8px;
+      }
+
+      .gp-pg {
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #e4e4e7;
+        font-size: 14px;
+        color: #71717a;
+        cursor: pointer;
+        background: #fff;
+      }
+
+      .gp-pg.is-active {
+        background: #b8860b;
+        color: #fff;
+        border-color: #b8860b;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="bajus-header"></div>
+
+    <section class="page-hero py-24">
+      <div class="max-w-7xl mx-auto px-6">
+        <nav class="text-[11px] uppercase tracking-widest text-zinc-400 mb-6">
+          <a href="./index.html" class="hover:text-gold">Home</a
+          ><span class="px-2">/</span><span class="text-gold">Gold Price</span>
+        </nav>
+        <h1 class="font-serif text-4xl md:text-6xl leading-tight max-w-3xl">
+          Today's <span class="italic text-gold">Gold & Silver</span> Rate.
+        </h1>
+        <p class="mt-6 text-lg text-zinc-300 max-w-2xl leading-relaxed">
+          Official BAJUS-published bullion rates for Bangladesh, updated as the
+          market moves.
+        </p>
+      </div>
+    </section>
+
+    <!-- TABS -->
+    <section class="bg-cream pt-12">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6">
+        <div
+          class="grid grid-cols-4 sm:flex sm:flex-nowrap sm:gap-8 md:gap-12 border-b border-zinc-200"
+        >
+          <button class="gp-tab is-active" data-tab="today">
+            Today's Rate
+          </button>
+          <button class="gp-tab" data-tab="weekly">Weekly Chart</button>
+          <button class="gp-tab" data-tab="intl">International Rate</button>
+          <button class="gp-tab" data-tab="archive">Historical Archive</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANELS -->
+    <section class="bg-cream pb-24">
+      <div class="max-w-7xl mx-auto px-6 pt-12">
+        <!-- TODAY -->
+        <div class="gp-panel is-active" id="panel-today">
+          <div
+            class="bg-gold-soft border border-gold/30 px-6 py-5 flex flex-col md:flex-row md:items-center justify-between gap-4 text-sm mb-10"
+          >
+            <div class="flex items-center gap-3">
+              <i class="ph ph-calendar-blank text-gold text-xl"></i>
+              <span
+                class="uppercase tracking-widest text-xs font-semibold text-charcoal"
+                >Effective Date</span
+              >
+              <span class="font-serif text-lg text-charcoal"
+                >02 June, 2026</span
+              >
+            </div>
+            <a href="#" class="btn-outline inline-flex items-center gap-2"
+              ><i class="ph ph-file-pdf"></i> View Official PDF</a
+            >
+          </div>
+          <div class="mb-10">
+            <p
+              class="text-[11px] uppercase tracking-[0.3em] text-gold font-semibold mb-2"
+            >
+              Bullion Rate
+            </p>
+            <h2 class="font-serif text-3xl md:text-4xl">Gold Price</h2>
+          </div>
+          <div class="card-shadow border border-gold/30 bg-white mb-12">
+            <table class="gp-bullion-table w-full text-left">
+              <thead
+                class="bg-gold-gradient text-cream text-xs uppercase tracking-widest"
+              >
+                <tr>
+                  <th class="py-3 px-3 sm:py-5 sm:px-6 w-[34%]">Product</th>
+                  <th class="py-3 px-3 sm:py-5 sm:px-6 w-[36%]">Description</th>
+                  <th class="py-3 px-3 sm:py-5 sm:px-6 text-right w-[30%]">
+                    Price
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gold/20 text-sm">
+                <tr>
+                  <td
+                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
+                  >
+                    22 Karat Gold
+                  </td>
+                  <td
+                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
+                  >
+                    Cadmium (Hallmarked)
+                  </td>
+                  <td
+                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"
+                  >
+                    <span class="font-bangla">৳</span>20,135
+                    <span class="gp-unit text-xs text-zinc-500 font-normal"
+                      >/ gram</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
+                  >
+                    21 Karat Gold
+                  </td>
+                  <td
+                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
+                  >
+                    Cadmium (Hallmarked)
+                  </td>
+                  <td
+                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"
+                  >
+                    <span class="font-bangla">৳</span>19,220
+                    <span class="gp-unit text-xs text-zinc-500 font-normal"
+                      >/ gram</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
+                  >
+                    18 Karat Gold
+                  </td>
+                  <td
+                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
+                  >
+                    Cadmium (Hallmarked)
+                  </td>
+                  <td
+                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"
+                  >
+                    <span class="font-bangla">৳</span>16,475
+                    <span class="gp-unit text-xs text-zinc-500 font-normal"
+                      >/ gram</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
+                  >
+                    Traditional Gold
+                  </td>
+                  <td
+                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
+                  >
+                    —
+                  </td>
+                  <td
+                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"
+                  >
+                    <span class="font-bangla">৳</span>13,415
+                    <span class="gp-unit text-xs text-zinc-500 font-normal"
+                      >/ gram</span
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mb-10">
+            <p
+              class="text-[11px] uppercase tracking-[0.3em] text-gold font-semibold mb-2"
+            >
+              Bullion Rate
+            </p>
+            <h2 class="font-serif text-3xl md:text-4xl">Silver Price</h2>
+          </div>
+          <div class="card-shadow border border-zinc-200 bg-white mb-12">
+            <table class="gp-bullion-table w-full text-left">
+              <thead
+                class="bg-charcoal text-cream text-xs uppercase tracking-widest"
+              >
+                <tr>
+                  <th class="py-3 px-3 sm:py-5 sm:px-6 w-[34%]">Product</th>
+                  <th class="py-3 px-3 sm:py-5 sm:px-6 w-[36%]">Description</th>
+                  <th class="py-3 px-3 sm:py-5 sm:px-6 text-right w-[30%]">
+                    Price
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-zinc-100 text-sm">
+                <tr>
+                  <td
+                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
+                  >
+                    22 Karat Silver
+                  </td>
+                  <td
+                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
+                  >
+                    Cadmium (Hallmarked)
+                  </td>
+                  <td
+                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"
+                  >
+                    <span class="font-bangla">৳</span>485
+                    <span class="gp-unit text-xs text-zinc-500 font-normal"
+                      >/ gram</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
+                  >
+                    21 Karat Silver
+                  </td>
+                  <td
+                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
+                  >
+                    Cadmium (Hallmarked)
+                  </td>
+                  <td
+                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"
+                  >
+                    <span class="font-bangla">৳</span>460
+                    <span class="gp-unit text-xs text-zinc-500 font-normal"
+                      >/ gram</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
+                  >
+                    18 Karat Silver
+                  </td>
+                  <td
+                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
+                  >
+                    Cadmium (Hallmarked)
+                  </td>
+                  <td
+                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"
+                  >
+                    <span class="font-bangla">৳</span>395
+                    <span class="gp-unit text-xs text-zinc-500 font-normal"
+                      >/ gram</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
+                  >
+                    Traditional Silver
+                  </td>
+                  <td
+                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
+                  >
+                    —
+                  </td>
+                  <td
+                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"
+                  >
+                    <span class="font-bangla">৳</span>295
+                    <span class="gp-unit text-xs text-zinc-500 font-normal"
+                      >/ gram</span
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="bg-white border-l-4 border-gold p-8 card-shadow">
+            <p
+              class="text-[11px] uppercase tracking-[0.3em] text-gold font-semibold mb-4"
+            >
+              বাংলায় মূল্য তালিকা
+            </p>
+            <ul
+              class="font-bangla text-charcoal space-y-2 text-base leading-relaxed"
+            >
+              <li>
+                ২২ ক্যা: ক্যাডমিয়াম (হলমার্ককৃত) প্রতি গ্রাম স্বর্ণের মূল্য :
+                ২০,১৩৫/-
+              </li>
+              <li>
+                ২১ ক্যা: ক্যাডমিয়াম (হলমার্ককৃত) প্রতি গ্রাম স্বর্ণের মূল্য :
+                ১৯,২২০/-
+              </li>
+              <li>
+                ১৮ ক্যা: ক্যাডমিয়াম (হলমার্ককৃত) প্রতি গ্রাম স্বর্ণের মূল্য :
+                ১৬,৪৭৫/-
+              </li>
+              <li>সনাতন পদ্ধতি প্রতি গ্রাম স্বর্ণের মূল্য : ১৩,৪১৫/-</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- WEEKLY CHART -->
+        <div class="gp-panel" id="panel-weekly">
+          <div class="bg-white card-shadow p-8">
+            <div
+              class="flex flex-col md:flex-row md:items-end md:justify-between mb-8 gap-4"
+            >
+              <div>
+                <p
+                  class="text-[11px] uppercase tracking-[0.3em] text-gold font-semibold mb-2"
+                >
+                  Last 7 Days
+                </p>
+                <h2 class="font-serif text-3xl md:text-4xl">
+                  Weekly Price Trend
+                </h2>
+                <p class="text-sm text-zinc-500 mt-2">
+                  Per Bhori (BDT) — 22K, 21K, 18K Gold
+                </p>
+              </div>
+            </div>
+            <div style="height: 420px"><canvas id="gp-weekly"></canvas></div>
+          </div>
+        </div>
+
+        <!-- INTERNATIONAL -->
+        <div class="gp-panel" id="panel-intl">
+          <div class="mb-10">
+            <p
+              class="text-[11px] uppercase tracking-[0.3em] text-gold font-semibold mb-2"
+            >
+              Global Spot
+            </p>
+            <h2 class="font-serif text-3xl md:text-4xl">International Rate</h2>
+            <p class="text-sm text-zinc-500 mt-2">
+              Indicative spot prices per troy ounce
+            </p>
+          </div>
+          <div
+            class="overflow-x-auto card-shadow border border-zinc-200 bg-white"
+          >
+            <table class="w-full text-left">
+              <thead
+                class="bg-charcoal text-cream text-xs uppercase tracking-widest"
+              >
+                <tr>
+                  <th class="py-5 px-6">Metal</th>
+                  <th class="py-5 px-6 text-right">USD / oz</th>
+                  <th class="py-5 px-6 text-right">BDT / oz</th>
+                  <th class="py-5 px-6 text-right">Change</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-zinc-100 text-sm">
+                <tr>
+                  <td class="py-5 px-6 font-serif text-lg">Gold (XAU)</td>
+                  <td class="py-5 px-6 text-right font-semibold">$2,365.40</td>
+                  <td class="py-5 px-6 text-right font-semibold text-charcoal">
+                    <span class="font-bangla">৳</span>2,84,250
+                  </td>
+                  <td class="py-5 px-6 text-right text-emerald-600">+0.42%</td>
+                </tr>
+                <tr>
+                  <td class="py-5 px-6 font-serif text-lg">Silver (XAG)</td>
+                  <td class="py-5 px-6 text-right font-semibold">$29.85</td>
+                  <td class="py-5 px-6 text-right font-semibold text-charcoal">
+                    <span class="font-bangla">৳</span>3,587
+                  </td>
+                  <td class="py-5 px-6 text-right text-emerald-600">+0.18%</td>
+                </tr>
+                <tr>
+                  <td class="py-5 px-6 font-serif text-lg">Platinum (XPT)</td>
+                  <td class="py-5 px-6 text-right font-semibold">$1,025.10</td>
+                  <td class="py-5 px-6 text-right font-semibold text-charcoal">
+                    <span class="font-bangla">৳</span>1,23,180
+                  </td>
+                  <td class="py-5 px-6 text-right text-rose-600">-0.21%</td>
+                </tr>
+                <tr>
+                  <td class="py-5 px-6 font-serif text-lg">Palladium (XPD)</td>
+                  <td class="py-5 px-6 text-right font-semibold">$945.60</td>
+                  <td class="py-5 px-6 text-right font-semibold text-charcoal">
+                    <span class="font-bangla">৳</span>1,13,620
+                  </td>
+                  <td class="py-5 px-6 text-right text-emerald-600">+0.09%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-zinc-500 mt-4 italic">
+            Source: LBMA / international markets. Updated Jun 03, 2026 — 12:00
+            AM (GMT+6).
+          </p>
+        </div>
+
+        <!-- ARCHIVE -->
+        <div class="gp-panel" id="panel-archive">
+          <div class="grid md:grid-cols-4 gap-6 mb-8 items-end">
+            <div>
+              <label class="gp-label">From Date</label>
+              <input type="date" class="gp-input" value="2026-05-01" />
+            </div>
+            <div>
+              <label class="gp-label">To Date</label>
+              <input type="date" class="gp-input" value="2026-06-03" />
+            </div>
+            <div>
+              <label class="gp-label">Category</label>
+              <select class="gp-input">
+                <option>All Categories</option>
+                <option>22K Gold</option>
+                <option>21K Gold</option>
+                <option>18K Gold</option>
+                <option>Silver</option>
+              </select>
+            </div>
+            <button class="btn-gold">Filter</button>
+          </div>
+
+          <div
+            class="overflow-x-auto card-shadow border border-zinc-200 bg-white"
+          >
+            <table class="w-full text-left">
+              <thead
+                class="bg-charcoal text-cream text-xs uppercase tracking-widest"
+              >
+                <tr>
+                  <th class="py-5 px-6">Date</th>
+                  <th class="py-5 px-6">22K Gold (per Bhori)</th>
+                  <th class="py-5 px-6">21K Gold (per Bhori)</th>
+                  <th class="py-5 px-6">18K Gold (per Bhori)</th>
+                  <th class="py-5 px-6">Silver (per Bhori)</th>
+                  <th class="py-5 px-6">Effective From</th>
+                </tr>
+              </thead>
+              <tbody
+                id="gp-archive-rows"
+                class="divide-y divide-zinc-100 text-sm"
+              ></tbody>
+            </table>
+          </div>
+
+          <div class="flex justify-center gap-2 mt-8">
+            <button class="gp-pg is-active">1</button>
+            <button class="gp-pg">2</button>
+            <button class="gp-pg">3</button>
+            <button class="gp-pg"><i class="ph ph-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="bajus-footer"></div>
+    <script src="./js/include.js"></script>
+    <script src="./js/main.js"></script>
+    <script>
+      // Tabs
+      document.querySelectorAll(".gp-tab").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".gp-tab")
+            .forEach((b) => b.classList.remove("is-active"));
+          document
+            .querySelectorAll(".gp-panel")
+            .forEach((p) => p.classList.remove("is-active"));
+          btn.classList.add("is-active");
+          document
+            .getElementById("panel-" + btn.dataset.tab)
+            .classList.add("is-active");
+          if (btn.dataset.tab === "weekly") renderWeekly();
+        });
+      });
+
+      // Archive rows
+      const archive = [
+        ["Jun 3, 2026", "1,18,520", "1,13,160", "97,000", "1,725"],
+        ["Jun 1, 2026", "1,18,200", "1,12,855", "96,740", "1,740"],
+        ["May 28, 2026", "1,17,900", "1,12,567", "96,500", "1,760"],
+        ["May 25, 2026", "1,18,100", "1,12,750", "96,640", "1,755"],
+        ["May 20, 2026", "1,17,500", "1,12,200", "96,200", "1,750"],
+        ["May 15, 2026", "1,16,800", "1,11,534", "95,650", "1,780"],
+        ["May 10, 2026", "1,16,200", "1,10,960", "95,100", "1,800"],
+        ["May 5, 2026", "1,15,600", "1,10,385", "94,560", "1,810"],
+        ["May 1, 2026", "1,14,800", "1,09,621", "93,900", "1,825"],
+      ];
+      document.getElementById("gp-archive-rows").innerHTML = archive
+        .map(
+          (r, i) =>
+            `<tr class="hover:bg-cream-50">
+        <td class="py-5 px-6 font-serif ${i === 0 ? "font-semibold text-charcoal" : ""}">${r[0]}</td>
+        <td class="py-5 px-6"><span class="font-bangla">৳</span>${r[1]}</td>
+        <td class="py-5 px-6"><span class="font-bangla">৳</span>${r[2]}</td>
+        <td class="py-5 px-6"><span class="font-bangla">৳</span>${r[3]}</td>
+        <td class="py-5 px-6"><span class="font-bangla">৳</span>${r[4]}</td>
+        <td class="py-5 px-6 text-zinc-500">12:00 AM</td>
+      </tr>`,
+        )
+        .join("");
+
+      // Weekly chart
+      let weeklyChart;
+      function renderWeekly() {
+        if (weeklyChart) return;
+        const ctx = document.getElementById("gp-weekly");
+        if (!ctx) return;
+        weeklyChart = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: [
+              "May 28",
+              "May 29",
+              "May 30",
+              "May 31",
+              "Jun 1",
+              "Jun 2",
+              "Jun 3",
+            ],
+            datasets: [
+              {
+                label: "22K Gold",
+                data: [117900, 118000, 118150, 118100, 118200, 118400, 118520],
+                borderColor: "#b8860b",
+                backgroundColor: "rgba(184,134,11,.08)",
+                tension: 0.35,
+                fill: true,
+                borderWidth: 2,
+              },
+              {
+                label: "21K Gold",
+                data: [112567, 112650, 112720, 112800, 112855, 113000, 113160],
+                borderColor: "#1a1a1a",
+                backgroundColor: "rgba(26,26,26,.04)",
+                tension: 0.35,
+                borderWidth: 2,
+              },
+              {
+                label: "18K Gold",
+                data: [96500, 96580, 96650, 96700, 96740, 96880, 97000],
+                borderColor: "#9ca3af",
+                backgroundColor: "transparent",
+                tension: 0.35,
+                borderWidth: 2,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: "bottom",
+                labels: {
+                  font: { family: "Inter", size: 12 },
+                  color: "#1a1a1a",
+                  boxWidth: 12,
+                },
+              },
+            },
+            scales: {
+              y: {
+                ticks: {
+                  callback: (v) => "৳" + v.toLocaleString("en-IN"),
+                  color: "#71717a",
+                },
+                grid: { color: "#f4f4f5" },
+              },
+              x: { ticks: { color: "#71717a" }, grid: { display: false } },
+            },
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

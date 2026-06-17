@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>District Committee — BAJUS</title>
+  <meta name="description"
+    content="BAJUS District Committee Leaders across all districts of Bangladesh — coordinating local gold trade affairs under the central leadership." />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body>
+  <div id="bajus-header"></div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <nav class="text-[11px] uppercase tracking-widest text-zinc-400 mb-6">
+        <a href="./index.html" class="hover:text-gold">Home</a><span class="px-2">/</span>
+        <a href="./about.html" class="hover:text-gold">About</a><span class="px-2">/</span>
+        <span class="text-gold">District Committee</span>
+      </nav>
+      <div class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-4">District Representation</div>
+      <h1 class="font-serif text-4xl md:text-6xl leading-tight">District <span class="italic text-gold">Committee</span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- SUB-NAVIGATION -->
+  <div class="about-sub-nav">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="about-sub-nav__inner">
+        <a href="./about.html" class="about-sub-nav__link">About BAJUS</a>
+        <a href="./about-presidents-message.html" class="about-sub-nav__link">Chief Advisor's Message</a>
+        <a href="./about-board.html" class="about-sub-nav__link">Board of Directors</a>
+        <a href="./about-committees.html" class="about-sub-nav__link">Committees</a>
+        <a href="./about-divisional-committee.html" class="about-sub-nav__link">Divisional Committee</a>
+        <a href="./about-district-committee.html" class="about-sub-nav__link is-active">District Committee</a>
+        <a href="./about-election.html" class="about-sub-nav__link">BAJUS Election</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISTRICT REPRESENTATIVES TABLE -->
+  <section class="py-16 max-w-7xl mx-auto px-6">
+
+    <div class="mb-6">
+      <div class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-3">District Representation</div>
+      <h2 class="font-serif text-3xl mb-2">District Committee Leaders</h2>
+      <p class="text-zinc-500 text-sm mb-8">BAJUS has district committees across all 64 districts of Bangladesh,
+        coordinating local jewellery trade affairs under the guidance of the Central Committee.</p>
+    </div>
+
+    <!-- Search / Filter -->
+    <div class="mb-6 flex flex-col sm:flex-row gap-4">
+      <div class="relative flex-1">
+        <input type="text" id="dc-search"
+          class="form-input !pr-10"
+          placeholder="Search by District, Division, President, or Secretary…" />
+        <span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-zinc-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+      </div>
+      <div class="relative w-full sm:w-56">
+        <select id="dc-division-filter" class="form-input w-full appearance-none !pr-10">
+          <option value="">All Divisions</option>
+          <option value="Dhaka">Dhaka Division</option>
+          <option value="Chattogram">Chattogram Division</option>
+          <option value="Rajshahi">Rajshahi Division</option>
+          <option value="Khulna">Khulna Division</option>
+          <option value="Barishal">Barishal Division</option>
+          <option value="Sylhet">Sylhet Division</option>
+          <option value="Rangpur">Rangpur Division</option>
+          <option value="Mymensingh">Mymensingh Division</option>
+        </select>
+        <span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-zinc-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <table class="data-table" id="dc-table">
+        <thead>
+          <tr>
+            <th class="w-[22%]">District</th>
+            <th class="w-[22%]">Division</th>
+            <th class="w-[28%]">President</th>
+            <th class="w-[28%]">General Secretary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Dhaka Division -->
+          <tr data-division="Dhaka">
+            <td>Dhaka</td>
+            <td>Dhaka</td>
+            <td>Md. Aslam Khan</td>
+            <td>Md. Jahangir Alam</td>
+          </tr>
+          <tr data-division="Dhaka">
+            <td>Gazipur</td>
+            <td>Dhaka</td>
+            <td>Md. Masud Rana</td>
+            <td>Md. Kamrul Islam</td>
+          </tr>
+          <tr data-division="Dhaka">
+            <td>Narayanganj</td>
+            <td>Dhaka</td>
+            <td>Md. Shah Alam</td>
+            <td>Md. Ripon Mia</td>
+          </tr>
+          <tr data-division="Dhaka">
+            <td>Narsingdi</td>
+            <td>Dhaka</td>
+            <td>Md. Abul Kalam Azad</td>
+            <td>Md. Shahidul Islam</td>
+          </tr>
+          <tr data-division="Dhaka">
+            <td>Manikganj</td>
+            <td>Dhaka</td>
+            <td>Md. Mojibur Rahman</td>
+            <td>Md. Nazrul Islam</td>
+          </tr>
+          <tr data-division="Dhaka">
+            <td>Munshiganj</td>
+            <td>Dhaka</td>
+            <td>Md. Selim Reza</td>
+            <td>Md. Faruk Hossain</td>
+          </tr>
+          <tr data-division="Dhaka">
+            <td>Kishoreganj</td>
+            <td>Dhaka</td>
+            <td>Md. Abdur Rahim</td>
+            <td>Md. Zakir Hossain</td>
+          </tr>
+          <tr data-division="Dhaka">
+            <td>Tangail</td>
+            <td>Dhaka</td>
+            <td>Md. Badrul Alam</td>
+            <td>Md. Mazharul Islam</td>
+          </tr>
+          <tr data-division="Dhaka">
+            <td>Faridpur</td>
+            <td>Dhaka</td>
+            <td>Md. Shamsul Hoque</td>
+            <td>Md. Anwarul Islam</td>
+          </tr>
+          <tr data-division="Dhaka">
+            <td>Rajbari</td>
+            <td>Dhaka</td>
+            <td>Md. Habibur Rahman</td>
+            <td>Md. Jalal Uddin</td>
+          </tr>
+          <tr data-division="Dhaka">
+            <td>Madaripur</td>
+            <td>Dhaka</td>
+            <td>Md. Rafiqul Islam</td>
+            <td>Md. Khairul Alam</td>
+          </tr>
+          <tr data-division="Dhaka">
+            <td>Gopalganj</td>
+            <td>Dhaka</td>
+            <td>Md. Shafiqul Islam</td>
+            <td>Md. Moklasur Rahman</td>
+          </tr>
+          <tr data-division="Dhaka">
+            <td>Shariatpur</td>
+            <td>Dhaka</td>
+            <td>Md. Mizan Sarkar</td>
+            <td>Md. Shamsul Alam</td>
+          </tr>
+          <!-- Chattogram Division -->
+          <tr data-division="Chattogram">
+            <td>Chattogram</td>
+            <td>Chattogram</td>
+            <td>Jishu Banik</td>
+            <td>Pranab Saha</td>
+          </tr>
+          <tr data-division="Chattogram">
+            <td>Cox's Bazar</td>
+            <td>Chattogram</td>
+            <td>Md. Yusuf Ali</td>
+            <td>Md. Ibrahim Khalil</td>
+          </tr>
+          <tr data-division="Chattogram">
+            <td>Feni</td>
+            <td>Chattogram</td>
+            <td>Md. Anwar Hossain</td>
+            <td>Md. Shahadat Hossain</td>
+          </tr>
+          <tr data-division="Chattogram">
+            <td>Noakhali</td>
+            <td>Chattogram</td>
+            <td>Md. Abdul Hakim</td>
+            <td>Md. Nurul Huda</td>
+          </tr>
+          <tr data-division="Chattogram">
+            <td>Lakshmipur</td>
+            <td>Chattogram</td>
+            <td>Md. Saidul Islam</td>
+            <td>Md. Kamal Uddin</td>
+          </tr>
+          <tr data-division="Chattogram">
+            <td>Comilla</td>
+            <td>Chattogram</td>
+            <td>Md. Enamul Hoque</td>
+            <td>Md. Jahirul Islam</td>
+          </tr>
+          <tr data-division="Chattogram">
+            <td>Chandpur</td>
+            <td>Chattogram</td>
+            <td>Md. Abul Hossain</td>
+            <td>Md. Nuruzzaman</td>
+          </tr>
+          <tr data-division="Chattogram">
+            <td>Brahmanbaria</td>
+            <td>Chattogram</td>
+            <td>Md. Harunur Rashid</td>
+            <td>Md. Sirajul Islam</td>
+          </tr>
+          <tr data-division="Chattogram">
+            <td>Rangamati</td>
+            <td>Chattogram</td>
+            <td>Md. Abul Khair</td>
+            <td>Md. Yunus Ali</td>
+          </tr>
+          <tr data-division="Chattogram">
+            <td>Khagrachhari</td>
+            <td>Chattogram</td>
+            <td>Md. Jamal Uddin</td>
+            <td>Md. Aslam Bhuiyan</td>
+          </tr>
+          <tr data-division="Chattogram">
+            <td>Bandarban</td>
+            <td>Chattogram</td>
+            <td>Md. Rezaul Hoque</td>
+            <td>Md. Bahauddin</td>
+          </tr>
+          <!-- Rajshahi Division -->
+          <tr data-division="Rajshahi">
+            <td>Rajshahi</td>
+            <td>Rajshahi</td>
+            <td>Md. Sadequl Islam</td>
+            <td>Md. Mizanur Rahman</td>
+          </tr>
+          <tr data-division="Rajshahi">
+            <td>Bogura</td>
+            <td>Rajshahi</td>
+            <td>Md. Abdul Latif</td>
+            <td>Md. Shahinur Islam</td>
+          </tr>
+          <tr data-division="Rajshahi">
+            <td>Chapai Nawabganj</td>
+            <td>Rajshahi</td>
+            <td>Md. Babul Hossain</td>
+            <td>Md. Aminur Rahman</td>
+          </tr>
+          <tr data-division="Rajshahi">
+            <td>Naogaon</td>
+            <td>Rajshahi</td>
+            <td>Md. Harun-or-Rashid</td>
+            <td>Md. Shaijuddin</td>
+          </tr>
+          <tr data-division="Rajshahi">
+            <td>Natore</td>
+            <td>Rajshahi</td>
+            <td>Md. Sirajul Islam</td>
+            <td>Md. Liton Kumar</td>
+          </tr>
+          <tr data-division="Rajshahi">
+            <td>Pabna</td>
+            <td>Rajshahi</td>
+            <td>Md. Golam Mostafa</td>
+            <td>Md. Abul Basar</td>
+          </tr>
+          <tr data-division="Rajshahi">
+            <td>Sirajganj</td>
+            <td>Rajshahi</td>
+            <td>Md. Faruk Ahmed</td>
+            <td>Md. Shahidul Haq</td>
+          </tr>
+          <tr data-division="Rajshahi">
+            <td>Joypurhat</td>
+            <td>Rajshahi</td>
+            <td>Md. Mozammel Haque</td>
+            <td>Md. Mahbub Alam</td>
+          </tr>
+          <!-- Khulna Division -->
+          <tr data-division="Khulna">
+            <td>Khulna</td>
+            <td>Khulna</td>
+            <td>Md. Harun-ur-Rashid</td>
+            <td>Md. Aminul Islam</td>
+          </tr>
+          <tr data-division="Khulna">
+            <td>Jessore</td>
+            <td>Khulna</td>
+            <td>Md. Salim Reza</td>
+            <td>Md. Zulfikar Ali</td>
+          </tr>
+          <tr data-division="Khulna">
+            <td>Bagerhat</td>
+            <td>Khulna</td>
+            <td>Shyamal Kumar Sarkar</td>
+            <td>Niloy Kumar Bhadra</td>
+          </tr>
+          <tr data-division="Khulna">
+            <td>Satkhira</td>
+            <td>Khulna</td>
+            <td>Md. Nurul Islam</td>
+            <td>Md. Yousuf Ali</td>
+          </tr>
+          <tr data-division="Khulna">
+            <td>Narail</td>
+            <td>Khulna</td>
+            <td>Md. Abdur Rahman</td>
+            <td>Md. Anisur Rahman</td>
+          </tr>
+          <tr data-division="Khulna">
+            <td>Magura</td>
+            <td>Khulna</td>
+            <td>Md. Shahidul Islam</td>
+            <td>Md. Belal Hossain</td>
+          </tr>
+          <tr data-division="Khulna">
+            <td>Jhenaidah</td>
+            <td>Khulna</td>
+            <td>Md. Rezaul Islam</td>
+            <td>Md. Habibur Rahman</td>
+          </tr>
+          <tr data-division="Khulna">
+            <td>Kushtia</td>
+            <td>Khulna</td>
+            <td>Md. Toufiqur Rahman</td>
+            <td>Md. Abdul Baset</td>
+          </tr>
+          <tr data-division="Khulna">
+            <td>Chuadanga</td>
+            <td>Khulna</td>
+            <td>Md. Lutfor Rahman</td>
+            <td>Md. Mahmudul Hasan</td>
+          </tr>
+          <tr data-division="Khulna">
+            <td>Meherpur</td>
+            <td>Khulna</td>
+            <td>Md. Enamul Haque</td>
+            <td>Md. Delwar Hossain</td>
+          </tr>
+          <!-- Barishal Division -->
+          <tr data-division="Barishal">
+            <td>Barishal</td>
+            <td>Barishal</td>
+            <td>Md. Jalal Uddin</td>
+            <td>Md. Abul Kalam</td>
+          </tr>
+          <tr data-division="Barishal">
+            <td>Barguna</td>
+            <td>Barishal</td>
+            <td>Md. Hasanuzzaman</td>
+            <td>Md. Nazrul Islam</td>
+          </tr>
+          <tr data-division="Barishal">
+            <td>Bhola</td>
+            <td>Barishal</td>
+            <td>Md. Kamal Hossain</td>
+            <td>Md. Shamsul Alam</td>
+          </tr>
+          <tr data-division="Barishal">
+            <td>Jhalokati</td>
+            <td>Barishal</td>
+            <td>Md. Abdul Mannan</td>
+            <td>Md. Khairul Bashar</td>
+          </tr>
+          <tr data-division="Barishal">
+            <td>Patuakhali</td>
+            <td>Barishal</td>
+            <td>Md. Harunur Rashid</td>
+            <td>Md. Alimur Rahman</td>
+          </tr>
+          <tr data-division="Barishal">
+            <td>Pirojpur</td>
+            <td>Barishal</td>
+            <td>Md. Abdus Salam</td>
+            <td>Md. Shafiqul Islam</td>
+          </tr>
+          <!-- Sylhet Division -->
+          <tr data-division="Sylhet">
+            <td>Sylhet</td>
+            <td>Sylhet</td>
+            <td>Md. Mahbubur Rahman</td>
+            <td>Md. Joynal Abedin</td>
+          </tr>
+          <tr data-division="Sylhet">
+            <td>Habiganj</td>
+            <td>Sylhet</td>
+            <td>Md. Nurul Amin</td>
+            <td>Md. Shamsuddin</td>
+          </tr>
+          <tr data-division="Sylhet">
+            <td>Moulvibazar</td>
+            <td>Sylhet</td>
+            <td>Md. Golam Kibria</td>
+            <td>Md. Syed Ali</td>
+          </tr>
+          <tr data-division="Sylhet">
+            <td>Sunamganj</td>
+            <td>Sylhet</td>
+            <td>Md. Faruque Ahmed</td>
+            <td>Md. Wahidur Rahman</td>
+          </tr>
+          <!-- Rangpur Division -->
+          <tr data-division="Rangpur">
+            <td>Rangpur</td>
+            <td>Rangpur</td>
+            <td>Md. Moktar Hossain</td>
+            <td>Md. Rafiqul Islam</td>
+          </tr>
+          <tr data-division="Rangpur">
+            <td>Dinajpur</td>
+            <td>Rangpur</td>
+            <td>Md. Sirajul Haq</td>
+            <td>Md. Jahangir Alam</td>
+          </tr>
+          <tr data-division="Rangpur">
+            <td>Thakurgaon</td>
+            <td>Rangpur</td>
+            <td>Md. Abdur Razzaq</td>
+            <td>Md. Monirul Islam</td>
+          </tr>
+          <tr data-division="Rangpur">
+            <td>Panchagarh</td>
+            <td>Rangpur</td>
+            <td>Md. Nurul Islam</td>
+            <td>Md. Shahidul Islam</td>
+          </tr>
+          <tr data-division="Rangpur">
+            <td>Nilphamari</td>
+            <td>Rangpur</td>
+            <td>Md. Abdus Satter</td>
+            <td>Md. Enamul Haq</td>
+          </tr>
+          <tr data-division="Rangpur">
+            <td>Lalmonirhat</td>
+            <td>Rangpur</td>
+            <td>Md. Nurul Huda</td>
+            <td>Md. Ramiz Uddin</td>
+          </tr>
+          <tr data-division="Rangpur">
+            <td>Kurigram</td>
+            <td>Rangpur</td>
+            <td>Md. Amirul Islam</td>
+            <td>Md. Shamsul Huda</td>
+          </tr>
+          <tr data-division="Rangpur">
+            <td>Gaibandha</td>
+            <td>Rangpur</td>
+            <td>Md. Khalilur Rahman</td>
+            <td>Md. Mozibur Rahman</td>
+          </tr>
+          <!-- Mymensingh Division -->
+          <tr data-division="Mymensingh">
+            <td>Mymensingh</td>
+            <td>Mymensingh</td>
+            <td>Md. Rezaul Karim</td>
+            <td>Md. Mostafa Kamal</td>
+          </tr>
+          <tr data-division="Mymensingh">
+            <td>Jamalpur</td>
+            <td>Mymensingh</td>
+            <td>Md. Saiful Islam</td>
+            <td>Md. Lokman Hossain</td>
+          </tr>
+          <tr data-division="Mymensingh">
+            <td>Netrokona</td>
+            <td>Mymensingh</td>
+            <td>Md. Abdur Rob</td>
+            <td>Md. Shahidul Haq</td>
+          </tr>
+          <tr data-division="Mymensingh">
+            <td>Sherpur</td>
+            <td>Mymensingh</td>
+            <td>Md. Nuruzzaman</td>
+            <td>Md. Ahsanul Kabir</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="dc-no-results" class="hidden py-12 text-center text-zinc-500">
+      No districts match your search.
+    </div>
+
+  </section>
+
+  <div id="bajus-footer"></div>
+  <script src="./js/include.js"></script>
+  <script src="./js/main.js"></script>
+  <script>
+    // Search & Filter
+    const searchInput = document.getElementById('dc-search');
+    const divisionSelect = document.getElementById('dc-division-filter');
+    const rows = document.querySelectorAll('#dc-table tbody tr');
+    const noResults = document.getElementById('dc-no-results');
+
+    function filterTable() {
+      const q = searchInput.value.toLowerCase().trim();
+      const div = divisionSelect.value;
+      let visible = 0;
+      rows.forEach(row => {
+        const rowText = row.textContent.toLowerCase();
+        const rowDiv = row.dataset.division || '';
+        const matchSearch = !q || rowText.includes(q);
+        const matchDiv = !div || rowDiv === div;
+        if (matchSearch && matchDiv) {
+          row.style.display = '';
+          visible++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+      noResults.classList.toggle('hidden', visible > 0);
+    }
+
+    searchInput.addEventListener('input', filterTable);
+    divisionSelect.addEventListener('change', filterTable);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — BAJUS</title>
+  <meta name="description" content="Contact the Bangladesh Jewellers' Association — headquarters address, phone, email, and inquiry form." />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <div id="bajus-header"></div>
+
+  <section class="page-hero py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <nav class="text-[11px] uppercase tracking-widest text-zinc-400 mb-6">
+        <a href="./index.html" class="hover:text-gold">Home</a><span class="px-2">/</span><span class="text-gold">Contact</span>
+      </nav>
+      <h1 class="font-serif text-4xl md:text-6xl leading-tight max-w-3xl">Get in <span class="italic text-gold">touch</span>.</h1>
+      <p class="mt-6 text-lg text-zinc-300 max-w-2xl leading-relaxed">Whether you are an existing member, a prospective applicant, a journalist, or an industry partner — we would be glad to hear from you.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT GRID -->
+  <section class="py-24 max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-4 space-y-10">
+        <div>
+          <h2 class="font-serif text-2xl mb-3">Head Office</h2>
+          <p class="text-zinc-600 leading-relaxed">Baitul Mukarram (South side), 4th floor<br/>Dhaka – 1000, Bangladesh</p>
+        </div>
+        <div>
+          <h3 class="text-[11px] uppercase tracking-widest text-gold font-bold mb-2">Phone</h3>
+          <p class="text-zinc-700">+880 2 8159193</p>
+          <p class="text-zinc-700">+880 1700 000 000</p>
+        </div>
+        <div>
+          <h3 class="text-[11px] uppercase tracking-widest text-gold font-bold mb-2">Email</h3>
+          <p class="text-zinc-700">info@bajus.org.bd</p>
+          <p class="text-zinc-700">membership@bajus.org.bd</p>
+        </div>
+        <div>
+          <h3 class="text-[11px] uppercase tracking-widest text-gold font-bold mb-2">Office Hours</h3>
+          <p class="text-zinc-700">Sunday – Thursday<br/>10:00 AM – 6:00 PM</p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8">
+        <h2 class="font-serif text-2xl mb-8">Send Us a Message</h2>
+        <form class="space-y-6" onsubmit="event.preventDefault(); alert('Thank you. Your message has been received.');">
+          <div class="grid md:grid-cols-2 gap-5">
+            <div>
+              <label class="form-label">Full Name</label>
+              <input class="form-input" type="text" required />
+            </div>
+            <div>
+              <label class="form-label">Email</label>
+              <input class="form-input" type="email" required />
+            </div>
+            <div>
+              <label class="form-label">Phone</label>
+              <input class="form-input" type="tel" />
+            </div>
+            <div>
+              <label class="form-label">Subject</label>
+              <div class="relative w-full">
+                <select class="form-input appearance-none !pr-10">
+                  <option>Membership inquiry</option>
+                  <option>Press / Media</option>
+                  <option>Hallmark certification</option>
+                  <option>Event participation</option>
+                  <option>Other</option>
+                </select>
+                <span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-zinc-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label class="form-label">Message</label>
+            <textarea class="form-input" rows="6" required></textarea>
+          </div>
+          <button class="btn-gold" type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP placeholder -->
+  <section class="bg-zinc-100 border-t border-zinc-200">
+    <div class="aspect-[21/9] bg-zinc-200 grid place-items-center">
+      <iframe
+        src="https://www.openstreetmap.org/export/embed.html?bbox=90.4108%2C23.7281%2C90.4148%2C23.7321&layer=mapnik&marker=23.7301%2C90.4128"
+        class="w-full h-full border-0" loading="lazy" title="BAJUS Head Office Map"></iframe>
+    </div>
+  </section>
+
+  <div id="bajus-footer"></div>
+  <script src="./js/include.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
