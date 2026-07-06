@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Membership Renewal — BAJUS Portal</title>
+  <meta name="description" content="Renew your BAJUS store membership for multiple months or years with instant certificate extension." />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
+  <style>
+    .duration-tile.active,
+    .custom-month-tile.active {
+      border-color: #b8860b;
+      background-color: rgba(184, 134, 11, 0.04);
+      box-shadow: 0 0 0 1px #b8860b;
+    }
+    .payment-tile.active {
+      border-color: #b8860b;
+      background-color: rgba(184, 134, 11, 0.04);
+    }
+  </style>
+</head>
+
+<body class="bg-cream text-charcoal min-h-screen flex flex-col font-sans">
+  <!-- DASHBOARD TOP HEADER -->
+  <header class="bg-zinc-950 text-cream border-b border-zinc-800 sticky top-0 z-40">
+    <div class="w-full px-6 md:px-12 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="./assets/logo.png" alt="BAJUS" class="h-8 md:h-9 w-auto brightness-0 invert opacity-90" />
+        <span class="text-[16px] tracking-[0.2em] font-semibold uppercase text-gold border-l border-zinc-700 pl-3 hidden sm:inline-block">Member Portal</span>
+      </a>
+      <div class="flex items-center gap-5 sm:gap-7">
+        <!-- Notifications Bell -->
+        <div class="relative group cursor-pointer">
+          <div class="relative text-zinc-400 hover:text-gold transition-colors p-1">
+            <i class="ph ph-bell text-xl"></i>
+            <span class="absolute top-0 right-0 flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500 border border-zinc-950"></span>
+            </span>
+          </div>
+          <div class="absolute right-0 mt-3 w-72 bg-zinc-900 border border-zinc-800 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 rounded-sm overflow-hidden before:content-[''] before:absolute before:-top-4 before:right-0 before:h-4 before:w-full">
+            <div class="px-4 py-3 border-b border-zinc-800 flex justify-between items-center bg-zinc-950/50">
+              <h3 class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest">Notifications</h3>
+              <span class="text-[9px] font-bold bg-gold/10 text-gold px-2 py-0.5 rounded-full">2 New</span>
+            </div>
+            <div class="max-h-[300px] overflow-y-auto custom-scrollbar">
+              <a href="dashboard-notifications.html" class="block px-4 py-3.5 hover:bg-zinc-800/50 transition-colors border-b border-zinc-800/50 relative group/item">
+                <span class="absolute left-0 top-0 h-full w-0.5 bg-gold"></span>
+                <div class="text-[11px] font-semibold text-zinc-200 mb-1 group-hover/item:text-gold transition-colors">Membership Renewed</div>
+                <div class="text-[10px] text-zinc-400 leading-snug">Your BAJUS membership for 2026 has been successfully renewed.</div>
+                <div class="text-[9px] text-zinc-500 mt-2 uppercase tracking-wider font-medium flex items-center gap-1.5"><i class="ph ph-clock"></i> 2 hrs ago</div>
+              </a>
+              <a href="dashboard-notifications.html" class="block px-4 py-3.5 hover:bg-zinc-800/50 transition-colors border-b border-zinc-800/50 relative group/item">
+                <span class="absolute left-0 top-0 h-full w-0.5 bg-gold"></span>
+                <div class="text-[11px] font-semibold text-zinc-200 mb-1 group-hover/item:text-gold transition-colors">New Event: Dhaka Expo</div>
+                <div class="text-[10px] text-zinc-400 leading-snug">Stall bookings are now open for the upcoming Jewellery Expo.</div>
+                <div class="text-[9px] text-zinc-500 mt-2 uppercase tracking-wider font-medium flex items-center gap-1.5"><i class="ph ph-clock"></i> Yesterday</div>
+              </a>
+            </div>
+            <a href="dashboard-notifications.html" class="block px-4 py-3 bg-zinc-950 hover:bg-zinc-800 text-center text-[10px] font-bold text-gold uppercase tracking-widest transition-colors border-t border-zinc-800">View All Notifications</a>
+          </div>
+        </div>
+        <!-- User Dropdown -->
+        <div class="relative group cursor-pointer">
+          <div class="flex items-center gap-3 bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-colors py-1.5 px-3 rounded-full">
+            <div class="size-7 bg-gold text-zinc-950 text-xs font-bold rounded-full flex items-center justify-center">MA</div>
+            <div class="text-left hidden xs:block">
+              <div class="text-[11px] font-semibold text-zinc-200 leading-tight">Md. Alamgir</div>
+              <div class="text-[9px] text-zinc-500 uppercase tracking-wider font-medium">Owner Account</div>
+            </div>
+            <i class="ph ph-caret-down text-zinc-400 text-xs pl-1"></i>
+          </div>
+          <div class="absolute right-0 mt-2 w-48 bg-zinc-900 border border-zinc-800 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="py-2">
+              <a href="index.html" class="flex items-center gap-3 px-4 py-2.5 text-xs text-zinc-400 hover:text-gold hover:bg-zinc-800/50 transition-colors"><i class="ph ph-house text-sm"></i><span>Return to Site</span></a>
+              <a href="login.html" class="flex items-center gap-3 px-4 py-2.5 text-xs text-zinc-400 hover:text-gold hover:bg-zinc-800/50 transition-colors"><i class="ph ph-sign-out text-sm"></i><span>Log Out</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="flex-1 w-full flex flex-col md:flex-row">
+    <!-- SIDEBAR -->
+    <aside class="w-full md:w-64 flex-shrink-0 bg-white border-r border-zinc-200 p-6 flex flex-col gap-8 md:min-h-[calc(100vh-64px)]">
+      <div class="space-y-6">
+        <div>
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Main Directory</div>
+          <nav class="space-y-1">
+            <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-gauge text-base"></i> Overview</a>
+            <a href="dashboard-stores.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-gold bg-gold-soft rounded-sm transition-all"><i class="ph ph-storefront text-base"></i> My Stores</a>
+            <a href="dashboard-payments.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-receipt text-base"></i> Payment History</a>
+            <a href="dashboard-documents.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-folder-open text-base"></i> My Documents</a>
+            <a href="dashboard-events.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-calendar text-base"></i> Events</a>
+            <a href="dashboard-meeting.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-presentation text-base"></i> Meeting</a>
+          </nav>
+        </div>
+        <div>
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">HR Portal</div>
+          <nav class="space-y-1">
+            <a href="dashboard-attendance.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-fingerprint text-base"></i> Attendance</a>
+            <a href="dashboard-leave-management.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-list-checks text-base"></i> Leave Management</a>
+          </nav>
+        </div>
+        <div>
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Settings &amp; Security</div>
+          <nav class="space-y-1">
+            <a href="dashboard-profile.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-user-circle-gear text-base"></i> Profile</a>
+            <a href="dashboard-notifications.html" class="flex items-center justify-between px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all">
+              <span class="flex items-center gap-3"><i class="ph ph-bell text-base"></i> Notifications</span>
+              <span class="bg-red-500 text-cream text-[9px] font-bold px-2 py-0.5 rounded-full">2</span>
+            </a>
+          </nav>
+        </div>
+        <div class="pt-4 border-t border-zinc-100">
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Quick Navigation</div>
+          <nav class="space-y-1">
+            <a href="gold-price.html" class="flex items-center gap-3 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold transition-colors"><i class="ph ph-chart-line text-sm"></i> Gold Rates</a>
+            <a href="notice.html" class="flex items-center gap-3 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold transition-colors"><i class="ph ph-info text-sm"></i> Notices &amp; Circulars</a>
+          </nav>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 min-w-0 bg-cream p-6 md:p-12 space-y-8">
+      <!-- HEADER -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-zinc-150">
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-zinc-400 mb-2 font-semibold">
+            <a href="dashboard-stores.html" class="hover:text-gold transition-colors">My Stores</a> <span class="px-1">/</span> <span class="text-gold">Membership Renewal</span>
+          </div>
+          <h1 class="font-serif text-2xl md:text-3xl text-charcoal">Store Membership <span class="text-gold italic font-medium">Renewal</span></h1>
+          <p class="text-xs text-zinc-500 mt-1">Extend your store registration for multiple months or years with instant certificate activation.</p>
+        </div>
+        <a href="dashboard-stores.html" class="px-4 py-2 border border-zinc-200 hover:border-gold hover:text-gold text-xs font-semibold uppercase tracking-wider transition-all inline-flex items-center gap-1.5 bg-white shadow-sm">
+          <i class="ph ph-arrow-left text-sm"></i> Back to Stores
+        </a>
+      </div>
+
+      <!-- RENEWAL FORM LAYOUT -->
+      <form id="renewal-form" class="grid lg:grid-cols-12 gap-8" onsubmit="handleRenewalSubmit(event)">
+        <!-- LEFT COLUMN: Store Selection & Duration -->
+        <div class="lg:col-span-8 space-y-8">
+          
+          <!-- STEP 1: STORE INFORMATION -->
+          <div class="bg-white p-6 md:p-8 border border-zinc-200 rounded-sm shadow-sm space-y-6">
+            <div class="flex items-center justify-between pb-4 border-b border-zinc-100">
+              <h2 class="font-serif text-xl font-bold text-charcoal">
+                Store Information
+              </h2>
+              <a href="dashboard-stores.html" class="text-xs text-gold hover:underline flex items-center gap-1"><i class="ph ph-swap text-sm"></i> Change Store</a>
+            </div>
+
+            <div class="border border-gold/40 bg-gold/[0.03] p-5 rounded-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div>
+                <div class="flex items-center gap-2.5 flex-wrap">
+                  <span class="font-serif text-lg font-bold text-charcoal" id="top-store-name">Alam Gold House</span>
+                  <span id="top-store-status" class="text-[10px] bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Active</span>
+                </div>
+                <div class="text-xs text-zinc-500 mt-1.5 flex flex-wrap items-center gap-2">
+                  <span>Membership ID: <strong class="text-charcoal" id="top-store-id">BAJUS-DH-001247</strong></span>
+                  <span class="text-zinc-300 hidden sm:inline">|</span>
+                  <span>Trade License: <strong class="text-charcoal" id="top-store-tl">TL-DH-2024-094512</strong></span>
+                </div>
+              </div>
+              <div class="bg-white px-4 py-2.5 rounded-sm border border-zinc-200 text-right sm:text-left w-full sm:w-auto flex sm:flex-col justify-between sm:justify-start items-center sm:items-start">
+                <div class="text-[10px] uppercase tracking-wider text-zinc-400 font-bold">Current Expiry Date</div>
+                <div class="text-sm font-bold text-charcoal sm:mt-0.5" id="top-store-expiry">Dec 31, 2026</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: DURATION SELECTION -->
+          <div class="bg-white p-6 md:p-8 border border-zinc-200 rounded-sm shadow-sm space-y-6">
+            <div class="pb-4 border-b border-zinc-100">
+              <h2 class="font-serif text-xl font-bold text-charcoal">
+                Select Renewal Duration
+              </h2>
+              <p class="text-xs text-zinc-500 mt-1">Choose how many months or years you wish to extend your membership certificate.</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <!-- Tile 1 Month -->
+              <div class="border border-zinc-200 p-4 rounded-sm cursor-pointer transition-all duration-tile" onclick="selectDuration(1, this)">
+                <div class="text-[11px] uppercase tracking-wider text-zinc-400 font-bold">Current Month</div>
+                <div class="font-serif text-lg font-bold text-charcoal mt-1">1 Month</div>
+                <div class="text-xs text-gold font-bold mt-2">৳400</div>
+              </div>
+
+              <!-- Tile 3 Months -->
+              <div class="border border-zinc-200 p-4 rounded-sm cursor-pointer transition-all duration-tile" onclick="selectDuration(3, this)">
+                <div class="text-[11px] uppercase tracking-wider text-zinc-400 font-bold">Quarterly</div>
+                <div class="font-serif text-lg font-bold text-charcoal mt-1">3 Months</div>
+                <div class="text-xs text-gold font-bold mt-2">৳1,200</div>
+              </div>
+
+              <!-- Tile 6 Months -->
+              <div class="border border-zinc-200 p-4 rounded-sm cursor-pointer transition-all duration-tile" onclick="selectDuration(6, this)">
+                <div class="text-[11px] uppercase tracking-wider text-zinc-400 font-bold">Half-Yearly</div>
+                <div class="font-serif text-lg font-bold text-charcoal mt-1">6 Months</div>
+                <div class="text-xs text-gold font-bold mt-2">৳2,400</div>
+              </div>
+
+              <!-- Tile 1 Year (12 Months) -->
+              <div class="border border-gold p-4 rounded-sm cursor-pointer transition-all duration-tile active relative bg-gold/[0.04]" data-duration="12" onclick="selectDuration(12, this)">
+                <span class="absolute -top-2 right-2 bg-gold text-zinc-950 text-[8px] font-bold px-1.5 py-0.5 rounded-sm uppercase tracking-widest">Recommended</span>
+                <div class="text-[11px] uppercase tracking-wider text-gold font-bold">Annual</div>
+                <div class="font-serif text-lg font-bold text-charcoal mt-1">1 Year</div>
+                <div class="text-xs text-gold font-bold mt-2">৳4,800</div>
+              </div>
+
+              <!-- Tile 2 Years (24 Months) -->
+              <div class="border border-zinc-200 p-4 rounded-sm cursor-pointer transition-all duration-tile" onclick="selectDuration(24, this)">
+                <div class="text-[11px] uppercase tracking-wider text-zinc-400 font-bold">Multi-Year</div>
+                <div class="font-serif text-lg font-bold text-charcoal mt-1">2 Years</div>
+                <div class="text-xs text-gold font-bold mt-2">৳9,600</div>
+              </div>
+
+              <!-- Tile 3 Years (36 Months) -->
+              <div class="border border-zinc-200 p-4 rounded-sm cursor-pointer transition-all duration-tile" onclick="selectDuration(36, this)">
+                <div class="text-[11px] uppercase tracking-wider text-zinc-400 font-bold">Long Term</div>
+                <div class="font-serif text-lg font-bold text-charcoal mt-1">3 Years</div>
+                <div class="text-xs text-gold font-bold mt-2">৳14,400</div>
+              </div>
+            </div>
+
+            <!-- Custom Month Selection -->
+            <div class="pt-4 border-t border-zinc-100 space-y-4">
+              <div>
+                <div class="flex flex-wrap items-center gap-2 mb-1">
+                  <label class="text-xs font-bold text-charcoal uppercase tracking-wider">Or Select Target Months</label>
+                  <span class="text-[9px] font-bold uppercase tracking-widest bg-gold/10 text-gold border border-gold/30 px-2 py-0.5 rounded-sm">Multi Select</span>
+                </div>
+                <span class="text-[11px] text-zinc-400">Select one or more months — 6 options starting from the month after your current expiry</span>
+              </div>
+              <div id="custom-month-options" class="grid grid-cols-6 gap-2 sm:gap-3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Order Summary & Checkout -->
+        <div class="lg:col-span-4 space-y-6">
+          <div class="bg-white p-6 md:p-8 border border-zinc-200 rounded-sm shadow-sm sticky top-24 space-y-6">
+            <h3 class="font-serif text-xl font-bold text-charcoal pb-4 border-b border-zinc-100">Renewal Summary</h3>
+
+            <div class="space-y-4 text-xs">
+              <div class="flex justify-between items-center">
+                <span class="text-zinc-400 font-medium">Store Name</span>
+                <strong class="text-charcoal font-semibold text-right" id="sum-store-name">Alam Gold House</strong>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-zinc-400 font-medium">Current Expiry</span>
+                <strong class="text-charcoal font-semibold" id="sum-curr-expiry">Dec 31, 2026</strong>
+              </div>
+              <div class="flex justify-between items-center bg-gold/[0.05] p-2.5 rounded-sm border border-gold/20">
+                <span class="text-gold font-bold">New Expiry Date</span>
+                <strong class="text-gold font-bold text-sm" id="sum-new-expiry">Dec 31, 2027</strong>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-zinc-100 space-y-3 text-xs">
+              <div class="flex justify-between items-center">
+                <span class="text-zinc-500">Renewal Duration</span>
+                <strong class="text-charcoal font-semibold" id="sum-duration">12 Months (1 Year)</strong>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-zinc-500">Rate per Month</span>
+                <span class="text-charcoal font-medium">৳400</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-zinc-500">Base Fee</span>
+                <strong class="text-charcoal font-semibold" id="sum-base-fee">৳4,800</strong>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-zinc-500">VAT / Tax (5%)</span>
+                <span class="text-charcoal font-medium" id="sum-vat">৳240</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-zinc-200 flex justify-between items-baseline">
+              <div>
+                <span class="text-xs font-bold text-charcoal block uppercase tracking-wider">Total Payable</span>
+                <span class="text-[10px] text-zinc-400">Includes all taxes</span>
+              </div>
+              <span class="font-serif text-2xl font-bold text-gold" id="sum-total">৳5,040</span>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="w-full py-4 bg-gold hover:bg-[#a3760a] text-cream text-xs font-bold uppercase tracking-widest transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+              <i class="ph ph-lock text-base"></i> Confirm &amp; Pay Now
+            </button>
+
+            <div class="text-center">
+              <span class="text-[11px] text-zinc-400 flex items-center justify-center gap-1.5">
+                <i class="ph ph-shield-check text-green-600 text-sm"></i> Secure 256-bit SSL Encrypted Payment
+              </span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <!-- SUCCESS MODAL -->
+  <div id="success-modal" class="fixed inset-0 bg-zinc-950/80 z-50 hidden items-center justify-center p-4 backdrop-blur-xs">
+    <div class="bg-white max-w-md w-full p-8 rounded-sm shadow-2xl border border-gold/30 text-center space-y-6 animate-fade-in">
+      <div class="size-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner">
+        <i class="ph ph-check-circle-fill"></i>
+      </div>
+      <div>
+        <h3 class="font-serif text-2xl font-bold text-charcoal">Renewal Successful!</h3>
+        <p class="text-xs text-zinc-500 mt-1 leading-relaxed">Your BAJUS membership certificate has been successfully renewed and updated in the central registry.</p>
+      </div>
+      <div class="bg-zinc-50 p-4 rounded-sm border border-zinc-200 text-left space-y-2 text-xs">
+        <div class="flex justify-between"><span class="text-zinc-400">Store Name:</span><strong id="modal-store-name" class="text-charcoal font-semibold">Alam Gold House</strong></div>
+        <div class="flex justify-between"><span class="text-zinc-400">New Valid Until:</span><strong id="modal-new-expiry" class="text-green-700 font-bold">Dec 31, 2027</strong></div>
+        <div class="flex justify-between"><span class="text-zinc-400">Amount Paid:</span><strong id="modal-total" class="text-charcoal font-bold">৳5,040</strong></div>
+      </div>
+      <button onclick="window.location.href='dashboard-stores.html'" class="w-full py-3.5 bg-gold hover:bg-[#a3760a] text-cream text-xs font-bold uppercase tracking-widest transition-all">
+        Return to My Stores
+      </button>
+    </div>
+  </div>
+
+  <div id="bajus-footer"></div>
+  <script src="./js/include.js"></script>
+  <script src="./js/main.js"></script>
+  <script>
+    // State variables
+    let currentStore = "1";
+    let selectedMonths = 12;
+    let baseDate = new Date(2026, 11, 31); // Dec 31, 2026
+    let customMonthTargets = [];
+    let selectedCustomMonthIndices = [];
+
+    const storeData = {
+      "1": { name: "Alam Gold House", id: "BAJUS-DH-001247", tl: "TL-DH-2024-094512", status: "Active", statusClass: "bg-green-50 text-green-700 border-green-200", expiryStr: "Dec 31, 2026", expiryDate: new Date(2026, 11, 31) },
+      "2": { name: "Diamond Jewellery House", id: "BAJUS-DH-001248", tl: "TL-DH-2022-058341", status: "Renewal Pending", statusClass: "bg-red-50 text-red-700 border-red-200", expiryStr: "Jun 30, 2026", expiryDate: new Date(2026, 5, 30) }
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const params = new URLSearchParams(window.location.search);
+      const storeParam = params.get("store");
+      if (storeParam && storeData[storeParam]) {
+        selectStore(storeParam);
+      } else {
+        selectStore("1");
+      }
+    });
+
+    function selectStore(id) {
+      currentStore = id;
+      baseDate = storeData[id].expiryDate;
+
+      const st = storeData[id];
+      const nameEl = document.getElementById("top-store-name");
+      if (nameEl) {
+        nameEl.textContent = st.name;
+        document.getElementById("top-store-id").textContent = st.id;
+        document.getElementById("top-store-tl").textContent = st.tl;
+        document.getElementById("top-store-expiry").textContent = st.expiryStr;
+
+        const statusBadge = document.getElementById("top-store-status");
+        statusBadge.textContent = st.status;
+        statusBadge.className = `text-[10px] border px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${st.statusClass}`;
+      }
+
+      buildCustomMonthOptions();
+      updateSummary();
+    }
+
+    function formatMonthLabel(date) {
+      const month = date.toLocaleDateString("en-US", { month: "short" });
+      const year = String(date.getFullYear()).slice(-2);
+      return `${month} ${year}`;
+    }
+
+    function getEndOfMonth(year, monthIndex) {
+      return new Date(year, monthIndex + 1, 0);
+    }
+
+    function buildCustomMonthOptions() {
+      const container = document.getElementById("custom-month-options");
+      if (!container) return;
+
+      customMonthTargets = [];
+      selectedCustomMonthIndices = [];
+
+      for (let i = 1; i <= 6; i++) {
+        const targetEnd = getEndOfMonth(baseDate.getFullYear(), baseDate.getMonth() + i);
+        customMonthTargets.push({ endDate: targetEnd, monthIndex: i });
+      }
+
+      container.innerHTML = customMonthTargets.map((target, index) => {
+        const label = formatMonthLabel(target.endDate);
+        return `
+          <button type="button" class="custom-month-tile border border-zinc-200 p-2.5 sm:p-3 rounded-sm cursor-pointer transition-all text-center w-full min-w-0" data-index="${index}" onclick="toggleCustomMonth(${index}, this)" aria-pressed="false">
+            <div class="font-serif text-sm sm:text-base font-bold text-charcoal leading-tight">${label}</div>
+            <div class="text-[10px] sm:text-xs text-gold font-bold mt-1.5">৳400</div>
+          </button>
+        `;
+      }).join("");
+    }
+
+    function setCustomMonthTileState(tile, isSelected) {
+      tile.setAttribute("aria-pressed", isSelected ? "true" : "false");
+      if (isSelected) {
+        tile.classList.remove("border-zinc-200");
+        tile.classList.add("border-gold", "active", "bg-gold/[0.04]");
+      } else {
+        tile.classList.remove("border-gold", "active", "bg-gold/[0.04]");
+        tile.classList.add("border-zinc-200");
+      }
+    }
+
+    function clearCustomMonthSelection() {
+      selectedCustomMonthIndices = [];
+      document.querySelectorAll(".custom-month-tile").forEach(tile => setCustomMonthTileState(tile, false));
+    }
+
+    function toggleCustomMonth(index, tileElement) {
+      const existingIndex = selectedCustomMonthIndices.indexOf(index);
+      if (existingIndex >= 0) {
+        selectedCustomMonthIndices.splice(existingIndex, 1);
+        setCustomMonthTileState(tileElement, false);
+      } else {
+        selectedCustomMonthIndices.push(index);
+        selectedCustomMonthIndices.sort((a, b) => a - b);
+        setCustomMonthTileState(tileElement, true);
+      }
+
+      document.querySelectorAll(".duration-tile").forEach(tile => {
+        tile.classList.remove("border-gold", "active", "bg-gold/[0.04]");
+        tile.classList.add("border-zinc-200");
+      });
+
+      if (selectedCustomMonthIndices.length > 0) {
+        selectedMonths = selectedCustomMonthIndices.length;
+      } else {
+        selectedMonths = 12;
+        const defaultTile = document.querySelector('.duration-tile[data-duration="12"]');
+        document.querySelectorAll(".duration-tile").forEach(tile => {
+          tile.classList.remove("border-gold", "active", "bg-gold/[0.04]");
+          tile.classList.add("border-zinc-200");
+        });
+        if (defaultTile) {
+          defaultTile.classList.remove("border-zinc-200");
+          defaultTile.classList.add("border-gold", "active", "bg-gold/[0.04]");
+        }
+      }
+
+      updateSummary();
+    }
+
+    function selectDuration(months, tileElement) {
+      selectedMonths = months;
+      clearCustomMonthSelection();
+
+      // Highlight active tile
+      document.querySelectorAll(".duration-tile").forEach(tile => {
+        tile.classList.remove("border-gold", "active", "bg-gold/[0.04]");
+        tile.classList.add("border-zinc-200");
+      });
+      if (tileElement) {
+        tileElement.classList.remove("border-zinc-200");
+        tileElement.classList.add("border-gold", "active", "bg-gold/[0.04]");
+      }
+
+      updateSummary();
+    }
+
+    function updateSummary() {
+      const store = storeData[currentStore];
+      document.getElementById("sum-store-name").textContent = store.name;
+      document.getElementById("sum-curr-expiry").textContent = store.expiryStr;
+
+      // Calculate new date
+      let newDate;
+      if (selectedCustomMonthIndices.length > 0) {
+        const furthestIndex = selectedCustomMonthIndices[selectedCustomMonthIndices.length - 1];
+        newDate = new Date(customMonthTargets[furthestIndex].endDate.getTime());
+        selectedMonths = selectedCustomMonthIndices.length;
+      } else {
+        newDate = new Date(baseDate.getTime());
+        newDate.setMonth(newDate.getMonth() + selectedMonths);
+      }
+      const options = { year: 'numeric', month: 'short', day: 'numeric' };
+      const newExpiryStr = newDate.toLocaleDateString('en-US', options);
+      document.getElementById("sum-new-expiry").textContent = newExpiryStr;
+
+      // Duration label
+      let durLabel = `${selectedMonths} Month${selectedMonths > 1 ? 's' : ''}`;
+      if (selectedCustomMonthIndices.length > 0) {
+        const labels = selectedCustomMonthIndices
+          .map(i => formatMonthLabel(customMonthTargets[i].endDate))
+          .join(", ");
+        durLabel = `${labels} (${selectedCustomMonthIndices.length} mo)`;
+      } else if (selectedMonths === 12) durLabel = "12 Months (1 Year)";
+      else if (selectedMonths === 24) durLabel = "24 Months (2 Years)";
+      else if (selectedMonths === 36) durLabel = "36 Months (3 Years)";
+      document.getElementById("sum-duration").textContent = durLabel;
+
+      // Financials (400 per month)
+      const baseFee = selectedMonths * 400;
+      const vat = Math.round(baseFee * 0.05);
+      const total = baseFee + vat;
+
+      document.getElementById("sum-base-fee").textContent = `৳${baseFee.toLocaleString()}`;
+      document.getElementById("sum-vat").textContent = `৳${vat.toLocaleString()}`;
+      document.getElementById("sum-total").textContent = `৳${total.toLocaleString()}`;
+    }
+
+    function handleRenewalSubmit(e) {
+      e.preventDefault();
+      const store = storeData[currentStore];
+      document.getElementById("modal-store-name").textContent = store.name;
+      document.getElementById("modal-new-expiry").textContent = document.getElementById("sum-new-expiry").textContent;
+      document.getElementById("modal-total").textContent = document.getElementById("sum-total").textContent;
+
+      const modal = document.getElementById("success-modal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+  </script>
+</body>
+</html>

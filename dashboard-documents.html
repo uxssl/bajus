@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Documents — BAJUS Portal</title>
+  <meta name="description" content="Download certified copies of your BAJUS membership certificates and official documents." />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body class="bg-cream text-charcoal min-h-screen flex flex-col font-sans">
+  <header class="bg-zinc-950 text-cream border-b border-zinc-800 sticky top-0 z-40">
+    <div class="w-full px-6 md:px-12 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="./assets/logo.png" alt="BAJUS" class="h-8 md:h-9 w-auto brightness-0 invert opacity-90" />
+        <span class="text-[16px] tracking-[0.2em] font-semibold uppercase text-gold border-l border-zinc-700 pl-3 hidden sm:inline-block">Member Portal</span>
+      </a>
+      <div class="flex items-center gap-5 sm:gap-7">
+        <div class="relative group cursor-pointer">
+          <div class="relative text-zinc-400 hover:text-gold transition-colors p-1"><i class="ph ph-bell text-xl"></i><span class="absolute top-0 right-0 flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500 border border-zinc-950"></span></span></div>
+          <div class="absolute right-0 mt-3 w-72 bg-zinc-900 border border-zinc-800 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 rounded-sm overflow-hidden before:content-[''] before:absolute before:-top-4 before:right-0 before:h-4 before:w-full">
+            <div class="px-4 py-3 border-b border-zinc-800 flex justify-between items-center bg-zinc-950/50"><h3 class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest">Notifications</h3><span class="text-[9px] font-bold bg-gold/10 text-gold px-2 py-0.5 rounded-full">2 New</span></div>
+            <div class="max-h-[300px] overflow-y-auto custom-scrollbar">
+              <a href="dashboard-notifications.html" class="block px-4 py-3.5 hover:bg-zinc-800/50 transition-colors border-b border-zinc-800/50 relative group/item"><span class="absolute left-0 top-0 h-full w-0.5 bg-gold"></span><div class="text-[11px] font-semibold text-zinc-200 mb-1 group-hover/item:text-gold transition-colors">Membership Renewed</div><div class="text-[10px] text-zinc-400 leading-snug">Your BAJUS membership for 2026 has been successfully renewed.</div><div class="text-[9px] text-zinc-500 mt-2 uppercase tracking-wider font-medium flex items-center gap-1.5"><i class="ph ph-clock"></i> 2 hrs ago</div></a>
+              <a href="dashboard-notifications.html" class="block px-4 py-3.5 hover:bg-zinc-800/50 transition-colors border-b border-zinc-800/50 relative group/item"><span class="absolute left-0 top-0 h-full w-0.5 bg-gold"></span><div class="text-[11px] font-semibold text-zinc-200 mb-1 group-hover/item:text-gold transition-colors">New Event: Dhaka Expo</div><div class="text-[10px] text-zinc-400 leading-snug">Stall bookings are now open for the upcoming Jewellery Expo.</div><div class="text-[9px] text-zinc-500 mt-2 uppercase tracking-wider font-medium flex items-center gap-1.5"><i class="ph ph-clock"></i> Yesterday</div></a>
+            </div>
+            <a href="dashboard-notifications.html" class="block px-4 py-3 bg-zinc-950 hover:bg-zinc-800 text-center text-[10px] font-bold text-gold uppercase tracking-widest transition-colors border-t border-zinc-800">View All Notifications</a>
+          </div>
+        </div>
+        <div class="relative group cursor-pointer">
+          <div class="flex items-center gap-3 bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-colors py-1.5 px-3 rounded-full"><div class="size-7 bg-gold text-zinc-950 text-xs font-bold rounded-full flex items-center justify-center">MA</div><div class="text-left hidden xs:block"><div class="text-[11px] font-semibold text-zinc-200 leading-tight">Md. Alamgir</div><div class="text-[9px] text-zinc-500 uppercase tracking-wider font-medium">Owner Account</div></div><i class="ph ph-caret-down text-zinc-400 text-xs pl-1"></i></div>
+          <div class="absolute right-0 mt-2 w-48 bg-zinc-900 border border-zinc-800 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"><div class="py-2"><a href="index.html" class="flex items-center gap-3 px-4 py-2.5 text-xs text-zinc-400 hover:text-gold hover:bg-zinc-800/50 transition-colors"><i class="ph ph-house text-sm"></i><span>Return to Site</span></a><a href="login.html" class="flex items-center gap-3 px-4 py-2.5 text-xs text-zinc-400 hover:text-gold hover:bg-zinc-800/50 transition-colors"><i class="ph ph-sign-out text-sm"></i><span>Log Out</span></a></div></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="flex-1 w-full flex flex-col md:flex-row">
+    <aside class="w-full md:w-64 flex-shrink-0 bg-white border-r border-zinc-200 p-6 flex flex-col gap-8 md:min-h-[calc(100vh-64px)]">
+      <div class="space-y-6">
+        <div>
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Main Directory</div>
+          <nav class="space-y-1">
+            <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-gauge text-base"></i> Overview</a>
+            <a href="dashboard-stores.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-storefront text-base"></i> My Stores</a>
+            <a href="dashboard-payments.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-receipt text-base"></i> Payment History</a>
+            <a href="dashboard-documents.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-gold bg-gold-soft rounded-sm transition-all"><i class="ph ph-folder-open text-base"></i> My Documents</a>
+            <a href="dashboard-events.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-calendar text-base"></i> Events</a>
+            <a href="dashboard-meeting.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-presentation text-base"></i> Meeting</a>
+          </nav>
+        </div>
+        <div>
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">HR Portal</div>
+          <nav class="space-y-1">
+            <a href="dashboard-attendance.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-fingerprint text-base"></i> Attendance</a>
+            <a href="dashboard-leave-management.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-list-checks text-base"></i> Leave Management</a>
+          </nav>
+        </div>
+        <div>
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Settings &amp; Security</div>
+          <nav class="space-y-1">
+            <a href="dashboard-profile.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-user-circle-gear text-base"></i> Profile</a>
+            <a href="dashboard-notifications.html" class="flex items-center justify-between px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><span class="flex items-center gap-3"><i class="ph ph-bell text-base"></i> Notifications</span><span class="bg-red-500 text-cream text-[9px] font-bold px-2 py-0.5 rounded-full">2</span></a>
+          </nav>
+        </div>
+        <div class="pt-4 border-t border-zinc-100">
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Quick Navigation</div>
+          <nav class="space-y-1">
+            <a href="gold-price.html" class="flex items-center gap-3 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold transition-colors"><i class="ph ph-chart-line text-sm"></i> Gold Rates</a>
+            <a href="notice.html" class="flex items-center gap-3 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold transition-colors"><i class="ph ph-info text-sm"></i> Notices &amp; Circulars</a>
+          </nav>
+        </div>
+      </div>
+    </aside>
+
+    <main class="flex-1 min-w-0 bg-cream p-6 md:p-12 space-y-8">
+      <div class="pb-6 border-b border-zinc-150">
+        <h1 class="font-serif text-2xl md:text-3xl text-charcoal">Official <span class="text-gold italic font-medium">Certificates</span> &amp; Files</h1>
+        <p class="text-xs text-zinc-500 mt-1">Download certified copies of your BAJUS membership badges for print or physical display.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="border border-zinc-200 p-5 rounded-sm flex items-center justify-between gap-4 hover:border-gold transition-colors">
+          <div class="flex items-center gap-4">
+            <div class="size-11 bg-gold/10 text-gold flex items-center justify-center rounded-sm text-2xl flex-shrink-0"><i class="ph ph-certificate"></i></div>
+            <div>
+              <h4 class="font-semibold text-xs text-charcoal">Membership Certificate — Alam Gold House</h4>
+              <p class="text-[10px] text-zinc-400 mt-1">Valid: Jan 1, 2026 – Dec 31, 2026</p>
+            </div>
+          </div>
+          <a href="#" onclick="alert('Downloading Certificate PDF...')" class="size-8 border border-zinc-200 text-zinc-500 hover:border-gold hover:text-gold flex items-center justify-center rounded-sm transition-all" title="Download Document"><i class="ph ph-download-simple"></i></a>
+        </div>
+
+        <div class="border border-zinc-200 p-5 rounded-sm flex items-center justify-between gap-4 opacity-50 hover:opacity-100 transition-opacity duration-300">
+          <div class="flex items-center gap-4">
+            <div class="size-11 bg-red-100/50 text-red-600 flex items-center justify-center rounded-sm text-2xl flex-shrink-0"><i class="ph ph-certificate"></i></div>
+            <div>
+              <h4 class="font-semibold text-xs text-charcoal">Membership Certificate — Diamond Jewellery House</h4>
+              <p class="text-[10px] text-red-500 mt-1">Status: Expired (June 30, 2026)</p>
+            </div>
+          </div>
+          <a href="dashboard-stores.html" class="px-3 py-1.5 bg-zinc-950 hover:bg-gold text-cream hover:text-zinc-950 text-[10px] font-bold uppercase tracking-wider transition-colors" title="Renew to download">Renew</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="bajus-footer"></div>
+  <script src="./js/include.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

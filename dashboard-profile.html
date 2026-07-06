@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile — BAJUS Portal</title>
+  <meta name="description" content="Manage your BAJUS account profile, personal information, and password security." />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body class="bg-cream text-charcoal min-h-screen flex flex-col font-sans">
+  <header class="bg-zinc-950 text-cream border-b border-zinc-800 sticky top-0 z-40">
+    <div class="w-full px-6 md:px-12 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="./assets/logo.png" alt="BAJUS" class="h-8 md:h-9 w-auto brightness-0 invert opacity-90" />
+        <span class="text-[16px] tracking-[0.2em] font-semibold uppercase text-gold border-l border-zinc-700 pl-3 hidden sm:inline-block">Member Portal</span>
+      </a>
+      <div class="flex items-center gap-5 sm:gap-7">
+        <div class="relative group cursor-pointer">
+          <div class="relative text-zinc-400 hover:text-gold transition-colors p-1"><i class="ph ph-bell text-xl"></i><span class="absolute top-0 right-0 flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500 border border-zinc-950"></span></span></div>
+          <div class="absolute right-0 mt-3 w-72 bg-zinc-900 border border-zinc-800 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 rounded-sm overflow-hidden before:content-[''] before:absolute before:-top-4 before:right-0 before:h-4 before:w-full">
+            <div class="px-4 py-3 border-b border-zinc-800 flex justify-between items-center bg-zinc-950/50"><h3 class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest">Notifications</h3><span class="text-[9px] font-bold bg-gold/10 text-gold px-2 py-0.5 rounded-full">2 New</span></div>
+            <div class="max-h-[300px] overflow-y-auto custom-scrollbar">
+              <a href="dashboard-notifications.html" class="block px-4 py-3.5 hover:bg-zinc-800/50 transition-colors border-b border-zinc-800/50 relative group/item"><span class="absolute left-0 top-0 h-full w-0.5 bg-gold"></span><div class="text-[11px] font-semibold text-zinc-200 mb-1 group-hover/item:text-gold transition-colors">Membership Renewed</div><div class="text-[10px] text-zinc-400 leading-snug">Your BAJUS membership for 2026 has been successfully renewed.</div><div class="text-[9px] text-zinc-500 mt-2 uppercase tracking-wider font-medium flex items-center gap-1.5"><i class="ph ph-clock"></i> 2 hrs ago</div></a>
+              <a href="dashboard-notifications.html" class="block px-4 py-3.5 hover:bg-zinc-800/50 transition-colors border-b border-zinc-800/50 relative group/item"><span class="absolute left-0 top-0 h-full w-0.5 bg-gold"></span><div class="text-[11px] font-semibold text-zinc-200 mb-1 group-hover/item:text-gold transition-colors">New Event: Dhaka Expo</div><div class="text-[10px] text-zinc-400 leading-snug">Stall bookings are now open for the upcoming Jewellery Expo.</div><div class="text-[9px] text-zinc-500 mt-2 uppercase tracking-wider font-medium flex items-center gap-1.5"><i class="ph ph-clock"></i> Yesterday</div></a>
+            </div>
+            <a href="dashboard-notifications.html" class="block px-4 py-3 bg-zinc-950 hover:bg-zinc-800 text-center text-[10px] font-bold text-gold uppercase tracking-widest transition-colors border-t border-zinc-800">View All Notifications</a>
+          </div>
+        </div>
+        <div class="relative group cursor-pointer">
+          <div class="flex items-center gap-3 bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-colors py-1.5 px-3 rounded-full"><div class="size-7 bg-gold text-zinc-950 text-xs font-bold rounded-full flex items-center justify-center">MA</div><div class="text-left hidden xs:block"><div class="text-[11px] font-semibold text-zinc-200 leading-tight">Md. Alamgir</div><div class="text-[9px] text-zinc-500 uppercase tracking-wider font-medium">Owner Account</div></div><i class="ph ph-caret-down text-zinc-400 text-xs pl-1"></i></div>
+          <div class="absolute right-0 mt-2 w-48 bg-zinc-900 border border-zinc-800 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"><div class="py-2"><a href="index.html" class="flex items-center gap-3 px-4 py-2.5 text-xs text-zinc-400 hover:text-gold hover:bg-zinc-800/50 transition-colors"><i class="ph ph-house text-sm"></i><span>Return to Site</span></a><a href="login.html" class="flex items-center gap-3 px-4 py-2.5 text-xs text-zinc-400 hover:text-gold hover:bg-zinc-800/50 transition-colors"><i class="ph ph-sign-out text-sm"></i><span>Log Out</span></a></div></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="flex-1 w-full flex flex-col md:flex-row">
+    <aside class="w-full md:w-64 flex-shrink-0 bg-white border-r border-zinc-200 p-6 flex flex-col gap-8 md:min-h-[calc(100vh-64px)]">
+      <div class="space-y-6">
+        <div>
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Main Directory</div>
+          <nav class="space-y-1">
+            <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-gauge text-base"></i> Overview</a>
+            <a href="dashboard-stores.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-storefront text-base"></i> My Stores</a>
+            <a href="dashboard-payments.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-receipt text-base"></i> Payment History</a>
+            <a href="dashboard-documents.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-folder-open text-base"></i> My Documents</a>
+            <a href="dashboard-events.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-calendar text-base"></i> Events</a>
+            <a href="dashboard-meeting.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-presentation text-base"></i> Meeting</a>
+          </nav>
+        </div>
+        <div>
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">HR Portal</div>
+          <nav class="space-y-1">
+            <a href="dashboard-attendance.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-fingerprint text-base"></i> Attendance</a>
+            <a href="dashboard-leave-management.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-list-checks text-base"></i> Leave Management</a>
+          </nav>
+        </div>
+        <div>
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Settings &amp; Security</div>
+          <nav class="space-y-1">
+            <a href="dashboard-profile.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-gold bg-gold-soft rounded-sm transition-all"><i class="ph ph-user-circle-gear text-base"></i> Profile</a>
+            <a href="dashboard-notifications.html" class="flex items-center justify-between px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><span class="flex items-center gap-3"><i class="ph ph-bell text-base"></i> Notifications</span><span class="bg-red-500 text-cream text-[9px] font-bold px-2 py-0.5 rounded-full">2</span></a>
+          </nav>
+        </div>
+        <div class="pt-4 border-t border-zinc-100">
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Quick Navigation</div>
+          <nav class="space-y-1">
+            <a href="gold-price.html" class="flex items-center gap-3 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold transition-colors"><i class="ph ph-chart-line text-sm"></i> Gold Rates</a>
+            <a href="notice.html" class="flex items-center gap-3 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold transition-colors"><i class="ph ph-info text-sm"></i> Notices &amp; Circulars</a>
+          </nav>
+        </div>
+      </div>
+    </aside>
+
+    <main class="flex-1 min-w-0 bg-cream p-6 md:p-12 space-y-8">
+      <div>
+        <h1 class="font-serif text-2xl md:text-3xl text-charcoal">Account <span class="text-gold italic font-medium">Profile</span></h1>
+        <p class="text-xs text-zinc-500 mt-1 mb-6">Manage your personal information and account security.</p>
+
+        <div class="flex items-center gap-6 border-b border-zinc-200 mb-8">
+          <button onclick="switchProfileTab('info')" id="tab-profile-info" class="pb-3 text-sm font-semibold border-b-2 border-gold text-gold transition-all">Account Information</button>
+          <button onclick="switchProfileTab('security')" id="tab-profile-security" class="pb-3 text-sm font-semibold border-b-2 border-transparent text-zinc-500 hover:text-charcoal transition-all">Security</button>
+        </div>
+      </div>
+
+      <!-- Account Info Tab -->
+      <div id="profile-content-info" class="space-y-8">
+        <form id="form-profile"
+          class="relative max-w-2xl space-y-6 bg-white border border-zinc-200 p-6 md:p-8 shadow-sm rounded-sm"
+          onsubmit="event.preventDefault(); if (window.showToast) window.showToast('Profile details updated successfully.', 'success'); toggleProfileEditMode(false);">
+          <div class="absolute top-6 right-6 md:top-8 md:right-8">
+            <button type="button" onclick="toggleProfileEditMode(true)" id="btn-edit-profile"
+              class="px-3 py-1.5 border border-zinc-200 text-charcoal hover:border-gold hover:text-gold text-[10px] font-bold uppercase tracking-widest transition-all inline-flex items-center gap-1.5 rounded-sm">
+              <i class="ph ph-pencil-simple text-sm"></i> Edit
+            </button>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-5 !mt-0">
+            <div>
+              <label class="form-label block text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-2">Full Name (English)</label>
+              <input type="text" class="profile-editable-field w-full form-input !bg-transparent !border-transparent !p-0 !py-1 text-charcoal font-medium text-sm appearance-none transition-all" value="Md. Alamgir Hossain" required readonly />
+            </div>
+            <div>
+              <label class="form-label block text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-2">Full Name (Bengali)</label>
+              <input type="text" class="profile-editable-field w-full form-input !bg-transparent !border-transparent !p-0 !py-1 text-charcoal font-medium text-sm font-bangla appearance-none transition-all" value="মো. আলমগীর হোসেন" required readonly />
+            </div>
+            <div>
+              <label class="form-label block text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-2">Registered Mobile</label>
+              <input type="tel" class="w-full form-input !bg-transparent !border-transparent !p-0 !py-1 text-charcoal font-medium text-sm appearance-none transition-all" value="+880 1712345678" disabled />
+              <span class="text-[10px] text-zinc-400 mt-1 block">To modify registered mobile, please contact BAJUS Support.</span>
+            </div>
+            <div>
+              <label class="form-label block text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-2">Registered Email</label>
+              <input type="email" class="w-full form-input !bg-transparent !border-transparent !p-0 !py-1 text-charcoal font-medium text-sm appearance-none transition-all" value="alamgir@example.com" disabled />
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="form-label block text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-2 font-medium">Father's or Spouse's Name</label>
+              <input type="text" class="profile-editable-field w-full form-input !bg-transparent !border-transparent !p-0 !py-1 text-charcoal font-medium text-sm appearance-none transition-all" value="Md. Karim Hossain" required readonly />
+            </div>
+            <div>
+              <label class="form-label block text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-2 font-medium">District</label>
+              <div class="relative w-full">
+                <select class="profile-editable-field w-full form-input !bg-transparent !border-transparent !p-0 !py-1 text-charcoal font-medium text-sm appearance-none transition-all" required disabled>
+                  <option value="" disabled>Select District</option>
+                  <option value="Dhaka" selected>Dhaka</option>
+                  <option value="Chittagong">Chittagong</option>
+                  <option value="Sylhet">Sylhet</option>
+                  <option value="Rajshahi">Rajshahi</option>
+                  <option value="Khulna">Khulna</option>
+                  <option value="Barisal">Barisal</option>
+                  <option value="Rangpur">Rangpur</option>
+                  <option value="Mymensingh">Mymensingh</option>
+                </select>
+                <span id="profile-district-chevron" class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-zinc-400 hidden">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="form-label block text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-2 font-medium">National ID Number (NID)</label>
+            <input type="text" class="w-full form-input !bg-transparent !border-transparent !p-0 !py-1 text-charcoal font-medium text-sm appearance-none transition-all" value="19822695240212" disabled />
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" id="btn-save-profile" class="hidden px-4 py-2.5 bg-zinc-950 hover:bg-gold text-cream hover:text-zinc-950 text-xs font-bold uppercase tracking-widest transition-all inline-flex items-center gap-1.5">
+              Update Profile
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Security Tab -->
+      <div id="profile-content-security" class="space-y-8 hidden">
+        <div class="mb-6">
+          <h2 class="font-serif text-xl md:text-2xl text-charcoal">Change <span class="text-gold italic font-medium">Password</span></h2>
+          <p class="text-xs text-zinc-500 mt-1">Ensure your account is using a long, random password to stay secure.</p>
+        </div>
+
+        <form id="form-password"
+          class="max-w-2xl space-y-6 bg-white border border-zinc-200 p-6 md:p-8 shadow-sm rounded-sm"
+          onsubmit="handlePasswordFormSubmit(event)">
+          <div id="password-fields-section" class="space-y-6">
+            <div>
+              <label class="form-label block text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-2">Current Password</label>
+              <div class="relative">
+                <input type="password" id="input-current-password"
+                  oninput="this.nextElementSibling.classList.toggle('hidden', this.value.length === 0)"
+                  class="w-full form-input bg-white border-zinc-200 px-4 py-3 pr-10 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all"
+                  required />
+                <button type="button" onclick="togglePasswordVisibility(this)"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-700 transition-colors focus:outline-none flex items-center justify-center hidden">
+                  <i class="ph ph-eye text-lg"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="form-label block text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-2">New Password</label>
+                <div class="relative">
+                  <input type="password" id="input-new-password"
+                    oninput="this.nextElementSibling.classList.toggle('hidden', this.value.length === 0)"
+                    class="w-full form-input bg-white border-zinc-200 px-4 py-3 pr-10 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all"
+                    required />
+                  <button type="button" onclick="togglePasswordVisibility(this)"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-700 transition-colors focus:outline-none flex items-center justify-center hidden">
+                    <i class="ph ph-eye text-lg"></i>
+                  </button>
+                </div>
+              </div>
+              <div>
+                <label class="form-label block text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-2">Confirm New Password</label>
+                <div class="relative">
+                  <input type="password" id="input-confirm-password"
+                    oninput="this.nextElementSibling.classList.toggle('hidden', this.value.length === 0)"
+                    class="w-full form-input bg-white border-zinc-200 px-4 py-3 pr-10 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all"
+                    required />
+                  <button type="button" onclick="togglePasswordVisibility(this)"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-700 transition-colors focus:outline-none flex items-center justify-center hidden">
+                    <i class="ph ph-eye text-lg"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- OTP Section (hidden initially) -->
+          <div id="otp-section" class="border-zinc-100 hidden">
+            <label class="form-label block text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-2">Verification Code (OTP)</label>
+            <div class="space-y-4">
+              <div class="flex justify-between gap-2 max-w-sm" id="otp-inputs-container-pw">
+                <input type="text" maxlength="1" class="otp-box-pw w-12 h-12 text-center text-xl font-bold bg-white border border-zinc-200 rounded focus:border-gold focus:outline-none" />
+                <input type="text" maxlength="1" class="otp-box-pw w-12 h-12 text-center text-xl font-bold bg-white border border-zinc-200 rounded focus:border-gold focus:outline-none" />
+                <input type="text" maxlength="1" class="otp-box-pw w-12 h-12 text-center text-xl font-bold bg-white border border-zinc-200 rounded focus:border-gold focus:outline-none" />
+                <input type="text" maxlength="1" class="otp-box-pw w-12 h-12 text-center text-xl font-bold bg-white border border-zinc-200 rounded focus:border-gold focus:outline-none" />
+                <input type="text" maxlength="1" class="otp-box-pw w-12 h-12 text-center text-xl font-bold bg-white border border-zinc-200 rounded focus:border-gold focus:outline-none" />
+                <input type="text" maxlength="1" class="otp-box-pw w-12 h-12 text-center text-xl font-bold bg-white border border-zinc-200 rounded focus:border-gold focus:outline-none" />
+              </div>
+              <div class="flex items-center justify-end text-xs max-w-sm">
+                <button type="button" id="btn-resend-otp" onclick="handleResendOtp()"
+                  class="text-gold hover:underline font-semibold tracking-wider transition-colors disabled:opacity-50 disabled:no-underline disabled:cursor-not-allowed">
+                  Resend OTP
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" id="btn-submit-password"
+              class="px-6 py-3 bg-zinc-950 hover:bg-gold text-cream hover:text-zinc-950 text-xs font-bold uppercase tracking-widest transition-all inline-flex items-center justify-center gap-1.5 w-full sm:w-auto rounded-sm">
+              Update Password
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <div id="bajus-footer"></div>
+  <script src="./js/include.js"></script>
+  <script src="./js/main.js"></script>
+  <script>
+    function toggleProfileEditMode(isEditing) {
+      document.getElementById('btn-edit-profile').classList.toggle('hidden', isEditing);
+      document.getElementById('btn-save-profile').classList.toggle('hidden', !isEditing);
+      const chevron = document.getElementById('profile-district-chevron');
+      if (chevron) chevron.classList.toggle('hidden', !isEditing);
+      const fields = document.querySelectorAll('.profile-editable-field');
+      fields.forEach(field => {
+        if (isEditing) {
+          field.removeAttribute('readonly');
+          field.classList.remove('!bg-transparent', '!border-transparent', '!p-0', '!py-1', 'font-medium', 'appearance-none');
+          if (field.tagName === 'SELECT') { field.removeAttribute('disabled'); field.classList.add('appearance-none', '!pr-10'); }
+        } else {
+          field.setAttribute('readonly', 'true');
+          field.classList.add('!bg-transparent', '!border-transparent', '!p-0', '!py-1', 'font-medium', 'appearance-none');
+          if (field.tagName === 'SELECT') { field.setAttribute('disabled', 'true'); field.classList.remove('!pr-10'); }
+        }
+      });
+    }
+
+    function switchProfileTab(tab) {
+      document.getElementById('profile-content-info').classList.toggle('hidden', tab !== 'info');
+      document.getElementById('profile-content-security').classList.toggle('hidden', tab !== 'security');
+      document.getElementById('tab-profile-info').className = tab === 'info'
+        ? 'pb-3 text-sm font-semibold border-b-2 border-gold text-gold transition-all'
+        : 'pb-3 text-sm font-semibold border-b-2 border-transparent text-zinc-500 hover:text-charcoal transition-all';
+      document.getElementById('tab-profile-security').className = tab === 'security'
+        ? 'pb-3 text-sm font-semibold border-b-2 border-gold text-gold transition-all'
+        : 'pb-3 text-sm font-semibold border-b-2 border-transparent text-zinc-500 hover:text-charcoal transition-all';
+    }
+
+    function handlePasswordFormSubmit(e) {
+      e.preventDefault();
+      const otpSection = document.getElementById('otp-section');
+      const submitBtn = document.getElementById('btn-submit-password');
+      const pwdFields = document.getElementById('password-fields-section');
+      if (otpSection.classList.contains('hidden')) {
+        otpSection.classList.remove('hidden');
+        pwdFields.classList.add('hidden');
+        submitBtn.textContent = 'Verify & Update Password';
+        otpSection.querySelectorAll('.otp-box-pw').forEach(b => b.setAttribute('required', 'true'));
+        if (window.showToast) window.showToast('OTP Sent to your registered contact', 'success');
+        if (window.startOtpCountdown) window.startOtpCountdown();
+        else startOtpCountdown();
+      } else {
+        if (window.showToast) window.showToast('Password updated successfully.', 'success');
+        document.getElementById('form-password').reset();
+        otpSection.classList.add('hidden');
+        pwdFields.classList.remove('hidden');
+        otpSection.querySelectorAll('.otp-box-pw').forEach(b => b.removeAttribute('required'));
+        submitBtn.textContent = 'Update Password';
+        document.querySelectorAll('#form-password .ph-eye, #form-password .ph-eye-slash').forEach(icon => {
+          icon.parentElement.classList.add('hidden');
+        });
+      }
+    }
+
+    function togglePasswordVisibility(btn) {
+      const input = btn.previousElementSibling;
+      const icon = btn.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('ph-eye');
+        icon.classList.add('ph-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('ph-eye-slash');
+        icon.classList.add('ph-eye');
+      }
+    }
+
+    let otpTimer = null;
+    function startOtpCountdown() {
+      const btn = document.getElementById('btn-resend-otp');
+      if (!btn) return;
+      let timeLeft = 60;
+      btn.disabled = true;
+      btn.textContent = `Resend OTP (${timeLeft}s)`;
+      clearInterval(otpTimer);
+      otpTimer = setInterval(() => {
+        timeLeft--;
+        if (timeLeft <= 0) {
+          clearInterval(otpTimer);
+          btn.disabled = false;
+          btn.textContent = 'Resend OTP';
+        } else {
+          btn.textContent = `Resend OTP (${timeLeft}s)`;
+        }
+      }, 1000);
+    }
+    window.startOtpCountdown = startOtpCountdown;
+
+    function handleResendOtp() {
+      const btn = document.getElementById('btn-resend-otp');
+      if (btn.disabled) return;
+      if (window.showToast) window.showToast('OTP Resent to your registered contact', 'success');
+      startOtpCountdown();
+    }
+
+    // OTP box auto-focus
+    const otpBoxesPw = document.querySelectorAll('.otp-box-pw');
+    otpBoxesPw.forEach((box, index) => {
+      box.addEventListener('input', (e) => {
+        if (e.target.value.length === 1 && index < otpBoxesPw.length - 1) otpBoxesPw[index + 1].focus();
+      });
+      box.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && !box.value && index > 0) otpBoxesPw[index - 1].focus();
+      });
+      box.addEventListener('paste', (e) => {
+        e.preventDefault();
+        const text = e.clipboardData.getData('text').trim();
+        if (/^\d{6}$/.test(text)) { otpBoxesPw.forEach((b, i) => { b.value = text[i]; }); otpBoxesPw[5].focus(); }
+      });
+    });
+
+    // Open security tab if URL hash says so
+    if (window.location.hash === '#security') switchProfileTab('security');
+  </script>
+</body>
+</html>

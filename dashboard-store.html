@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Store Dashboard — BAJUS Portal</title>
+  <meta name="description" content="Store manager portal — view your assigned store membership, attendance, and official updates." />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body class="bg-cream text-charcoal min-h-screen flex flex-col font-sans">
+  <header class="bg-zinc-950 text-cream border-b border-zinc-800 sticky top-0 z-40">
+    <div class="w-full px-6 md:px-12 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="./assets/logo.png" alt="BAJUS" class="h-8 md:h-9 w-auto brightness-0 invert opacity-90" />
+        <span class="text-[16px] tracking-[0.2em] font-semibold uppercase text-gold border-l border-zinc-700 pl-3 hidden sm:inline-block">Store Portal</span>
+      </a>
+      <div class="flex items-center gap-5 sm:gap-7">
+        <div class="relative group cursor-pointer">
+          <div class="relative text-zinc-400 hover:text-gold transition-colors p-1"><i class="ph ph-bell text-xl"></i><span class="absolute top-0 right-0 flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500 border border-zinc-950"></span></span></div>
+          <div class="absolute right-0 mt-3 w-72 bg-zinc-900 border border-zinc-800 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 rounded-sm overflow-hidden before:content-[''] before:absolute before:-top-4 before:right-0 before:h-4 before:w-full">
+            <div class="px-4 py-3 border-b border-zinc-800 flex justify-between items-center bg-zinc-950/50"><h3 class="text-[10px] font-bold text-zinc-300 uppercase tracking-widest">Notifications</h3><span class="text-[9px] font-bold bg-gold/10 text-gold px-2 py-0.5 rounded-full">2 New</span></div>
+            <div class="max-h-[300px] overflow-y-auto custom-scrollbar">
+              <a href="dashboard-notifications.html" class="block px-4 py-3.5 hover:bg-zinc-800/50 transition-colors border-b border-zinc-800/50 relative group/item"><span class="absolute left-0 top-0 h-full w-0.5 bg-gold"></span><div class="text-[11px] font-semibold text-zinc-200 mb-1 group-hover/item:text-gold transition-colors">Membership Renewed</div><div class="text-[10px] text-zinc-400 leading-snug">Your BAJUS membership for 2026 has been successfully renewed.</div><div class="text-[9px] text-zinc-500 mt-2 uppercase tracking-wider font-medium flex items-center gap-1.5"><i class="ph ph-clock"></i> 2 hrs ago</div></a>
+              <a href="dashboard-notifications.html" class="block px-4 py-3.5 hover:bg-zinc-800/50 transition-colors border-b border-zinc-800/50 relative group/item"><span class="absolute left-0 top-0 h-full w-0.5 bg-gold"></span><div class="text-[11px] font-semibold text-zinc-200 mb-1 group-hover/item:text-gold transition-colors">New Event: Dhaka Expo</div><div class="text-[10px] text-zinc-400 leading-snug">Stall bookings are now open for the upcoming Jewellery Expo.</div><div class="text-[9px] text-zinc-500 mt-2 uppercase tracking-wider font-medium flex items-center gap-1.5"><i class="ph ph-clock"></i> Yesterday</div></a>
+            </div>
+            <a href="dashboard-notifications.html" class="block px-4 py-3 bg-zinc-950 hover:bg-zinc-800 text-center text-[10px] font-bold text-gold uppercase tracking-widest transition-colors border-t border-zinc-800">View All Notifications</a>
+          </div>
+        </div>
+        <div class="relative group cursor-pointer">
+          <div class="flex items-center gap-3 bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-colors py-1.5 px-3 rounded-full"><div class="size-7 bg-gold text-zinc-950 text-xs font-bold rounded-full flex items-center justify-center">RA</div><div class="text-left hidden xs:block"><div class="text-[11px] font-semibold text-zinc-200 leading-tight">Rashid Ahmed</div><div class="text-[9px] text-zinc-500 uppercase tracking-wider font-medium">Store Manager</div></div><i class="ph ph-caret-down text-zinc-400 text-xs pl-1"></i></div>
+          <div class="absolute right-0 mt-2 w-48 bg-zinc-900 border border-zinc-800 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"><div class="py-2"><a href="index.html" class="flex items-center gap-3 px-4 py-2.5 text-xs text-zinc-400 hover:text-gold hover:bg-zinc-800/50 transition-colors"><i class="ph ph-house text-sm"></i><span>Return to Site</span></a><a href="login.html" class="flex items-center gap-3 px-4 py-2.5 text-xs text-zinc-400 hover:text-gold hover:bg-zinc-800/50 transition-colors"><i class="ph ph-sign-out text-sm"></i><span>Log Out</span></a></div></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="flex-1 w-full flex flex-col md:flex-row">
+    <aside class="w-full md:w-64 flex-shrink-0 bg-white border-r border-zinc-200 p-6 flex flex-col gap-8 md:min-h-[calc(100vh-64px)]">
+      <div class="space-y-6">
+        <div>
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Store Portal</div>
+          <nav class="space-y-1">
+            <a href="dashboard-store.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-gold bg-gold-soft rounded-sm transition-all"><i class="ph ph-gauge text-base"></i> Overview</a>
+            <a href="dashboard-store-profile.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-storefront text-base"></i> Store Profile</a>
+          </nav>
+        </div>
+        <div>
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">HR Portal</div>
+          <nav class="space-y-1">
+            <a href="dashboard-attendance.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-fingerprint text-base"></i> Attendance</a>
+            <a href="dashboard-leave-management.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-list-checks text-base"></i> Leave Management</a>
+          </nav>
+        </div>
+        <div>
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Settings</div>
+          <nav class="space-y-1">
+            <a href="dashboard-notifications.html" class="flex items-center justify-between px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><span class="flex items-center gap-3"><i class="ph ph-bell text-base"></i> Notifications</span><span class="bg-red-500 text-cream text-[9px] font-bold px-2 py-0.5 rounded-full">2</span></a>
+          </nav>
+        </div>
+        <div class="pt-4 border-t border-zinc-100">
+          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Quick Navigation</div>
+          <nav class="space-y-1">
+            <a href="gold-price.html" class="flex items-center gap-3 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold transition-colors"><i class="ph ph-chart-line text-sm"></i> Gold Rates</a>
+            <a href="notice.html" class="flex items-center gap-3 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold transition-colors"><i class="ph ph-info text-sm"></i> Notices &amp; Circulars</a>
+          </nav>
+        </div>
+        <div id="bajus-sidebar-calendar" class="pt-4 border-t border-zinc-100"></div>
+      </div>
+    </aside>
+
+    <main class="flex-1 min-w-0 bg-cream p-6 md:p-12 space-y-8">
+      <!-- Greetings and header -->
+      <div class="pb-6 border-b border-zinc-150">
+        <div>
+          <h1 class="font-serif text-2xl md:text-3xl text-charcoal">Welcome back, <span class="text-gold italic font-medium">Rashid Ahmed</span></h1>
+          <p class="text-xs text-zinc-500 mt-1">Managing <strong class="text-charcoal font-semibold">Anvir Jewellers — Bashundhara City</strong> &nbsp;·&nbsp; Last logged in: July 6, 2026 at 9:15 AM</p>
+        </div>
+      </div>
+
+      <!-- Summary Stat Grid -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="border border-zinc-200 p-5 rounded-sm flex items-center gap-4 bg-white">
+          <div class="size-11 bg-green-50 text-green-700 flex items-center justify-center rounded-sm text-xl flex-shrink-0"><i class="ph ph-check-circle"></i></div>
+          <div><div class="font-serif text-2xl font-bold text-charcoal leading-none">Active</div><div class="text-[9px] font-bold text-zinc-400 uppercase tracking-wider mt-1.5 leading-none">Membership Status</div></div>
+        </div>
+        <div class="border border-zinc-200 p-5 rounded-sm flex items-center gap-4 bg-white">
+          <div class="size-11 bg-gold/10 text-gold flex items-center justify-center rounded-sm text-xl flex-shrink-0"><i class="ph ph-calendar"></i></div>
+          <div><div class="font-serif text-lg font-bold text-charcoal leading-none">Dec 31, 2026</div><div class="text-[9px] font-bold text-zinc-400 uppercase tracking-wider mt-1.5 leading-none">Valid Until</div></div>
+        </div>
+      </div>
+
+      <!-- Main section layout divided in columns -->
+      <div class="grid lg:grid-cols-12 gap-8 pt-4">
+        <!-- Left Column: Single store information -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="flex items-center justify-between border-b border-zinc-100 pb-2">
+            <h3 class="font-serif text-lg text-charcoal">Store Information</h3>
+            <a href="dashboard-store-profile.html" class="text-xs text-gold hover:underline">View Full Profile</a>
+          </div>
+
+          <div class="border border-zinc-200 bg-white p-6 md:p-8 rounded-sm shadow-sm space-y-6">
+            <div class="pb-5 border-b border-zinc-100">
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <h4 class="font-serif text-xl font-bold text-charcoal">Anvir Jewellers</h4>
+                <span class="bg-green-50 text-green-700 text-[10px] px-2.5 py-0.5 uppercase tracking-wider font-bold rounded-full border border-green-200">Active</span>
+              </div>
+              <p class="text-xs text-zinc-500 mt-1.5 flex items-center gap-1.5"><i class="ph ph-map-pin text-gold"></i> Bashundhara City, Level 3, Panthapath, Dhaka</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-5 text-xs">
+              <div class="space-y-1">
+                <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">BAJUS Membership ID</span>
+                <p class="text-sm font-semibold text-charcoal">BAJUS-DH-001892</p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">Store Owner</span>
+                <p class="text-sm font-semibold text-charcoal">Md. Alamgir</p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">Registered Contact</span>
+                <p class="text-sm font-semibold text-charcoal">+880 1712-345678</p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">Business Category</span>
+                <p class="text-sm font-semibold text-charcoal">Gold &amp; Diamond Jewellery Retail</p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">Last Renewal</span>
+                <p class="text-sm font-semibold text-charcoal">Jan 15, 2026 · ৳4,800</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column (Gold Price / Latest Notices) -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-zinc-900 border border-zinc-800 text-cream p-6 rounded-sm">
+            <div class="flex justify-between items-center border-b border-zinc-800 pb-3 mb-4">
+              <h4 class="font-serif text-base text-gold font-medium flex items-center gap-1.5"><i class="ph ph-chart-line-up"></i> Official Gold Rates</h4>
+              <span class="text-[9px] text-zinc-500 uppercase">Jun 03, 2026</span>
+            </div>
+            <div class="space-y-3.5 text-xs">
+              <div class="flex justify-between items-center"><span class="text-zinc-400">22K Gold (Bhori)</span><strong class="text-gold">৳ 1,72,883</strong></div>
+              <div class="flex justify-between items-center"><span class="text-zinc-400">21K Gold (Bhori)</span><strong class="text-gold">৳ 1,65,016</strong></div>
+              <div class="flex justify-between items-center"><span class="text-zinc-400">18K Gold (Bhori)</span><strong class="text-gold">৳ 1,41,449</strong></div>
+              <div class="flex justify-between items-center border-t border-zinc-800 pt-3"><span class="text-zinc-400">Silver 22K (Bhori)</span><strong class="text-zinc-300">৳ 2,567</strong></div>
+            </div>
+            <a href="gold-price.html" class="block text-center text-[10px] font-bold text-gold hover:text-gold-light uppercase tracking-widest mt-6 border-t border-zinc-800 pt-3">View Full Price Table →</a>
+          </div>
+
+          <div class="space-y-4">
+            <h4 class="font-serif text-base text-charcoal border-b border-zinc-100 pb-2">Recent Portal Updates</h4>
+            <div class="space-y-3">
+              <a href="notice.html#circulars" class="block p-3.5 border border-zinc-150 hover:border-gold transition-colors bg-zinc-50/50 rounded-sm">
+                <div class="text-[10px] font-bold text-gold uppercase tracking-wider mb-1">Circular · June 3</div>
+                <div class="text-xs font-semibold text-charcoal leading-snug">Updated Gold Price Rate – Effective June 3, 2026</div>
+              </a>
+              <a href="notice.html#urgent" class="block p-3.5 border border-red-100 hover:border-red-300 transition-colors bg-red-50/30 rounded-sm">
+                <div class="text-[10px] font-bold text-red-600 uppercase tracking-wider mb-1">Urgent · May 20</div>
+                <div class="text-xs font-semibold text-charcoal leading-snug">Trade License Renewal Deadline – Final Warning</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="bajus-footer"></div>
+  <script src="./js/meetings-data.js"></script>
+  <script src="./js/include.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

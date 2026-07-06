@@ -308,6 +308,181 @@
     topBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
+
+    // Initialize sidebar meeting calendar if on dashboard
+    initSidebarCalendar();
+  }
+
+  function initSidebarCalendar() {
+    const aside = document.querySelector("aside");
+    if (!aside) return;
+
+    let calContainer = document.getElementById("bajus-sidebar-calendar");
+    const spaceY6 = aside.querySelector(".space-y-6");
+
+    if (!calContainer) {
+      calContainer = document.createElement("div");
+      calContainer.id = "bajus-sidebar-calendar";
+      calContainer.className = "pt-4 border-t border-zinc-100";
+      if (spaceY6) {
+        spaceY6.appendChild(calContainer);
+      } else {
+        aside.appendChild(calContainer);
+      }
+    } else {
+      calContainer.className = "pt-4 border-t border-zinc-100";
+      if (spaceY6 && calContainer.parentElement !== spaceY6) {
+        spaceY6.appendChild(calContainer);
+      }
+    }
+
+    function renderCalWidget() {
+      const meetings = window.BAJUS_MEETINGS || [];
+      const now = new Date();
+      let currentDate = new Date(2026, 6, 5); // Default to July 2026 for demo consistency
+      if (now.getFullYear() === 2026) {
+        currentDate = new Date(now.getFullYear(), now.getMonth(), 1);
+      }
+      function render() {
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        const monthNames = [
+          "January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"
+        ];
+        const monthName = monthNames[month];
+
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        let cellsHtml = "";
+        for (let i = 0; i < firstDay; i++) {
+          cellsHtml += `<div class="h-8"></div>`;
+        }
+
+        const today = new Date();
+        const isCurrentYearMonth = today.getFullYear() === year && today.getMonth() === month;
+
+        for (let d = 1; d <= daysInMonth; d++) {
+          const dateStr = `${monthName} ${d}, ${year}`;
+          const dayMeetings = meetings.filter((m) => m.date === dateStr);
+
+          let bgClass = "text-zinc-600 hover:bg-zinc-100";
+          let borderClass = "border border-transparent";
+          let dotHtml = "";
+          let badgeTitle = "";
+
+          if (dayMeetings.length > 0) {
+            const hasLive = dayMeetings.some((m) => m.status === "live");
+            const hasUpcoming = dayMeetings.some((m) => m.status === "upcoming");
+
+            if (hasLive) {
+              bgClass = "bg-red-50 text-red-700 font-bold hover:bg-red-100 shadow-sm";
+              borderClass = "border border-red-300 animate-pulse";
+              dotHtml = `<span class="size-1.5 rounded-full bg-red-500 absolute bottom-1"></span>`;
+              badgeTitle = "Live Meeting Today";
+            } else if (hasUpcoming) {
+              bgClass = "bg-gold-soft text-gold font-bold hover:bg-gold hover:text-cream shadow-sm";
+              borderClass = "border border-gold/40";
+              dotHtml = `<span class="size-1.5 rounded-full bg-gold absolute bottom-1"></span>`;
+              badgeTitle = "Upcoming Meeting";
+            } else {
+              bgClass = "bg-zinc-100 text-zinc-700 font-bold hover:bg-zinc-200";
+              borderClass = "border border-zinc-300";
+              dotHtml = `<span class="size-1.5 rounded-full bg-zinc-400 absolute bottom-1"></span>`;
+              badgeTitle = "Concluded Meeting";
+            }
+          }
+
+          const isToday = isCurrentYearMonth && d === today.getDate();
+          if (isToday) {
+            borderClass += " ring-1 ring-gold ring-offset-1 font-extrabold";
+          }
+
+          if (dayMeetings.length > 0) {
+            const targetHref = `dashboard-meeting-detail.html?id=${encodeURIComponent(dayMeetings[0].id)}`;
+            cellsHtml += `
+              <a href="${targetHref}" class="h-8 rounded-sm text-xs flex flex-col items-center justify-center relative transition-all duration-150 ${bgClass} ${borderClass}" title="${badgeTitle}: ${dayMeetings[0].title}">
+                <span>${d}</span>
+                ${dotHtml}
+              </a>
+            `;
+          } else {
+            cellsHtml += `
+              <div class="h-8 rounded-sm text-xs flex flex-col items-center justify-center relative ${bgClass} ${borderClass} cursor-default">
+                <span>${d}</span>
+              </div>
+            `;
+          }
+        }
+
+        calContainer.innerHTML = `
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="font-serif text-sm font-bold text-charcoal tracking-wide flex items-center gap-1.5">
+                <i class="ph ph-calendar-blank text-gold text-base"></i>
+                <span>${monthName} ${year}</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <button type="button" id="cal-prev-btn" class="size-6 rounded-sm bg-zinc-100 hover:bg-gold hover:text-cream text-zinc-600 transition-colors flex items-center justify-center text-xs" title="Previous Month">
+                  <i class="ph ph-caret-left font-bold"></i>
+                </button>
+                <button type="button" id="cal-today-btn" class="px-1.5 h-6 rounded-sm bg-zinc-100 hover:bg-gold hover:text-cream text-[10px] font-bold uppercase tracking-wider text-zinc-600 transition-colors flex items-center justify-center" title="Go to Current Month">
+                  Today
+                </button>
+                <button type="button" id="cal-next-btn" class="size-6 rounded-sm bg-zinc-100 hover:bg-gold hover:text-cream text-zinc-600 transition-colors flex items-center justify-center text-xs" title="Next Month">
+                  <i class="ph ph-caret-right font-bold"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Day of Week Header -->
+            <div class="grid grid-cols-7 gap-1 text-center">
+              <span class="text-[10px] font-bold text-zinc-400">Su</span>
+              <span class="text-[10px] font-bold text-zinc-400">Mo</span>
+              <span class="text-[10px] font-bold text-zinc-400">Tu</span>
+              <span class="text-[10px] font-bold text-zinc-400">We</span>
+              <span class="text-[10px] font-bold text-zinc-400">Th</span>
+              <span class="text-[10px] font-bold text-zinc-400">Fr</span>
+              <span class="text-[10px] font-bold text-zinc-400">Sa</span>
+            </div>
+
+            <!-- Days Grid -->
+            <div class="grid grid-cols-7 gap-1">
+              ${cellsHtml}
+            </div>
+
+            <!-- Legend -->
+            <div class="flex items-center justify-between pt-2 text-[9px] font-medium text-zinc-500 border-t border-zinc-100">
+              <span class="flex items-center gap-1"><span class="size-2 rounded-full bg-red-500 animate-pulse"></span> Live</span>
+              <span class="flex items-center gap-1"><span class="size-2 rounded-full bg-gold"></span> Upcoming</span>
+              <span class="flex items-center gap-1"><span class="size-2 rounded-full bg-zinc-400"></span> Past</span>
+            </div>
+          </div>
+        `;
+
+        const prevBtn = calContainer.querySelector("#cal-prev-btn");
+        const nextBtn = calContainer.querySelector("#cal-next-btn");
+        const todayBtn = calContainer.querySelector("#cal-today-btn");
+
+        if (prevBtn) prevBtn.addEventListener("click", () => { currentDate.setMonth(currentDate.getMonth() - 1); render(); });
+        if (nextBtn) nextBtn.addEventListener("click", () => { currentDate.setMonth(currentDate.getMonth() + 1); render(); });
+        if (todayBtn) todayBtn.addEventListener("click", () => { const t = new Date(); currentDate = new Date(t.getFullYear(), t.getMonth(), 1); render(); });
+      }
+
+      render();
+    }
+
+    if (typeof window.BAJUS_MEETINGS === "undefined") {
+      const script = document.createElement("script");
+      script.src = "./js/meetings-data.js";
+      script.onload = () => {
+        renderCalWidget();
+      };
+      document.head.appendChild(script);
+    } else {
+      renderCalWidget();
+    }
   }
 
   if (document.readyState === "loading") {
