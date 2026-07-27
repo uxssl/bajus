@@ -43,44 +43,126 @@ window.showToast = function(message, type = 'success') {
 };
 
 (function () {
-  // Hero slider
+  // Hero slider — Olight: media slide + staggered text fade-up
   function initHeroSlider() {
     const slides = document.querySelectorAll(".hero-slide");
     if (slides.length < 2) return;
+
+    const DURATION = 1000;
+    const AUTO_MS = 6500;
     let idx = 0;
-    function show(i) {
-      slides.forEach((s, n) => s.classList.toggle("is-hidden", n !== i));
-      document.querySelectorAll(".hero-dot").forEach((d, n) => {
-        d.classList.toggle("bg-gold", n === i);
-        d.classList.toggle("w-16", n === i);
-        d.classList.toggle("bg-white/30", n !== i);
-        d.classList.toggle("w-8", n !== i);
-      });
-    }
-    show(0);
-    setInterval(() => { idx = (idx + 1) % slides.length; show(idx); }, 6500);
+    let busy = false;
+    let timer = null;
+    const dots = document.querySelectorAll(".hero-dot");
 
-    document.querySelectorAll(".hero-dot").forEach((dot, n) =>
-      dot.addEventListener("click", () => { idx = n; show(idx); })
-    );
-  }
-
-  // Reveal-on-scroll
-  function initReveal() {
-    const els = document.querySelectorAll(".reveal");
-    if (!("IntersectionObserver" in window)) {
-      els.forEach(el => el.classList.add("is-visible"));
-      return;
-    }
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add("is-visible");
-          obs.unobserve(e.target);
+    function updateDots(i) {
+      dots.forEach((d, n) => {
+        d.classList.remove("is-active", "is-progress");
+        d.removeAttribute("aria-current");
+        if (n === i) {
+          d.classList.add("is-active");
+          d.setAttribute("aria-current", "true");
         }
       });
-    }, { threshold: 0.12 });
-    els.forEach(el => obs.observe(el));
+      // Restart progress fill on the active dot (scaleX 0 → 1 over AUTO_MS)
+      const active = dots[i];
+      if (!active) return;
+      void active.offsetWidth;
+      requestAnimationFrame(() => {
+        active.classList.add("is-progress");
+      });
+    }
+
+    function startKenBurns(slide) {
+      slide.classList.remove("is-kenburns");
+      void slide.offsetWidth;
+      slide.classList.add("is-kenburns");
+    }
+
+    function goTo(nextIdx) {
+      if (busy || nextIdx === idx || nextIdx < 0 || nextIdx >= slides.length) return;
+      busy = true;
+
+      const current = slides[idx];
+      const next = slides[nextIdx];
+
+      next.classList.remove("is-leaving", "is-animating", "is-active", "is-kenburns");
+      void next.offsetWidth;
+
+      current.classList.add("is-animating");
+      next.classList.add("is-animating", "is-active");
+      current.classList.remove("is-active", "is-kenburns");
+      current.classList.add("is-leaving");
+
+      startKenBurns(next);
+      updateDots(nextIdx);
+
+      window.setTimeout(() => {
+        current.classList.remove("is-animating");
+        void current.offsetWidth;
+        current.classList.remove("is-leaving");
+        next.classList.remove("is-animating");
+        idx = nextIdx;
+        busy = false;
+      }, DURATION);
+    }
+
+    function schedule() {
+      window.clearInterval(timer);
+      timer = window.setInterval(() => {
+        goTo((idx + 1) % slides.length);
+      }, AUTO_MS);
+    }
+
+    // Reset then activate so first-slide text fade-up plays on load
+    slides.forEach((s) => {
+      s.classList.remove("is-active", "is-hidden", "is-leaving", "is-animating", "is-kenburns");
+    });
+    void slides[0].offsetWidth;
+    slides[0].classList.add("is-animating", "is-active");
+    startKenBurns(slides[0]);
+    updateDots(0);
+    window.setTimeout(() => slides[0].classList.remove("is-animating"), DURATION);
+    schedule();
+
+    dots.forEach((dot, n) => {
+      dot.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        goTo(n);
+        schedule();
+      });
+    });
+  }
+
+  // Reveal-on-scroll — Olight-style entrance (opal-move)
+  function initReveal() {
+    const els = document.querySelectorAll(".reveal");
+    if (!els.length) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      els.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      els.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    els.forEach((el) => obs.observe(el));
   }
 
   function initCommitteesAccordion() {

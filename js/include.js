@@ -10,28 +10,34 @@
       label: "About",
       submenu: [
         { href: "about.html", label: "About BAJUS" },
-        { href: "about-presidents-message.html", label: "Chief Advisor's Message" },
+        {
+          href: "about-presidents-message.html",
+          label: "President's Message",
+        },
         { href: "about-board.html", label: "Board of Directors" },
         { href: "about-committees.html", label: "Committees" },
-        { href: "about-divisional-committee.html", label: "Divisional Committee" },
+        {
+          href: "about-divisional-committee.html",
+          label: "Divisional Committee",
+        },
         { href: "about-district-committee.html", label: "District Committee" },
-        { href: "about-election.html", label: "BAJUS Election" }
-      ]
+        { href: "about-election.html", label: "BAJUS Election" },
+      ],
     },
     {
       label: "Member",
       submenu: [
         { href: "member-directory.html", label: "Member Directory" },
-        { href: "member-become.html", label: "Become a Member" }
-      ]
+        { href: "member-become.html", label: "Become a Member" },
+      ],
     },
     { href: "gold-price.html", label: "Gold Price" },
     {
       label: "Notice",
       submenu: [
         { href: "notice.html", label: "All Notices" },
-        { href: "notice.html#forms", label: "Forms & Downloads" }
-      ]
+        { href: "notice.html#forms", label: "Forms & Downloads" },
+      ],
     },
     {
       label: "Media",
@@ -39,8 +45,8 @@
         { href: "gallery.html", label: "Gallery" },
         { href: "events.html", label: "Events" },
         { href: "news.html", label: "News" },
-        { href: "press-release.html", label: "Press Release" }
-      ]
+        { href: "press-release.html", label: "Press Release" },
+      ],
     },
     {
       label: "Resource",
@@ -50,9 +56,12 @@
         { href: "resource-publication.html", label: "Publication" },
         { href: "resource-articles.html", label: "Article / Views of Experts" },
         { href: "resource-research.html", label: "Research of Specialists" },
-        { href: "resource-international.html", label: "International News / Article" },
-        { href: "resource-links.html", label: "Useful Link" }
-      ]
+        {
+          href: "resource-international.html",
+          label: "International News / Article",
+        },
+        { href: "resource-links.html", label: "Useful Link" },
+      ],
     },
     { href: "bajus-institute.html", label: "Institute" },
     { href: "contact.html", label: "Contact" },
@@ -76,44 +85,55 @@
   function isSubItemActive(subHref, current) {
     if (subHref === current) return true;
     // Exact page match only when no hash is active and submenu item has no hash
-    if (!window.location.hash && !subHref.includes("#") && subHref === activePage()) return true;
+    if (
+      !window.location.hash &&
+      !subHref.includes("#") &&
+      subHref === activePage()
+    )
+      return true;
     return false;
   }
 
   function navLinks(active, mobile, isDark = false) {
     const current = currentNavHref();
-    return NAV.map(n => {
+    return NAV.map((n) => {
       if (n.submenu) {
-        const isSubActive = n.submenu.some(sub => hrefPage(sub.href) === active);
+        const isSubActive = n.submenu.some(
+          (sub) => hrefPage(sub.href) === active,
+        );
         const menuWidth = n.wide ? "w-72" : "w-56";
         if (mobile) {
           return `
             <details class="group border-b border-zinc-100">
               <summary class="flex justify-between items-center py-4 px-2 text-base font-medium tracking-wide text-charcoal list-none cursor-pointer">
-                <span class="${isSubActive ? 'text-gold' : ''}">${n.label}</span>
+                <span class="${isSubActive ? "text-gold" : ""}">${n.label}</span>
                 <svg class="size-4 transition-transform duration-200 group-open:rotate-180 text-zinc-400 group-hover:text-gold" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
               </summary>
               <div class="pl-4 pb-2 flex flex-col bg-zinc-50/50">
-                ${n.submenu.map(sub => {
-                  const isActive = isSubItemActive(sub.href, current);
-                  return `<a href="${BASE}/${sub.href}" class="py-2.5 px-2 text-sm font-medium ${isActive ? 'text-gold' : 'text-zinc-500 hover:text-gold'}">${sub.label}</a>`;
-                }).join("")}
+                ${n.submenu
+                  .map((sub) => {
+                    const isActive = isSubItemActive(sub.href, current);
+                    return `<a href="${BASE}/${sub.href}" class="py-2.5 px-2 text-sm font-medium ${isActive ? "text-gold" : "text-zinc-500 hover:text-gold"}">${sub.label}</a>`;
+                  })
+                  .join("")}
               </div>
             </details>
           `;
         } else {
           return `
             <div class="relative group py-6">
-              <button class="flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors ${isSubActive ? 'text-gold' : (isDark ? 'text-zinc-200 hover:text-gold' : 'text-charcoal hover:text-gold')} focus:outline-none">
+              <button class="header-nav-link flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors ${isSubActive ? "text-gold is-active" : isDark ? "text-zinc-200 hover:text-gold" : "text-charcoal hover:text-gold"} focus:outline-none">
                 <span>${n.label}</span>
                 <svg class="size-3.5 transition-transform duration-300 group-hover:rotate-180 text-zinc-400 group-hover:text-gold" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
               </button>
               <div class="absolute left-0 top-full pt-1 ${menuWidth} opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
-                <div class="${isDark ? 'bg-black border border-zinc-850 text-zinc-250' : 'bg-cream border border-zinc-200'} shadow-xl py-2 rounded-sm backdrop-blur-md">
-                  ${n.submenu.map(sub => {
-                    const isActive = isSubItemActive(sub.href, current);
-                    return `<a href="${BASE}/${sub.href}" class="block px-5 py-2.5 text-[11px] uppercase tracking-wider font-semibold ${isActive ? 'text-gold' : (isDark ? 'text-zinc-300 hover:text-gold hover:bg-zinc-900' : 'text-charcoal hover:text-gold hover:bg-zinc-50')} transition-colors">${sub.label}</a>`;
-                  }).join("")}
+                <div class="${isDark ? "bg-black border border-zinc-850 text-zinc-250" : "bg-cream border border-zinc-200"} shadow-xl py-2 rounded-sm backdrop-blur-md">
+                  ${n.submenu
+                    .map((sub) => {
+                      const isActive = isSubItemActive(sub.href, current);
+                      return `<a href="${BASE}/${sub.href}" class="block px-5 py-2.5 text-[11px] uppercase tracking-wider font-semibold ${isActive ? "text-gold" : isDark ? "text-zinc-300 hover:text-gold hover:bg-zinc-900" : "text-charcoal hover:text-gold hover:bg-zinc-50"} transition-colors">${sub.label}</a>`;
+                    })
+                    .join("")}
                 </div>
               </div>
             </div>
@@ -123,8 +143,12 @@
         const isActive = n.href === active;
         const base = mobile
           ? "block py-4 px-2 text-base border-b border-zinc-100 font-medium tracking-wide"
-          : "text-sm font-medium tracking-wide transition-colors py-6";
-        const color = isActive ? "text-gold" : (isDark ? "text-zinc-200 hover:text-gold" : "text-charcoal hover:text-gold");
+          : "header-nav-link text-sm font-medium tracking-wide transition-colors py-6";
+        const color = isActive
+          ? "text-gold is-active"
+          : isDark
+            ? "text-zinc-200 hover:text-gold"
+            : "text-charcoal hover:text-gold";
         return `<a href="${BASE}/${n.href}" class="${base} ${color}">${n.label}</a>`;
       }
     }).join("");
@@ -134,8 +158,8 @@
     const active = activePage();
     return `
     <!-- Utility Bar -->
-    <div class="${isDark ? 'bg-black border-b border-zinc-900 text-zinc-450' : 'bg-zinc-100/60 border-b border-zinc-200'} hidden md:block">
-      <div class="max-w-7xl mx-auto px-6 h-10 flex items-center justify-between text-[11px] uppercase tracking-widest font-medium ${isDark ? 'text-zinc-400' : 'text-zinc-500'}">
+    <div class="bajus-utility-bar ${isDark ? "bg-black border-b border-zinc-900 text-zinc-450" : "bg-zinc-100/60 border-b border-zinc-200"} hidden md:block">
+      <div class="max-w-7xl mx-auto px-6 h-10 flex items-center justify-between text-[11px] uppercase tracking-widest font-medium ${isDark ? "text-zinc-400" : "text-zinc-500"}">
         <div class="flex gap-6">
           <span><i class="bi bi-telephone text-gold mr-1"></i>+880 2 8159193</span>
           <span><i class="bi bi-envelope text-gold mr-1"></i>info@bajus.org.bd</span>
@@ -144,32 +168,32 @@
           <a href="${BASE}/dashboard.html" class="hover:text-gold">Member Portal</a>
           <span class="text-zinc-300">|</span>
           <button class="hover:text-gold font-semibold text-gold">EN</button>
-          <button class="${isDark ? 'hover:text-zinc-200' : 'hover:text-charcoal'}">বাংলা</button>
+          <button class="${isDark ? "hover:text-zinc-200" : "hover:text-charcoal"}">বাংলা</button>
         </div>
       </div>
     </div>
 
     <!-- Main Nav & Marquee Ticker -->
-    <header class="sticky top-0 z-40 ${isDark ? 'dark-header bg-black/95 border-b border-zinc-900 text-zinc-200' : 'bg-white/95 border-b border-zinc-200'} backdrop-blur-md">
+    <header id="bajus-main-header" class="sticky top-0 z-40 ${isDark ? "dark-header bg-black/95 border-b border-zinc-900 text-zinc-200" : "bg-white/95 border-b border-zinc-200"} backdrop-blur-md">
       <!-- Market Ticker directly on top of menu -->
-      <div class="bg-charcoal text-cream border-b border-gold/30 ticker">
+      <div class="bajus-header-ticker bg-charcoal text-cream border-b border-gold/30 ticker">
         <div class="ticker__track py-2 text-xs font-medium uppercase tracking-wider">
           ${tickerRow()}${tickerRow()}
         </div>
       </div>
 
-      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="bajus-header-row max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <a href="${BASE}/index.html" class="flex items-center gap-3">
-          <img src="${BASE}/assets/logo.png" alt="BAJUS — Bangladesh Jewellers Association" class="h-10 md:h-12 w-auto" />
+          <img src="${BASE}/assets/logo.png" alt="BAJUS — Bangladesh Jewellers Association" class="bajus-header-logo h-10 md:h-12 w-auto" />
         </a>
         <nav class="hidden lg:flex items-center gap-5">
           ${navLinks(active, false, isDark)}
         </nav>
         <div class="hidden md:flex items-center gap-3">
-          <a href="${BASE}/login.html" class="text-sm font-medium px-4 py-2 hover:text-gold transition-colors ${isDark ? 'text-zinc-300' : 'text-charcoal'}">Login</a>
-          <a href="${BASE}/signup.html" class="bg-gold text-cream text-sm font-medium px-5 py-2.5 ring-1 ring-gold/20 hover:bg-[#a3760a] transition-colors">Apply Now</a>
+          <a href="${BASE}/login.html" class="text-sm font-medium px-4 py-2 hover:text-gold transition-colors ${isDark ? "text-zinc-300" : "text-charcoal"}">Login</a>
+          <a href="${BASE}/signup.html" class="btn-gold text-sm font-medium tracking-wide px-5 py-2">Apply Now</a>
         </div>
-        <button id="bajus-burger" class="lg:hidden p-2 shrink-0 ${isDark ? 'text-zinc-200' : 'text-charcoal'}" aria-label="Open menu">
+        <button id="bajus-burger" class="lg:hidden p-2 shrink-0 ${isDark ? "text-zinc-200" : "text-charcoal"}" aria-label="Open menu">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
         </button>
       </div>
@@ -195,20 +219,28 @@
 
   function tickerRow() {
     const items = [
-      ['22K Gold', '<span class="font-bangla">৳</span>1,72,883 / Bhori'],
-      ['21K Gold', '<span class="font-bangla">৳</span>1,65,016 / Bhori'],
-      ['18K Gold', '<span class="font-bangla">৳</span>1,41,449 / Bhori'],
-      ['Traditional Gold', '<span class="font-bangla">৳</span>1,17,036 / Bhori'],
-      ['Silver 22K', '<span class="font-bangla">৳</span>2,567 / Bhori'],
-      ['Silver 21K', '<span class="font-bangla">৳</span>2,449 / Bhori'],
-      ['Silver Traditional', '<span class="font-bangla">৳</span>1,633 / Bhori'],
+      ["22K Gold", '<span class="font-bangla">৳</span>1,72,883 / Bhori'],
+      ["21K Gold", '<span class="font-bangla">৳</span>1,65,016 / Bhori'],
+      ["18K Gold", '<span class="font-bangla">৳</span>1,41,449 / Bhori'],
+      [
+        "Traditional Gold",
+        '<span class="font-bangla">৳</span>1,17,036 / Bhori',
+      ],
+      ["Silver 22K", '<span class="font-bangla">৳</span>2,567 / Bhori'],
+      ["Silver 21K", '<span class="font-bangla">৳</span>2,449 / Bhori'],
+      ["Silver Traditional", '<span class="font-bangla">৳</span>1,633 / Bhori'],
     ];
-    return `<div class="flex gap-12 px-6 items-center">` +
-      items.map(([k, v]) =>
-        `<span class="flex items-center gap-2"><span class="text-gold">●</span><span class="text-gold">${k}:</span> ${v}</span>`
-      ).join('') +
+    return (
+      `<div class="flex gap-12 px-6 items-center">` +
+      items
+        .map(
+          ([k, v]) =>
+            `<span class="flex items-center gap-2"><span class="text-gold">●</span><span class="text-gold">${k}:</span> ${v}</span>`,
+        )
+        .join("") +
       `<span class="text-gold/50 px-4">| Updated: Jun 03, 2026</span>` +
-      `</div>`;
+      `</div>`
+    );
   }
 
   function renderFooter() {
@@ -240,22 +272,22 @@
           <div class="lg:col-span-2">
             <h4 class="text-charcoal text-xs uppercase tracking-widest font-semibold mb-6">About BAJUS</h4>
             <ul class="space-y-3 text-sm">
-              <li><a href="${BASE}/about.html" class="hover:text-gold transition-colors">About BAJUS</a></li>
-              <li><a href="${BASE}/about-presidents-message.html" class="hover:text-gold transition-colors">Chief Advisor's Message</a></li>
-              <li><a href="${BASE}/about-board.html" class="hover:text-gold transition-colors">Board of Directors</a></li>
-              <li><a href="${BASE}/member-directory.html" class="hover:text-gold transition-colors">Member Directory</a></li>
+              <li><a href="${BASE}/about.html" class="footer-nav-link">About BAJUS</a></li>
+              <li><a href="${BASE}/about-presidents-message.html" class="footer-nav-link">President's Message</a></li>
+              <li><a href="${BASE}/about-board.html" class="footer-nav-link">Board of Directors</a></li>
+              <li><a href="${BASE}/member-directory.html" class="footer-nav-link">Member Directory</a></li>
             </ul>
           </div>
 
           <div class="lg:col-span-2">
             <h4 class="text-charcoal text-xs uppercase tracking-widest font-semibold mb-6">Media & Resource</h4>
             <ul class="space-y-3 text-sm">
-              <li><a href="${BASE}/gallery.html" class="hover:text-gold transition-colors">Gallery</a></li>
-              <li><a href="${BASE}/events.html" class="hover:text-gold transition-colors">Events</a></li>
-              <li><a href="${BASE}/news.html" class="hover:text-gold transition-colors">News</a></li>
-              <li><a href="${BASE}/press-release.html" class="hover:text-gold transition-colors">Press Release</a></li>
-              <li><a href="${BASE}/resource-policy.html" class="hover:text-gold transition-colors">Policy</a></li>
-              <li><a href="${BASE}/bajus-institute.html" class="hover:text-gold transition-colors">Institute</a></li>
+              <li><a href="${BASE}/gallery.html" class="footer-nav-link">Gallery</a></li>
+              <li><a href="${BASE}/events.html" class="footer-nav-link">Events</a></li>
+              <li><a href="${BASE}/news.html" class="footer-nav-link">News</a></li>
+              <li><a href="${BASE}/press-release.html" class="footer-nav-link">Press Release</a></li>
+              <li><a href="${BASE}/resource-policy.html" class="footer-nav-link">Policy</a></li>
+              <li><a href="${BASE}/bajus-institute.html" class="footer-nav-link">Institute</a></li>
             </ul>
           </div>
 
@@ -272,8 +304,8 @@
         <div class="pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-zinc-500">
           <p>© <span id="bajus-year"></span> Bangladesh Jewellers' Association. All rights reserved.</p>
           <div class="flex gap-8">
-            <a href="#" class="hover:text-gold">Privacy Policy</a>
-            <a href="#" class="hover:text-gold">Terms of Service</a>
+            <a href="#" class="footer-nav-link">Privacy Policy</a>
+            <a href="#" class="footer-nav-link">Terms of Service</a>
           </div>
         </div>
       </div>
@@ -286,7 +318,8 @@
     if (!document.querySelector('link[href*="bootstrap-icons"]')) {
       const link = document.createElement("link");
       link.rel = "stylesheet";
-      link.href = "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css";
+      link.href =
+        "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css";
       document.head.appendChild(link);
     }
 
@@ -307,31 +340,83 @@
     const close = document.getElementById("bajus-close");
     const nav = document.getElementById("bajus-mobile-nav");
     const back = document.getElementById("bajus-backdrop");
-    function open() { nav.classList.add("is-open"); back.classList.remove("hidden"); document.body.style.overflow = "hidden"; }
-    function shut() { nav.classList.remove("is-open"); back.classList.add("hidden"); document.body.style.overflow = ""; }
+    function open() {
+      nav.classList.add("is-open");
+      back.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+    function shut() {
+      nav.classList.remove("is-open");
+      back.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
     if (burger) burger.addEventListener("click", open);
     if (close) close.addEventListener("click", shut);
     if (back) back.addEventListener("click", shut);
 
-    // Scroll to Top Button
+    // Shrink header on scroll (ticker marquee stays visible/sticky always)
+    const mainHeader = document.getElementById("bajus-main-header");
+    if (mainHeader) {
+      const headerRow = mainHeader.querySelector(".bajus-header-row");
+      const headerLogo = mainHeader.querySelector(".bajus-header-logo");
+      const isDesktop = () => window.matchMedia("(min-width: 768px)").matches;
+
+      const applyHeaderScrollState = () => {
+        const scrolled = window.scrollY > 40;
+        mainHeader.classList.toggle("is-scrolled", scrolled);
+        mainHeader.style.boxShadow = scrolled
+          ? "0 8px 24px -12px rgba(0,0,0,0.18)"
+          : "";
+        if (headerRow) {
+          headerRow.style.height = scrolled ? "4rem" : "5rem";
+        }
+        if (headerLogo) {
+          headerLogo.style.height = scrolled
+            ? "2.25rem"
+            : isDesktop()
+              ? "3rem"
+              : "2.5rem";
+        }
+      };
+      applyHeaderScrollState();
+      window.addEventListener("scroll", applyHeaderScrollState, {
+        passive: true,
+      });
+      window.addEventListener("resize", applyHeaderScrollState);
+    }
+
+    // Scroll to Top Button (circular scroll-progress ring)
     const topBtn = document.createElement("button");
     topBtn.id = "bajus-scroll-top";
     topBtn.ariaLabel = "Scroll to top";
-    topBtn.className = "fixed bottom-8 right-8 z-50 size-11 bg-gold text-cream hover:bg-[#a3760a] hover:scale-105 active:scale-95 shadow-xl rounded-full flex items-center justify-center transition-all duration-300 translate-y-10 opacity-0 pointer-events-none";
+    topBtn.className = "bajus-scroll-top";
+    const R = 20;
+    const CIRC = 2 * Math.PI * R;
     topBtn.innerHTML = `
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <svg class="bajus-scroll-top__ring" width="46" height="46" viewBox="0 0 46 46">
+        <circle class="bajus-scroll-top__track" cx="23" cy="23" r="${R}" />
+        <circle class="bajus-scroll-top__progress" cx="23" cy="23" r="${R}"
+          style="stroke-dasharray:${CIRC};stroke-dashoffset:${CIRC};" />
+      </svg>
+      <svg class="bajus-scroll-top__arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
       </svg>
     `;
     document.body.appendChild(topBtn);
 
+    const progressCircle = topBtn.querySelector(".bajus-scroll-top__progress");
+
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 450) {
-        topBtn.classList.remove("translate-y-10", "opacity-0", "pointer-events-none");
-        topBtn.classList.add("translate-y-0", "opacity-100", "pointer-events-auto");
+      const scrollTop = window.scrollY;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+      progressCircle.style.strokeDashoffset = String(CIRC - pct * CIRC);
+
+      if (scrollTop > 450) {
+        topBtn.classList.add("is-visible");
       } else {
-        topBtn.classList.add("translate-y-10", "opacity-0", "pointer-events-none");
-        topBtn.classList.remove("translate-y-0", "opacity-100", "pointer-events-auto");
+        topBtn.classList.remove("is-visible");
       }
     });
 
@@ -377,8 +462,18 @@
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth();
         const monthNames = [
-          "January", "February", "March", "April", "May", "June",
-          "July", "August", "September", "October", "November", "December"
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
         ];
         const monthName = monthNames[month];
 
@@ -391,7 +486,8 @@
         }
 
         const today = new Date();
-        const isCurrentYearMonth = today.getFullYear() === year && today.getMonth() === month;
+        const isCurrentYearMonth =
+          today.getFullYear() === year && today.getMonth() === month;
 
         for (let d = 1; d <= daysInMonth; d++) {
           const dateStr = `${monthName} ${d}, ${year}`;
@@ -404,15 +500,19 @@
 
           if (dayMeetings.length > 0) {
             const hasLive = dayMeetings.some((m) => m.status === "live");
-            const hasUpcoming = dayMeetings.some((m) => m.status === "upcoming");
+            const hasUpcoming = dayMeetings.some(
+              (m) => m.status === "upcoming",
+            );
 
             if (hasLive) {
-              bgClass = "bg-red-50 text-red-700 font-bold hover:bg-red-100 shadow-sm";
+              bgClass =
+                "bg-red-50 text-red-700 font-bold hover:bg-red-100 shadow-sm";
               borderClass = "border border-red-300 animate-pulse";
               dotHtml = `<span class="size-1.5 rounded-full bg-red-500 absolute bottom-1"></span>`;
               badgeTitle = "Live Meeting Today";
             } else if (hasUpcoming) {
-              bgClass = "bg-gold-soft text-gold font-bold hover:bg-gold hover:text-cream shadow-sm";
+              bgClass =
+                "bg-gold-soft text-gold font-bold hover:bg-gold hover:text-cream shadow-sm";
               borderClass = "border border-gold/40";
               dotHtml = `<span class="size-1.5 rounded-full bg-gold absolute bottom-1"></span>`;
               badgeTitle = "Upcoming Meeting";
@@ -495,9 +595,22 @@
         const nextBtn = calContainer.querySelector("#cal-next-btn");
         const todayBtn = calContainer.querySelector("#cal-today-btn");
 
-        if (prevBtn) prevBtn.addEventListener("click", () => { currentDate.setMonth(currentDate.getMonth() - 1); render(); });
-        if (nextBtn) nextBtn.addEventListener("click", () => { currentDate.setMonth(currentDate.getMonth() + 1); render(); });
-        if (todayBtn) todayBtn.addEventListener("click", () => { const t = new Date(); currentDate = new Date(t.getFullYear(), t.getMonth(), 1); render(); });
+        if (prevBtn)
+          prevBtn.addEventListener("click", () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            render();
+          });
+        if (nextBtn)
+          nextBtn.addEventListener("click", () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            render();
+          });
+        if (todayBtn)
+          todayBtn.addEventListener("click", () => {
+            const t = new Date();
+            currentDate = new Date(t.getFullYear(), t.getMonth(), 1);
+            render();
+          });
       }
 
       render();

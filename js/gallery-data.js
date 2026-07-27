@@ -10,7 +10,7 @@ window.BAJUS_GALLERIES = [
     description: "Official handover of responsibilities to the newly elected 2025–2027 BAJUS Executive Board.",
     photos: [
       { src: "./assets/news1.jpg", alt: "Handover ceremony hall" },
-      { src: "./assets/president.jpg", alt: "Chief Advisor at handover" },
+      { src: "./assets/president.jpg", alt: "President at handover" },
       { src: "./assets/sliders/slider-1.jpg", alt: "Leadership gathering" },
       { src: "./assets/banner/banner_1.jpg", alt: "Ceremony moment" },
       { src: "./assets/jewellery-1.jpg", alt: "Guest showcase" },

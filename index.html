@@ -28,43 +28,49 @@
 
     <!-- HERO SLIDER -->
     <section
-      class="relative h-[60vh] min-h-[480px] overflow-hidden bg-zinc-900"
+      class="hero-slider relative h-[580px] sm:h-[640px] lg:h-[650px] xl:h-[830px] overflow-hidden bg-zinc-900"
     >
       <!-- Slide 1 -->
-      <div class="hero-slide absolute inset-0">
-        <img
-          src="./assets/sliders/slider-1.jpg"
-          alt="Master jeweller crafting gold ornaments"
-          class="absolute inset-0 w-full h-full object-cover opacity-70"
-        />
+      <div class="hero-slide is-active absolute inset-0">
+        <div class="hero-slide__media">
+          <img
+            src="./assets/sliders/slider-1.jpg"
+            alt="Master jeweller crafting gold ornaments"
+            class="absolute inset-0 w-full h-full object-cover opacity-70"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-zinc-900/85 via-zinc-900/55 to-transparent"
+          ></div>
+        </div>
         <div
-          class="absolute inset-0 bg-gradient-to-r from-zinc-900/85 via-zinc-900/55 to-transparent"
-        ></div>
-        <div class="relative h-full max-w-7xl mx-auto px-6 flex items-center">
+          class="hero-slide__content max-w-7xl mx-auto px-6 flex items-center"
+        >
           <div class="max-w-2xl text-cream">
             <span
-              class="inline-block mb-5 px-3 py-1 bg-gold text-cream text-[10px] font-bold tracking-[0.25em] uppercase"
+              class="hero-line hero-line--sub inline-block mb-5 px-3 py-1 bg-gold text-cream text-[10px] font-bold tracking-[0.25em] uppercase"
               >Featured Announcement</span
             >
-            <h1 class="font-serif text-4xl md:text-6xl leading-[1.05] mb-6">
+            <h1
+              class="hero-line hero-line--title font-serif text-4xl md:text-6xl leading-[1.05] mb-6"
+            >
               Guardian of the National
               <span class="italic text-gold">Golden Heritage</span>
             </h1>
             <p
-              class="text-sm md:text-base opacity-90 mb-8 max-w-xl leading-relaxed font-light"
+              class="hero-line hero-line--des text-sm md:text-base text-cream/90 mb-8 max-w-xl leading-relaxed font-light"
             >
               BAJUS represents 40,000+ jewellers across 64 districts —
               advocating for transparent hallmarking, ethical trade, and a
               globally competitive Bangladeshi jewellery industry.
             </p>
-            <div class="flex flex-wrap gap-3">
+            <div class="hero-line hero-line--btn flex flex-wrap gap-3">
               <a href="./member-become.html" class="btn-gold"
                 >Become a Member</a
               >
               <a
                 href="./about-presidents-message.html"
                 class="btn-outline text-cream border-white/30 hover:text-cream hover:border-gold"
-                >Read Chief Advisor's Message</a
+                >Read President's Message</a
               >
             </div>
           </div>
@@ -72,81 +78,91 @@
       </div>
 
       <!-- Slide 2 -->
-      <div class="hero-slide absolute inset-0 is-hidden">
-        <img
-          src="./assets/news1.jpg"
-          alt="BAJUS general assembly"
-          class="absolute inset-0 w-full h-full object-cover opacity-60"
-        />
+      <div class="hero-slide absolute inset-0">
+        <div class="hero-slide__media">
+          <img
+            src="./assets/news1.jpg"
+            alt="BAJUS general assembly"
+            class="absolute inset-0 w-full h-full object-cover opacity-60"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-zinc-900/85 via-zinc-900/55 to-transparent"
+          ></div>
+        </div>
         <div
-          class="absolute inset-0 bg-gradient-to-r from-zinc-900/85 via-zinc-900/55 to-transparent"
-        ></div>
-        <div class="relative h-full max-w-7xl mx-auto px-6 flex items-center">
+          class="hero-slide__content max-w-7xl mx-auto px-6 flex items-center"
+        >
           <div class="max-w-2xl text-cream">
             <span
-              class="inline-block mb-5 px-3 py-1 bg-gold text-cream text-[10px] font-bold tracking-[0.25em] uppercase"
+              class="hero-line hero-line--sub inline-block mb-5 px-3 py-1 bg-gold text-cream text-[10px] font-bold tracking-[0.25em] uppercase"
               >Leadership</span
             >
-            <h1 class="font-serif text-4xl md:text-6xl leading-[1.05] mb-6">
+            <h1
+              class="hero-line hero-line--title font-serif text-4xl md:text-6xl leading-[1.05] mb-6"
+            >
               New 2025–2027 Executive Board
               <span class="italic text-gold">takes charge</span>
             </h1>
             <p
-              class="text-sm md:text-base opacity-90 mb-8 max-w-xl leading-relaxed font-light"
+              class="hero-line hero-line--des text-sm md:text-base text-cream/90 mb-8 max-w-xl leading-relaxed font-light"
             >
-              Chief Advisor Enamul Haque Khan formally assumes office at the
+              President Enamul Haque Khan formally assumes office at the
               official handover ceremony alongside the newly elected directors.
             </p>
-            <a href="./news.html" class="btn-gold">Read the Story</a>
+            <div class="hero-line hero-line--btn">
+              <a href="./news.html" class="btn-gold">Read the Story</a>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Slide 3 -->
-      <div class="hero-slide absolute inset-0 is-hidden">
-        <img
-          src="./assets/sliders/slider-3.jpg"
-          alt="National jewellery exhibition hall"
-          class="absolute inset-0 w-full h-full object-cover opacity-60"
-        />
+      <div class="hero-slide absolute inset-0">
+        <div class="hero-slide__media">
+          <img
+            src="./assets/sliders/WhatsApp Image 2026-07-23 at 5.51.27 PM.jpeg"
+            alt="Inauguration of the 2025–2027 elected board"
+            class="absolute inset-0 w-full h-full object-cover opacity-60"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-zinc-900/85 via-zinc-900/55 to-transparent"
+          ></div>
+        </div>
         <div
-          class="absolute inset-0 bg-gradient-to-r from-zinc-900/85 via-zinc-900/55 to-transparent"
-        ></div>
-        <div class="relative h-full max-w-7xl mx-auto px-6 flex items-center">
+          class="hero-slide__content max-w-7xl mx-auto px-6 flex items-center"
+        >
           <div class="max-w-2xl text-cream">
             <span
-              class="inline-block mb-5 px-3 py-1 bg-gold text-cream text-[10px] font-bold tracking-[0.25em] uppercase"
-              >Upcoming Event</span
+              class="hero-line hero-line--sub inline-block mb-5 px-3 py-1 bg-gold text-cream text-[10px] font-bold tracking-[0.25em] uppercase"
+              >Board Inauguration</span
             >
-            <h1 class="font-serif text-4xl md:text-6xl leading-[1.05] mb-6">
-              BAJUS Jewellery Expo —
-              <span class="italic text-gold">2026 Edition</span>
+            <h1
+              class="hero-line hero-line--title font-serif text-4xl md:text-6xl leading-[1.05] mb-6"
+            >
+              Leading the Way:
+              <span class="italic text-gold"
+                >Inauguration of Our 2025–2027 Elected Board</span
+              >
             </h1>
             <p
-              class="text-sm md:text-base opacity-90 mb-8 max-w-xl leading-relaxed font-light"
+              class="hero-line hero-line--des text-sm md:text-base text-cream/90 mb-8 max-w-xl leading-relaxed font-light"
             >
-              Bangladesh's largest convening of jewellery manufacturers,
-              designers, and trade partners. Three days. One industry.
+              Celebrating the formal inauguration of BAJUS’s newly elected Board
+              of Directors for the 2025–2027 term — united to advance
+              Bangladesh’s jewellery industry.
             </p>
-            <a href="./events.html" class="btn-gold">View Programme</a>
+            <div class="hero-line hero-line--btn">
+              <a href="./about-board.html" class="btn-gold">Meet the Board</a>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Dots -->
-      <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-        <button
-          class="hero-dot h-6 w-16 bg-gold border-y-[11px] border-transparent bg-clip-content hover:bg-gold/60 transition-all duration-300"
-          aria-label="Slide 1"
-        ></button>
-        <button
-          class="hero-dot h-6 w-8 bg-white/30 border-y-[11px] border-transparent bg-clip-content hover:bg-gold/60 transition-all duration-300"
-          aria-label="Slide 2"
-        ></button>
-        <button
-          class="hero-dot h-6 w-8 bg-white/30 border-y-[11px] border-transparent bg-clip-content hover:bg-gold/60 transition-all duration-300"
-          aria-label="Slide 3"
-        ></button>
+      <div class="hero-dots" role="tablist" aria-label="Hero slides">
+        <button type="button" class="hero-dot" aria-label="Slide 1"></button>
+        <button type="button" class="hero-dot" aria-label="Slide 2"></button>
+        <button type="button" class="hero-dot" aria-label="Slide 3"></button>
       </div>
     </section>
 
@@ -155,7 +171,7 @@
       <div class="grid md:grid-cols-2" style="min-height: 460px">
         <!-- Left Panel: Hallmark Collection / Earrings -->
         <div
-          class="promo-panel promo-panel--left relative overflow-hidden group min-h-[460px] bg-zinc-900"
+          class="promo-panel promo-panel--left relative overflow-hidden group min-h-[460px] bg-zinc-900 reveal reveal--right"
         >
           <!-- Autoplay Background Video -->
           <video
@@ -223,7 +239,8 @@
 
         <!-- Right Panel: Video Card with Button -->
         <div
-          class="promo-panel promo-panel--right relative overflow-hidden group min-h-[460px] bg-zinc-900"
+          class="promo-panel promo-panel--right relative overflow-hidden group min-h-[460px] bg-zinc-900 reveal reveal--left"
+          data-reveal-delay="100"
         >
           <!-- Autoplay Background Video -->
           <video
@@ -281,6 +298,7 @@
         >
           <div
             class="bg-white py-6 sm:py-10 px-2 sm:px-4 text-center reveal min-w-0 border-r border-b border-zinc-200 lg:border-b-0"
+            data-reveal-delay="0"
           >
             <div
               class="text-2xl sm:text-3xl lg:text-4xl font-serif text-gold mb-1 leading-tight break-words"
@@ -295,6 +313,7 @@
           </div>
           <div
             class="bg-white py-6 sm:py-10 px-2 sm:px-4 text-center reveal min-w-0 border-b border-zinc-200 lg:border-b-0 lg:border-r"
+            data-reveal-delay="100"
           >
             <div
               class="text-2xl sm:text-3xl lg:text-4xl font-serif text-gold mb-1 leading-tight break-words"
@@ -309,6 +328,7 @@
           </div>
           <div
             class="bg-white py-6 sm:py-10 px-2 sm:px-4 text-center reveal min-w-0 border-r border-zinc-200 lg:border-b-0"
+            data-reveal-delay="200"
           >
             <div
               class="text-2xl sm:text-3xl lg:text-4xl font-serif text-gold mb-1 leading-tight break-words"
@@ -323,6 +343,7 @@
           </div>
           <div
             class="bg-white py-6 sm:py-10 px-2 sm:px-4 text-center reveal min-w-0"
+            data-reveal-delay="300"
           >
             <div
               class="text-2xl sm:text-3xl lg:text-4xl font-serif text-gold mb-1 leading-tight break-words"
@@ -345,7 +366,7 @@
     >
       <!-- Restored background image with hover zoom animation and fallback -->
       <img
-        src="./assets/jewellery-2.jpg"
+        src="./assets/about/about-home.png"
         onerror="
           this.onerror = null;
           this.src = './assets/craft.jpg';
@@ -373,6 +394,7 @@
         <!-- Heading -->
         <h2
           class="font-serif text-3xl md:text-5xl text-charcoal leading-tight mb-6 reveal tracking-tight"
+          data-reveal-delay="0"
         >
           Jewellery From The<br /><span class="italic text-gold"
             >World's Finest Designers</span
@@ -381,6 +403,7 @@
 
         <div
           class="text-sm md:text-base text-zinc-600 leading-relaxed mb-8 reveal max-w-3xl font-light space-y-4 mx-auto"
+          data-reveal-delay="100"
         >
           <p>
             Founded in 1972, the Bangladesh Jewellers' Association (BAJUS)
@@ -400,6 +423,7 @@
         <a
           href="./about.html"
           class="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.25em] text-charcoal border-b-2 border-gold pb-1.5 hover:text-gold transition-colors duration-300 reveal"
+          data-reveal-delay="200"
         >
           More About Us
           <svg
@@ -420,47 +444,46 @@
       </div>
     </section>
 
-    <!-- CHIEF ADVISOR'S MESSAGE -->
-    <section class="bg-cream text-charcoal py-24 border-y border-zinc-200">
+    <!-- PRESIDENT'S MESSAGE -->
+    <section class="advisor-message-section text-charcoal py-24">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid lg:grid-cols-12 gap-16 items-center">
-          <div class="lg:col-span-5 relative reveal">
-            <img
-              src="./assets/members/enamul_haque_khan.jpg"
-              alt="Chief Advisor of BAJUS — Enamul Haque Khan"
-              class="w-full aspect-[4/5] object-cover"
-              loading="lazy"
-            />
-            <div
-              class="absolute bottom-4 left-4 right-4 md:-bottom-6 md:-right-6 md:left-auto md:max-w-xs bg-gold text-cream p-6 md:p-7 ring-8 ring-[var(--color-cream)]"
-            >
-              <div
-                class="text-[11px] font-semibold uppercase tracking-widest mb-1 opacity-80"
-              >
-                Chief Advisor, BAJUS
+          <div class="lg:col-span-5 reveal reveal--right">
+            <div class="advisor-message-photo">
+              <div class="advisor-message-photo__frame">
+                <img
+                  src="./assets/members/enamul_haque_khan.jpg"
+                  alt="President of BAJUS — Enamul Haque Khan"
+                  class="advisor-message-photo__img"
+                  loading="lazy"
+                />
               </div>
-              <div class="text-xl font-serif font-semibold">
-                Enamul Haque Khan
+              <div class="advisor-message-badge">
+                <div class="advisor-message-badge__role">
+                  President, BAJUS
+                </div>
+                <div class="advisor-message-badge__name">
+                  Enamul Haque Khan
+                </div>
               </div>
             </div>
           </div>
-          <div class="lg:col-span-7 reveal">
-            <svg
-              class="size-12 text-gold/50 mb-7"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-4.765 2.627-4.765 5.645h3.77v7.204h-9.204zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.154c-2.433.917-4.782 2.627-4.782 5.642h3.997v7.204h-9.211z"
-              />
-            </svg>
-            <h2
-              class="text-2xl md:text-3xl font-serif italic mb-8 leading-snug text-charcoal"
-            >
-              "Our mission is to transform the jewellery industry of Bangladesh
+          <div
+            class="lg:col-span-7 reveal reveal--left"
+            data-reveal-delay="100"
+          >
+            <div class="advisor-message-quote-head">
+              <span class="advisor-message-quote-mark" aria-hidden="true"
+                >&ldquo;</span
+              >
+              <span class="advisor-message-quote-line" aria-hidden="true"></span>
+            </div>
+            <h2 class="advisor-message-quote">
+              Our mission is to transform the jewellery industry of Bangladesh
               into a globally competitive, ethical, and modern powerhouse —
-              built on the trust of every customer and every craftsperson."
+              built on the trust of every customer and every craftsperson.
             </h2>
+            <span class="advisor-message-quote-divider" aria-hidden="true"></span>
             <div
               class="space-y-5 text-zinc-600 text-[15px] leading-relaxed max-w-xl"
             >
@@ -507,6 +530,8 @@
         .jcat-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
+          gap: 1px;
+          padding: 0;
         }
         @media (max-width: 767px) {
           .jcat-grid {
@@ -520,6 +545,7 @@
           aspect-ratio: 3 / 4;
           cursor: pointer;
           text-decoration: none;
+          border-radius: 0;
         }
         .jcat-card img {
           position: absolute;
@@ -528,6 +554,7 @@
           height: 100%;
           object-fit: cover;
           object-position: center;
+          border-radius: 0 !important;
           transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           will-change: transform;
         }
@@ -651,8 +678,8 @@
 
       <div class="jcat-grid">
         <!-- Card 1 -->
-        <a href="./about.html" class="jcat-card">
-          <img src="./assets/banner/banner_1.jpg" alt="About Our Strength" />
+        <a href="./about.html" class="jcat-card reveal" data-reveal-delay="0">
+          <img src="./assets/banner/banner1.jpg" alt="About Our Strength" />
           <div class="jcat-overlay"></div>
           <div class="jcat-text">
             <span class="jcat-title">About Our<br />Strength</span>
@@ -666,9 +693,9 @@
         </a>
 
         <!-- Card 2 -->
-        <a href="./about.html" class="jcat-card">
+        <a href="./about.html" class="jcat-card reveal" data-reveal-delay="100">
           <img
-            src="./assets/banner/banner_2.jpg"
+            src="./assets/banner/banner2.jpg"
             alt="How jewelry industry can be flourish in Bangladesh?"
           />
           <div class="jcat-overlay"></div>
@@ -687,9 +714,13 @@
         </a>
 
         <!-- Card 3 -->
-        <a href="./gold-price.html" class="jcat-card">
+        <a
+          href="./gold-price.html"
+          class="jcat-card reveal"
+          data-reveal-delay="200"
+        >
           <img
-            src="./assets/banner/banner_3.jpg"
+            src="./assets/banner/banner3.jpg"
             alt="Why gold is best invested for future?"
           />
           <div class="jcat-overlay"></div>
@@ -707,8 +738,8 @@
         </a>
 
         <!-- Card 4 -->
-        <a href="./about.html" class="jcat-card">
-          <img src="./assets/banner/banner_4.jpg" alt="About Diamond" />
+        <a href="./about.html" class="jcat-card reveal" data-reveal-delay="300">
+          <img src="./assets/banner/banner4.jpg" alt="About Diamond" />
           <div class="jcat-overlay"></div>
           <div class="jcat-text">
             <span class="jcat-title">About<br />Diamond</span>
@@ -724,7 +755,7 @@
     </section>
 
     <!-- TODAY'S RATES -->
-    <section class="bg-white text-charcoal py-20 border-y border-zinc-200">
+    <section class="bg-white text-charcoal py-20">
       <div class="max-w-7xl mx-auto px-6">
         <div
           class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 reveal"
@@ -757,10 +788,11 @@
           ></a>
         </div>
 
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 reveal">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           <!-- 22K Gold -->
           <div
-            class="rate-card-gold p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between"
+            class="rate-card-gold p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between reveal"
+            data-reveal-delay="0"
           >
             <div>
               <img
@@ -810,7 +842,8 @@
 
           <!-- 21K Gold -->
           <div
-            class="rate-card-gold p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between"
+            class="rate-card-gold p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between reveal"
+            data-reveal-delay="100"
           >
             <div>
               <img
@@ -860,7 +893,8 @@
 
           <!-- 18K Gold -->
           <div
-            class="rate-card-gold p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between"
+            class="rate-card-gold p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between reveal"
+            data-reveal-delay="200"
           >
             <div>
               <img
@@ -910,7 +944,8 @@
 
           <!-- Silver -->
           <div
-            class="rate-card-silver p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between"
+            class="rate-card-silver p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between reveal"
+            data-reveal-delay="300"
           >
             <div>
               <img
@@ -1211,13 +1246,14 @@
             align-items: center;
             justify-content: center;
           }
-          .logo-item img {
+          .logo-marquee-track .logo-item img {
             max-height: 100%;
             max-width: 100%;
             object-fit: contain;
+            border-radius: 0 !important;
             transition: all 0.4s ease;
           }
-          .logo-item img:hover {
+          .logo-marquee-track .logo-item img:hover {
             transform: scale(1.06);
           }
         </style>
@@ -1363,6 +1399,7 @@
         <div
           id="testimonial-carousel"
           class="relative overflow-hidden w-full reveal"
+          data-reveal-delay="100"
         >
           <!-- Flex track: 4 real cards + 4 clones for seamless loop -->
           <div
@@ -1866,296 +1903,290 @@
       });
     </script>
 
-    <!-- UPCOMING EVENTS -->
-    <section class="py-24 bg-zinc-100 border-t border-zinc-200">
+    <!-- UPCOMING EVENTS + GALLERY -->
+    <section class="py-24 bg-cream border-t border-zinc-200">
       <div class="max-w-7xl mx-auto px-6">
-        <div
-          class="flex items-end justify-between mb-12 border-b border-zinc-300 pb-5"
-        >
-          <div>
-            <span
-              class="text-gold font-semibold uppercase tracking-[0.25em] text-xs mb-3 block"
-              >Calendar</span
-            >
-            <h2 class="text-3xl md:text-4xl font-serif">Upcoming Events</h2>
-          </div>
-          <a href="./events.html" class="hidden md:inline-flex btn-text-link"
-            >All Events
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                d="M5 12h14M13 5l7 7-7 7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              /></svg
-          ></a>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8">
-          <a
-            href="./events.html"
-            class="bg-cream flex card-shadow reveal group overflow-hidden"
-          >
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+          <!-- LEFT: Upcoming Events -->
+          <div class="min-w-0 flex flex-col h-full">
             <div
-              class="w-28 sm:w-36 md:w-40 shrink-0 overflow-hidden bg-zinc-200"
+              class="flex items-end justify-between mb-8 border-b border-zinc-200 pb-5 reveal"
             >
-              <img
-                src="./assets/news3.jpg"
-                alt="BAJUS Jewellery Expo 2026"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-            </div>
-            <div class="p-6 md:p-8 flex gap-4 md:gap-6 flex-1 min-w-0">
-              <div class="text-center w-16 md:w-20 shrink-0">
-                <div
-                  class="text-[11px] uppercase tracking-widest text-gold font-bold"
-                >
-                  Feb
-                </div>
-                <div
-                  class="text-4xl md:text-5xl font-serif text-charcoal leading-none mt-1"
-                >
-                  14
-                </div>
-                <div
-                  class="text-[11px] uppercase tracking-widest text-zinc-400 mt-1"
-                >
-                  2026
-                </div>
+              <div>
+                <h2 class="text-3xl md:text-4xl font-serif">Upcoming Events</h2>
               </div>
-              <div
-                class="border-l border-zinc-200 pl-4 md:pl-6 flex flex-col justify-between flex-1 min-w-0"
+              <a
+                href="./events.html"
+                class="hidden sm:inline-flex btn-text-link shrink-0"
+                >All Events
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M5 12h14M13 5l7 7-7 7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  /></svg
+              ></a>
+            </div>
+
+            <div class="flex flex-col gap-5 flex-1 min-h-0">
+              <a
+                href="./events.html"
+                class="bg-white flex card-shadow reveal group overflow-hidden flex-1 min-h-0"
+                data-reveal-delay="0"
               >
-                <div>
+                <div
+                  class="w-24 sm:w-32 shrink-0 overflow-hidden bg-zinc-200 self-stretch"
+                >
+                  <img
+                    src="./assets/news3.jpg"
+                    alt="BAJUS Jewellery Expo 2026"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="p-4 sm:p-6 flex gap-3 sm:gap-5 flex-1 min-w-0">
                   <div
-                    class="text-[11px] font-bold text-gold uppercase tracking-widest mb-1 md:mb-2"
+                    class="border-r border-zinc-200 pr-3 sm:pr-5 flex flex-col justify-between flex-1 min-w-0"
                   >
-                    Trade Expo
+                    <div>
+                      <div
+                        class="text-[10px] font-bold text-gold uppercase tracking-widest mb-1"
+                      >
+                        Trade Expo
+                      </div>
+                      <h3
+                        class="text-xl sm:text-2xl font-serif mb-1 leading-snug text-charcoal"
+                      >
+                        BAJUS Jewellery Expo 2026
+                      </h3>
+                      <p
+                        class="text-xs text-zinc-500 leading-relaxed line-clamp-2"
+                      >
+                        Three-day national exhibition of Bangladeshi jewellery
+                        design, manufacturing technology, and trade
+                        partnerships.
+                      </p>
+                    </div>
+                    <div
+                      class="text-[10px] uppercase tracking-widest text-zinc-400 mt-2 truncate"
+                    >
+                      ICCB, Dhaka
+                    </div>
                   </div>
-                  <h3
-                    class="text-lg md:text-xl font-serif mb-1 md:mb-2 truncate"
-                  >
-                    BAJUS Jewellery Expo 2026
-                  </h3>
-                  <p
-                    class="text-xs md:text-sm text-zinc-500 leading-relaxed mb-2 md:mb-3 line-clamp-2"
-                  >
-                    Three-day national exhibition of Bangladeshi jewellery
-                    design, manufacturing technology, and trade partnerships.
-                  </p>
+                  <div class="text-center w-14 sm:w-16 shrink-0">
+                    <div
+                      class="text-[10px] uppercase tracking-widest text-gold font-bold"
+                    >
+                      Feb
+                    </div>
+                    <div
+                      class="text-3xl sm:text-4xl font-serif text-charcoal leading-none mt-1"
+                    >
+                      14
+                    </div>
+                    <div
+                      class="text-[10px] uppercase tracking-widest text-zinc-400 mt-1"
+                    >
+                      2026
+                    </div>
+                  </div>
                 </div>
-                <div
-                  class="text-[10px] md:text-[12px] uppercase tracking-widest text-zinc-400 truncate"
-                >
-                  International Convention City Bashundhara, Dhaka
-                </div>
-              </div>
-            </div>
-          </a>
+              </a>
 
-          <a
-            href="./events.html"
-            class="bg-cream flex card-shadow reveal group overflow-hidden"
-          >
-            <div
-              class="w-28 sm:w-36 md:w-40 shrink-0 overflow-hidden bg-zinc-200"
-            >
-              <img
-                src="./assets/news2.jpg"
-                alt="National Hallmarking Conference"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-            </div>
-            <div class="p-6 md:p-8 flex gap-4 md:gap-6 flex-1 min-w-0">
-              <div class="text-center w-16 md:w-20 shrink-0">
-                <div
-                  class="text-[11px] uppercase tracking-widest text-gold font-bold"
-                >
-                  Mar
-                </div>
-                <div
-                  class="text-4xl md:text-5xl font-serif text-charcoal leading-none mt-1"
-                >
-                  08
-                </div>
-                <div
-                  class="text-[11px] uppercase tracking-widest text-zinc-400 mt-1"
-                >
-                  2026
-                </div>
-              </div>
-              <div
-                class="border-l border-zinc-200 pl-4 md:pl-6 flex flex-col justify-between flex-1 min-w-0"
+              <a
+                href="./events.html"
+                class="bg-white flex card-shadow reveal group overflow-hidden flex-1 min-h-0"
+                data-reveal-delay="100"
               >
-                <div>
-                  <div
-                    class="text-[11px] font-bold text-gold uppercase tracking-widest mb-1 md:mb-2"
-                  >
-                    Conference
-                  </div>
-                  <h3
-                    class="text-lg md:text-xl font-serif mb-1 md:mb-2 truncate"
-                  >
-                    National Hallmarking Conference
-                  </h3>
-                  <p
-                    class="text-xs md:text-sm text-zinc-500 leading-relaxed mb-2 md:mb-3 line-clamp-2"
-                  >
-                    Industry leaders convene to align on the next phase of
-                    mandatory hallmarking certification across all 64 districts.
-                  </p>
-                </div>
                 <div
-                  class="text-[10px] md:text-[12px] uppercase tracking-widest text-zinc-400 truncate"
+                  class="w-24 sm:w-32 shrink-0 overflow-hidden bg-zinc-200 self-stretch"
                 >
-                  BAJUS Bhaban, Baitul Mukarram, Dhaka
+                  <img
+                    src="./assets/news2.jpg"
+                    alt="National Hallmarking Conference"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
                 </div>
-              </div>
+                <div class="p-4 sm:p-6 flex gap-3 sm:gap-5 flex-1 min-w-0">
+                  <div
+                    class="border-r border-zinc-200 pr-3 sm:pr-5 flex flex-col justify-between flex-1 min-w-0"
+                  >
+                    <div>
+                      <div
+                        class="text-[10px] font-bold text-gold uppercase tracking-widest mb-1"
+                      >
+                        Conference
+                      </div>
+                      <h3
+                        class="text-xl sm:text-2xl font-serif mb-1 leading-snug text-charcoal"
+                      >
+                        National Hallmarking Conference
+                      </h3>
+                      <p
+                        class="text-xs text-zinc-500 leading-relaxed line-clamp-2"
+                      >
+                        Industry leaders convene to align on the next phase of
+                        mandatory hallmarking certification across all 64
+                        districts.
+                      </p>
+                    </div>
+                    <div
+                      class="text-[10px] uppercase tracking-widest text-zinc-400 mt-2 truncate"
+                    >
+                      BAJUS Bhaban, Dhaka
+                    </div>
+                  </div>
+                  <div class="text-center w-14 sm:w-16 shrink-0">
+                    <div
+                      class="text-[10px] uppercase tracking-widest text-gold font-bold"
+                    >
+                      Mar
+                    </div>
+                    <div
+                      class="text-3xl sm:text-4xl font-serif text-charcoal leading-none mt-1"
+                    >
+                      08
+                    </div>
+                    <div
+                      class="text-[10px] uppercase tracking-widest text-zinc-400 mt-1"
+                    >
+                      2026
+                    </div>
+                  </div>
+                </div>
+              </a>
             </div>
-          </a>
-        </div>
 
-        <div class="md:hidden mt-10">
-          <a href="./events.html" class="btn-outline w-full block text-center"
-            >All Events</a
-          >
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section class="py-24 bg-white border-t border-zinc-200">
-      <div class="max-w-7xl mx-auto px-6">
-        <div
-          class="flex items-end justify-between mb-12 border-b border-zinc-200 pb-5"
-        >
-          <div>
-            <span
-              class="text-gold font-semibold uppercase tracking-[0.25em] text-xs mb-3 block"
-              >Moments</span
-            >
-            <h2 class="text-3xl md:text-4xl font-serif">Gallery</h2>
+            <div class="sm:hidden mt-8">
+              <a
+                href="./events.html"
+                class="btn-outline w-full block text-center"
+                >All Events</a
+              >
+            </div>
           </div>
-          <a href="./gallery.html" class="hidden md:inline-flex btn-text-link"
-            >View Full Gallery
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                d="M5 12h14M13 5l7 7-7 7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              /></svg
-          ></a>
-        </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          <a href="./gallery.html?album=handover-2025" class="group block reveal">
-            <div class="aspect-[4/3] overflow-hidden bg-zinc-200 mb-5 relative">
-              <img
-                src="./assets/news1.jpg"
-                alt="Handover Ceremony 2025"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-              <div class="absolute bottom-3 right-3 bg-charcoal/80 text-cream text-[10px] font-bold uppercase tracking-wider px-2.5 py-1">6 Photos</div>
-            </div>
+          <!-- RIGHT: Gallery -->
+          <div class="min-w-0 flex flex-col h-full">
             <div
-              class="text-[11px] font-bold uppercase tracking-widest text-zinc-400 mb-2"
+              class="flex items-end justify-between mb-8 border-b border-zinc-200 pb-5 reveal"
             >
-              Leadership <span class="text-zinc-300">—</span> November 03, 2025
+              <h2 class="text-3xl md:text-4xl font-serif">Gallery</h2>
+              <a
+                href="./gallery.html"
+                class="hidden sm:inline-flex btn-text-link shrink-0"
+                >View All
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M5 12h14M13 5l7 7-7 7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  /></svg
+              ></a>
             </div>
-            <h3
-              class="text-lg font-serif text-charcoal leading-snug group-hover:text-gold transition-colors"
-            >
-              Handover Ceremony 2025
-            </h3>
-          </a>
 
-          <a href="./gallery.html?album=jewellery-expo-2025" class="group block reveal">
-            <div class="aspect-[4/3] overflow-hidden bg-zinc-200 mb-5 relative">
-              <img
-                src="./assets/news3.jpg"
-                alt="Jewellery Expo 2025"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-              <div class="absolute bottom-3 right-3 bg-charcoal/80 text-cream text-[10px] font-bold uppercase tracking-wider px-2.5 py-1">7 Photos</div>
+            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+              <a
+                href="./gallery.html?album=handover-2025"
+                class="home-gallery-item group relative block reveal overflow-hidden rounded-md bg-zinc-200 aspect-[4/3]"
+                data-reveal-delay="0"
+              >
+                <img
+                  src="./assets/news1.jpg"
+                  alt="Handover Ceremony 2025"
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div class="home-gallery-overlay">
+                  <span class="home-gallery-overlay__cat">Leadership</span>
+                  <span class="home-gallery-overlay__title"
+                    >Handover Ceremony 2025</span
+                  >
+                  <span class="home-gallery-overlay__count">6 Photos</span>
+                </div>
+              </a>
+              <a
+                href="./gallery.html?album=jewellery-expo-2025"
+                class="home-gallery-item group relative block reveal overflow-hidden rounded-md bg-zinc-200 aspect-[4/3]"
+                data-reveal-delay="100"
+              >
+                <img
+                  src="./assets/news3.jpg"
+                  alt="Jewellery Expo 2025"
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div class="home-gallery-overlay">
+                  <span class="home-gallery-overlay__cat">Events</span>
+                  <span class="home-gallery-overlay__title"
+                    >Jewellery Expo 2025</span
+                  >
+                  <span class="home-gallery-overlay__count">7 Photos</span>
+                </div>
+              </a>
+              <a
+                href="./gallery.html?album=master-craftsmanship"
+                class="home-gallery-item group relative block reveal overflow-hidden rounded-md bg-zinc-200 aspect-[4/3]"
+                data-reveal-delay="200"
+              >
+                <img
+                  src="./assets/craft.jpg"
+                  alt="Master Craftsmanship"
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div class="home-gallery-overlay">
+                  <span class="home-gallery-overlay__cat">Craft</span>
+                  <span class="home-gallery-overlay__title"
+                    >Master Craftsmanship</span
+                  >
+                  <span class="home-gallery-overlay__count">6 Photos</span>
+                </div>
+              </a>
+              <a
+                href="./gallery.html?album=hallmarking-programme"
+                class="home-gallery-item group relative block reveal overflow-hidden rounded-md bg-zinc-200 aspect-[4/3]"
+                data-reveal-delay="300"
+              >
+                <img
+                  src="./assets/news2.jpg"
+                  alt="Hallmarking Programme"
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div class="home-gallery-overlay">
+                  <span class="home-gallery-overlay__cat">Policy</span>
+                  <span class="home-gallery-overlay__title"
+                    >Hallmarking Programme</span
+                  >
+                  <span class="home-gallery-overlay__count">6 Photos</span>
+                </div>
+              </a>
             </div>
-            <div
-              class="text-[11px] font-bold uppercase tracking-widest text-zinc-400 mb-2"
-            >
-              Events <span class="text-zinc-300">—</span> October 12, 2025
-            </div>
-            <h3
-              class="text-lg font-serif text-charcoal leading-snug group-hover:text-gold transition-colors"
-            >
-              Jewellery Expo 2025
-            </h3>
-          </a>
 
-          <a href="./gallery.html?album=master-craftsmanship" class="group block reveal">
-            <div class="aspect-[4/3] overflow-hidden bg-zinc-200 mb-5 relative">
-              <img
-                src="./assets/craft.jpg"
-                alt="Master Craftsmanship"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-              <div class="absolute bottom-3 right-3 bg-charcoal/80 text-cream text-[10px] font-bold uppercase tracking-wider px-2.5 py-1">6 Photos</div>
+            <div class="sm:hidden mt-8">
+              <a
+                href="./gallery.html"
+                class="btn-outline w-full block text-center"
+                >View All</a
+              >
             </div>
-            <div
-              class="text-[11px] font-bold uppercase tracking-widest text-zinc-400 mb-2"
-            >
-              Craft <span class="text-zinc-300">—</span> September 18, 2025
-            </div>
-            <h3
-              class="text-lg font-serif text-charcoal leading-snug group-hover:text-gold transition-colors"
-            >
-              Master Craftsmanship
-            </h3>
-          </a>
-
-          <a href="./gallery.html?album=hallmarking-programme" class="group block reveal">
-            <div class="aspect-[4/3] overflow-hidden bg-zinc-200 mb-5 relative">
-              <img
-                src="./assets/news2.jpg"
-                alt="Hallmarking Programme"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-              <div class="absolute bottom-3 right-3 bg-charcoal/80 text-cream text-[10px] font-bold uppercase tracking-wider px-2.5 py-1">6 Photos</div>
-            </div>
-            <div
-              class="text-[11px] font-bold uppercase tracking-widest text-zinc-400 mb-2"
-            >
-              Policy <span class="text-zinc-300">—</span> August 22, 2025
-            </div>
-            <h3
-              class="text-lg font-serif text-charcoal leading-snug group-hover:text-gold transition-colors"
-            >
-              Hallmarking Programme
-            </h3>
-          </a>
-        </div>
-
-        <div class="md:hidden mt-10">
-          <a href="./gallery.html" class="btn-outline w-full block text-center"
-            >View Full Gallery</a
-          >
+          </div>
         </div>
       </div>
     </section>
@@ -2167,7 +2198,7 @@
     >
       <div class="max-w-7xl mx-auto px-6">
         <div
-          class="flex items-end justify-between mb-12 border-b border-zinc-200 pb-5"
+          class="flex items-end justify-between mb-12 border-b border-zinc-200 pb-5 reveal"
         >
           <div>
             <span
@@ -2197,7 +2228,7 @@
         </div>
 
         <div class="grid md:grid-cols-3 gap-10">
-          <article class="group reveal">
+          <article class="group reveal" data-reveal-delay="0">
             <a href="./news.html" class="block">
               <div class="aspect-[4/3] mb-6 overflow-hidden">
                 <img
@@ -2228,7 +2259,7 @@
             </a>
           </article>
 
-          <article class="group reveal">
+          <article class="group reveal" data-reveal-delay="100">
             <a href="./news.html" class="block">
               <div class="aspect-[4/3] mb-6 overflow-hidden">
                 <img
@@ -2258,7 +2289,7 @@
             </a>
           </article>
 
-          <article class="group reveal">
+          <article class="group reveal" data-reveal-delay="200">
             <a href="./news.html" class="block">
               <div class="aspect-[4/3] mb-6 overflow-hidden">
                 <img
@@ -2297,160 +2328,141 @@
       </div>
     </section>
 
-    <!-- MEMBERSHIP BENEFITS -->
-    <section class="py-24 bg-cream">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16 reveal">
-          <span
-            class="text-gold font-semibold uppercase tracking-[0.25em] text-xs mb-3 block"
-            >Membership & Growth</span
+    <!-- MEMBERSHIP BENEFITS — Join the Voice of the Industry -->
+    <section
+      class="membership-voice-section relative overflow-hidden bg-white py-24 border-t border-zinc-100"
+    >
+      <div class="membership-voice-pattern" aria-hidden="true"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-14 md:mb-16 reveal">
+          <h2
+            class="text-3xl md:text-4xl lg:text-[2.75rem] font-serif text-charcoal mb-5 tracking-tight"
           >
-          <h2 class="text-3xl md:text-4xl font-serif mb-5">
             Join the Voice of the Industry
           </h2>
-          <p class="text-zinc-500 max-w-2xl mx-auto leading-relaxed">
-            Joining BAJUS provides more than a certificate; it offers a platform
-            for advocacy, training, networking, and industry credibility
-            recognised nationwide.
+          <p
+            class="text-zinc-500 max-w-2xl mx-auto leading-relaxed text-sm md:text-base font-light"
+          >
+            BAJUS is more than an association—it’s a platform for advocacy,
+            knowledge, and growth of the jewellery industry nationwide.
           </p>
         </div>
 
-        <div class="grid lg:grid-cols-3 gap-px bg-zinc-200">
+        <div
+          class="membership-voice-grid grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-0 mb-14 md:mb-16"
+        >
           <div
-            class="p-10 bg-cream hover:bg-cream-50 transition-colors card-shadow reveal"
+            class="membership-voice-item text-center px-4 lg:px-8 reveal"
+            data-reveal-delay="0"
           >
-            <div class="text-gold mb-6">
-              <i class="bi bi-shield-check text-4xl"></i>
+            <div class="membership-voice-icon mx-auto mb-5">
+              <i class="bi bi-shield-check"></i>
             </div>
-            <h3 class="text-xl font-serif mb-3">Legal Advocacy</h3>
-            <p class="text-sm text-zinc-500 leading-relaxed">
-              Representation in government policy discussions, legal support for
-              trade disputes, and protection against unfair regulation.
+            <h3 class="text-lg font-serif text-charcoal mb-3">
+              Advocacy &amp; Policy
+            </h3>
+            <p class="text-sm text-zinc-500 leading-relaxed font-light">
+              Representing jewellers at the national level for fair policies and
+              a sustainable business environment.
             </p>
           </div>
+
           <div
-            class="p-10 bg-cream hover:bg-cream-50 transition-colors card-shadow reveal"
+            class="membership-voice-item text-center px-4 lg:px-8 reveal"
+            data-reveal-delay="100"
           >
-            <div class="text-gold mb-6">
-              <i class="bi bi-graph-up-arrow text-4xl"></i>
+            <div class="membership-voice-icon mx-auto mb-5">
+              <i class="bi bi-bar-chart-line"></i>
             </div>
-            <h3 class="text-xl font-serif mb-3">Market Intelligence</h3>
-            <p class="text-sm text-zinc-500 leading-relaxed">
-              Daily official gold and silver prices, exclusive research reports,
-              and tracking of international trends and tariffs.
+            <h3 class="text-lg font-serif text-charcoal mb-3">
+              Industry Intelligence
+            </h3>
+            <p class="text-sm text-zinc-500 leading-relaxed font-light">
+              Access reliable market insights, research, and updates to make
+              informed decisions and stay ahead.
             </p>
           </div>
+
           <div
-            class="p-10 bg-cream hover:bg-cream-50 transition-colors card-shadow reveal"
+            class="membership-voice-item text-center px-4 lg:px-8 reveal"
+            data-reveal-delay="200"
           >
-            <div class="text-gold mb-6">
-              <i class="bi bi-people text-4xl"></i>
+            <div class="membership-voice-icon mx-auto mb-5">
+              <i class="bi bi-people"></i>
             </div>
-            <h3 class="text-xl font-serif mb-3">Networking</h3>
-            <p class="text-sm text-zinc-500 leading-relaxed">
-              Connect with 40,000+ industry professionals through national
-              conferences, regional committees, and trade missions abroad.
+            <h3 class="text-lg font-serif text-charcoal mb-3">
+              Networking Opportunities
+            </h3>
+            <p class="text-sm text-zinc-500 leading-relaxed font-light">
+              Connect with 40,000+ professionals through events, committees and
+              trade missions.
+            </p>
+          </div>
+
+          <div
+            class="membership-voice-item text-center px-4 lg:px-8 reveal"
+            data-reveal-delay="300"
+          >
+            <div class="membership-voice-icon mx-auto mb-5">
+              <i class="bi bi-mortarboard"></i>
+            </div>
+            <h3 class="text-lg font-serif text-charcoal mb-3">
+              Training &amp; Development
+            </h3>
+            <p class="text-sm text-zinc-500 leading-relaxed font-light">
+              Empowering members with knowledge, skills and resources to build a
+              future-ready industry.
             </p>
           </div>
         </div>
 
-        <!-- Merged CTA Content -->
-        <div class="mt-20 text-center max-w-3xl mx-auto reveal">
-          <div class="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href="./member-become.html"
-              class="btn-gold w-full sm:w-auto block text-center"
-              >Apply for Membership</a
-            >
-            <a
-              href="./contact.html"
-              class="btn-outline w-full sm:w-auto block text-center text-charcoal border-zinc-300 hover:text-gold hover:border-gold"
-              >Contact the Secretariat</a
-            >
-          </div>
+        <div class="flex justify-center reveal">
+          <a href="./member-become.html" class="btn-gold"
+            >Apply for Membership</a
+          >
         </div>
       </div>
     </section>
 
     <!-- HELPDESK -->
-    <section class="py-24 bg-white border-t border-zinc-200">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-12 reveal">
-          <span
-            class="text-gold font-semibold uppercase tracking-[0.25em] text-xs mb-3 block"
-            >Support</span
+    <section
+      class="helpdesk-section group relative overflow-hidden py-20 md:py-24"
+    >
+      <div class="helpdesk-section__media" aria-hidden="true">
+        <img
+          src="./assets/contact-cta-bg.jpg"
+          alt=""
+          class="helpdesk-section__img"
+          loading="lazy"
+        />
+      </div>
+      <div class="helpdesk-section__overlay" aria-hidden="true"></div>
+      <div class="helpdesk-section__pattern" aria-hidden="true"></div>
+      <div class="max-w-7xl mx-auto px-6 reveal relative z-10">
+        <div
+          class="flex flex-col gap-8 text-center sm:flex-row sm:items-center sm:justify-between sm:gap-10 sm:text-left"
+        >
+          <div
+            class="flex flex-col items-center gap-5 sm:flex-row sm:items-center md:gap-6 min-w-0"
           >
-          <h2 class="text-3xl md:text-4xl font-serif text-charcoal">
-            Helpdesk
-          </h2>
-        </div>
-
-        <div class="bg-zinc-100 p-6 md:p-10 lg:p-12 reveal">
-          <form
-            class="space-y-5"
-            onsubmit="
-              event.preventDefault();
-              if (typeof showToast === 'function') {
-                showToast('Thank you. Your message has been received.');
-              } else {
-                alert('Thank you. Your message has been received.');
-              }
-              this.reset();
-            "
-          >
-            <div class="grid md:grid-cols-2 gap-5">
-              <input
-                class="form-input"
-                type="text"
-                name="name"
-                placeholder="Your Name*"
-                required
-              />
-              <input
-                class="form-input"
-                type="email"
-                name="email"
-                placeholder="Your Email*"
-                required
-              />
+            <div class="helpdesk-icon shrink-0" aria-hidden="true">
+              <i class="bi bi-headset"></i>
             </div>
-            <input
-              class="form-input"
-              type="text"
-              name="company"
-              placeholder="Company Name*"
-              required
-            />
-            <textarea
-              class="form-input resize-y min-h-[140px]"
-              name="message"
-              rows="6"
-              placeholder="Your Message*"
-              required
-            ></textarea>
-
-            <label class="flex items-start gap-3 cursor-pointer select-none">
-              <input
-                type="checkbox"
-                name="consent"
-                class="mt-1 size-4 accent-[var(--color-gold)] border-zinc-300 rounded-[2px] shrink-0"
-                checked
-              />
-              <span class="text-sm text-zinc-600 leading-relaxed font-light">
-                Yes, I would like to receive communications by call / email
-                about BAJUS services.
-              </span>
-            </label>
-
-            <div class="pt-2">
-              <button
-                type="submit"
-                class="btn-outline text-charcoal border-zinc-300 hover:text-cream hover:border-gold"
+            <div class="min-w-0">
+              <h2 class="text-2xl md:text-3xl font-serif text-white mb-2">
+                Helpdesk
+              </h2>
+              <p
+                class="text-sm md:text-base text-zinc-300 font-light leading-relaxed"
               >
-                Submit
-              </button>
+                Have a question? Send us a message and our secretariat will
+                respond promptly.
+              </p>
             </div>
-          </form>
+          </div>
+          <a href="./contact.html" class="btn-gold shrink-0 mx-auto sm:mx-0"
+            >Contact Us</a
+          >
         </div>
       </div>
     </section>
