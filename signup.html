@@ -22,6 +22,7 @@
   <div id="bajus-header"></div>
 
   <section class="page-hero py-14">
+    <img class="page-hero__media" src="./assets/about/jewellery-1.jpg" alt="" aria-hidden="true" decoding="async" />
     <div class="max-w-7xl mx-auto px-6">
       <h1 class="font-serif text-4xl md:text-5xl leading-tight">Apply for BAJUS <span
           class="italic text-gold">Membership</span></h1>
@@ -30,48 +31,13 @@
     </div>
   </section>
 
-  <!-- STEPPER -->
-  <section class="bg-cream-50 border-b border-zinc-200">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
-      <div
-        class="flex flex-nowrap items-center justify-between gap-1 sm:gap-x-4 text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest font-semibold">
-        <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
-          <span
-            class="size-6 sm:size-7 grid place-items-center bg-gold text-cream rounded-full shrink-0 text-[11px] sm:text-xs">1</span><span
-            class="text-gold whitespace-nowrap">Owner</span>
-        </div>
-        <span class="text-zinc-300 shrink-0 sm:hidden">—</span>
-        <span class="text-zinc-300 shrink-0 hidden sm:inline">———</span>
-        <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
-          <span
-            class="size-6 sm:size-7 grid place-items-center border border-zinc-300 rounded-full text-zinc-500 shrink-0 text-[11px] sm:text-xs">2</span><span
-            class="text-zinc-500 whitespace-nowrap">Shop</span>
-        </div>
-        <span class="text-zinc-300 shrink-0 sm:hidden">—</span>
-        <span class="text-zinc-300 shrink-0 hidden sm:inline">———</span>
-        <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
-          <span
-            class="size-6 sm:size-7 grid place-items-center border border-zinc-300 rounded-full text-zinc-500 shrink-0 text-[11px] sm:text-xs">3</span><span
-            class="text-zinc-500 whitespace-nowrap">Address</span>
-        </div>
-        <span class="text-zinc-300 shrink-0 sm:hidden">—</span>
-        <span class="text-zinc-300 shrink-0 hidden sm:inline">———</span>
-        <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
-          <span
-            class="size-6 sm:size-7 grid place-items-center border border-zinc-300 rounded-full text-zinc-500 shrink-0 text-[11px] sm:text-xs">4</span><span
-            class="text-zinc-500 whitespace-nowrap">Review</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- FORM -->
-  <section class="py-20">
+  <section class="py-16">
     <form class="max-w-5xl mx-auto px-6 space-y-16"
       onsubmit="event.preventDefault(); alert('Application submitted successfully.\n(Mockup — backend not connected.)');">
 
       <!-- OWNER DETAILS -->
-      <div class="border border-zinc-200/80 p-8 bg-white rounded-sm relative">
+      <div class="border border-zinc-200/80 p-8 bg-white rounded-sm relative reveal">
         <div class="mb-6 pb-4 border-b border-zinc-200">
           <h2 class="font-serif text-2xl md:text-3xl text-charcoal">Owner Details</h2>
           <p class="text-sm text-zinc-500 mt-1">Personal information of the membership applicant.</p>
@@ -166,7 +132,7 @@
       </div>
 
       <!-- STORES SECTION -->
-      <div class="border border-zinc-200/80 p-8 bg-white rounded-sm relative">
+      <div class="border border-zinc-200/80 p-8 bg-white rounded-sm relative reveal" data-reveal-delay="100">
         <div class="mb-6 pb-4 border-b border-zinc-200">
           <h2 class="font-serif text-2xl md:text-3xl text-charcoal">Stores</h2>
           <p class="text-sm text-zinc-500 mt-1">Details of your jewellery establishments.</p>
@@ -375,7 +341,7 @@
       </div>
 
       <!-- TERMS + SUBMIT -->
-      <div class="!mt-8">
+      <div class="!mt-8 reveal" data-reveal-delay="200">
         <label class="flex items-start gap-3 text-sm text-zinc-600 mb-8">
           <input type="checkbox" class="size-4 mt-1 accent-[#b8860b]" required />
           <span>I confirm that the information provided is accurate, and I agree to abide by the BAJUS Constitution,
@@ -397,7 +363,7 @@
 
     <!-- Modal Box -->
     <div id="preview-modal-box"
-      class="relative bg-white max-w-4xl w-full mx-4 rounded-sm border border-zinc-200 shadow-2xl transition-all duration-300 transform scale-95 opacity-0 flex flex-col max-h-[90vh] z-10">
+      class="relative bg-white max-w-4xl w-full mx-4 border border-zinc-200 shadow-2xl transition-all duration-300 transform scale-95 opacity-0 flex flex-col max-h-[90vh] z-10 modal-panel">
       <!-- Modal Header -->
       <div class="px-8 py-6 border-b border-zinc-200 flex items-center justify-between shrink-0 bg-zinc-50">
         <div>

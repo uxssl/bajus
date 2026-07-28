@@ -1,301 +1,537 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Events — BAJUS</title>
-  <meta name="description" content="International and domestic BAJUS events — public ticket purchase for domestic events, and member stall booking via the Member Portal." />
-  <link rel="icon" type="image/png" href="./assets/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <link rel="stylesheet" href="./css/styles.css" />
-</head>
-<body>
-  <div id="bajus-header"></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Events — BAJUS</title>
+    <meta
+      name="description"
+      content="International and domestic BAJUS events — public ticket purchase for domestic events, and member stall booking via the Member Portal."
+    />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <div id="bajus-header"></div>
 
-  <section class="page-hero py-16">
-    <div class="max-w-7xl mx-auto px-6">
-      <h1 class="font-serif text-4xl md:text-6xl leading-tight">Where the <span class="italic text-gold">industry</span> convenes.</h1>
-      <p class="mt-6 text-sm md:text-base text-zinc-300 leading-relaxed">
-        BAJUS organises <strong class="text-cream font-medium">International Events</strong> and
-        <strong class="text-cream font-medium">Domestic Events</strong>. Members book exhibition stalls through the
-        Member Portal after login. The public may purchase tickets to attend domestic events below — no login required.
-      </p>
-    </div>
-  </section>
-
-  <!-- EVENT TYPE TABS -->
-  <section class="bg-cream border-b border-zinc-200 sticky top-20 z-30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-2 sm:flex sm:flex-nowrap gap-0 sm:gap-8 text-xs sm:text-sm font-semibold uppercase tracking-wider sm:tracking-widest">
-        <button type="button" class="ev-tab is-active py-4 sm:py-5" data-panel="domestic">
-          Domestic Events
-        </button>
-        <button type="button" class="ev-tab py-4 sm:py-5" data-panel="international">
-          International Events
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- DOMESTIC EVENTS (PUBLIC TICKETS) -->
-  <section id="panel-domestic" class="ev-panel py-16 md:py-20 bg-cream">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="mb-10 max-w-3xl reveal">
-        <div class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-3">Public Access</div>
-        <h2 class="font-serif text-3xl md:text-4xl text-charcoal mb-3">Domestic Events</h2>
-        <p class="text-sm text-zinc-500 leading-relaxed">
-          Purchase tickets to attend BAJUS events in Bangladesh. Stall booking at event venues is reserved for
-          <a href="./login.html" class="text-gold font-semibold hover:underline">logged-in members</a> via the
-          <a href="./dashboard.html#events" class="text-gold font-semibold hover:underline">Member Dashboard</a>.
+    <section class="page-hero py-16">
+      <img
+        class="page-hero__media"
+        src="./assets/news1.jpg"
+        alt=""
+        aria-hidden="true"
+        decoding="async"
+      />
+      <div class="max-w-7xl mx-auto px-6">
+        <h1 class="font-serif text-4xl md:text-6xl leading-tight">
+          Where the <span class="italic text-gold">industry</span> convenes.
+        </h1>
+        <p class="mt-6 text-sm md:text-base text-zinc-300 leading-relaxed">
+          BAJUS organises
+          <strong class="text-cream font-medium">International Events</strong>
+          and <strong class="text-cream font-medium">Domestic Events</strong>.
+          Members book exhibition stalls through the Member Portal after login.
+          The public may purchase tickets to attend domestic events below — no
+          login required.
         </p>
       </div>
+    </section>
 
-      <div class="space-y-6">
-        <article class="bg-white border border-zinc-200 grid md:grid-cols-12 overflow-hidden card-shadow reveal">
-          <div class="md:col-span-4 aspect-[4/3] md:aspect-auto">
-            <img src="./assets/news3.jpg" alt="BAJUS Jewellery Expo 2026" class="w-full h-full object-cover" loading="lazy" />
+    <!-- DOMESTIC EVENTS (PUBLIC TICKETS) -->
+    <section id="panel-domestic" class="py-16 md:py-20 bg-cream">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-10 max-w-3xl reveal">
+          <div
+            class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-3"
+          >
+            Public Access
           </div>
-          <div class="md:col-span-6 p-6 md:p-10">
-            <div class="flex flex-wrap items-center gap-2 mb-3">
-              <span class="text-[10px] font-bold text-gold uppercase tracking-widest">Domestic · Trade Expo</span>
-              <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2.5 py-0.5 rounded-full">Tickets Open</span>
+          <h2 class="font-serif text-3xl md:text-4xl text-charcoal mb-3">
+            Domestic Events
+          </h2>
+          <p class="text-sm text-zinc-500 leading-relaxed">
+            Purchase tickets to attend BAJUS events in Bangladesh. Stall booking
+            at event venues is reserved for
+            <a
+              href="./login.html"
+              class="text-gold font-semibold hover:underline"
+              >logged-in members</a
+            >
+            via the
+            <a
+              href="./dashboard.html#events"
+              class="text-gold font-semibold hover:underline"
+              >Member Dashboard</a
+            >.
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <article
+            class="bg-white border border-zinc-200 grid md:grid-cols-12 overflow-hidden card-shadow reveal"
+          >
+            <div class="md:col-span-4 aspect-[4/3] md:aspect-auto">
+              <img
+                src="./assets/news3.jpg"
+                alt="BAJUS Jewellery Expo 2026"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
             </div>
-            <h3 class="font-serif text-2xl md:text-3xl mb-3">BAJUS Jewellery Expo 2026</h3>
-            <p class="text-sm text-zinc-500 leading-relaxed mb-4">
-              A three-day national exhibition showcasing Bangladeshi craftsmanship, manufacturing technology, and trade partnerships.
-            </p>
-            <ul class="text-sm text-zinc-600 space-y-1.5">
-              <li><span class="text-gold font-semibold">When:</span> 14 – 16 February 2026</li>
-              <li><span class="text-gold font-semibold">Where:</span> International Convention City Bashundhara, Dhaka</li>
-              <li><span class="text-gold font-semibold">Public:</span> Visitor tickets · General admission &amp; VIP</li>
-            </ul>
-          </div>
-          <div class="md:col-span-2 bg-cream-50 border-t md:border-t-0 md:border-l border-zinc-200 p-6 flex flex-col items-center justify-center text-center gap-4">
-            <div>
-              <div class="text-[11px] uppercase tracking-widest text-gold font-bold">Feb</div>
-              <div class="text-5xl md:text-6xl font-serif text-charcoal leading-none my-1">14</div>
-              <div class="text-[11px] uppercase tracking-widest text-zinc-400">2026</div>
-            </div>
-            <button type="button" onclick="openTicketModal('BAJUS Jewellery Expo 2026')" class="btn-gold w-full text-xs py-3">
-              Buy Tickets
-            </button>
-            <p class="text-[10px] text-zinc-400 leading-snug">Stall booking for members only</p>
-          </div>
-        </article>
-
-        <article class="bg-white border border-zinc-200 grid md:grid-cols-12 overflow-hidden card-shadow reveal">
-          <div class="md:col-span-4 aspect-[4/3] md:aspect-auto">
-            <img src="./assets/news2.jpg" alt="National Hallmarking Conference" class="w-full h-full object-cover" loading="lazy" />
-          </div>
-          <div class="md:col-span-6 p-6 md:p-10">
-            <div class="flex flex-wrap items-center gap-2 mb-3">
-              <span class="text-[10px] font-bold text-gold uppercase tracking-widest">Domestic · Conference</span>
-              <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2.5 py-0.5 rounded-full">Tickets Open</span>
-            </div>
-            <h3 class="font-serif text-2xl md:text-3xl mb-3">National Hallmarking Conference</h3>
-            <p class="text-sm text-zinc-500 leading-relaxed mb-4">
-              Industry leaders convene to align on the next phase of mandatory hallmarking certification across all 64 districts.
-            </p>
-            <ul class="text-sm text-zinc-600 space-y-1.5">
-              <li><span class="text-gold font-semibold">When:</span> 08 March 2026</li>
-              <li><span class="text-gold font-semibold">Where:</span> BAJUS Bhaban, Baitul Mukarram, Dhaka</li>
-              <li><span class="text-gold font-semibold">Public:</span> Delegate &amp; observer passes</li>
-            </ul>
-          </div>
-          <div class="md:col-span-2 bg-cream-50 border-t md:border-t-0 md:border-l border-zinc-200 p-6 flex flex-col items-center justify-center text-center gap-4">
-            <div>
-              <div class="text-[11px] uppercase tracking-widest text-gold font-bold">Mar</div>
-              <div class="text-5xl md:text-6xl font-serif text-charcoal leading-none my-1">08</div>
-              <div class="text-[11px] uppercase tracking-widest text-zinc-400">2026</div>
-            </div>
-            <button type="button" onclick="openTicketModal('National Hallmarking Conference')" class="btn-gold w-full text-xs py-3">
-              Buy Tickets
-            </button>
-            <p class="text-[10px] text-zinc-400 leading-snug">Stall booking for members only</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- INTERNATIONAL EVENTS (VIEW ONLY — STALLS VIA DASHBOARD) -->
-  <section id="panel-international" class="ev-panel hidden py-16 md:py-20 bg-cream">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="mb-10 max-w-3xl reveal">
-        <div class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-3">Industry Delegations</div>
-        <h2 class="font-serif text-3xl md:text-4xl text-charcoal mb-3">International Events</h2>
-        <p class="text-sm text-zinc-500 leading-relaxed">
-          Overseas trade shows and delegations coordinated by BAJUS. Exhibition stall booking is available to
-          <a href="./login.html" class="text-gold font-semibold hover:underline">members only</a> through the
-          <a href="./dashboard.html#events" class="text-gold font-semibold hover:underline">Member Dashboard</a>.
-          Public ticket sales do not apply to international events.
-        </p>
-      </div>
-
-      <div class="bg-gold-soft border border-gold/30 px-5 py-4 mb-8 text-sm text-charcoal flex gap-3 items-start reveal">
-        <i class="bi bi-info-circle text-gold text-lg shrink-0 mt-0.5"></i>
-        <p class="leading-relaxed">
-          <strong>Member access:</strong> Log in to book stalls at international and domestic event venues.
-          <a href="./login.html" class="text-gold font-semibold hover:underline ml-1">Go to Member Portal →</a>
-        </p>
-      </div>
-
-      <div class="space-y-6">
-        <article class="bg-white border border-zinc-200 grid md:grid-cols-12 overflow-hidden card-shadow reveal">
-          <div class="md:col-span-4 aspect-[4/3] md:aspect-auto">
-            <img src="./assets/craft.jpg" alt="Dubai International Jewellery Show" class="w-full h-full object-cover" loading="lazy" />
-          </div>
-          <div class="md:col-span-8 p-6 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div class="flex-1 min-w-0">
+            <div class="md:col-span-6 p-6 md:p-10">
               <div class="flex flex-wrap items-center gap-2 mb-3">
-                <span class="text-[10px] font-bold text-gold uppercase tracking-widest">International · Trade Mission</span>
-                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 bg-zinc-100 border border-zinc-200 px-2.5 py-0.5 rounded-full">Members — Stall Booking</span>
+                <span
+                  class="text-[10px] font-bold text-gold uppercase tracking-widest"
+                  >Domestic · Trade Expo</span
+                >
+                <span
+                  class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2.5 py-0.5 rounded-full"
+                  >Tickets Open</span
+                >
               </div>
-              <h3 class="font-serif text-2xl md:text-3xl mb-3">Dubai International Jewellery Show — BAJUS Delegation</h3>
+              <h3 class="font-serif text-2xl md:text-3xl mb-3">
+                BAJUS Jewellery Expo 2026
+              </h3>
               <p class="text-sm text-zinc-500 leading-relaxed mb-4">
-                A 30-member Bangladeshi delegation, coordinated by BAJUS, representing the country at one of the world's premier jewellery shows.
+                A three-day national exhibition showcasing Bangladeshi
+                craftsmanship, manufacturing technology, and trade partnerships.
               </p>
               <ul class="text-sm text-zinc-600 space-y-1.5">
-                <li><span class="text-gold font-semibold">When:</span> 22 – 26 April 2026</li>
-                <li><span class="text-gold font-semibold">Where:</span> Dubai World Trade Centre, UAE</li>
+                <li>
+                  <span class="text-gold font-semibold">When:</span> 14 – 16
+                  February 2026
+                </li>
+                <li>
+                  <span class="text-gold font-semibold">Where:</span>
+                  International Convention City Bashundhara, Dhaka
+                </li>
+                <li>
+                  <span class="text-gold font-semibold">Public:</span> Visitor
+                  tickets · General admission &amp; VIP
+                </li>
               </ul>
             </div>
-            <div class="shrink-0 text-center md:text-right border-t md:border-t-0 md:border-l border-zinc-100 pt-4 md:pt-0 md:pl-8">
-              <div class="text-[11px] uppercase tracking-widest text-gold font-bold">Apr</div>
-              <div class="text-5xl font-serif text-charcoal leading-none my-1">22</div>
-              <div class="text-[11px] uppercase tracking-widest text-zinc-400 mb-4">2026</div>
-              <a href="./login.html" class="btn-outline text-xs py-3 px-5 inline-block w-full md:w-auto text-center">Member Login to Book Stall</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="bg-white border border-zinc-200 grid md:grid-cols-12 overflow-hidden card-shadow reveal">
-          <div class="md:col-span-4 aspect-[4/3] md:aspect-auto">
-            <img src="./assets/news1.jpg" alt="Hong Kong International Jewellery Fair" class="w-full h-full object-cover" loading="lazy" />
-          </div>
-          <div class="md:col-span-8 p-6 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div class="flex-1 min-w-0">
-              <div class="flex flex-wrap items-center gap-2 mb-3">
-                <span class="text-[10px] font-bold text-gold uppercase tracking-widest">International · Exhibition</span>
-                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 bg-zinc-100 border border-zinc-200 px-2.5 py-0.5 rounded-full">Members — Stall Booking</span>
+            <div
+              class="md:col-span-2 bg-cream-50 border-t md:border-t-0 md:border-l border-zinc-200 p-6 flex flex-col items-center justify-center text-center gap-4"
+            >
+              <div>
+                <div
+                  class="text-[11px] uppercase tracking-widest text-gold font-bold"
+                >
+                  Feb
+                </div>
+                <div
+                  class="text-5xl md:text-6xl font-serif text-charcoal leading-none my-1"
+                >
+                  14
+                </div>
+                <div
+                  class="text-[11px] uppercase tracking-widest text-zinc-400"
+                >
+                  2026
+                </div>
               </div>
-              <h3 class="font-serif text-2xl md:text-3xl mb-3">Hong Kong International Jewellery Fair</h3>
+              <button
+                type="button"
+                onclick="openTicketModal('BAJUS Jewellery Expo 2026')"
+                class="btn-gold w-full text-xs py-3"
+              >
+                Buy Tickets
+              </button>
+              <p class="text-[10px] text-zinc-400 leading-snug">
+                Stall booking for members only
+              </p>
+            </div>
+          </article>
+
+          <article
+            class="bg-white border border-zinc-200 grid md:grid-cols-12 overflow-hidden card-shadow reveal"
+          >
+            <div class="md:col-span-4 aspect-[4/3] md:aspect-auto">
+              <img
+                src="./assets/news2.jpg"
+                alt="National Hallmarking Conference"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="md:col-span-6 p-6 md:p-10">
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span
+                  class="text-[10px] font-bold text-gold uppercase tracking-widest"
+                  >Domestic · Conference</span
+                >
+                <span
+                  class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2.5 py-0.5 rounded-full"
+                  >Tickets Open</span
+                >
+              </div>
+              <h3 class="font-serif text-2xl md:text-3xl mb-3">
+                National Hallmarking Conference
+              </h3>
               <p class="text-sm text-zinc-500 leading-relaxed mb-4">
-                BAJUS-coordinated pavilion for certified Bangladeshi jewellers at Asia's largest jewellery sourcing fair.
+                Industry leaders convene to align on the next phase of mandatory
+                hallmarking certification across all 64 districts.
               </p>
               <ul class="text-sm text-zinc-600 space-y-1.5">
-                <li><span class="text-gold font-semibold">When:</span> 03 – 07 September 2026</li>
-                <li><span class="text-gold font-semibold">Where:</span> Hong Kong Convention and Exhibition Centre</li>
+                <li>
+                  <span class="text-gold font-semibold">When:</span> 08 March
+                  2026
+                </li>
+                <li>
+                  <span class="text-gold font-semibold">Where:</span> BAJUS
+                  Bhaban, Baitul Mukarram, Dhaka
+                </li>
+                <li>
+                  <span class="text-gold font-semibold">Public:</span> Delegate
+                  &amp; observer passes
+                </li>
               </ul>
             </div>
-            <div class="shrink-0 text-center md:text-right border-t md:border-t-0 md:border-l border-zinc-100 pt-4 md:pt-0 md:pl-8">
-              <div class="text-[11px] uppercase tracking-widest text-gold font-bold">Sep</div>
-              <div class="text-5xl font-serif text-charcoal leading-none my-1">03</div>
-              <div class="text-[11px] uppercase tracking-widest text-zinc-400 mb-4">2026</div>
-              <a href="./login.html" class="btn-outline text-xs py-3 px-5 inline-block w-full md:w-auto text-center">Member Login to Book Stall</a>
+            <div
+              class="md:col-span-2 bg-cream-50 border-t md:border-t-0 md:border-l border-zinc-200 p-6 flex flex-col items-center justify-center text-center gap-4"
+            >
+              <div>
+                <div
+                  class="text-[11px] uppercase tracking-widest text-gold font-bold"
+                >
+                  Mar
+                </div>
+                <div
+                  class="text-5xl md:text-6xl font-serif text-charcoal leading-none my-1"
+                >
+                  08
+                </div>
+                <div
+                  class="text-[11px] uppercase tracking-widest text-zinc-400"
+                >
+                  2026
+                </div>
+              </div>
+              <button
+                type="button"
+                onclick="openTicketModal('National Hallmarking Conference')"
+                class="btn-gold w-full text-xs py-3"
+              >
+                Buy Tickets
+              </button>
+              <p class="text-[10px] text-zinc-400 leading-snug">
+                Stall booking for members only
+              </p>
             </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERNATIONAL EVENTS (VIEW ONLY — STALLS VIA DASHBOARD) -->
+    <section
+      id="panel-international"
+      class="py-16 md:py-20 bg-cream border-t border-zinc-200"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-10 max-w-3xl reveal">
+          <div
+            class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-3"
+          >
+            Industry Delegations
           </div>
-        </article>
+          <h2 class="font-serif text-3xl md:text-4xl text-charcoal mb-3">
+            International Events
+          </h2>
+          <p class="text-sm text-zinc-500 leading-relaxed">
+            Overseas trade shows and delegations coordinated by BAJUS.
+            Exhibition stall booking is available to
+            <a
+              href="./login.html"
+              class="text-gold font-semibold hover:underline"
+              >members only</a
+            >
+            through the
+            <a
+              href="./dashboard.html#events"
+              class="text-gold font-semibold hover:underline"
+              >Member Dashboard</a
+            >. Public ticket sales do not apply to international events.
+          </p>
+        </div>
+
+        <div
+          class="bg-gold-soft border border-gold/30 px-5 py-4 mb-8 text-sm text-charcoal flex gap-3 items-start reveal"
+        >
+          <i class="bi bi-info-circle text-gold text-lg shrink-0 mt-0.5"></i>
+          <p class="leading-relaxed">
+            <strong>Member access:</strong> Log in to book stalls at
+            international and domestic event venues.
+            <a
+              href="./login.html"
+              class="text-gold font-semibold hover:underline ml-1"
+              >Go to Member Portal →</a
+            >
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <article
+            class="bg-white border border-zinc-200 grid md:grid-cols-12 overflow-hidden card-shadow reveal"
+          >
+            <div class="md:col-span-4 aspect-[4/3] md:aspect-auto">
+              <img
+                src="./assets/craft.jpg"
+                alt="Dubai International Jewellery Show"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="md:col-span-8 p-6 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+            >
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2 mb-3">
+                  <span
+                    class="text-[10px] font-bold text-gold uppercase tracking-widest"
+                    >International · Trade Mission</span
+                  >
+                  <span
+                    class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 bg-zinc-100 border border-zinc-200 px-2.5 py-0.5 rounded-full"
+                    >Members — Stall Booking</span
+                  >
+                </div>
+                <h3 class="font-serif text-2xl md:text-3xl mb-3">
+                  Dubai International Jewellery Show — BAJUS Delegation
+                </h3>
+                <p class="text-sm text-zinc-500 leading-relaxed mb-4">
+                  A 30-member Bangladeshi delegation, coordinated by BAJUS,
+                  representing the country at one of the world's premier
+                  jewellery shows.
+                </p>
+                <ul class="text-sm text-zinc-600 space-y-1.5">
+                  <li>
+                    <span class="text-gold font-semibold">When:</span> 22 – 26
+                    April 2026
+                  </li>
+                  <li>
+                    <span class="text-gold font-semibold">Where:</span> Dubai
+                    World Trade Centre, UAE
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="shrink-0 text-center md:text-right border-t md:border-t-0 md:border-l border-zinc-100 pt-4 md:pt-0 md:pl-8"
+              >
+                <div
+                  class="text-[11px] uppercase tracking-widest text-gold font-bold"
+                >
+                  Apr
+                </div>
+                <div
+                  class="text-5xl font-serif text-charcoal leading-none my-1"
+                >
+                  22
+                </div>
+                <div
+                  class="text-[11px] uppercase tracking-widest text-zinc-400 mb-4"
+                >
+                  2026
+                </div>
+                <a
+                  href="./login.html"
+                  class="btn-outline text-xs py-3 px-5 inline-block w-full md:w-auto text-center"
+                  >Member Login to Book Stall</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="bg-white border border-zinc-200 grid md:grid-cols-12 overflow-hidden card-shadow reveal"
+          >
+            <div class="md:col-span-4 aspect-[4/3] md:aspect-auto">
+              <img
+                src="./assets/news1.jpg"
+                alt="Hong Kong International Jewellery Fair"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="md:col-span-8 p-6 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+            >
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2 mb-3">
+                  <span
+                    class="text-[10px] font-bold text-gold uppercase tracking-widest"
+                    >International · Exhibition</span
+                  >
+                  <span
+                    class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 bg-zinc-100 border border-zinc-200 px-2.5 py-0.5 rounded-full"
+                    >Members — Stall Booking</span
+                  >
+                </div>
+                <h3 class="font-serif text-2xl md:text-3xl mb-3">
+                  Hong Kong International Jewellery Fair
+                </h3>
+                <p class="text-sm text-zinc-500 leading-relaxed mb-4">
+                  BAJUS-coordinated pavilion for certified Bangladeshi jewellers
+                  at Asia's largest jewellery sourcing fair.
+                </p>
+                <ul class="text-sm text-zinc-600 space-y-1.5">
+                  <li>
+                    <span class="text-gold font-semibold">When:</span> 03 – 07
+                    September 2026
+                  </li>
+                  <li>
+                    <span class="text-gold font-semibold">Where:</span> Hong
+                    Kong Convention and Exhibition Centre
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="shrink-0 text-center md:text-right border-t md:border-t-0 md:border-l border-zinc-100 pt-4 md:pt-0 md:pl-8"
+              >
+                <div
+                  class="text-[11px] uppercase tracking-widest text-gold font-bold"
+                >
+                  Sep
+                </div>
+                <div
+                  class="text-5xl font-serif text-charcoal leading-none my-1"
+                >
+                  03
+                </div>
+                <div
+                  class="text-[11px] uppercase tracking-widest text-zinc-400 mb-4"
+                >
+                  2026
+                </div>
+                <a
+                  href="./login.html"
+                  class="btn-outline text-xs py-3 px-5 inline-block w-full md:w-auto text-center"
+                  >Member Login to Book Stall</a
+                >
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKET MODAL -->
+    <div id="ticket-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true">
+      <div
+        class="absolute inset-0 bg-black/50"
+        onclick="closeTicketModal()"
+      ></div>
+      <div
+        class="absolute inset-x-4 top-1/2 -translate-y-1/2 max-w-md mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel p-6 md:p-8"
+      >
+        <div class="flex justify-between items-start mb-6">
+          <div>
+            <div
+              class="text-[10px] uppercase tracking-widest text-gold font-bold mb-1"
+            >
+              Public Registration
+            </div>
+            <h3
+              id="ticket-modal-title"
+              class="font-serif text-xl text-charcoal"
+            >
+              Event Tickets
+            </h3>
+          </div>
+          <button
+            type="button"
+            onclick="closeTicketModal()"
+            class="text-zinc-400 hover:text-charcoal p-1"
+            aria-label="Close"
+          >
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+        <form onsubmit="submitTickets(event)" class="space-y-4">
+          <div>
+            <label class="form-label">Ticket Type</label>
+            <select class="form-input w-full" required>
+              <option value="">Select ticket type</option>
+              <option>General Admission — ৳500</option>
+              <option>VIP Pass — ৳2,500</option>
+              <option>Delegate Pass — ৳1,200</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label">Quantity</label>
+            <input
+              type="number"
+              class="form-input w-full"
+              min="1"
+              max="10"
+              value="1"
+              required
+            />
+          </div>
+          <div>
+            <label class="form-label">Full Name</label>
+            <input
+              type="text"
+              class="form-input w-full"
+              placeholder="Your name"
+              required
+            />
+          </div>
+          <div>
+            <label class="form-label">Mobile Number</label>
+            <input
+              type="tel"
+              class="form-input w-full"
+              placeholder="01XXXXXXXXX"
+              required
+            />
+          </div>
+          <p class="text-[11px] text-zinc-400 leading-relaxed">
+            No login required. This is a prototype checkout — payment gateway
+            not connected.
+          </p>
+          <button type="submit" class="btn-gold w-full">
+            Proceed to Payment
+          </button>
+        </form>
       </div>
     </div>
-  </section>
 
-  <!-- TICKET MODAL -->
-  <div id="ticket-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true">
-    <div class="absolute inset-0 bg-black/50" onclick="closeTicketModal()"></div>
-    <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 max-w-md mx-auto bg-white border border-zinc-200 shadow-2xl rounded-sm p-6 md:p-8">
-      <div class="flex justify-between items-start mb-6">
-        <div>
-          <div class="text-[10px] uppercase tracking-widest text-gold font-bold mb-1">Public Registration</div>
-          <h3 id="ticket-modal-title" class="font-serif text-xl text-charcoal">Event Tickets</h3>
-        </div>
-        <button type="button" onclick="closeTicketModal()" class="text-zinc-400 hover:text-charcoal p-1" aria-label="Close">
-          <i class="bi bi-x-lg"></i>
-        </button>
-      </div>
-      <form onsubmit="submitTickets(event)" class="space-y-4">
-        <div>
-          <label class="form-label">Ticket Type</label>
-          <select class="form-input w-full" required>
-            <option value="">Select ticket type</option>
-            <option>General Admission — ৳500</option>
-            <option>VIP Pass — ৳2,500</option>
-            <option>Delegate Pass — ৳1,200</option>
-          </select>
-        </div>
-        <div>
-          <label class="form-label">Quantity</label>
-          <input type="number" class="form-input w-full" min="1" max="10" value="1" required />
-        </div>
-        <div>
-          <label class="form-label">Full Name</label>
-          <input type="text" class="form-input w-full" placeholder="Your name" required />
-        </div>
-        <div>
-          <label class="form-label">Mobile Number</label>
-          <input type="tel" class="form-input w-full" placeholder="01XXXXXXXXX" required />
-        </div>
-        <p class="text-[11px] text-zinc-400 leading-relaxed">
-          No login required. This is a prototype checkout — payment gateway not connected.
-        </p>
-        <button type="submit" class="btn-gold w-full">Proceed to Payment</button>
-      </form>
-    </div>
-  </div>
+    <div id="bajus-footer"></div>
+    <script src="./js/include.js"></script>
+    <script src="./js/main.js"></script>
+    <script>
+      function openTicketModal(eventName) {
+        document.getElementById("ticket-modal-title").textContent = eventName;
+        document.getElementById("ticket-modal").classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
 
-  <div id="bajus-footer"></div>
-  <script src="./js/include.js"></script>
-  <script src="./js/main.js"></script>
-  <script>
-    document.querySelectorAll(".ev-tab").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".ev-tab").forEach((t) => t.classList.remove("is-active"));
-        document.querySelectorAll(".ev-panel").forEach((p) => p.classList.add("hidden"));
-        btn.classList.add("is-active");
-        document.getElementById("panel-" + btn.dataset.panel).classList.remove("hidden");
-      });
-    });
+      function closeTicketModal() {
+        document.getElementById("ticket-modal").classList.add("hidden");
+        document.body.style.overflow = "";
+      }
 
-    function openTicketModal(eventName) {
-      document.getElementById("ticket-modal-title").textContent = eventName;
-      document.getElementById("ticket-modal").classList.remove("hidden");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeTicketModal() {
-      document.getElementById("ticket-modal").classList.add("hidden");
-      document.body.style.overflow = "";
-    }
-
-    function submitTickets(e) {
-      e.preventDefault();
-      closeTicketModal();
-      alert("Ticket order received successfully.\n(Mockup — payment gateway not connected.)");
-      e.target.reset();
-    }
-  </script>
-  <style>
-    .ev-tab {
-      color: #71717a;
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s;
-      white-space: normal;
-      word-break: break-word;
-      line-height: 1.35;
-      min-width: 0;
-    }
-    .ev-tab:hover { color: #b8860b; }
-    .ev-tab.is-active {
-      color: #b8860b;
-      border-bottom-color: #b8860b;
-    }
-  </style>
-</body>
+      function submitTickets(e) {
+        e.preventDefault();
+        closeTicketModal();
+        alert(
+          "Ticket order received successfully.\n(Mockup — payment gateway not connected.)",
+        );
+        e.target.reset();
+      }
+    </script>
+  </body>
 </html>

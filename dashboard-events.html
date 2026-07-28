@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
-<body class="bg-cream text-charcoal min-h-screen flex flex-col font-sans">
+<body class="dashboard-page bg-cream text-charcoal min-h-screen flex flex-col font-sans">
   <header class="bg-white text-charcoal border-b border-zinc-200 sticky top-0 z-40">
     <div class="w-full px-6 md:px-12 h-16 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3">
@@ -35,7 +35,7 @@
         </div>
         <div class="relative group cursor-pointer">
           <div class="flex items-center gap-3 bg-zinc-50 border border-zinc-200 hover:border-zinc-300 transition-colors py-1.5 px-3 rounded-full"><div class="size-7 bg-gold text-zinc-950 text-xs font-bold rounded-full flex items-center justify-center">MA</div><div class="text-left hidden xs:block"><div class="text-[11px] font-semibold text-charcoal leading-tight">Md. Alamgir</div><div class="text-[9px] text-zinc-500 uppercase tracking-wider font-medium">Owner Account</div></div><i class="ph ph-caret-down text-zinc-400 text-xs pl-1"></i></div>
-          <div class="absolute right-0 mt-2 w-48 bg-white border border-zinc-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"><div class="py-2"><a href="index.html" class="flex items-center gap-3 px-4 py-2.5 text-xs text-zinc-500 hover:text-gold hover:bg-zinc-50 transition-colors"><i class="ph ph-house text-sm"></i><span>Return to Site</span></a><a href="login.html" class="flex items-center gap-3 px-4 py-2.5 text-xs text-zinc-500 hover:text-gold hover:bg-zinc-50 transition-colors"><i class="ph ph-sign-out text-sm"></i><span>Log Out</span></a></div></div>
+          <div class="absolute right-0 mt-2 w-48 bg-white border border-zinc-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"><div class="py-2"><a href="dashboard-profile.html" class="flex items-center gap-3 px-4 py-2.5 text-xs text-zinc-500 hover:text-gold hover:bg-zinc-50 transition-colors"><i class="ph ph-user-circle-gear text-sm"></i><span>Profile</span></a><a href="index.html" class="flex items-center gap-3 px-4 py-2.5 text-xs text-zinc-500 hover:text-gold hover:bg-zinc-50 transition-colors"><i class="ph ph-house text-sm"></i><span>Return to Site</span></a><a href="login.html" class="flex items-center gap-3 px-4 py-2.5 text-xs text-zinc-500 hover:text-gold hover:bg-zinc-50 transition-colors"><i class="ph ph-sign-out text-sm"></i><span>Log Out</span></a></div></div>
         </div>
       </div>
     </div>
@@ -49,6 +49,7 @@
           <nav class="space-y-1">
             <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-gauge text-base"></i> Overview</a>
             <a href="dashboard-stores.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-storefront text-base"></i> My Stores</a>
+            <a href="dashboard-contacts.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-address-book text-base"></i> Contacts</a>
             <a href="dashboard-payments.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-receipt text-base"></i> Payment History</a>
             <a href="dashboard-documents.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-folder-open text-base"></i> My Documents</a>
             <a href="dashboard-events.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-gold bg-gold-soft rounded-sm transition-all"><i class="ph ph-calendar text-base"></i> Events</a>
@@ -65,15 +66,7 @@
         <div>
           <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Settings &amp; Security</div>
           <nav class="space-y-1">
-            <a href="dashboard-profile.html" class="flex items-center gap-3 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><i class="ph ph-user-circle-gear text-base"></i> Profile</a>
             <a href="dashboard-notifications.html" class="flex items-center justify-between px-3 py-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold hover:bg-zinc-50 rounded-sm transition-all"><span class="flex items-center gap-3"><i class="ph ph-bell text-base"></i> Notifications</span><span class="bg-red-500 text-cream text-[9px] font-bold px-2 py-0.5 rounded-full">2</span></a>
-          </nav>
-        </div>
-        <div class="pt-4 border-t border-zinc-100">
-          <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Quick Navigation</div>
-          <nav class="space-y-1">
-            <a href="gold-price.html" class="flex items-center gap-3 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold transition-colors"><i class="ph ph-chart-line text-sm"></i> Gold Rates</a>
-            <a href="notice.html" class="flex items-center gap-3 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-gold transition-colors"><i class="ph ph-info text-sm"></i> Notices &amp; Circulars</a>
           </nav>
         </div>
       </div>
@@ -85,8 +78,16 @@
         <p class="text-xs text-zinc-500 mt-1 max-w-2xl">Members can register for exhibition stalls at International and Domestic events. Public ticket purchases for domestic events are available on the <a href="events.html" class="text-gold font-semibold hover:underline">public Events page</a> without login.</p>
       </div>
 
+      <!-- Tabs -->
+      <div class="border-b border-zinc-200">
+        <div class="flex gap-6 sm:gap-10 overflow-x-auto">
+          <button type="button" class="dash-tab is-active shrink-0" data-tab="domestic"><i class="ph ph-map-pin mr-1.5"></i> Domestic Events</button>
+          <button type="button" class="dash-tab shrink-0" data-tab="international"><i class="ph ph-globe mr-1.5"></i> International Events</button>
+        </div>
+      </div>
+
       <!-- Domestic Events -->
-      <div class="space-y-6">
+      <section class="dash-panel is-active space-y-6" data-panel="domestic">
         <div class="flex items-center justify-between gap-4">
           <h2 class="font-serif text-xl text-charcoal">Domestic Events</h2>
           <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold text-gold bg-gold-soft border border-gold/30 px-2.5 py-1 rounded-full"><i class="ph ph-map-pin text-xs"></i> In Bangladesh</span>
@@ -129,13 +130,13 @@
           </div>
           <div class="md:col-span-2 bg-cream-50 border-t md:border-t-0 md:border-l border-zinc-200 p-6 flex flex-col items-center justify-center text-center gap-4">
             <div><div class="text-[11px] uppercase tracking-widest text-gold font-bold">Mar</div><div class="text-5xl font-serif text-charcoal leading-none my-1">08</div><div class="text-[11px] uppercase tracking-widest text-zinc-400">2026</div></div>
-            <button type="button" onclick="bookStall('National Hallmarking Conference', 'Domestic')" class="btn-gold w-full text-xs py-3">Book Stall</button>
+            <button type="button" onclick="bookStall(this, 'National Hallmarking Conference', 'Domestic')" class="btn-gold w-full text-xs py-3">Book Stall</button>
           </div>
         </article>
-      </div>
+      </section>
 
       <!-- International Events -->
-      <div class="space-y-6 pt-4 border-t border-zinc-100">
+      <section class="dash-panel space-y-6" data-panel="international">
         <div class="flex items-center justify-between gap-4">
           <h2 class="font-serif text-xl text-charcoal">International Events</h2>
           <span class="event-badge-overseas"><i class="ph ph-globe text-xs"></i> Overseas Delegation</span>
@@ -155,7 +156,7 @@
           </div>
           <div class="event-intl-sidebar md:col-span-2 border-t md:border-t-0 md:border-l p-6 flex flex-col items-center justify-center text-center gap-4">
             <div><div class="event-intl-date-month text-[11px] uppercase tracking-widest font-bold">Apr</div><div class="text-5xl font-serif text-charcoal leading-none my-1">22</div><div class="text-[11px] uppercase tracking-widest text-zinc-400">2026</div></div>
-            <button type="button" onclick="bookStall('Dubai International Jewellery Show', 'International')" class="btn-gold w-full text-xs py-3">Book Stall</button>
+            <button type="button" onclick="registerEvent(this, 'Dubai International Jewellery Show')" class="btn-gold w-full text-xs py-3">Register</button>
           </div>
         </article>
 
@@ -173,10 +174,19 @@
           </div>
           <div class="event-intl-sidebar md:col-span-2 border-t md:border-t-0 md:border-l p-6 flex flex-col items-center justify-center text-center gap-4">
             <div><div class="event-intl-date-month text-[11px] uppercase tracking-widest font-bold">Sep</div><div class="text-5xl font-serif text-charcoal leading-none my-1">03</div><div class="text-[11px] uppercase tracking-widest text-zinc-400">2026</div></div>
-            <button type="button" onclick="bookStall('Hong Kong International Jewellery Fair', 'International')" class="btn-gold w-full text-xs py-3">Book Stall</button>
+            <button type="button" onclick="registerEvent(this, 'Hong Kong International Jewellery Fair')" class="btn-gold w-full text-xs py-3">Register</button>
           </div>
         </article>
-      </div>
+
+        <!-- My Registrations -->
+        <div class="pt-6 border-t border-zinc-150">
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <h3 class="font-serif text-lg text-charcoal">My Registrations</h3>
+            <span id="registration-count" class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"></span>
+          </div>
+          <div id="registration-list" class="space-y-3"></div>
+        </div>
+      </section>
 
       <div class="bg-gold-soft border border-gold/30 px-5 py-4 text-xs text-charcoal leading-relaxed">
         <strong>Note:</strong> Stall booking is exclusive to logged-in BAJUS members. To attend a domestic event as a visitor, use <a href="events.html" class="text-gold font-semibold hover:underline">Buy Tickets</a> on the public site — no account required.
@@ -184,13 +194,1053 @@
     </main>
   </div>
 
+  <!-- STALL BOOKING MODAL -->
+  <div id="stall-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="stall-modal-title">
+    <div class="absolute inset-0 bg-black/50" onclick="closeStallModal()"></div>
+    <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 max-w-3xl mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel">
+      <div class="flex justify-between items-start gap-4 px-6 md:px-8 pt-6 md:pt-8">
+        <div>
+          <div class="text-[10px] uppercase tracking-widest text-gold font-bold mb-1">Stall Booking Request</div>
+          <h3 id="stall-modal-title" class="font-serif text-xl text-charcoal">Select Stores</h3>
+          <p id="stall-modal-event" class="text-xs text-zinc-500 mt-1"></p>
+        </div>
+        <button type="button" onclick="closeStallModal()" class="text-zinc-400 hover:text-charcoal p-1" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+      </div>
+
+      <!-- Step 1 — pick the stores -->
+      <form id="stall-form" class="px-6 md:px-8 pb-6 md:pb-8 pt-4 space-y-5">
+        <div>
+          <div class="flex items-end justify-between gap-4 mb-2">
+            <span class="form-label !mb-0">Book on behalf of</span>
+            <button type="button" id="stall-select-all" class="text-[10px] font-bold uppercase tracking-widest text-gold hover:underline">Select all</button>
+          </div>
+          <div id="stall-store-list" class="grid sm:grid-cols-2 gap-2.5 max-h-72 overflow-y-auto custom-scrollbar pr-1"></div>
+          <p id="stall-selection-count" class="text-[11px] text-zinc-500 mt-2"></p>
+        </div>
+        <div class="flex flex-col-reverse sm:flex-row gap-3 pt-1">
+          <button type="button" onclick="closeStallModal()" class="btn-outline flex-1 px-6 py-3 text-xs font-bold uppercase tracking-widest">Cancel</button>
+          <button type="submit" id="stall-continue" class="btn-gold flex-1 px-6 py-3 text-xs font-bold uppercase tracking-widest disabled:opacity-40 disabled:pointer-events-none">Continue</button>
+        </div>
+      </form>
+
+      <!-- Step 2 — confirm before sending -->
+      <div id="stall-confirm" class="hidden px-6 md:px-8 pb-6 md:pb-8 pt-4 space-y-5">
+        <div class="flex gap-3 bg-gold-soft border border-gold/30 rounded-sm px-4 py-3.5">
+          <i class="ph ph-seal-question text-gold text-lg flex-shrink-0"></i>
+          <div class="text-xs text-charcoal leading-relaxed">
+            <p class="font-semibold mb-1">Confirm this booking request</p>
+            <p id="stall-confirm-text" class="text-zinc-600"></p>
+          </div>
+        </div>
+        <ul id="stall-confirm-stores" class="grid sm:grid-cols-2 gap-2 max-h-52 overflow-y-auto custom-scrollbar text-xs text-zinc-600"></ul>
+        <p class="text-[11px] text-zinc-500 leading-relaxed bg-zinc-50 rounded-sm px-3.5 py-3">
+          Your request is sent to the BAJUS Board for approval. You will be notified once a stall is allocated to each selected store.
+        </p>
+        <div class="flex flex-col-reverse sm:flex-row gap-3 pt-1">
+          <button type="button" id="stall-back" class="btn-outline flex-1 px-6 py-3 text-xs font-bold uppercase tracking-widest">Back</button>
+          <button type="button" id="stall-send" class="btn-gold flex-1 px-6 py-3 text-xs font-bold uppercase tracking-widest">Confirm &amp; Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOKING REQUEST DETAILS MODAL -->
+  <div id="request-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="request-modal-title">
+    <div class="absolute inset-0 bg-black/50" onclick="closeRequestModal()"></div>
+    <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 max-w-3xl mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel">
+      <div class="flex justify-between items-start gap-4 px-6 md:px-8 pt-6 md:pt-8">
+        <div>
+          <div class="text-[10px] uppercase tracking-widest text-gold font-bold mb-1">Booking Request</div>
+          <h3 id="request-modal-title" class="font-serif text-xl text-charcoal">Request Details</h3>
+          <p id="request-modal-event" class="text-xs text-zinc-500 mt-1"></p>
+        </div>
+        <button type="button" onclick="closeRequestModal()" class="text-zinc-400 hover:text-charcoal p-1" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="px-6 md:px-8 pb-6 md:pb-8 pt-4 space-y-5">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs">
+          <div><span class="text-zinc-400 block mb-1">Reference</span><strong id="request-reference" class="text-charcoal font-semibold"></strong></div>
+          <div><span class="text-zinc-400 block mb-1">Submitted</span><strong id="request-submitted" class="text-charcoal font-semibold"></strong></div>
+          <div>
+            <span class="text-zinc-400 block mb-1">Status</span>
+            <span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full"><i class="bi bi-hourglass-split"></i> Pending Board Approval</span>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-end justify-between gap-4 mb-2">
+            <span class="form-label !mb-0">Stores in this request</span>
+            <span id="request-store-count" class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"></span>
+          </div>
+          <ul id="request-stores" class="grid sm:grid-cols-2 gap-2 max-h-52 overflow-y-auto custom-scrollbar text-xs text-zinc-600"></ul>
+        </div>
+        <p class="text-[11px] text-zinc-500 leading-relaxed bg-zinc-50 rounded-sm px-3.5 py-3">
+          The BAJUS Board reviews stall requests in the order received. You will be notified once a stall is allocated to each store.
+        </p>
+        <div class="flex justify-end pt-1">
+          <button type="button" onclick="closeRequestModal()" class="btn-outline px-6 py-3 text-xs font-bold uppercase tracking-widest">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERNATIONAL REGISTRATION MODAL -->
+  <div id="reg-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="reg-modal-title">
+    <div class="absolute inset-0 bg-black/50" onclick="closeRegModal()"></div>
+    <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 max-w-3xl mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel">
+      <div class="flex justify-between items-start gap-4 px-6 md:px-8 pt-6 md:pt-8">
+        <div>
+          <div class="text-[10px] uppercase tracking-widest text-gold font-bold mb-1">International Registration</div>
+          <h3 id="reg-modal-title" class="font-serif text-xl text-charcoal">Select Stores</h3>
+          <p id="reg-modal-event" class="text-xs text-zinc-500 mt-1"></p>
+        </div>
+        <button type="button" onclick="closeRegModal()" class="text-zinc-400 hover:text-charcoal p-1" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+      </div>
+
+      <!-- Step 1 — stores -->
+      <div id="reg-step-stores" class="px-6 md:px-8 pb-6 md:pb-8 pt-4 space-y-5">
+        <div>
+          <div class="flex items-end justify-between gap-4 mb-2">
+            <span class="form-label !mb-0">Participating stores</span>
+            <button type="button" id="reg-select-all" class="text-[10px] font-bold uppercase tracking-widest text-gold hover:underline">Select all</button>
+          </div>
+          <div id="reg-store-list" class="grid sm:grid-cols-2 gap-2.5 max-h-72 overflow-y-auto custom-scrollbar pr-1"></div>
+          <p id="reg-store-hint" class="text-[11px] text-zinc-500 mt-2"></p>
+        </div>
+        <div class="flex flex-col-reverse sm:flex-row gap-3 pt-1">
+          <button type="button" onclick="closeRegModal()" class="btn-outline flex-1 px-6 py-3 text-xs font-bold uppercase tracking-widest">Cancel</button>
+          <button type="button" id="reg-to-delegates" class="btn-gold flex-1 px-6 py-3 text-xs font-bold uppercase tracking-widest disabled:opacity-40 disabled:pointer-events-none">Continue</button>
+        </div>
+      </div>
+
+      <!-- Step 2 — delegates -->
+      <form id="reg-step-delegates" class="hidden px-6 md:px-8 pb-6 md:pb-8 pt-4 space-y-5">
+        <div>
+          <span class="form-label">Nominate 2 delegates per store</span>
+          <div id="reg-delegate-list" class="space-y-3 max-h-80 overflow-y-auto custom-scrollbar pr-1"></div>
+          <p id="reg-delegate-hint" class="text-[11px] text-red-600 mt-2 hidden"></p>
+        </div>
+        <div class="flex flex-col-reverse sm:flex-row gap-3 pt-1">
+          <button type="button" id="reg-back-stores" class="btn-outline flex-1 px-6 py-3 text-xs font-bold uppercase tracking-widest">Back</button>
+          <button type="submit" class="btn-gold flex-1 px-6 py-3 text-xs font-bold uppercase tracking-widest">Continue</button>
+        </div>
+      </form>
+
+      <!-- Step 3 — review -->
+      <div id="reg-step-review" class="hidden px-6 md:px-8 pb-6 md:pb-8 pt-4 space-y-5">
+        <div class="flex gap-3 bg-gold-soft border border-gold/30 rounded-sm px-4 py-3.5">
+          <i class="ph ph-seal-question text-gold text-lg flex-shrink-0"></i>
+          <div class="text-xs text-charcoal leading-relaxed">
+            <p class="font-semibold mb-1">Confirm this registration</p>
+            <p id="reg-review-text" class="text-zinc-600"></p>
+          </div>
+        </div>
+        <ul id="reg-review-list" class="space-y-2 max-h-64 overflow-y-auto custom-scrollbar text-xs text-zinc-600"></ul>
+        <p class="text-[11px] text-zinc-500 leading-relaxed bg-zinc-50 rounded-sm px-3.5 py-3">
+          The BAJUS Board verifies each delegation before issuing a payment request. Stalls are confirmed only after payment is received.
+        </p>
+        <div class="flex flex-col-reverse sm:flex-row gap-3 pt-1">
+          <button type="button" id="reg-back-delegates" class="btn-outline flex-1 px-6 py-3 text-xs font-bold uppercase tracking-widest">Back</button>
+          <button type="button" id="reg-submit" class="btn-gold flex-1 px-6 py-3 text-xs font-bold uppercase tracking-widest">Submit Registration</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGISTRATION DETAILS MODAL -->
+  <div id="reg-details-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="reg-details-title">
+    <div class="absolute inset-0 bg-black/50" onclick="closeRegDetails()"></div>
+    <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 max-w-3xl mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel">
+      <div class="flex justify-between items-start gap-4 px-6 md:px-8 pt-6 md:pt-8">
+        <div>
+          <div class="text-[10px] uppercase tracking-widest text-gold font-bold mb-1">Registration</div>
+          <h3 id="reg-details-title" class="font-serif text-xl text-charcoal">Registration Details</h3>
+          <p id="reg-details-event" class="text-xs text-zinc-500 mt-1"></p>
+        </div>
+        <button type="button" onclick="closeRegDetails()" class="text-zinc-400 hover:text-charcoal p-1" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="px-6 md:px-8 pb-6 md:pb-8 pt-4 space-y-5">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs">
+          <div><span class="text-zinc-400 block mb-1">Reference</span><strong id="reg-details-reference" class="text-charcoal font-semibold"></strong></div>
+          <div><span class="text-zinc-400 block mb-1">Submitted</span><strong id="reg-details-submitted" class="text-charcoal font-semibold"></strong></div>
+          <div><span class="text-zinc-400 block mb-1">Status</span><span id="reg-details-status"></span></div>
+        </div>
+        <div id="reg-details-timeline" class="flex flex-wrap gap-x-2 gap-y-2"></div>
+        <div>
+          <span class="form-label">Stores &amp; delegates</span>
+          <ul id="reg-details-entries" class="space-y-2 max-h-64 overflow-y-auto custom-scrollbar text-xs text-zinc-600"></ul>
+        </div>
+        <p id="reg-details-note" class="text-[11px] text-zinc-500 leading-relaxed bg-zinc-50 rounded-sm px-3.5 py-3"></p>
+        <div class="flex flex-col-reverse sm:flex-row gap-3 pt-1 justify-end">
+          <button type="button" onclick="closeRegDetails()" class="btn-outline px-6 py-3 text-xs font-bold uppercase tracking-widest">Close</button>
+          <button type="button" id="reg-details-action" class="btn-gold px-6 py-3 text-xs font-bold uppercase tracking-widest hidden"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAYMENT MODAL -->
+  <div id="pay-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pay-modal-title">
+    <div class="absolute inset-0 bg-black/50" onclick="closePayModal()"></div>
+    <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 max-w-xl mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel">
+      <div class="flex justify-between items-start gap-4 px-6 md:px-8 pt-6 md:pt-8">
+        <div>
+          <div class="text-[10px] uppercase tracking-widest text-gold font-bold mb-1">Stall Payment</div>
+          <h3 id="pay-modal-title" class="font-serif text-xl text-charcoal">Pay Stall Fee</h3>
+          <p id="pay-modal-event" class="text-xs text-zinc-500 mt-1"></p>
+        </div>
+        <button type="button" onclick="closePayModal()" class="text-zinc-400 hover:text-charcoal p-1" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <form id="pay-form" class="px-6 md:px-8 pb-6 md:pb-8 pt-4 space-y-5">
+        <div class="border border-zinc-200 rounded-sm divide-y divide-zinc-100 text-xs">
+          <div class="flex items-center justify-between px-4 py-2.5">
+            <span class="text-zinc-500">Stall fee per store</span><strong id="pay-rate" class="text-charcoal font-semibold"></strong>
+          </div>
+          <div class="flex items-center justify-between px-4 py-2.5">
+            <span class="text-zinc-500">Stores</span><strong id="pay-stores" class="text-charcoal font-semibold"></strong>
+          </div>
+          <div class="flex items-center justify-between px-4 py-3 bg-gold-soft/60">
+            <span class="font-bold uppercase tracking-wider text-[10px] text-charcoal">Total payable</span>
+            <strong id="pay-total" class="font-serif text-lg text-charcoal"></strong>
+          </div>
+        </div>
+        <div>
+          <span class="form-label">Payment method</span>
+          <div class="grid sm:grid-cols-3 gap-2.5">
+            <label class="choice-tile choice-tile--block"><input type="radio" name="pay-method" value="Bank Transfer" class="size-4 mt-0.5 accent-[#b8860b]" checked /><span class="text-sm font-semibold text-charcoal">Bank Transfer</span></label>
+            <label class="choice-tile choice-tile--block"><input type="radio" name="pay-method" value="Card" class="size-4 mt-0.5 accent-[#b8860b]" /><span class="text-sm font-semibold text-charcoal">Card</span></label>
+            <label class="choice-tile choice-tile--block"><input type="radio" name="pay-method" value="bKash" class="size-4 mt-0.5 accent-[#b8860b]" /><span class="text-sm font-semibold text-charcoal">bKash</span></label>
+          </div>
+        </div>
+        <div class="flex flex-col-reverse sm:flex-row gap-3 pt-1">
+          <button type="button" onclick="closePayModal()" class="btn-outline flex-1 px-6 py-3 text-xs font-bold uppercase tracking-widest">Cancel</button>
+          <button type="submit" class="btn-gold flex-1 px-6 py-3 text-xs font-bold uppercase tracking-widest">Confirm Payment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- INVOICE MODAL -->
+  <div id="invoice-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="invoice-modal-title">
+    <div class="absolute inset-0 bg-black/50" onclick="closeInvoiceModal()"></div>
+    <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 max-w-3xl mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel">
+      <div class="flex justify-between items-start gap-4 px-6 md:px-8 pt-6 md:pt-8">
+        <div>
+          <div class="text-[10px] uppercase tracking-widest text-gold font-bold mb-1">Payment Receipt</div>
+          <h3 id="invoice-modal-title" class="font-serif text-xl text-charcoal">Invoice</h3>
+          <p id="invoice-event" class="text-xs text-zinc-500 mt-1"></p>
+        </div>
+        <button type="button" onclick="closeInvoiceModal()" class="text-zinc-400 hover:text-charcoal p-1" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="px-6 md:px-8 pb-6 md:pb-8 pt-4 space-y-5">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
+          <div><span class="text-zinc-400 block mb-1">Invoice No.</span><strong id="invoice-number" class="text-charcoal font-semibold"></strong></div>
+          <div><span class="text-zinc-400 block mb-1">Reference</span><strong id="invoice-reference" class="text-charcoal font-semibold"></strong></div>
+          <div><span class="text-zinc-400 block mb-1">Paid On</span><strong id="invoice-date" class="text-charcoal font-semibold"></strong></div>
+          <div><span class="text-zinc-400 block mb-1">Method</span><strong id="invoice-method" class="text-charcoal font-semibold"></strong></div>
+        </div>
+        <div class="border border-zinc-200 rounded-sm overflow-hidden">
+          <div class="flex items-center justify-between px-4 py-2.5 bg-zinc-50 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+            <span>Description</span><span>Amount</span>
+          </div>
+          <ul id="invoice-lines" class="divide-y divide-zinc-100 text-xs"></ul>
+          <div class="flex items-center justify-between px-4 py-3 border-t border-zinc-200 bg-gold-soft/60">
+            <span class="font-bold uppercase tracking-wider text-[10px] text-charcoal">Total paid</span>
+            <strong id="invoice-total" class="font-serif text-lg text-charcoal"></strong>
+          </div>
+        </div>
+        <div class="flex flex-col-reverse sm:flex-row gap-3 pt-1 justify-end">
+          <button type="button" onclick="closeInvoiceModal()" class="btn-outline px-6 py-3 text-xs font-bold uppercase tracking-widest">Close</button>
+          <button type="button" id="invoice-download" class="btn-gold px-6 py-3 text-xs font-bold uppercase tracking-widest">Download PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="bajus-footer"></div>
+  <script src="./js/stores-data.js"></script>
+  <script src="./js/contacts-data.js"></script>
   <script src="./js/include.js"></script>
   <script src="./js/main.js"></script>
   <script>
-    function bookStall(eventName, eventType) {
-      alert("Stall booking request submitted for:\n" + eventName + " (" + eventType + " Event)\n\n(Mockup — backend not connected.)");
+    const MEMBER_STORES = BAJUS_STORES;
+
+    // Tabs
+    document.querySelectorAll(".dash-tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const target = tab.dataset.tab;
+        document.querySelectorAll(".dash-tab").forEach((t) => t.classList.toggle("is-active", t.dataset.tab === target));
+        document.querySelectorAll(".dash-panel").forEach((p) => p.classList.toggle("is-active", p.dataset.panel === target));
+      });
+    });
+
+    // Stall booking
+    const stallModal = document.getElementById("stall-modal");
+    const stallForm = document.getElementById("stall-form");
+    const stallStoreList = document.getElementById("stall-store-list");
+    const stallModalEvent = document.getElementById("stall-modal-event");
+    const stallModalTitle = document.getElementById("stall-modal-title");
+    const stallSelectAll = document.getElementById("stall-select-all");
+    const stallSelectionCount = document.getElementById("stall-selection-count");
+    const stallContinue = document.getElementById("stall-continue");
+    const stallConfirm = document.getElementById("stall-confirm");
+    const stallConfirmText = document.getElementById("stall-confirm-text");
+    const stallConfirmStores = document.getElementById("stall-confirm-stores");
+    let pendingBooking = null;
+
+    function bookingReference() {
+      return "REQ-" + new Date().getFullYear() + "-" + String(Math.floor(1000 + Math.random() * 9000));
     }
+
+    function storeStatusBadge(status) {
+      const tone = status === "Active"
+        ? "text-green-700 bg-green-50 border-green-200/50"
+        : "text-red-700 bg-red-50 border-red-200/50";
+      return `<span class="inline-flex items-center text-[9px] font-bold uppercase tracking-wider ${tone} border px-2 py-0.5 rounded-full flex-shrink-0">${status}</span>`;
+    }
+
+    function storeListItem(store) {
+      return `
+        <li class="border border-zinc-200 rounded-sm px-3 py-2 min-w-0">
+          <strong class="text-charcoal font-semibold block truncate">${store.name}</strong>
+          <span class="flex items-center gap-2 mt-1 min-w-0">
+            <span class="text-[11px] text-zinc-400 truncate">${store.membership_id}</span>
+            ${storeStatusBadge(store.status)}
+          </span>
+        </li>`;
+    }
+
+    function selectedStores() {
+      return Array.from(stallStoreList.querySelectorAll('input[name="stall-store"]:checked'))
+        .map((input) => MEMBER_STORES.find((store) => String(store.id) === input.value));
+    }
+
+    function refreshSelectionState() {
+      const count = selectedStores().length;
+      const total = MEMBER_STORES.length;
+
+      stallSelectionCount.textContent = count
+        ? `${count} of ${total} stores selected`
+        : "Select at least one store to continue.";
+      stallContinue.disabled = count === 0;
+      stallSelectAll.textContent = count === total ? "Clear all" : "Select all";
+    }
+
+    function showStep(step) {
+      stallForm.classList.toggle("hidden", step !== "select");
+      stallConfirm.classList.toggle("hidden", step !== "confirm");
+      stallModalTitle.textContent = step === "select" ? "Select Stores" : "Review Request";
+    }
+
+    function openStallModal(eventName) {
+      stallModalEvent.textContent = eventName;
+      stallStoreList.innerHTML = MEMBER_STORES.map((store) => `
+        <label class="choice-tile choice-tile--block">
+          <input type="checkbox" name="stall-store" value="${store.id}" class="size-4 mt-0.5 accent-[#b8860b]" />
+          <span class="min-w-0 flex-1">
+            <span class="block text-sm font-semibold text-charcoal truncate">${store.name}</span>
+            <span class="flex items-center gap-2 mt-1 min-w-0">
+              <span class="text-[11px] text-zinc-500 truncate">${store.membership_id}</span>
+              ${storeStatusBadge(store.status)}
+            </span>
+          </span>
+        </label>`).join("");
+
+      showStep("select");
+      refreshSelectionState();
+      stallModal.classList.remove("hidden");
+      stallModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeStallModal() {
+      stallModal.classList.add("hidden");
+      stallModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      pendingBooking = null;
+    }
+
+    // Replaces the Book Stall button with a pending state that reopens the request details.
+    function markRequestPending(button, request) {
+      if (!button) return;
+      const badge = document.createElement("button");
+      badge.type = "button";
+      badge.className = "w-full inline-flex flex-col items-center justify-center gap-0.5 px-3 py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-[10px] font-bold uppercase tracking-wider transition-colors";
+      badge.innerHTML =
+        `<span class="inline-flex items-center gap-1.5"><i class="bi bi-hourglass-split"></i> Request Sent</span>` +
+        `<span class="text-[9px] font-semibold normal-case tracking-normal text-amber-700/80">${request.stores.length} ${request.stores.length === 1 ? "store" : "stores"} · View details</span>`;
+      badge.addEventListener("click", () => openRequestModal(request));
+      button.replaceWith(badge);
+    }
+
+    function bookStall(button, eventName, eventType) {
+      pendingBooking = { button, eventName, eventType };
+      openStallModal(eventName);
+    }
+
+    stallStoreList.addEventListener("change", refreshSelectionState);
+
+    stallSelectAll.addEventListener("click", () => {
+      const selectAll = selectedStores().length !== MEMBER_STORES.length;
+      stallStoreList.querySelectorAll('input[name="stall-store"]').forEach((input) => {
+        input.checked = selectAll;
+      });
+      refreshSelectionState();
+    });
+
+    stallForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const stores = selectedStores();
+      if (!stores.length || !pendingBooking) return;
+
+      stallConfirmText.textContent =
+        `A stall booking request for ${pendingBooking.eventName} will be sent to the BAJUS Board on behalf of ` +
+        `${stores.length} ${stores.length === 1 ? "store" : "stores"}.`;
+      stallConfirmStores.innerHTML = stores.map(storeListItem).join("");
+
+      showStep("confirm");
+    });
+
+    document.getElementById("stall-back").addEventListener("click", () => showStep("select"));
+
+    document.getElementById("stall-send").addEventListener("click", () => {
+      const stores = selectedStores();
+      if (!stores.length || !pendingBooking) return;
+
+      const request = {
+        reference: bookingReference(),
+        eventName: pendingBooking.eventName,
+        eventType: pendingBooking.eventType,
+        submittedAt: new Date(),
+        stores
+      };
+      const button = pendingBooking.button;
+
+      closeStallModal();
+      markRequestPending(button, request);
+      window.showToast(
+        `Booking request ${request.reference} sent to the BAJUS Board for ` +
+        `${stores.length} ${stores.length === 1 ? "store" : "stores"}.`
+      );
+    });
+
+    // Request details
+    const requestModal = document.getElementById("request-modal");
+    const requestModalEvent = document.getElementById("request-modal-event");
+    const requestReference = document.getElementById("request-reference");
+    const requestSubmitted = document.getElementById("request-submitted");
+    const requestStoreCount = document.getElementById("request-store-count");
+    const requestStores = document.getElementById("request-stores");
+
+    function openRequestModal(request) {
+      requestModalEvent.textContent = `${request.eventName} · ${request.eventType} Event`;
+      requestReference.textContent = request.reference;
+      requestSubmitted.textContent = request.submittedAt.toLocaleDateString("en-GB", {
+        day: "2-digit", month: "short", year: "numeric"
+      });
+      requestStoreCount.textContent = `${request.stores.length} ${request.stores.length === 1 ? "store" : "stores"}`;
+      requestStores.innerHTML = request.stores.map(storeListItem).join("");
+
+      requestModal.classList.remove("hidden");
+      requestModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeRequestModal() {
+      requestModal.classList.add("hidden");
+      requestModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    /* ============================================================
+       INTERNATIONAL EVENT REGISTRATION
+       ============================================================ */
+
+    const STALL_FEE_USD = 1200;
+    const DELEGATES_PER_STORE = 2;
+    // Board workflow a registration moves through; "Rejected" ends it early.
+    const REGISTRATION_FLOW = ["New", "Verified", "In Payment", "Paid", "Booked"];
+
+    const STATUS_TONES = {
+      "New": "text-zinc-600 bg-zinc-100 border-zinc-200",
+      "Verified": "text-sky-700 bg-sky-50 border-sky-200",
+      "In Payment": "text-amber-800 bg-amber-50 border-amber-200",
+      "Paid": "text-emerald-700 bg-emerald-50 border-emerald-200",
+      "Booked": "text-gold bg-gold-soft border-gold/30",
+      "Rejected": "text-red-700 bg-red-50 border-red-200"
+    };
+
+    const contactById = (id) => BAJUS_CONTACTS.find((contact) => contact.id === id);
+    const storeById = (id) => MEMBER_STORES.find((store) => store.id === id);
+
+    const registrations = [
+      {
+        reference: "INT-2026-0118",
+        eventName: "Bangkok Gems & Jewelry Fair",
+        submittedAt: new Date(2026, 5, 18),
+        status: "In Payment",
+        entries: [
+          { store: storeById(1), delegates: [contactById(66), contactById(65)] },
+          { store: storeById(4), delegates: [contactById(69), contactById(70)] }
+        ]
+      },
+      {
+        reference: "INT-2025-0094",
+        eventName: "Vicenzaoro Winter — Italy",
+        submittedAt: new Date(2025, 10, 9),
+        status: "Booked",
+        paidAt: new Date(2025, 10, 21),
+        paymentMethod: "Bank Transfer",
+        invoiceNo: "INV-2025-0094",
+        entries: [
+          { store: storeById(1), delegates: [contactById(66), contactById(67)] }
+        ]
+      },
+      {
+        reference: "INT-2026-0121",
+        eventName: "Istanbul Jewelry Show",
+        submittedAt: new Date(2026, 6, 2),
+        status: "Rejected",
+        rejectionReason: "Delegate passports expire within six months of the travel date.",
+        entries: [
+          { store: storeById(9), delegates: [contactById(72), contactById(73)] }
+        ]
+      }
+    ];
+
+    function formatDate(date) {
+      return date.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+    }
+
+    function formatMoney(amount) {
+      return "US$ " + amount.toLocaleString("en-US");
+    }
+
+    function registrationTotal(registration) {
+      return registration.entries.length * STALL_FEE_USD;
+    }
+
+    function statusBadge(status, extraClass = "") {
+      return `<span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider ${STATUS_TONES[status]} border px-2.5 py-1 rounded-full ${extraClass}">${status}</span>`;
+    }
+
+    function registrationReference() {
+      return "INT-" + new Date().getFullYear() + "-" + String(Math.floor(1000 + Math.random() * 9000));
+    }
+
+    /* ---------- Registration list ---------- */
+
+    const registrationList = document.getElementById("registration-list");
+    const registrationCount = document.getElementById("registration-count");
+
+    function renderRegistrations() {
+      registrationCount.textContent = `${registrations.length} ${registrations.length === 1 ? "registration" : "registrations"}`;
+
+      registrationList.innerHTML = registrations.map((registration, index) => {
+        const delegates = registration.entries.length * DELEGATES_PER_STORE;
+        const canPay = registration.status === "In Payment";
+        const hasInvoice = Boolean(registration.invoiceNo);
+
+        return `
+          <div class="border border-zinc-200 rounded-sm bg-white p-4 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-gold transition-colors">
+            <div class="min-w-0">
+              <div class="flex flex-wrap items-center gap-2">
+                <h4 class="font-semibold text-sm text-charcoal">${registration.eventName}</h4>
+                ${statusBadge(registration.status)}
+              </div>
+              <p class="text-[11px] text-zinc-500 mt-1">
+                Ref. ${registration.reference} · ${registration.entries.length} ${registration.entries.length === 1 ? "store" : "stores"} ·
+                ${delegates} delegates · Submitted ${formatDate(registration.submittedAt)}
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 flex-shrink-0">
+              ${canPay ? `<button type="button" data-pay="${index}" class="px-4 py-2 bg-gold hover:bg-[#a3760a] text-cream text-[11px] font-semibold uppercase tracking-wider transition-colors">Pay ${formatMoney(registrationTotal(registration))}</button>` : ""}
+              ${hasInvoice ? `<button type="button" data-invoice="${index}" class="px-4 py-2 border border-zinc-200 text-[11px] font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors">Invoice</button>` : ""}
+              <button type="button" data-details="${index}" class="px-4 py-2 border border-zinc-200 text-[11px] font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors">Details</button>
+            </div>
+          </div>`;
+      }).join("");
+    }
+
+    registrationList.addEventListener("click", (e) => {
+      const button = e.target.closest("button[data-pay], button[data-invoice], button[data-details]");
+      if (!button) return;
+
+      if (button.dataset.pay !== undefined) openPayModal(registrations[button.dataset.pay]);
+      else if (button.dataset.invoice !== undefined) openInvoiceModal(registrations[button.dataset.invoice]);
+      else openRegDetails(registrations[button.dataset.details]);
+    });
+
+    /* ---------- Registration modal ---------- */
+
+    const regModal = document.getElementById("reg-modal");
+    const regModalTitle = document.getElementById("reg-modal-title");
+    const regModalEvent = document.getElementById("reg-modal-event");
+    const regStepStores = document.getElementById("reg-step-stores");
+    const regStepDelegates = document.getElementById("reg-step-delegates");
+    const regStepReview = document.getElementById("reg-step-review");
+    const regStoreList = document.getElementById("reg-store-list");
+    const regStoreHint = document.getElementById("reg-store-hint");
+    const regSelectAll = document.getElementById("reg-select-all");
+    const regToDelegates = document.getElementById("reg-to-delegates");
+    const regDelegateList = document.getElementById("reg-delegate-list");
+    const regDelegateHint = document.getElementById("reg-delegate-hint");
+    const regReviewText = document.getElementById("reg-review-text");
+    const regReviewList = document.getElementById("reg-review-list");
+
+    const REG_STEP_TITLES = {
+      stores: "Select Stores",
+      delegates: "Nominate Delegates",
+      review: "Review Registration"
+    };
+
+    let pendingRegistration = null;
+
+    function regSelectedStores() {
+      return Array.from(regStoreList.querySelectorAll('input[name="reg-store"]:checked'))
+        .map((input) => storeById(Number(input.value)));
+    }
+
+    function refreshRegStoreState() {
+      const count = regSelectedStores().length;
+      const total = MEMBER_STORES.length;
+      const required = count * DELEGATES_PER_STORE;
+      // A contact can only represent one store, so the roster caps how many stores can travel.
+      const shortOfContacts = required > BAJUS_CONTACTS.length;
+
+      if (!count) {
+        regStoreHint.textContent = "Select at least one store to continue.";
+        regStoreHint.className = "text-[11px] text-zinc-500 mt-2";
+      } else if (shortOfContacts) {
+        regStoreHint.textContent =
+          `${required} delegates needed but only ${BAJUS_CONTACTS.length} contacts are on file. Select fewer stores or add contacts first.`;
+        regStoreHint.className = "text-[11px] text-red-600 mt-2";
+      } else {
+        regStoreHint.textContent = `${count} of ${total} stores selected · ${required} delegates required`;
+        regStoreHint.className = "text-[11px] text-zinc-500 mt-2";
+      }
+
+      regToDelegates.disabled = count === 0 || shortOfContacts;
+      regSelectAll.textContent = count === total ? "Clear all" : "Select all";
+    }
+
+    function showRegStep(step) {
+      regStepStores.classList.toggle("hidden", step !== "stores");
+      regStepDelegates.classList.toggle("hidden", step !== "delegates");
+      regStepReview.classList.toggle("hidden", step !== "review");
+      regModalTitle.textContent = REG_STEP_TITLES[step];
+    }
+
+    function delegatePhoto(contact, size) {
+      return `<img src="${contact.passport_photo_url}" alt="" loading="lazy"
+        class="${size} rounded-full object-cover border border-zinc-200 flex-shrink-0 bg-zinc-100" />`;
+    }
+
+    function delegateOptions() {
+      return BAJUS_CONTACTS.map((contact) => `
+        <button type="button" class="delegate-option" role="option" data-id="${contact.id}">
+          ${delegatePhoto(contact, "size-7")}
+          <span class="min-w-0">
+            <span class="block text-xs font-semibold text-charcoal truncate">${contact.name}</span>
+            <span class="block text-[10px] text-zinc-400 truncate">${contact.designation}</span>
+          </span>
+        </button>`).join("");
+    }
+
+    function renderDelegatePickers(stores) {
+      regDelegateHint.classList.add("hidden");
+      regDelegateList.innerHTML = stores.map((store) => `
+        <div class="border border-zinc-200 rounded-sm p-3.5" data-store="${store.id}">
+          <div class="flex items-center gap-2 mb-2.5 min-w-0">
+            <strong class="text-sm font-semibold text-charcoal truncate">${store.name}</strong>
+            <span class="text-[11px] text-zinc-400 truncate">${store.membership_id}</span>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3">
+            ${[1, 2].map((slot) => `
+              <div class="delegate-select" data-slot="${slot}" data-value="">
+                <label class="form-label">Delegate ${slot} *</label>
+                <button type="button" class="form-input delegate-trigger" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="delegate-trigger-body flex items-center gap-2 min-w-0 text-sm text-zinc-400">Select a contact</span>
+                  <i class="bi bi-chevron-down text-xs text-zinc-400 ml-auto flex-shrink-0"></i>
+                </button>
+                <div class="delegate-menu hidden" role="listbox">
+                  ${delegateOptions()}
+                  <p class="delegate-empty hidden px-2 py-3 text-[11px] text-zinc-400 text-center">Every contact is already nominated.</p>
+                </div>
+              </div>`).join("")}
+          </div>
+        </div>`).join("");
+
+      refreshDelegateAvailability();
+    }
+
+    // A contact may only represent one store, so hide anyone already nominated elsewhere.
+    function refreshDelegateAvailability() {
+      const pickers = Array.from(regDelegateList.querySelectorAll(".delegate-select"));
+      const taken = pickers.map((picker) => picker.dataset.value).filter(Boolean);
+
+      pickers.forEach((picker) => {
+        const options = Array.from(picker.querySelectorAll(".delegate-option"));
+        let available = 0;
+
+        options.forEach((option) => {
+          const usedElsewhere = taken.includes(option.dataset.id) && picker.dataset.value !== option.dataset.id;
+          option.classList.toggle("hidden", usedElsewhere);
+          if (!usedElsewhere) available += 1;
+        });
+
+        picker.querySelector(".delegate-empty").classList.toggle("hidden", available > 0);
+      });
+    }
+
+    function closeDelegateMenus(except) {
+      regDelegateList.querySelectorAll(".delegate-select").forEach((picker) => {
+        if (picker === except) return;
+        picker.classList.remove("is-open");
+        picker.querySelector(".delegate-menu").classList.add("hidden");
+        picker.querySelector(".delegate-trigger").setAttribute("aria-expanded", "false");
+      });
+    }
+
+    regDelegateList.addEventListener("click", (e) => {
+      const trigger = e.target.closest(".delegate-trigger");
+      if (trigger) {
+        const picker = trigger.closest(".delegate-select");
+        const willOpen = !picker.classList.contains("is-open");
+        closeDelegateMenus(picker);
+        picker.classList.toggle("is-open", willOpen);
+        picker.querySelector(".delegate-menu").classList.toggle("hidden", !willOpen);
+        trigger.setAttribute("aria-expanded", String(willOpen));
+        return;
+      }
+
+      const option = e.target.closest(".delegate-option");
+      if (!option) return;
+
+      const picker = option.closest(".delegate-select");
+      const contact = contactById(Number(option.dataset.id));
+
+      picker.dataset.value = option.dataset.id;
+      picker.querySelector(".delegate-trigger-body").innerHTML =
+        `${delegatePhoto(contact, "size-6")}
+         <span class="text-xs font-semibold text-charcoal truncate">${contact.name}</span>
+         <span class="text-[10px] text-zinc-400 truncate hidden sm:inline">· ${contact.designation}</span>`;
+
+      closeDelegateMenus();
+      refreshDelegateAvailability();
+      regDelegateHint.classList.add("hidden");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".delegate-select")) closeDelegateMenus();
+    });
+
+    function collectDelegateEntries() {
+      const entries = [];
+
+      for (const block of regDelegateList.querySelectorAll("[data-store]")) {
+        const ids = Array.from(block.querySelectorAll(".delegate-select")).map((picker) => Number(picker.dataset.value));
+
+        if (ids.some((id) => !id)) return { error: "Select two delegates for every store." };
+
+        entries.push({ store: storeById(Number(block.dataset.store)), delegates: ids.map(contactById) });
+      }
+
+      return { entries };
+    }
+
+    function openRegModal(eventName) {
+      regModalEvent.textContent = eventName;
+      regStoreList.innerHTML = MEMBER_STORES.map((store) => `
+        <label class="choice-tile choice-tile--block">
+          <input type="checkbox" name="reg-store" value="${store.id}" class="size-4 mt-0.5 accent-[#b8860b]" />
+          <span class="min-w-0 flex-1">
+            <span class="block text-sm font-semibold text-charcoal truncate">${store.name}</span>
+            <span class="flex items-center gap-2 mt-1 min-w-0">
+              <span class="text-[11px] text-zinc-500 truncate">${store.membership_id}</span>
+              ${storeStatusBadge(store.status)}
+            </span>
+          </span>
+        </label>`).join("");
+
+      showRegStep("stores");
+      refreshRegStoreState();
+      regModal.classList.remove("hidden");
+      regModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeRegModal() {
+      regModal.classList.add("hidden");
+      regModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      pendingRegistration = null;
+    }
+
+    function registerEvent(button, eventName) {
+      pendingRegistration = { button, eventName, entries: [] };
+      openRegModal(eventName);
+    }
+
+    regStoreList.addEventListener("change", refreshRegStoreState);
+
+    regSelectAll.addEventListener("click", () => {
+      const selectAll = regSelectedStores().length !== MEMBER_STORES.length;
+      regStoreList.querySelectorAll('input[name="reg-store"]').forEach((input) => { input.checked = selectAll; });
+      refreshRegStoreState();
+    });
+
+    regToDelegates.addEventListener("click", () => {
+      const stores = regSelectedStores();
+      if (!stores.length) return;
+      renderDelegatePickers(stores);
+      showRegStep("delegates");
+    });
+
+    document.getElementById("reg-back-stores").addEventListener("click", () => showRegStep("stores"));
+    document.getElementById("reg-back-delegates").addEventListener("click", () => showRegStep("delegates"));
+
+    regStepDelegates.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const result = collectDelegateEntries();
+
+      if (result.error) {
+        regDelegateHint.textContent = result.error;
+        regDelegateHint.classList.remove("hidden");
+        return;
+      }
+
+      pendingRegistration.entries = result.entries;
+      regReviewText.textContent =
+        `${pendingRegistration.eventName} — ${result.entries.length} ${result.entries.length === 1 ? "store" : "stores"} ` +
+        `and ${result.entries.length * DELEGATES_PER_STORE} delegates will be submitted to the BAJUS Board.`;
+      regReviewList.innerHTML = result.entries.map(entryListItem).join("");
+      showRegStep("review");
+    });
+
+    function entryListItem(entry) {
+      return `
+        <li class="border border-zinc-200 rounded-sm px-3 py-2.5 min-w-0">
+          <div class="flex items-center gap-2 min-w-0">
+            <strong class="text-charcoal font-semibold truncate">${entry.store.name}</strong>
+            <span class="text-[11px] text-zinc-400 truncate">${entry.store.membership_id}</span>
+          </div>
+          <div class="flex flex-wrap gap-x-4 gap-y-1 mt-1.5">
+            ${entry.delegates.map((delegate) => `
+              <span class="inline-flex items-center gap-1.5 text-[11px] text-zinc-600">
+                <i class="ph ph-user text-gold"></i>${delegate.name} <span class="text-zinc-400">· ${delegate.designation}</span>
+              </span>`).join("")}
+          </div>
+        </li>`;
+    }
+
+    document.getElementById("reg-submit").addEventListener("click", () => {
+      if (!pendingRegistration || !pendingRegistration.entries.length) return;
+
+      const registration = {
+        reference: registrationReference(),
+        eventName: pendingRegistration.eventName,
+        submittedAt: new Date(),
+        status: "New",
+        entries: pendingRegistration.entries
+      };
+      const button = pendingRegistration.button;
+
+      registrations.unshift(registration);
+      closeRegModal();
+      renderRegistrations();
+      markEventRegistered(button, registration);
+      window.showToast(`Registration ${registration.reference} submitted to the BAJUS Board.`);
+    });
+
+    // Swaps the Register button for a status chip that reopens the registration.
+    function markEventRegistered(button, registration) {
+      if (!button) return;
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "w-full inline-flex flex-col items-center justify-center gap-0.5 px-3 py-2.5 bg-zinc-50 hover:bg-zinc-100 text-charcoal border border-zinc-200 text-[10px] font-bold uppercase tracking-wider transition-colors";
+      chip.innerHTML =
+        `<span class="inline-flex items-center gap-1.5"><i class="bi bi-clipboard-check"></i> Registered</span>` +
+        `<span class="text-[9px] font-semibold normal-case tracking-normal text-zinc-500">${registration.reference} · View details</span>`;
+      chip.addEventListener("click", () => openRegDetails(registration));
+      button.replaceWith(chip);
+    }
+
+    /* ---------- Registration details ---------- */
+
+    const regDetailsModal = document.getElementById("reg-details-modal");
+    const regDetailsEvent = document.getElementById("reg-details-event");
+    const regDetailsReference = document.getElementById("reg-details-reference");
+    const regDetailsSubmitted = document.getElementById("reg-details-submitted");
+    const regDetailsStatus = document.getElementById("reg-details-status");
+    const regDetailsTimeline = document.getElementById("reg-details-timeline");
+    const regDetailsEntries = document.getElementById("reg-details-entries");
+    const regDetailsNote = document.getElementById("reg-details-note");
+    const regDetailsAction = document.getElementById("reg-details-action");
+
+    const STATUS_NOTES = {
+      "New": "Your registration is queued for verification by the BAJUS Board.",
+      "Verified": "Delegates verified. A payment request will be issued shortly.",
+      "In Payment": "Payment is now due. Stalls are held for 7 days from the payment request.",
+      "Paid": "Payment received. Stall allocation is being finalised by the Board.",
+      "Booked": "Stalls confirmed. Allocation details will be shared before the event.",
+      "Rejected": "This registration was not approved."
+    };
+
+    function renderTimeline(registration) {
+      if (registration.status === "Rejected") {
+        regDetailsTimeline.innerHTML = ["New", "Rejected"].map((step, index) => `
+          <span class="inline-flex items-center gap-2">
+            ${index ? '<i class="ph ph-caret-right text-zinc-300 text-xs"></i>' : ""}
+            ${statusBadge(step)}
+          </span>`).join("");
+        return;
+      }
+
+      const reached = REGISTRATION_FLOW.indexOf(registration.status);
+      regDetailsTimeline.innerHTML = REGISTRATION_FLOW.map((step, index) => `
+        <span class="inline-flex items-center gap-2">
+          ${index ? '<i class="ph ph-caret-right text-zinc-300 text-xs"></i>' : ""}
+          <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border ${
+            index <= reached ? STATUS_TONES[step] : "text-zinc-400 bg-white border-zinc-200"
+          }">${step}</span>
+        </span>`).join("");
+    }
+
+    function openRegDetails(registration) {
+      regDetailsEvent.textContent = registration.eventName;
+      regDetailsReference.textContent = registration.reference;
+      regDetailsSubmitted.textContent = formatDate(registration.submittedAt);
+      regDetailsStatus.innerHTML = statusBadge(registration.status);
+      regDetailsEntries.innerHTML = registration.entries.map(entryListItem).join("");
+      regDetailsNote.textContent = registration.status === "Rejected"
+        ? `${STATUS_NOTES.Rejected} ${registration.rejectionReason || ""}`.trim()
+        : STATUS_NOTES[registration.status];
+
+      renderTimeline(registration);
+
+      regDetailsAction.classList.add("hidden");
+      regDetailsAction.onclick = null;
+
+      if (registration.status === "In Payment") {
+        regDetailsAction.textContent = `Pay ${formatMoney(registrationTotal(registration))}`;
+        regDetailsAction.classList.remove("hidden");
+        regDetailsAction.onclick = () => { closeRegDetails(); openPayModal(registration); };
+      } else if (registration.invoiceNo) {
+        regDetailsAction.textContent = "View Invoice";
+        regDetailsAction.classList.remove("hidden");
+        regDetailsAction.onclick = () => { closeRegDetails(); openInvoiceModal(registration); };
+      }
+
+      regDetailsModal.classList.remove("hidden");
+      regDetailsModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeRegDetails() {
+      regDetailsModal.classList.add("hidden");
+      regDetailsModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    /* ---------- Payment ---------- */
+
+    const payModal = document.getElementById("pay-modal");
+    const payForm = document.getElementById("pay-form");
+    const payModalEvent = document.getElementById("pay-modal-event");
+    const payRate = document.getElementById("pay-rate");
+    const payStores = document.getElementById("pay-stores");
+    const payTotal = document.getElementById("pay-total");
+    let payingRegistration = null;
+
+    function openPayModal(registration) {
+      payingRegistration = registration;
+      payModalEvent.textContent = `${registration.eventName} · Ref. ${registration.reference}`;
+      payRate.textContent = formatMoney(STALL_FEE_USD);
+      payStores.textContent = `${registration.entries.length} × stall`;
+      payTotal.textContent = formatMoney(registrationTotal(registration));
+
+      payModal.classList.remove("hidden");
+      payModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closePayModal() {
+      payModal.classList.add("hidden");
+      payModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      payingRegistration = null;
+    }
+
+    payForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!payingRegistration) return;
+
+      const registration = payingRegistration;
+      registration.status = "Paid";
+      registration.paidAt = new Date();
+      registration.paymentMethod = payForm.querySelector('input[name="pay-method"]:checked').value;
+      registration.invoiceNo = registration.reference.replace("INT", "INV");
+
+      closePayModal();
+      renderRegistrations();
+      window.showToast(`Payment of ${formatMoney(registrationTotal(registration))} received. Invoice ${registration.invoiceNo} is ready.`);
+      openInvoiceModal(registration);
+    });
+
+    /* ---------- Invoice ---------- */
+
+    const invoiceModal = document.getElementById("invoice-modal");
+    const invoiceEvent = document.getElementById("invoice-event");
+    const invoiceNumber = document.getElementById("invoice-number");
+    const invoiceReference = document.getElementById("invoice-reference");
+    const invoiceDate = document.getElementById("invoice-date");
+    const invoiceMethod = document.getElementById("invoice-method");
+    const invoiceLines = document.getElementById("invoice-lines");
+    const invoiceTotal = document.getElementById("invoice-total");
+    let invoiceRegistration = null;
+
+    function openInvoiceModal(registration) {
+      invoiceRegistration = registration;
+      invoiceEvent.textContent = registration.eventName;
+      invoiceNumber.textContent = registration.invoiceNo;
+      invoiceReference.textContent = registration.reference;
+      invoiceDate.textContent = formatDate(registration.paidAt);
+      invoiceMethod.textContent = registration.paymentMethod;
+      invoiceLines.innerHTML = registration.entries.map((entry) => `
+        <li class="flex items-center justify-between gap-4 px-4 py-2.5">
+          <span class="min-w-0">
+            <strong class="text-charcoal font-semibold block truncate">Exhibition stall — ${entry.store.name}</strong>
+            <span class="text-[11px] text-zinc-400 truncate">${entry.delegates.map((d) => d.name).join(", ")}</span>
+          </span>
+          <span class="text-charcoal font-semibold flex-shrink-0">${formatMoney(STALL_FEE_USD)}</span>
+        </li>`).join("");
+      invoiceTotal.textContent = formatMoney(registrationTotal(registration));
+
+      invoiceModal.classList.remove("hidden");
+      invoiceModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeInvoiceModal() {
+      invoiceModal.classList.add("hidden");
+      invoiceModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    document.getElementById("invoice-download").addEventListener("click", () => {
+      window.showToast(`Invoice ${invoiceRegistration.invoiceNo} download started. (Mockup — backend not connected.)`);
+    });
+
+    renderRegistrations();
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      if (!stallModal.classList.contains("hidden")) closeStallModal();
+      else if (!regModal.classList.contains("hidden")) closeRegModal();
+      else if (!payModal.classList.contains("hidden")) closePayModal();
+      else if (!invoiceModal.classList.contains("hidden")) closeInvoiceModal();
+      else if (!regDetailsModal.classList.contains("hidden")) closeRegDetails();
+      else if (!requestModal.classList.contains("hidden")) closeRequestModal();
+    });
   </script>
 </body>
 </html>

@@ -159,7 +159,7 @@
     return `
     <!-- Utility Bar -->
     <div class="bajus-utility-bar ${isDark ? "bg-black border-b border-zinc-900 text-zinc-450" : "bg-zinc-100/60 border-b border-zinc-200"} hidden md:block">
-      <div class="max-w-7xl mx-auto px-6 h-10 flex items-center justify-between text-[11px] uppercase tracking-widest font-medium ${isDark ? "text-zinc-400" : "text-zinc-500"}">
+      <div class="max-w-7xl mx-auto px-6 h-8 flex items-center justify-between text-[10px] uppercase tracking-widest font-medium ${isDark ? "text-zinc-400" : "text-zinc-500"}">
         <div class="flex gap-6">
           <span><i class="bi bi-telephone text-gold mr-1"></i>+880 2 8159193</span>
           <span><i class="bi bi-envelope text-gold mr-1"></i>info@bajus.org.bd</span>
@@ -182,9 +182,9 @@
         </div>
       </div>
 
-      <div class="bajus-header-row max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="bajus-header-row max-w-7xl mx-auto px-6 h-[4.5rem] flex items-center justify-between">
         <a href="${BASE}/index.html" class="flex items-center gap-3">
-          <img src="${BASE}/assets/logo.png" alt="BAJUS — Bangladesh Jewellers Association" class="bajus-header-logo h-10 md:h-12 w-auto" />
+          <img src="${BASE}/assets/logo.png" alt="BAJUS — Bangladesh Jewellers Association" class="bajus-header-logo h-9 md:h-10 w-auto" />
         </a>
         <nav class="hidden lg:flex items-center gap-5">
           ${navLinks(active, false, isDark)}
@@ -368,14 +368,14 @@
           ? "0 8px 24px -12px rgba(0,0,0,0.18)"
           : "";
         if (headerRow) {
-          headerRow.style.height = scrolled ? "4rem" : "5rem";
+          headerRow.style.height = scrolled ? "3.5rem" : "4.5rem";
         }
         if (headerLogo) {
           headerLogo.style.height = scrolled
-            ? "2.25rem"
+            ? "2rem"
             : isDesktop()
-              ? "3rem"
-              : "2.5rem";
+              ? "2.5rem"
+              : "2.25rem";
         }
       };
       applyHeaderScrollState();

@@ -22,6 +22,7 @@
 
   <!-- PAGE HERO -->
   <section class="page-hero py-16">
+    <img class="page-hero__media" src="./assets/about/jewellery-5.jpg" alt="" aria-hidden="true" decoding="async" />
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-4">District Representation</div>
       <h1 class="font-serif text-4xl md:text-6xl leading-tight">District <span class="italic text-gold">Committee</span>
@@ -47,15 +48,15 @@
   <!-- DISTRICT REPRESENTATIVES TABLE -->
   <section class="py-16 max-w-7xl mx-auto px-6">
 
-    <div class="mb-6">
+    <div class="max-w-3xl mb-12 reveal">
       <div class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-3">District Representation</div>
       <h2 class="font-serif text-3xl mb-2">District Committee Leaders</h2>
-      <p class="text-zinc-500 text-sm mb-8">BAJUS has district committees across all 64 districts of Bangladesh,
+      <p class="text-zinc-500 text-sm">BAJUS has district committees across all 64 districts of Bangladesh,
         coordinating local jewellery trade affairs under the guidance of the Central Committee.</p>
     </div>
 
     <!-- Search / Filter -->
-    <div class="mb-6 flex flex-col sm:flex-row gap-4">
+    <div class="mb-6 flex flex-col sm:flex-row gap-4 reveal" data-reveal-delay="100">
       <div class="relative flex-1">
         <input type="text" id="dc-search"
           class="form-input !pr-10"
@@ -89,7 +90,7 @@
       </div>
     </div>
 
-    <div class="reveal">
+    <div class="reveal" data-reveal-delay="200">
       <table class="data-table" id="dc-table">
         <thead>
           <tr>

@@ -136,8 +136,14 @@ window.showToast = function(message, type = 'success') {
   }
 
   // Reveal-on-scroll — Olight-style entrance (opal-move)
-  function initReveal() {
-    const els = document.querySelectorAll(".reveal");
+  let revealObserver = null;
+
+  function observeRevealElements(root) {
+    const scope = root && root.querySelectorAll ? root : document;
+    const els = scope.querySelectorAll
+      ? scope.querySelectorAll(".reveal:not(.is-visible)")
+      : document.querySelectorAll(".reveal:not(.is-visible)");
+
     if (!els.length) return;
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -150,20 +156,28 @@ window.showToast = function(message, type = 'success') {
       return;
     }
 
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("is-visible");
-            obs.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-    );
+    if (!revealObserver) {
+      revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("is-visible");
+              revealObserver.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      );
+    }
 
-    els.forEach((el) => obs.observe(el));
+    els.forEach((el) => revealObserver.observe(el));
   }
+
+  function initReveal() {
+    observeRevealElements(document);
+  }
+
+  window.bajusObserveReveal = observeRevealElements;
 
   function initCommitteesAccordion() {
     const headers = document.querySelectorAll('.committee-card__header');

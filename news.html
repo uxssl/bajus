@@ -16,6 +16,7 @@
   <div id="bajus-header"></div>
 
   <section class="page-hero py-16">
+    <img class="page-hero__media" src="./assets/news1.jpg" alt="" aria-hidden="true" decoding="async" />
     <div class="max-w-7xl mx-auto px-6">
       <h1 class="font-serif text-4xl md:text-6xl leading-tight">From the <span class="italic text-gold">Newsroom</span>.</h1>
       <p class="mt-6 text-lg text-zinc-300 leading-relaxed">Official statements, policy updates, circulars and press coverage from BAJUS and the broader Bangladeshi jewellery industry.</p>
@@ -35,12 +36,12 @@
   </section>
 
   <!-- FEATURED ARTICLE -->
-  <section class="py-20 max-w-7xl mx-auto px-6">
-    <article class="grid lg:grid-cols-12 gap-12 items-center reveal">
-      <a href="#" class="lg:col-span-7 block overflow-hidden">
+  <section class="py-16 max-w-7xl mx-auto px-6">
+    <article class="grid lg:grid-cols-12 gap-12 items-center">
+      <a href="#" class="lg:col-span-7 block overflow-hidden reveal reveal--right">
         <img src="./assets/news1.jpg" alt="" class="w-full aspect-[16/10] object-cover hover:scale-105 transition-transform duration-700" loading="lazy"/>
       </a>
-      <div class="lg:col-span-5">
+      <div class="lg:col-span-5 reveal reveal--left" data-reveal-delay="100">
         <div class="text-[11px] font-bold text-gold uppercase tracking-widest mb-4">Featured · Leadership</div>
         <h2 class="font-serif text-3xl md:text-4xl leading-tight mb-5">
           বাজুসের (২০২৫-২০২৭) মেয়াদের নির্বাচিত পরিচালনা পর্ষদ'র নিকট দায়িত্ব হস্তান্তর অনুষ্ঠান
@@ -57,7 +58,11 @@
 
   <!-- ARTICLE GRID -->
   <section class="pb-24 max-w-7xl mx-auto px-6">
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 border-t border-zinc-200 pt-16">
+    <div class="mb-6 reveal">
+      <div class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-3">Latest Updates</div>
+      <h2 class="font-serif text-3xl mb-8">News &amp; Press Coverage</h2>
+    </div>
+    <div class="board-members-grid grid md:grid-cols-2 lg:grid-cols-3 gap-10 border-t border-zinc-200 pt-16 mb-16">
       <!-- repeat articles -->
       <article class="group reveal">
         <a href="#" class="block">
@@ -121,7 +126,7 @@
     </div>
 
     <!-- Pagination -->
-    <div class="mt-16 flex justify-center gap-2 text-sm font-semibold">
+    <div class="mt-16 flex justify-center gap-2 text-sm font-semibold reveal">
       <button class="btn-outline size-10 grid place-items-center p-0">‹</button>
       <button class="btn-gold size-10 grid place-items-center p-0">1</button>
       <button class="btn-outline size-10 grid place-items-center p-0">2</button>

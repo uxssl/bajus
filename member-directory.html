@@ -22,6 +22,7 @@
   <div id="bajus-header"></div>
 
   <section class="page-hero py-16">
+    <img class="page-hero__media" src="./assets/news3.jpg" alt="" aria-hidden="true" decoding="async" />
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-4">Members</div>
       <h1 class="font-serif text-4xl md:text-6xl leading-tight">Member <span class="italic text-gold">Directory</span>
@@ -29,9 +30,14 @@
     </div>
   </section>
 
-  <section class="py-24 max-w-7xl mx-auto px-6">
+  <section class="py-16 max-w-7xl mx-auto px-6">
+    <div class="mb-6 reveal">
+      <div class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-3">Verified Members</div>
+      <h2 class="font-serif text-3xl mb-8">Search the Member Directory</h2>
+    </div>
+
     <!-- Filter Bar -->
-    <div class="member-filter-bar reveal">
+    <div class="member-filter-bar mb-6">
       <form id="member-filter-form">
         <div class="grid md:grid-cols-4 lg:grid-cols-5 gap-4 items-end">
           <div>
@@ -115,7 +121,7 @@
     </div>
 
     <!-- Member List -->
-    <div id="member-list-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div id="member-list-grid" class="board-members-grid grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-16">
       <!-- Alam Gold House -->
       <div class="member-card member-row reveal" data-name="alam gold house" data-district="dhaka">
         <div class="flex items-start justify-between w-full">
@@ -434,7 +440,7 @@
     </div>
 
     <!-- CTA -->
-    <div class="mt-16 bg-white text-charcoal p-10 text-center border border-zinc-200">
+    <div class="mt-16 bg-white text-charcoal p-10 text-center border border-zinc-200 reveal">
       <div class="text-[11px] uppercase tracking-widest text-gold font-bold mb-3">Not a Member Yet?</div>
       <h3 class="font-serif text-2xl mb-3">Join Bangladesh's Largest Jewellery Association</h3>
       <p class="text-zinc-400 max-w-lg mx-auto mb-6">Get your BAJUS membership and appear in the national directory.
@@ -453,7 +459,7 @@
 
     <!-- Modal Box -->
     <div
-      class="relative bg-white max-w-2xl w-full mx-4 overflow-hidden border border-zinc-200/80 shadow-2xl transition-all duration-300 transform scale-95 opacity-0 flex flex-col md:flex-row max-h-[90vh] md:max-h-none"
+      class="relative bg-white max-w-2xl w-full mx-4 overflow-hidden border border-zinc-200/80 shadow-2xl transition-all duration-300 transform scale-95 opacity-0 flex flex-col md:flex-row max-h-[90vh] md:max-h-none modal-panel"
       id="modal-box">
       <!-- Close Button -->
       <button id="close-modal-btn"
@@ -551,7 +557,7 @@
   <script>
     // State variables for search, filter, and pagination
     let currentPage = 1;
-    const itemsPerPage = 9; // 3 columns * 3 rows
+    const itemsPerPage = 12; // 4 columns × 3 rows — matches board-members-grid stagger
     let filteredMembers = [...BAJUS_MEMBERS];
 
     // DOM Elements
@@ -567,7 +573,7 @@
     // Helper function to create member card element
     function createMemberCard(member) {
       const card = document.createElement('div');
-      card.className = 'member-card member-row reveal is-visible';
+      card.className = 'member-card member-row reveal';
       card.setAttribute('data-name', member.name.toLowerCase());
       card.setAttribute('data-district', member.district.toLowerCase());
 
@@ -645,6 +651,10 @@
         const cardElement = createMemberCard(member);
         gridContainer.appendChild(cardElement);
       });
+
+      if (window.bajusObserveReveal) {
+        window.bajusObserveReveal(gridContainer);
+      }
 
       renderPagination();
 

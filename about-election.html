@@ -22,6 +22,7 @@
   <div id="bajus-header"></div>
 
   <section class="page-hero py-16">
+    <img class="page-hero__media" src="./assets/about/jewellery-1.jpg" alt="" aria-hidden="true" decoding="async" />
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-4">About BAJUS</div>
       <h1 class="font-serif text-4xl md:text-6xl leading-tight">BAJUS <span class="italic text-gold">Election</span>
@@ -47,14 +48,16 @@
     <div class="grid lg:grid-cols-12 gap-12 items-start">
       <!-- Main content -->
       <div class="lg:col-span-7">
-        <div class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-3">Democratic Governance</div>
-        <h2 class="font-serif text-3xl md:text-4xl mb-4">Election Process</h2>
-        <p class="text-zinc-500 mb-8">BAJUS is governed by an elected Executive Board, elected democratically by all
-          registered voting members every three years. The election process is overseen by an independent Election
-          Commission.</p>
+        <div class="reveal reveal--left">
+          <div class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-3">Democratic Governance</div>
+          <h2 class="font-serif text-3xl md:text-4xl mb-4">Election Process</h2>
+          <p class="text-zinc-500 mb-8">BAJUS is governed by an elected Executive Board, elected democratically by all
+            registered voting members every three years. The election process is overseen by an independent Election
+            Commission.</p>
+        </div>
 
         <!-- Alert -->
-        <div class="bg-gold-soft border border-gold/30 p-5 mb-10 flex gap-3">
+        <div class="bg-gold-soft border border-gold/30 p-5 mb-10 flex gap-3 reveal reveal--left" data-reveal-delay="100">
           <!-- <span class="text-gold text-lg mt-0.5">⭐</span> -->
           <div class="text-sm text-zinc-700">
             <strong>Next Election:</strong> BAJUS Executive Board Election is scheduled for <strong>December
@@ -63,9 +66,9 @@
           </div>
         </div>
 
-        <h3 class="font-serif text-xl font-bold mb-6">Election Timeline — 2026</h3>
-        <div class="election-timeline reveal">
-          <div class="election-step">
+        <h3 class="font-serif text-xl font-bold mb-6 reveal reveal--left" data-reveal-delay="200">Election Timeline — 2026</h3>
+        <div class="election-timeline">
+          <div class="election-step reveal" data-reveal-delay="0">
             <div class="election-step__dot">1</div>
             <div class="election-step__title">Voter List Publication</div>
             <div class="election-step__date">August 15, 2026</div>
@@ -73,14 +76,14 @@
               on the BAJUS website and at the BAJUS head office. Members may submit objections or corrections within 15
               days.</div>
           </div>
-          <div class="election-step">
+          <div class="election-step reveal" data-reveal-delay="100">
             <div class="election-step__dot">2</div>
             <div class="election-step__title">Final Voter List</div>
             <div class="election-step__date">September 5, 2026</div>
             <div class="election-step__desc">After reviewing all objections, the Election Commission will publish the
               final voter list. Only members on this list are eligible to vote and stand as candidates.</div>
           </div>
-          <div class="election-step">
+          <div class="election-step reveal" data-reveal-delay="200">
             <div class="election-step__dot">3</div>
             <div class="election-step__title">Nomination Period</div>
             <div class="election-step__date">September 10 – October 5, 2026</div>
@@ -88,28 +91,28 @@
               Board positions. Nomination forms available at the BAJUS head office and via the online member portal.
             </div>
           </div>
-          <div class="election-step">
+          <div class="election-step reveal" data-reveal-delay="300">
             <div class="election-step__dot">4</div>
             <div class="election-step__title">Nomination Scrutiny &amp; Final Candidate List</div>
             <div class="election-step__date">October 15, 2026</div>
             <div class="election-step__desc">The Election Commission will verify nominations and publish the final list
               of candidates for each position.</div>
           </div>
-          <div class="election-step">
+          <div class="election-step reveal" data-reveal-delay="400">
             <div class="election-step__dot">5</div>
             <div class="election-step__title">Campaigning Period</div>
             <div class="election-step__date">October 16 – November 30, 2026</div>
             <div class="election-step__desc">Candidates may campaign within guidelines set by the Election Commission.
               All campaign materials must be pre-approved and BAJUS premises must not be used for campaigning.</div>
           </div>
-          <div class="election-step">
+          <div class="election-step reveal" data-reveal-delay="400">
             <div class="election-step__dot">6</div>
             <div class="election-step__title">Election Day</div>
             <div class="election-step__date">December 15, 2026</div>
             <div class="election-step__desc">Voting will take place at designated polling stations across all divisions.
               Voting hours: 9:00 AM – 5:00 PM. Postal voting is available for members outside Dhaka.</div>
           </div>
-          <div class="election-step">
+          <div class="election-step reveal" data-reveal-delay="400">
             <div class="election-step__dot">7</div>
             <div class="election-step__title">Results &amp; Inauguration</div>
             <div class="election-step__date">December 18–20, 2026</div>
@@ -121,7 +124,7 @@
 
       <!-- Sidebar -->
       <div class="lg:col-span-5 space-y-6">
-        <div class="sidebar-widget reveal">
+        <div class="sidebar-widget reveal reveal--right">
           <div class="sidebar-widget__title">Eligibility to Vote</div>
           <div class="sidebar-widget__body">
             <ul class="space-y-2">
@@ -137,7 +140,7 @@
           </div>
         </div>
 
-        <div class="sidebar-widget reveal">
+        <div class="sidebar-widget reveal reveal--right" data-reveal-delay="100">
           <div class="sidebar-widget__title">Eligibility to Stand as Candidate</div>
           <div class="sidebar-widget__body">
             <ul class="space-y-2">
@@ -157,7 +160,7 @@
           </div>
         </div>
 
-        <div class="sidebar-widget reveal">
+        <div class="sidebar-widget reveal reveal--right" data-reveal-delay="200">
           <div class="sidebar-widget__title">Election Commission</div>
           <div class="sidebar-widget__body text-sm text-zinc-500">
             <p class="mb-3">The BAJUS Election Commission is an independent body appointed by the General Assembly. For
@@ -173,7 +176,7 @@
           </div>
         </div>
 
-        <div class="sidebar-widget reveal">
+        <div class="sidebar-widget reveal reveal--right" data-reveal-delay="300">
           <div class="sidebar-widget__title">Past Elections</div>
           <div class="sidebar-widget__body">
             <div class="flex items-start gap-3 py-3 border-b border-zinc-100">

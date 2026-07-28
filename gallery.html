@@ -17,6 +17,7 @@
   <div id="bajus-header"></div>
 
   <section class="page-hero py-16">
+    <img class="page-hero__media" src="./assets/sliders/slider-1.jpg" alt="" aria-hidden="true" decoding="async" />
     <div class="max-w-7xl mx-auto px-6">
       <h1 id="gallery-hero-title" class="font-serif text-4xl md:text-6xl leading-tight">Moments from the <span class="italic text-gold">association</span>.</h1>
       <p id="gallery-hero-desc" class="mt-6 text-lg text-zinc-600 leading-relaxed">A visual record of BAJUS events, leadership milestones, exhibitions, and the craft itself.</p>
@@ -24,13 +25,17 @@
   </section>
 
   <!-- ALBUM LIST -->
-  <section id="gallery-albums" class="py-20 max-w-7xl mx-auto px-6">
-    <div id="gallery-albums-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"></div>
+  <section id="gallery-albums" class="py-16 max-w-7xl mx-auto px-6">
+    <div class="mb-6 reveal">
+      <div class="text-[11px] uppercase tracking-[0.25em] text-gold font-bold mb-3">Visual Archive</div>
+      <h2 class="font-serif text-3xl mb-8">Photo Galleries</h2>
+    </div>
+    <div id="gallery-albums-grid" class="board-members-grid grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-16"></div>
   </section>
 
   <!-- ALBUM DETAIL -->
-  <section id="gallery-detail" class="py-20 max-w-7xl mx-auto px-6 hidden">
-    <div class="mb-10">
+  <section id="gallery-detail" class="py-16 max-w-7xl mx-auto px-6 hidden">
+    <div class="mb-10 reveal">
       <a href="./gallery.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-gold transition-colors mb-6">
         <i class="bi bi-arrow-left"></i> All Galleries
       </a>
@@ -43,7 +48,7 @@
         <div id="gallery-detail-count" class="text-sm font-semibold text-gold uppercase tracking-wider"></div>
       </div>
     </div>
-    <div id="gallery-photos-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"></div>
+    <div id="gallery-photos-grid" class="board-members-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"></div>
   </section>
 
   <!-- LIGHTBOX -->
@@ -54,7 +59,7 @@
     <button type="button" id="lightbox-prev" class="absolute left-4 md:left-8 size-11 rounded-full bg-white/10 text-cream hover:bg-gold transition-colors" aria-label="Previous">
       <i class="bi bi-chevron-left text-xl"></i>
     </button>
-    <img id="lightbox-image" src="" alt="" class="max-h-[85vh] max-w-[92vw] object-contain shadow-2xl" />
+    <img id="lightbox-image" src="" alt="" class="max-h-[85vh] max-w-[92vw] object-contain shadow-2xl modal-media" />
     <button type="button" id="lightbox-next" class="absolute right-4 md:right-8 size-11 rounded-full bg-white/10 text-cream hover:bg-gold transition-colors" aria-label="Next">
       <i class="bi bi-chevron-right text-xl"></i>
     </button>
@@ -135,6 +140,10 @@
             </a>
           `;
         }).join("");
+
+        if (window.bajusObserveReveal) {
+          window.bajusObserveReveal(albumsGrid);
+        }
       }
 
       function renderAlbumDetail(g) {
@@ -160,6 +169,12 @@
 
         albumsSection.classList.add("hidden");
         detailSection.classList.remove("hidden");
+
+        requestAnimationFrame(() => {
+          if (window.bajusObserveReveal) {
+            window.bajusObserveReveal(detailSection);
+          }
+        });
       }
 
       if (album) {

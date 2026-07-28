@@ -172,7 +172,9 @@
   <body>
     <div id="bajus-header"></div>
 
-    <section class="page-hero py-16">
+    <section
+      class="page-hero py-16">
+    <img class="page-hero__media" src="./assets/news2.jpg" alt="" aria-hidden="true" decoding="async" />
       <div class="max-w-7xl mx-auto px-6">
         <h1 class="font-serif text-4xl md:text-6xl leading-tight">
           Today's <span class="italic text-gold">Gold & Silver</span> Rate.
@@ -206,7 +208,7 @@
         <!-- TODAY -->
         <div class="gp-panel is-active" id="panel-today">
           <div
-            class="bg-gold-soft border border-gold/30 px-6 py-5 flex flex-col md:flex-row md:items-center justify-between gap-4 text-sm mb-10"
+            class="bg-gold-soft border border-gold/30 px-6 py-5 flex flex-col md:flex-row md:items-center justify-between gap-4 text-sm mb-10 reveal"
           >
             <div class="flex items-center gap-3">
               <i class="ph ph-calendar-blank text-gold text-xl"></i>
@@ -222,7 +224,7 @@
               ><i class="ph ph-file-pdf"></i> View Official PDF</a
             >
           </div>
-          <div class="mb-10">
+          <div class="mb-10 reveal" data-reveal-delay="100">
             <p
               class="text-[11px] uppercase tracking-[0.3em] text-gold font-semibold mb-2"
             >
@@ -230,7 +232,7 @@
             </p>
             <h2 class="font-serif text-3xl md:text-4xl">Gold Price</h2>
           </div>
-          <div class="card-shadow border border-gold/30 bg-white mb-12">
+          <div class="card-shadow border border-gold/30 bg-white mb-12 reveal" data-reveal-delay="200">
             <table class="gp-bullion-table w-full text-left">
               <thead
                 class="bg-gold-gradient text-cream text-xs uppercase tracking-widest"
@@ -328,7 +330,7 @@
             </table>
           </div>
 
-          <div class="mb-10">
+          <div class="mb-10 reveal" data-reveal-delay="100">
             <p
               class="text-[11px] uppercase tracking-[0.3em] text-gold font-semibold mb-2"
             >
@@ -336,7 +338,7 @@
             </p>
             <h2 class="font-serif text-3xl md:text-4xl">Silver Price</h2>
           </div>
-          <div class="card-shadow border border-zinc-200 bg-white mb-12">
+          <div class="card-shadow border border-zinc-200 bg-white mb-12 reveal" data-reveal-delay="200">
             <table class="gp-bullion-table w-full text-left">
               <thead
                 class="bg-silver-gradient text-cream text-xs uppercase tracking-widest"
@@ -434,7 +436,7 @@
             </table>
           </div>
 
-          <div class="bg-white border-l-4 border-gold p-8 card-shadow">
+          <div class="bg-white border-l-4 border-gold p-8 card-shadow reveal" data-reveal-delay="100">
             <p
               class="text-[11px] uppercase tracking-[0.3em] text-gold font-semibold mb-4"
             >
@@ -462,7 +464,7 @@
 
         <!-- WEEKLY CHART -->
         <div class="gp-panel" id="panel-weekly">
-          <div class="bg-white card-shadow p-8">
+          <div class="bg-white card-shadow p-8 reveal">
             <div
               class="flex flex-col md:flex-row md:items-end md:justify-between mb-8 gap-4"
             >
@@ -486,7 +488,7 @@
 
         <!-- INTERNATIONAL -->
         <div class="gp-panel" id="panel-intl">
-          <div class="mb-10">
+          <div class="mb-10 reveal">
             <p
               class="text-[11px] uppercase tracking-[0.3em] text-gold font-semibold mb-2"
             >
@@ -498,7 +500,8 @@
             </p>
           </div>
           <div
-            class="overflow-x-auto card-shadow border border-zinc-200 bg-white"
+            class="overflow-x-auto card-shadow border border-zinc-200 bg-white reveal"
+            data-reveal-delay="100"
           >
             <table class="w-full text-left">
               <thead
@@ -547,7 +550,7 @@
               </tbody>
             </table>
           </div>
-          <p class="text-xs text-zinc-500 mt-4 italic">
+          <p class="text-xs text-zinc-500 mt-4 italic reveal" data-reveal-delay="200">
             Source: LBMA / international markets. Updated Jun 03, 2026 — 12:00
             AM (GMT+6).
           </p>
@@ -555,7 +558,7 @@
 
         <!-- ARCHIVE -->
         <div class="gp-panel" id="panel-archive">
-          <div class="grid md:grid-cols-4 gap-6 mb-8 items-end">
+          <div class="grid md:grid-cols-4 gap-6 mb-8 items-end reveal">
             <div>
               <label class="gp-label">From Date</label>
               <input type="date" class="gp-input" value="2026-05-01" />
@@ -578,7 +581,8 @@
           </div>
 
           <div
-            class="overflow-x-auto card-shadow border border-zinc-200 bg-white"
+            class="overflow-x-auto card-shadow border border-zinc-200 bg-white reveal"
+            data-reveal-delay="100"
           >
             <table class="w-full text-left">
               <thead
@@ -600,7 +604,7 @@
             </table>
           </div>
 
-          <div class="flex justify-center gap-2 mt-8">
+          <div class="flex justify-center gap-2 mt-8 reveal" data-reveal-delay="200">
             <button class="gp-pg is-active">1</button>
             <button class="gp-pg">2</button>
             <button class="gp-pg">3</button>
@@ -624,9 +628,13 @@
             .querySelectorAll(".gp-panel")
             .forEach((p) => p.classList.remove("is-active"));
           btn.classList.add("is-active");
-          document
-            .getElementById("panel-" + btn.dataset.tab)
-            .classList.add("is-active");
+          const panel = document.getElementById("panel-" + btn.dataset.tab);
+          panel.classList.add("is-active");
+          requestAnimationFrame(() => {
+            if (window.bajusObserveReveal) {
+              window.bajusObserveReveal(panel);
+            }
+          });
           if (btn.dataset.tab === "weekly") renderWeekly();
         });
       });
