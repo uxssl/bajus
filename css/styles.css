@@ -103,12 +103,7 @@ body {
   padding: 1rem 1.25rem;
   text-align: center;
   border-radius: var(--radius);
-  background: linear-gradient(
-    135deg,
-    #c9a24c 0%,
-    #b8860b 45%,
-    #9a7209 100%
-  );
+  background: linear-gradient(135deg, #c9a24c 0%, #b8860b 45%, #9a7209 100%);
   color: var(--color-cream);
   box-shadow: 0 12px 28px -14px rgba(154, 114, 9, 0.65);
 }
@@ -139,7 +134,7 @@ body {
 
 .advisor-message-quote-mark {
   font-family: var(--font-serif);
-  font-size: 4.5rem;
+  font-size: clamp(3rem, 5vw, 4.5rem);
   line-height: 0.85;
   color: var(--color-gold);
   flex-shrink: 0;
@@ -153,7 +148,7 @@ body {
   background: linear-gradient(
     to right,
     var(--color-gold) 0%,
-    rgba(184, 134, 11, 0.15) 100%
+    rgba(184, 134, 11, 0) 100%
   );
 }
 
@@ -188,8 +183,9 @@ body {
     max-width: calc(100% - 1.5rem);
   }
 
-  .advisor-message-quote-mark {
-    font-size: 3.25rem;
+  .advisor-message-quote-head {
+    gap: 0.875rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -243,6 +239,13 @@ body {
   isolation: isolate;
   border: 1px solid rgba(184, 134, 11, 0.18);
   border-radius: var(--radius);
+}
+
+/* Two rate cards side by side get too cramped on small phones */
+@media (max-width: 479px) {
+  .rates-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .rate-card-gold {
@@ -367,6 +370,20 @@ body {
 
 .ticker:hover .ticker__track {
   animation-play-state: paused;
+}
+
+@media (max-width: 767px) {
+  .ticker__track {
+    font-size: 10px;
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+  }
+
+  .ticker__track > div {
+    gap: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 @keyframes ticker-scroll {
@@ -2354,6 +2371,19 @@ article img:not([class*="rounded-full"]) {
   opacity: 1;
 }
 
+/* Touch devices can't hover — keep album info readable */
+@media (hover: none) {
+  .home-gallery-overlay {
+    opacity: 1;
+    background: linear-gradient(
+      to top,
+      rgba(26, 26, 26, 0.85) 0%,
+      rgba(26, 26, 26, 0.3) 60%,
+      rgba(26, 26, 26, 0) 100%
+    );
+  }
+}
+
 .home-gallery-overlay__cat {
   font-size: 10px;
   font-weight: 700;
@@ -2417,32 +2447,6 @@ article img:not([class*="rounded-full"]) {
 }
 
 /* ==========================================
-   HEADER MENU LINK HOVER ANIMATION
-   (sweeping underline, left-to-right — matches footer-nav-link)
-   ========================================== */
-.header-nav-link {
-  position: relative;
-}
-
-.header-nav-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 14px;
-  width: 100%;
-  height: 2px;
-  background-color: var(--color-gold);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s ease;
-}
-
-.header-nav-link:hover::after,
-.header-nav-link.is-active::after {
-  transform: scaleX(1);
-}
-
-/* ==========================================
    HEADER — shrink on scroll
    (heights are also set inline via JS for reliability;
    these rules provide the smooth transition + a CSS-only fallback)
@@ -2502,6 +2506,20 @@ article img:not([class*="rounded-full"]) {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+@media (max-width: 767px) {
+  .bajus-scroll-top {
+    right: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    width: 40px;
+    height: 40px;
+  }
+
+  .bajus-scroll-top__ring {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .bajus-scroll-top__ring {

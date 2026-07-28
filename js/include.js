@@ -122,7 +122,7 @@
         } else {
           return `
             <div class="relative group py-6">
-              <button class="header-nav-link flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors ${isSubActive ? "text-gold is-active" : isDark ? "text-zinc-200 hover:text-gold" : "text-charcoal hover:text-gold"} focus:outline-none">
+              <button class="flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors ${isSubActive ? "text-gold" : isDark ? "text-zinc-200 hover:text-gold" : "text-charcoal hover:text-gold"} focus:outline-none">
                 <span>${n.label}</span>
                 <svg class="size-3.5 transition-transform duration-300 group-hover:rotate-180 text-zinc-400 group-hover:text-gold" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
               </button>
@@ -143,9 +143,9 @@
         const isActive = n.href === active;
         const base = mobile
           ? "block py-4 px-2 text-base border-b border-zinc-100 font-medium tracking-wide"
-          : "header-nav-link text-sm font-medium tracking-wide transition-colors py-6";
+          : "text-sm font-medium tracking-wide transition-colors py-6";
         const color = isActive
-          ? "text-gold is-active"
+          ? "text-gold"
           : isDark
             ? "text-zinc-200 hover:text-gold"
             : "text-charcoal hover:text-gold";
