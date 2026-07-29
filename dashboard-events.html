@@ -197,7 +197,7 @@
   <!-- STALL BOOKING MODAL -->
   <div id="stall-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="stall-modal-title">
     <div class="absolute inset-0 bg-black/50" onclick="closeStallModal()"></div>
-    <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 max-w-3xl mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel">
+    <div class="absolute inset-x-4 md:inset-x-8 top-1/2 -translate-y-1/2 w-full max-w-5xl max-h-[90vh] overflow-y-auto mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel custom-scrollbar">
       <div class="flex justify-between items-start gap-4 px-6 md:px-8 pt-6 md:pt-8">
         <div>
           <div class="text-[10px] uppercase tracking-widest text-gold font-bold mb-1">Stall Booking Request</div>
@@ -214,7 +214,7 @@
             <span class="form-label !mb-0">Book on behalf of</span>
             <button type="button" id="stall-select-all" class="text-[10px] font-bold uppercase tracking-widest text-gold hover:underline">Select all</button>
           </div>
-          <div id="stall-store-list" class="grid sm:grid-cols-2 gap-2.5 max-h-72 overflow-y-auto custom-scrollbar pr-1"></div>
+          <div id="stall-store-list" class="grid sm:grid-cols-2 gap-2.5 max-h-96 overflow-y-auto custom-scrollbar pr-1"></div>
           <p id="stall-selection-count" class="text-[11px] text-zinc-500 mt-2"></p>
         </div>
         <div class="flex flex-col-reverse sm:flex-row gap-3 pt-1">
@@ -232,7 +232,7 @@
             <p id="stall-confirm-text" class="text-zinc-600"></p>
           </div>
         </div>
-        <ul id="stall-confirm-stores" class="grid sm:grid-cols-2 gap-2 max-h-52 overflow-y-auto custom-scrollbar text-xs text-zinc-600"></ul>
+        <ul id="stall-confirm-stores" class="grid sm:grid-cols-2 gap-2 max-h-72 overflow-y-auto custom-scrollbar text-xs text-zinc-600"></ul>
         <p class="text-[11px] text-zinc-500 leading-relaxed bg-zinc-50 rounded-sm px-3.5 py-3">
           Your request is sent to the BAJUS Board for approval. You will be notified once a stall is allocated to each selected store.
         </p>
@@ -247,7 +247,7 @@
   <!-- BOOKING REQUEST DETAILS MODAL -->
   <div id="request-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="request-modal-title">
     <div class="absolute inset-0 bg-black/50" onclick="closeRequestModal()"></div>
-    <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 max-w-3xl mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel">
+    <div class="absolute inset-x-4 md:inset-x-8 top-1/2 -translate-y-1/2 w-full max-w-5xl max-h-[90vh] overflow-y-auto mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel custom-scrollbar">
       <div class="flex justify-between items-start gap-4 px-6 md:px-8 pt-6 md:pt-8">
         <div>
           <div class="text-[10px] uppercase tracking-widest text-gold font-bold mb-1">Booking Request</div>
@@ -270,7 +270,7 @@
             <span class="form-label !mb-0">Stores in this request</span>
             <span id="request-store-count" class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"></span>
           </div>
-          <ul id="request-stores" class="grid sm:grid-cols-2 gap-2 max-h-52 overflow-y-auto custom-scrollbar text-xs text-zinc-600"></ul>
+          <ul id="request-stores" class="grid sm:grid-cols-2 gap-2 max-h-72 overflow-y-auto custom-scrollbar text-xs text-zinc-600"></ul>
         </div>
         <p class="text-[11px] text-zinc-500 leading-relaxed bg-zinc-50 rounded-sm px-3.5 py-3">
           The BAJUS Board reviews stall requests in the order received. You will be notified once a stall is allocated to each store.
@@ -285,7 +285,7 @@
   <!-- INTERNATIONAL REGISTRATION MODAL -->
   <div id="reg-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="reg-modal-title">
     <div class="absolute inset-0 bg-black/50" onclick="closeRegModal()"></div>
-    <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 max-w-3xl mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel">
+    <div class="absolute inset-x-4 md:inset-x-8 top-1/2 -translate-y-1/2 w-full max-w-5xl max-h-[90vh] overflow-y-auto mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel custom-scrollbar">
       <div class="flex justify-between items-start gap-4 px-6 md:px-8 pt-6 md:pt-8">
         <div>
           <div class="text-[10px] uppercase tracking-widest text-gold font-bold mb-1">International Registration</div>
@@ -302,7 +302,7 @@
             <span class="form-label !mb-0">Participating stores</span>
             <button type="button" id="reg-select-all" class="text-[10px] font-bold uppercase tracking-widest text-gold hover:underline">Select all</button>
           </div>
-          <div id="reg-store-list" class="grid sm:grid-cols-2 gap-2.5 max-h-72 overflow-y-auto custom-scrollbar pr-1"></div>
+          <div id="reg-store-list" class="grid sm:grid-cols-2 gap-2.5 max-h-96 overflow-y-auto custom-scrollbar pr-1"></div>
           <p id="reg-store-hint" class="text-[11px] text-zinc-500 mt-2"></p>
         </div>
         <div class="flex flex-col-reverse sm:flex-row gap-3 pt-1">
@@ -315,7 +315,7 @@
       <form id="reg-step-delegates" class="hidden px-6 md:px-8 pb-6 md:pb-8 pt-4 space-y-5">
         <div>
           <span class="form-label">Nominate 2 delegates per store</span>
-          <div id="reg-delegate-list" class="space-y-3 max-h-80 overflow-y-auto custom-scrollbar pr-1"></div>
+          <div id="reg-delegate-list" class="space-y-3 max-h-96 overflow-y-auto custom-scrollbar pr-1"></div>
           <p id="reg-delegate-hint" class="text-[11px] text-red-600 mt-2 hidden"></p>
         </div>
         <div class="flex flex-col-reverse sm:flex-row gap-3 pt-1">
@@ -333,7 +333,7 @@
             <p id="reg-review-text" class="text-zinc-600"></p>
           </div>
         </div>
-        <ul id="reg-review-list" class="space-y-2 max-h-64 overflow-y-auto custom-scrollbar text-xs text-zinc-600"></ul>
+        <ul id="reg-review-list" class="space-y-2 max-h-80 overflow-y-auto custom-scrollbar text-xs text-zinc-600"></ul>
         <p class="text-[11px] text-zinc-500 leading-relaxed bg-zinc-50 rounded-sm px-3.5 py-3">
           The BAJUS Board verifies each delegation before issuing a payment request. Stalls are confirmed only after payment is received.
         </p>
@@ -348,7 +348,7 @@
   <!-- REGISTRATION DETAILS MODAL -->
   <div id="reg-details-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="reg-details-title">
     <div class="absolute inset-0 bg-black/50" onclick="closeRegDetails()"></div>
-    <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 max-w-3xl mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel">
+    <div class="absolute inset-x-4 md:inset-x-8 top-1/2 -translate-y-1/2 w-full max-w-5xl max-h-[90vh] overflow-y-auto mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel custom-scrollbar">
       <div class="flex justify-between items-start gap-4 px-6 md:px-8 pt-6 md:pt-8">
         <div>
           <div class="text-[10px] uppercase tracking-widest text-gold font-bold mb-1">Registration</div>
@@ -366,7 +366,7 @@
         <div id="reg-details-timeline" class="flex flex-wrap gap-x-2 gap-y-2"></div>
         <div>
           <span class="form-label">Stores &amp; delegates</span>
-          <ul id="reg-details-entries" class="space-y-2 max-h-64 overflow-y-auto custom-scrollbar text-xs text-zinc-600"></ul>
+          <ul id="reg-details-entries" class="space-y-2 max-h-80 overflow-y-auto custom-scrollbar text-xs text-zinc-600"></ul>
         </div>
         <p id="reg-details-note" class="text-[11px] text-zinc-500 leading-relaxed bg-zinc-50 rounded-sm px-3.5 py-3"></p>
         <div class="flex flex-col-reverse sm:flex-row gap-3 pt-1 justify-end">
@@ -380,7 +380,7 @@
   <!-- PAYMENT MODAL -->
   <div id="pay-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pay-modal-title">
     <div class="absolute inset-0 bg-black/50" onclick="closePayModal()"></div>
-    <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 max-w-xl mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel">
+    <div class="absolute inset-x-4 md:inset-x-8 top-1/2 -translate-y-1/2 w-full max-w-3xl max-h-[90vh] overflow-y-auto mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel custom-scrollbar">
       <div class="flex justify-between items-start gap-4 px-6 md:px-8 pt-6 md:pt-8">
         <div>
           <div class="text-[10px] uppercase tracking-widest text-gold font-bold mb-1">Stall Payment</div>
@@ -421,7 +421,7 @@
   <!-- INVOICE MODAL -->
   <div id="invoice-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="invoice-modal-title">
     <div class="absolute inset-0 bg-black/50" onclick="closeInvoiceModal()"></div>
-    <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 max-w-3xl mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel">
+    <div class="absolute inset-x-4 md:inset-x-8 top-1/2 -translate-y-1/2 w-full max-w-5xl max-h-[90vh] overflow-y-auto mx-auto bg-white border border-zinc-200 shadow-2xl modal-panel custom-scrollbar">
       <div class="flex justify-between items-start gap-4 px-6 md:px-8 pt-6 md:pt-8">
         <div>
           <div class="text-[10px] uppercase tracking-widest text-gold font-bold mb-1">Payment Receipt</div>
