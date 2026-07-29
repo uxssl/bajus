@@ -25,19 +25,26 @@
     </div>
   </section>
 
-  <!-- NOTICES SECTION -->
-  <section class="py-20 max-w-7xl mx-auto px-6">
-    <!-- Sub-navigation Tabs -->
-    <div class="flex border-b border-zinc-200 overflow-x-auto gap-8 mb-12 scrollbar-none text-xs uppercase tracking-widest font-semibold">
-      <button onclick="switchTab('all')" id="tab-all" class="py-4 border-b-2 border-gold text-gold font-bold whitespace-nowrap focus:outline-none transition-all">All Notices</button>
-      <button onclick="switchTab('forms')" id="tab-forms" class="py-4 border-b-2 border-transparent hover:text-gold text-zinc-500 whitespace-nowrap focus:outline-none transition-all">Forms &amp; Downloads</button>
+  <!-- TABS -->
+  <section class="bg-cream pt-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex border-b border-zinc-200 overflow-x-auto gap-8 scrollbar-none text-xs uppercase tracking-widest font-semibold">
+        <button onclick="switchTab('all')" id="tab-all" class="py-4 border-b-2 border-gold text-gold font-bold whitespace-nowrap focus:outline-none transition-all">All Notices</button>
+        <button onclick="switchTab('forms')" id="tab-forms" class="py-4 border-b-2 border-transparent hover:text-gold text-zinc-500 whitespace-nowrap focus:outline-none transition-all">Forms &amp; Downloads</button>
+      </div>
     </div>
+  </section>
 
+  <!-- NOTICES CONTENT -->
+  <section class="bg-cream pb-24">
+    <div class="max-w-7xl mx-auto px-6 pt-6">
     <!-- Active Tab Contents Wrapper -->
     <div class="grid lg:grid-cols-12 gap-12 items-start">
       
       <!-- Primary List Area (Left Column - Spans 8 cols) -->
-      <div class="lg:col-span-8 space-y-6">
+      <div class="lg:col-span-8">
+
+        <div id="notices-all-panel" class="space-y-6">
 
         <!-- NOTICE FILTER BAR (Visible for All, Circulars, Urgent) -->
         <div id="notice-filters" class="member-filter-bar reveal">
@@ -265,10 +272,11 @@
           <p class="text-sm">No notices found matching the search criteria.</p>
         </div>
 
+        </div>
+
         <!-- FORMS PANEL (Forms list grid, hidden initially) -->
         <div id="forms-panel" class="hidden space-y-6">
           <div class="mb-4">
-            <span class="inline-block w-14 h-[2px] bg-gold mb-3"></span>
             <h2 class="font-serif text-2xl text-charcoal">Official Registration Forms</h2>
             <p class="text-sm text-zinc-500 mt-1">Download official forms to apply, renew, or request certificates. Fill and submit physically or via email.</p>
           </div>
@@ -372,7 +380,7 @@
           <p class="text-xs text-zinc-400 leading-relaxed mb-6">Determines and releases official gold prices based on domestic market feedback and international pricing standards.</p>
           <div class="border-t border-zinc-800 pt-4 flex justify-between items-center text-xs">
             <span class="text-zinc-500">Convener</span>
-            <span class="font-semibold text-gold">Sayem Sobhan Anvir</span>
+            <span class="font-semibold text-gold">Enamul Haque Khan</span>
           </div>
         </div>
 
@@ -403,6 +411,7 @@
       </div>
 
     </div>
+    </div>
   </section>
 
   <div id="bajus-footer"></div>
@@ -417,11 +426,8 @@
       if (tabId !== 'all' && tabId !== 'forms') tabId = 'all';
 
       // Hide all panels
-      document.getElementById('notice-filters').classList.add('hidden');
-      document.getElementById('notice-list-panel').classList.add('hidden');
-      document.getElementById('urgent-pinned-alert').classList.add('hidden');
+      document.getElementById('notices-all-panel').classList.add('hidden');
       document.getElementById('forms-panel').classList.add('hidden');
-      document.getElementById('no-notices').classList.add('hidden');
 
       // Reset all buttons styling
       const buttons = document.querySelectorAll('[id^="tab-"]');
@@ -439,9 +445,7 @@
 
       // Show the selected panel
       if (tabId === 'all') {
-        document.getElementById('notice-filters').classList.remove('hidden');
-        document.getElementById('notice-list-panel').classList.remove('hidden');
-        document.getElementById('urgent-pinned-alert').classList.remove('hidden');
+        document.getElementById('notices-all-panel').classList.remove('hidden');
         resetFilters();
       } else if (tabId === 'forms') {
         document.getElementById('forms-panel').classList.remove('hidden');

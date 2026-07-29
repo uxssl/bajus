@@ -166,15 +166,41 @@
         border-color: #b8860b;
         font-weight: 600;
       }
+
+      .gp-effective-date .btn-outline {
+        background: #fff;
+        border-color: rgba(184, 134, 11, 0.45);
+        color: var(--color-charcoal);
+        padding: 0.55rem 1rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .gp-effective-date .btn-outline i {
+        font-size: 0.95rem;
+      }
+
+      .gp-effective-date .btn-outline:hover {
+        background: var(--color-gold);
+        border-color: var(--color-gold);
+        color: var(--color-cream) !important;
+      }
     </style>
   </head>
 
   <body>
     <div id="bajus-header"></div>
 
-    <section
-      class="page-hero py-16">
-    <img class="page-hero__media" src="./assets/news2.jpg" alt="" aria-hidden="true" decoding="async" />
+    <section class="page-hero py-16">
+      <img
+        class="page-hero__media"
+        src="./assets/news2.jpg"
+        alt=""
+        aria-hidden="true"
+        decoding="async"
+      />
       <div class="max-w-7xl mx-auto px-6">
         <h1 class="font-serif text-4xl md:text-6xl leading-tight">
           Today's <span class="italic text-gold">Gold & Silver</span> Rate.
@@ -204,14 +230,14 @@
 
     <!-- PANELS -->
     <section class="bg-cream pb-24">
-      <div class="max-w-7xl mx-auto px-6 pt-12">
+      <div class="max-w-7xl mx-auto px-6 pt-6">
         <!-- TODAY -->
         <div class="gp-panel is-active" id="panel-today">
           <div
-            class="bg-gold-soft border border-gold/30 px-6 py-5 flex flex-col md:flex-row md:items-center justify-between gap-4 text-sm mb-10 reveal"
+            class="gp-effective-date bg-gold-soft border border-gold/30 px-6 py-5 flex flex-col md:flex-row md:items-center justify-between gap-4 text-sm mb-10 reveal rounded-md"
           >
-            <div class="flex items-center gap-3">
-              <i class="ph ph-calendar-blank text-gold text-xl"></i>
+            <div class="flex flex-wrap items-center gap-3 min-w-0">
+              <i class="ph ph-calendar-blank text-gold text-xl shrink-0"></i>
               <span
                 class="uppercase tracking-widest text-xs font-semibold text-charcoal"
                 >Effective Date</span
@@ -220,7 +246,9 @@
                 >02 June, 2026</span
               >
             </div>
-            <a href="#" class="btn-outline inline-flex items-center gap-2"
+            <a
+              href="#"
+              class="btn-outline inline-flex items-center justify-center gap-2 shrink-0"
               ><i class="ph ph-file-pdf"></i> View Official PDF</a
             >
           </div>
@@ -232,7 +260,10 @@
             </p>
             <h2 class="font-serif text-3xl md:text-4xl">Gold Price</h2>
           </div>
-          <div class="card-shadow border border-gold/30 bg-white mb-12 reveal" data-reveal-delay="200">
+          <div
+            class="card-shadow border border-gold/30 bg-white mb-12 reveal"
+            data-reveal-delay="200"
+          >
             <table class="gp-bullion-table w-full text-left">
               <thead
                 class="bg-gold-gradient text-cream text-xs uppercase tracking-widest"
@@ -338,7 +369,10 @@
             </p>
             <h2 class="font-serif text-3xl md:text-4xl">Silver Price</h2>
           </div>
-          <div class="card-shadow border border-zinc-200 bg-white mb-12 reveal" data-reveal-delay="200">
+          <div
+            class="card-shadow border border-zinc-200 bg-white mb-12 reveal"
+            data-reveal-delay="200"
+          >
             <table class="gp-bullion-table w-full text-left">
               <thead
                 class="bg-silver-gradient text-cream text-xs uppercase tracking-widest"
@@ -436,7 +470,10 @@
             </table>
           </div>
 
-          <div class="bg-white border-l-4 border-gold p-8 card-shadow reveal" data-reveal-delay="100">
+          <div
+            class="hidden bg-white p-8 card-shadow reveal"
+            data-reveal-delay="100"
+          >
             <p
               class="text-[11px] uppercase tracking-[0.3em] text-gold font-semibold mb-4"
             >
@@ -550,7 +587,10 @@
               </tbody>
             </table>
           </div>
-          <p class="text-xs text-zinc-500 mt-4 italic reveal" data-reveal-delay="200">
+          <p
+            class="text-xs text-zinc-500 mt-4 italic reveal"
+            data-reveal-delay="200"
+          >
             Source: LBMA / international markets. Updated Jun 03, 2026 — 12:00
             AM (GMT+6).
           </p>
@@ -604,7 +644,10 @@
             </table>
           </div>
 
-          <div class="flex justify-center gap-2 mt-8 reveal" data-reveal-delay="200">
+          <div
+            class="flex justify-center gap-2 mt-8 reveal"
+            data-reveal-delay="200"
+          >
             <button class="gp-pg is-active">1</button>
             <button class="gp-pg">2</button>
             <button class="gp-pg">3</button>
