@@ -2361,7 +2361,11 @@ button#bajus-burger {
 .dashboard-page main a[class*="bg-red-"]:not(.block),
 .dashboard-page main a.border[class*="px-"]:not(.block),
 .dashboard-page main a.inline-flex:not(.rounded-full),
-.dashboard-page main a[class*="px-"][class*="py-"]:not(.block):not(.rounded-full):not([class*="rounded-full"]),
+.dashboard-page
+  main
+  a[class*="px-"][class*="py-"]:not(.block):not(.rounded-full):not(
+    [class*="rounded-full"]
+  ),
 .dashboard-page aside nav a:not(.rounded-full),
 .dashboard-page header button:not(.rounded-full) {
   border-radius: var(--radius);
@@ -2406,7 +2410,11 @@ button#bajus-burger {
   overflow: hidden;
 }
 
-.dashboard-page header > div > .relative.group:last-of-type > .absolute.w-48::before {
+.dashboard-page
+  header
+  > div
+  > .relative.group:last-of-type
+  > .absolute.w-48::before {
   content: "";
   position: absolute;
   top: -0.5rem;
@@ -2426,7 +2434,10 @@ button#bajus-burger {
   font-size: 0.875rem;
   color: #52525b;
   cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .choice-tile--block {
@@ -2848,6 +2859,103 @@ button#bajus-burger {
 
 .testimonial-card-item {
   border-radius: var(--radius) !important;
+  border: 1px solid transparent;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 0 0 rgba(40, 30, 0, 0);
+  transition:
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease,
+    background-color 0.4s ease;
+}
+
+#testimonial-carousel,
+.testimonial-carousel {
+  overflow: hidden;
+  padding: 0.5rem 0 0.75rem;
+  margin: -0.5rem 0 -0.75rem;
+}
+
+.testimonial-card-item:hover {
+  box-shadow:
+    0 3px 8px -6px rgba(40, 30, 0, 0.07),
+    0 8px 18px -14px rgba(40, 30, 0, 0.1);
+  transform: translateY(-2px);
+  border-color: rgba(184, 134, 11, 0.25);
+  background-color: #fff !important;
+}
+
+.testimonial-card-item:hover .name {
+  color: var(--color-gold);
+  transition: color 0.4s ease;
+}
+
+.testimonial-card-item:hover .details img {
+  box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.35);
+  transition: box-shadow 0.4s ease;
+}
+
+.testimonial-carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.5rem;
+}
+
+.testimonial-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.testimonial-dot {
+  position: relative;
+  box-sizing: border-box;
+  width: 2rem;
+  height: 3px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 1px;
+  background-color: #d4d4d8;
+  overflow: hidden;
+  cursor: pointer;
+  flex: 0 0 auto;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: width 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.testimonial-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1px;
+  background-color: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.35s ease;
+  pointer-events: none;
+}
+
+.testimonial-dot:hover {
+  background-color: #a1a1aa;
+}
+
+.testimonial-dot.is-active {
+  width: 4rem;
+  background-color: #e4e4e7;
+}
+
+.testimonial-dot.is-active.is-progress::after {
+  transform: scaleX(1);
+  transition: transform 4s linear;
+}
+
+.testimonial-dot:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
 }
 
 /* Homepage gallery — hover overlay */
@@ -3465,7 +3573,10 @@ article img:not([class*="rounded-full"]) {
   line-height: 1;
 }
 
-.about-pillar-card--values .about-pillar-card__values-list li > span:last-child {
+.about-pillar-card--values
+  .about-pillar-card__values-list
+  li
+  > span:last-child {
   flex: 1;
   min-width: 0;
   line-height: 1.7;

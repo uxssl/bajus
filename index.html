@@ -38,17 +38,13 @@
           />
           <div class="hero-slide__overlay" aria-hidden="true"></div>
         </div>
-        <div
-          class="hero-slide__content"
-        >
+        <div class="hero-slide__content">
           <div class="max-w-2xl text-cream">
             <span
               class="hero-line hero-line--sub inline-block px-3 py-1 bg-gold text-cream font-bold uppercase"
               >Featured Announcement</span
             >
-            <h1
-              class="hero-line hero-line--title font-serif"
-            >
+            <h1 class="hero-line hero-line--title font-serif">
               Guardian of the National
               <span class="italic text-gold">Golden Heritage</span>
             </h1>
@@ -83,17 +79,13 @@
           />
           <div class="hero-slide__overlay" aria-hidden="true"></div>
         </div>
-        <div
-          class="hero-slide__content"
-        >
+        <div class="hero-slide__content">
           <div class="max-w-2xl text-cream">
             <span
               class="hero-line hero-line--sub inline-block px-3 py-1 bg-gold text-cream font-bold uppercase"
               >Leadership</span
             >
-            <h1
-              class="hero-line hero-line--title font-serif"
-            >
+            <h1 class="hero-line hero-line--title font-serif">
               New 2025–2027 Executive Board
               <span class="italic text-gold">takes charge</span>
             </h1>
@@ -120,17 +112,13 @@
           />
           <div class="hero-slide__overlay" aria-hidden="true"></div>
         </div>
-        <div
-          class="hero-slide__content"
-        >
+        <div class="hero-slide__content">
           <div class="max-w-2xl text-cream">
             <span
               class="hero-line hero-line--sub inline-block px-3 py-1 bg-gold text-cream font-bold uppercase"
               >Board Inauguration</span
             >
-            <h1
-              class="hero-line hero-line--title font-serif"
-            >
+            <h1 class="hero-line hero-line--title font-serif">
               Leading the Way:
               <span class="italic text-gold"
                 >Inauguration of Our 2025–2027 Elected Board</span
@@ -1240,9 +1228,10 @@
     </script>
 
     <!-- CORPORATE PARTNERS LOGO SCROLL -->
-    <section class="py-12 bg-cream border-b border-zinc-200 overflow-hidden">
-      <div class="relative w-full overflow-hidden flex items-center">
-        <!-- Side fade gradients for premium look -->
+    <section class="pt-0 pb-12 bg-cream border-b border-zinc-200 overflow-hidden">
+      <div
+        class="relative w-full overflow-hidden space-y-14 md:space-y-16 py-1"
+      >
         <div
           class="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-cream to-transparent z-10 pointer-events-none"
         ></div>
@@ -1251,7 +1240,7 @@
         ></div>
 
         <style>
-          @keyframes logo-scroll {
+          @keyframes logo-scroll-rtl {
             0% {
               transform: translateX(0);
             }
@@ -1259,28 +1248,41 @@
               transform: translateX(-50%);
             }
           }
+          @keyframes logo-scroll-ltr {
+            0% {
+              transform: translateX(-50%);
+            }
+            100% {
+              transform: translateX(0);
+            }
+          }
           .logo-marquee-track {
             display: flex;
             width: max-content;
-            animation: logo-scroll 90s linear infinite;
           }
-          .logo-marquee-track:hover {
+          .logo-marquee-track--rtl {
+            animation: logo-scroll-rtl linear infinite;
+          }
+          .logo-marquee-track--ltr {
+            animation: logo-scroll-ltr linear infinite;
+          }
+          .logo-marquee-row:hover .logo-marquee-track {
             animation-play-state: paused;
           }
           .logo-item {
             flex-shrink: 0;
-            width: 160px;
-            height: 60px;
-            margin: 0 35px;
+            width: 120px;
+            height: 42px;
+            margin: 0 24px;
             display: flex;
             align-items: center;
             justify-content: center;
           }
           @media (max-width: 767px) {
             .logo-item {
-              width: 110px;
-              height: 44px;
-              margin: 0 18px;
+              width: 84px;
+              height: 32px;
+              margin: 0 14px;
             }
           }
           .logo-marquee-track .logo-item img {
@@ -1295,429 +1297,990 @@
           }
         </style>
 
-        <div class="logo-marquee-track">
-          <!-- Set A -->
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/After Hour Residence 1.png"
-              alt="After Hour Residence"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Amari Dhaka 1.png"
-              alt="Amari Dhaka"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Apollo Clinic 1.png"
-              alt="Apollo Clinic"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Asgar Ali Hospital Flyer 1.png"
-              alt="Asgar Ali Hospital Flyer"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Asscott Palace 1.png"
-              alt="Asscott Palace"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Bangladesh Eye Hospital 1.png"
-              alt="Bangladesh Eye Hospital"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Bangladesh Specialized Hospital PLC 1.png"
-              alt="Bangladesh Specialized Hospital PLC"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Best Western PLUS Runway 1.png"
-              alt="Best Western PLUS Runway"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Best Western SKS 1.png"
-              alt="Best Western SKS"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/CCULB Resort &amp; Convention Hall 1.png"
-              alt="CCULB Resort &amp; Convention Hall"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Chuti Resort 1.png"
-              alt="Chuti Resort"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Coventina Lake Suites 1.png"
-              alt="Coventina Lake Suites"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/DERA Resort 1.png"
-              alt="DERA Resort"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Dhaka Regency Hotel &amp; Resort 1.png"
-              alt="Dhaka Regency Hotel &amp; Resort"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Dream Square Resort 1.png"
-              alt="Dream Square Resort"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Evercare Hospital dhaka 1.png"
-              alt="Evercare Hospital dhaka"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Fars Hotel &amp; Resort 1.png"
-              alt="Fars Hotel &amp; Resort"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Golden Tulip The Grandmark 1.png"
-              alt="Golden Tulip The Grandmark"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Grace 21 Smart Hotel 1.png"
-              alt="Grace 21 Smart Hotel"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Grand Palace Hotels &amp; Resorts 1.png"
-              alt="Grand Palace Hotels &amp; Resorts"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Grand Sylhet Hotels &amp; Resort 1.png"
-              alt="Grand Sylhet Hotels &amp; Resort"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Grand Vistana 1.png"
-              alt="Grand Vistana"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Grand park barishal 1.png"
-              alt="Grand park barishal"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Hansa 1.png"
-              alt="Hansa"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Holiday Inn 1.png"
-              alt="Holiday Inn"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Hotel 71 1.png"
-              alt="Hotel 71"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Hotel Agrabad 1.png"
-              alt="Hotel Agrabad"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Hotel Bengal Blueberry 1.png"
-              alt="Hotel Bengal Blueberry"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Hotel Castle Salam 1.png"
-              alt="Hotel Castle Salam"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Hotel La vinci 1.png"
-              alt="Hotel La vinci"
-              loading="lazy"
-            />
-          </div>
+        <div class="logo-marquee-row overflow-hidden">
+          <div
+            class="logo-marquee-track logo-marquee-track--rtl"
+            style="animation-duration: 105s"
+          >
+            <!-- Set A -->
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/After Hour Residence 1.png"
+                alt="After Hour Residence"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Amari Dhaka 1.png"
+                alt="Amari Dhaka"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Apollo Clinic 1.png"
+                alt="Apollo Clinic"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Asgar Ali Hospital Flyer 1.png"
+                alt="Asgar Ali Hospital Flyer"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Asscott Palace 1.png"
+                alt="Asscott Palace"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Bangladesh Eye Hospital 1.png"
+                alt="Bangladesh Eye Hospital"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Bangladesh Specialized Hospital PLC 1.png"
+                alt="Bangladesh Specialized Hospital PLC"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Best Western PLUS Runway 1.png"
+                alt="Best Western PLUS Runway"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Best Western SKS 1.png"
+                alt="Best Western SKS"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/CCULB Resort &amp; Convention Hall 1.png"
+                alt="CCULB Resort &amp; Convention Hall"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Chuti Resort 1.png"
+                alt="Chuti Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Coventina Lake Suites 1.png"
+                alt="Coventina Lake Suites"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/DERA Resort 1.png"
+                alt="DERA Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Dhaka Regency Hotel &amp; Resort 1.png"
+                alt="Dhaka Regency Hotel &amp; Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Dream Square Resort 1.png"
+                alt="Dream Square Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Evercare Hospital dhaka 1.png"
+                alt="Evercare Hospital dhaka"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Fars Hotel &amp; Resort 1.png"
+                alt="Fars Hotel &amp; Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Golden Tulip The Grandmark 1.png"
+                alt="Golden Tulip The Grandmark"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Grace 21 Smart Hotel 1.png"
+                alt="Grace 21 Smart Hotel"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Grand Palace Hotels &amp; Resorts 1.png"
+                alt="Grand Palace Hotels &amp; Resorts"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Grand Sylhet Hotels &amp; Resort 1.png"
+                alt="Grand Sylhet Hotels &amp; Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Grand Vistana 1.png"
+                alt="Grand Vistana"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Grand park barishal 1.png"
+                alt="Grand park barishal"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hansa 1.png"
+                alt="Hansa"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Holiday Inn 1.png"
+                alt="Holiday Inn"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel 71 1.png"
+                alt="Hotel 71"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Agrabad 1.png"
+                alt="Hotel Agrabad"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Bengal Blueberry 1.png"
+                alt="Hotel Bengal Blueberry"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Castle Salam 1.png"
+                alt="Hotel Castle Salam"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel La vinci 1.png"
+                alt="Hotel La vinci"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Lake Castle 1.png"
+                alt="Hotel Lake Castle"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Metro 1.png"
+                alt="Hotel Metro"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Nandini 1.png"
+                alt="Hotel Nandini"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Omni Residency 1.png"
+                alt="Hotel Omni Residency"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Shuktara Pvt. Ltd 1.png"
+                alt="Hotel Shuktara Pvt. Ltd"
+                loading="lazy"
+              />
+            </div>
 
-          <!-- Set B (duplicate of Set A for a seamless infinite loop) -->
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/After Hour Residence 1.png"
-              alt="After Hour Residence"
-              loading="lazy"
-            />
+            <!-- Set B -->
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/After Hour Residence 1.png"
+                alt="After Hour Residence"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Amari Dhaka 1.png"
+                alt="Amari Dhaka"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Apollo Clinic 1.png"
+                alt="Apollo Clinic"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Asgar Ali Hospital Flyer 1.png"
+                alt="Asgar Ali Hospital Flyer"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Asscott Palace 1.png"
+                alt="Asscott Palace"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Bangladesh Eye Hospital 1.png"
+                alt="Bangladesh Eye Hospital"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Bangladesh Specialized Hospital PLC 1.png"
+                alt="Bangladesh Specialized Hospital PLC"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Best Western PLUS Runway 1.png"
+                alt="Best Western PLUS Runway"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Best Western SKS 1.png"
+                alt="Best Western SKS"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/CCULB Resort &amp; Convention Hall 1.png"
+                alt="CCULB Resort &amp; Convention Hall"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Chuti Resort 1.png"
+                alt="Chuti Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Coventina Lake Suites 1.png"
+                alt="Coventina Lake Suites"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/DERA Resort 1.png"
+                alt="DERA Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Dhaka Regency Hotel &amp; Resort 1.png"
+                alt="Dhaka Regency Hotel &amp; Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Dream Square Resort 1.png"
+                alt="Dream Square Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Evercare Hospital dhaka 1.png"
+                alt="Evercare Hospital dhaka"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Fars Hotel &amp; Resort 1.png"
+                alt="Fars Hotel &amp; Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Golden Tulip The Grandmark 1.png"
+                alt="Golden Tulip The Grandmark"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Grace 21 Smart Hotel 1.png"
+                alt="Grace 21 Smart Hotel"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Grand Palace Hotels &amp; Resorts 1.png"
+                alt="Grand Palace Hotels &amp; Resorts"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Grand Sylhet Hotels &amp; Resort 1.png"
+                alt="Grand Sylhet Hotels &amp; Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Grand Vistana 1.png"
+                alt="Grand Vistana"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Grand park barishal 1.png"
+                alt="Grand park barishal"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hansa 1.png"
+                alt="Hansa"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Holiday Inn 1.png"
+                alt="Holiday Inn"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel 71 1.png"
+                alt="Hotel 71"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Agrabad 1.png"
+                alt="Hotel Agrabad"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Bengal Blueberry 1.png"
+                alt="Hotel Bengal Blueberry"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Castle Salam 1.png"
+                alt="Hotel Castle Salam"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel La vinci 1.png"
+                alt="Hotel La vinci"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Lake Castle 1.png"
+                alt="Hotel Lake Castle"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Metro 1.png"
+                alt="Hotel Metro"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Nandini 1.png"
+                alt="Hotel Nandini"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Omni Residency 1.png"
+                alt="Hotel Omni Residency"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Shuktara Pvt. Ltd 1.png"
+                alt="Hotel Shuktara Pvt. Ltd"
+                loading="lazy"
+              />
+            </div>
           </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Amari Dhaka 1.png"
-              alt="Amari Dhaka"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Apollo Clinic 1.png"
-              alt="Apollo Clinic"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Asgar Ali Hospital Flyer 1.png"
-              alt="Asgar Ali Hospital Flyer"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Asscott Palace 1.png"
-              alt="Asscott Palace"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Bangladesh Eye Hospital 1.png"
-              alt="Bangladesh Eye Hospital"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Bangladesh Specialized Hospital PLC 1.png"
-              alt="Bangladesh Specialized Hospital PLC"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Best Western PLUS Runway 1.png"
-              alt="Best Western PLUS Runway"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Best Western SKS 1.png"
-              alt="Best Western SKS"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/CCULB Resort &amp; Convention Hall 1.png"
-              alt="CCULB Resort &amp; Convention Hall"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Chuti Resort 1.png"
-              alt="Chuti Resort"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Coventina Lake Suites 1.png"
-              alt="Coventina Lake Suites"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/DERA Resort 1.png"
-              alt="DERA Resort"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Dhaka Regency Hotel &amp; Resort 1.png"
-              alt="Dhaka Regency Hotel &amp; Resort"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Dream Square Resort 1.png"
-              alt="Dream Square Resort"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Evercare Hospital dhaka 1.png"
-              alt="Evercare Hospital dhaka"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Fars Hotel &amp; Resort 1.png"
-              alt="Fars Hotel &amp; Resort"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Golden Tulip The Grandmark 1.png"
-              alt="Golden Tulip The Grandmark"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Grace 21 Smart Hotel 1.png"
-              alt="Grace 21 Smart Hotel"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Grand Palace Hotels &amp; Resorts 1.png"
-              alt="Grand Palace Hotels &amp; Resorts"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Grand Sylhet Hotels &amp; Resort 1.png"
-              alt="Grand Sylhet Hotels &amp; Resort"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Grand Vistana 1.png"
-              alt="Grand Vistana"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Grand park barishal 1.png"
-              alt="Grand park barishal"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Hansa 1.png"
-              alt="Hansa"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Holiday Inn 1.png"
-              alt="Holiday Inn"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Hotel 71 1.png"
-              alt="Hotel 71"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Hotel Agrabad 1.png"
-              alt="Hotel Agrabad"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Hotel Bengal Blueberry 1.png"
-              alt="Hotel Bengal Blueberry"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Hotel Castle Salam 1.png"
-              alt="Hotel Castle Salam"
-              loading="lazy"
-            />
-          </div>
-          <div class="logo-item">
-            <img
-              src="./assets/partner-logo/Hotel La vinci 1.png"
-              alt="Hotel La vinci"
-              loading="lazy"
-            />
+        </div>
+        <div class="logo-marquee-row overflow-hidden">
+          <div
+            class="logo-marquee-track logo-marquee-track--ltr"
+            style="animation-duration: 102s"
+          >
+            <!-- Set A -->
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Star Pacific 1.png"
+                alt="Hotel Star Pacific"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel The Cox Today 1.png"
+                alt="Hotel The Cox Today"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hyatt Palace 1.png"
+                alt="Hyatt Palace"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Ibne Sina 1.png"
+                alt="Ibne Sina"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Inani Royal Resort 1.png"
+                alt="Inani Royal Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Japan Bangladesh Friendship Hospital 1.png"
+                alt="Japan Bangladesh Friendship Hospital"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Labaid Hospital 1.png"
+                alt="Labaid Hospital"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Lakeshore Grand 1.png"
+                alt="Lakeshore Grand"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Long Beach Hotel 1.png"
+                alt="Long Beach Hotel"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Momo Inn Hotel 1.png"
+                alt="Momo Inn Hotel"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Multibrand Workshop Ltd 1.png"
+                alt="Multibrand Workshop Ltd"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Nazimgarh Resorts 1.png"
+                alt="Nazimgarh Resorts"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Nirvana Inn 1.png"
+                alt="Nirvana Inn"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Ocean Paradise Hotel &amp; Resort 1.png"
+                alt="Ocean Paradise Hotel &amp; Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/PARAGON Hotel &amp; Resort 1.png"
+                alt="PARAGON Hotel &amp; Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Pan Pacific Sonargaon 1.png"
+                alt="Pan Pacific Sonargaon"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Pearl Hotel 1.png"
+                alt="Pearl Hotel"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Platinum Hotels 1.png"
+                alt="Platinum Hotels"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Praasad Paradise Hotel &amp; Resort 1.png"
+                alt="Praasad Paradise Hotel &amp; Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Radisson Blue 1.png"
+                alt="Radisson Blue"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Rain Forest Eco Resort 1.png"
+                alt="Rain Forest Eco Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Raintree Dhaka 1.png"
+                alt="Raintree Dhaka"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Ramada By Whyndem 1.png"
+                alt="Ramada By Whyndem"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Renaissance 1.png"
+                alt="Renaissance"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Seagull Hotels Ltd 1.png"
+                alt="Seagull Hotels Ltd"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Six Seasons Hotel 1.png"
+                alt="Six Seasons Hotel"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Spaghetti Jazz 1.png"
+                alt="Spaghetti Jazz"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/THE WAY 1.png"
+                alt="THE WAY"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/The Peninsula 1.png"
+                alt="The Peninsula"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/The Westin Dhaka 1.png"
+                alt="The Westin Dhaka"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/United Hospital 1.png"
+                alt="United Hospital"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Universal Medical 1.png"
+                alt="Universal Medical"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/W Residence Living 1.png"
+                alt="W Residence Living"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/York Hospital 1.png"
+                alt="York Hospital"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- Set B -->
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel Star Pacific 1.png"
+                alt="Hotel Star Pacific"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hotel The Cox Today 1.png"
+                alt="Hotel The Cox Today"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Hyatt Palace 1.png"
+                alt="Hyatt Palace"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Ibne Sina 1.png"
+                alt="Ibne Sina"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Inani Royal Resort 1.png"
+                alt="Inani Royal Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Japan Bangladesh Friendship Hospital 1.png"
+                alt="Japan Bangladesh Friendship Hospital"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Labaid Hospital 1.png"
+                alt="Labaid Hospital"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Lakeshore Grand 1.png"
+                alt="Lakeshore Grand"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Long Beach Hotel 1.png"
+                alt="Long Beach Hotel"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Momo Inn Hotel 1.png"
+                alt="Momo Inn Hotel"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Multibrand Workshop Ltd 1.png"
+                alt="Multibrand Workshop Ltd"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Nazimgarh Resorts 1.png"
+                alt="Nazimgarh Resorts"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Nirvana Inn 1.png"
+                alt="Nirvana Inn"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Ocean Paradise Hotel &amp; Resort 1.png"
+                alt="Ocean Paradise Hotel &amp; Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/PARAGON Hotel &amp; Resort 1.png"
+                alt="PARAGON Hotel &amp; Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Pan Pacific Sonargaon 1.png"
+                alt="Pan Pacific Sonargaon"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Pearl Hotel 1.png"
+                alt="Pearl Hotel"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Platinum Hotels 1.png"
+                alt="Platinum Hotels"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Praasad Paradise Hotel &amp; Resort 1.png"
+                alt="Praasad Paradise Hotel &amp; Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Radisson Blue 1.png"
+                alt="Radisson Blue"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Rain Forest Eco Resort 1.png"
+                alt="Rain Forest Eco Resort"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Raintree Dhaka 1.png"
+                alt="Raintree Dhaka"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Ramada By Whyndem 1.png"
+                alt="Ramada By Whyndem"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Renaissance 1.png"
+                alt="Renaissance"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Seagull Hotels Ltd 1.png"
+                alt="Seagull Hotels Ltd"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Six Seasons Hotel 1.png"
+                alt="Six Seasons Hotel"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Spaghetti Jazz 1.png"
+                alt="Spaghetti Jazz"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/THE WAY 1.png"
+                alt="THE WAY"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/The Peninsula 1.png"
+                alt="The Peninsula"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/The Westin Dhaka 1.png"
+                alt="The Westin Dhaka"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/United Hospital 1.png"
+                alt="United Hospital"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/Universal Medical 1.png"
+                alt="Universal Medical"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/W Residence Living 1.png"
+                alt="W Residence Living"
+                loading="lazy"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./assets/partner-logo/York Hospital 1.png"
+                alt="York Hospital"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -1725,7 +2288,7 @@
 
     <!-- TESTIMONIALS SECTION (Olight Style) -->
     <section
-      class="py-20 bg-white border-b border-zinc-200 overflow-hidden relative"
+      class="py-20 bg-white border-b border-zinc-200 relative"
     >
       <div class="max-w-7xl mx-auto px-6">
         <!-- Heading -->
@@ -1743,7 +2306,7 @@
         <!-- Testimonials Carousel — 4 items visible -->
         <div
           id="testimonial-carousel"
-          class="relative overflow-hidden w-full reveal"
+          class="testimonial-carousel relative w-full reveal"
           data-reveal-delay="100"
         >
           <!-- Flex track: 4 real cards + 4 clones for seamless loop -->
@@ -2172,6 +2735,41 @@
             </div>
           </div>
         </div>
+
+        <!-- Line navigation (dots) -->
+        <div class="testimonial-carousel-nav mt-10">
+          <div
+            id="testimonial-dots"
+            class="testimonial-dots"
+            role="tablist"
+            aria-label="Testimonial slides"
+          >
+            <button
+              type="button"
+              class="testimonial-dot is-active"
+              aria-label="Slide 1"
+              data-index="0"
+            ></button>
+            <button
+              type="button"
+              class="testimonial-dot"
+              aria-label="Slide 2"
+              data-index="1"
+            ></button>
+            <button
+              type="button"
+              class="testimonial-dot"
+              aria-label="Slide 3"
+              data-index="2"
+            ></button>
+            <button
+              type="button"
+              class="testimonial-dot"
+              aria-label="Slide 4"
+              data-index="3"
+            ></button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2179,39 +2777,55 @@
       document.addEventListener("DOMContentLoaded", () => {
         const track = document.getElementById("testimonial-track");
         const cards = document.querySelectorAll(".testimonial-card-item");
+        const dots = document.querySelectorAll(".testimonial-dot");
         const totalOriginalCards = 4;
-        const visibleCards = 4;
         let currentSlide = 0;
         let autoplayTimer;
-        const slideDuration = 4000; // 4 seconds
+        const slideDuration = 4000;
 
         function getSlideWidth() {
           const card = cards[0];
           const cardWidth = card.getBoundingClientRect().width;
-          // The gap is 20px (gap-5 in Tailwind)
           return cardWidth + 20;
+        }
+
+        function getDotIndex(slideIndex) {
+          return ((slideIndex % totalOriginalCards) + totalOriginalCards) %
+            totalOriginalCards;
+        }
+
+        function updateDots(slideIndex = currentSlide) {
+          const activeIndex = getDotIndex(slideIndex);
+          dots.forEach((dot, index) => {
+            const isActive = index === activeIndex;
+            dot.classList.toggle("is-active", isActive);
+            dot.classList.remove("is-progress");
+            dot.setAttribute("aria-current", isActive ? "true" : "false");
+          });
+
+          const activeDot = dots[activeIndex];
+          if (!activeDot) return;
+          void activeDot.offsetWidth;
+          requestAnimationFrame(() => {
+            activeDot.classList.add("is-progress");
+          });
         }
 
         function slideTo(index, animated = true) {
           const slideWidth = getSlideWidth();
 
-          if (animated) {
-            track.style.transition = "transform 0.5s ease-in-out";
-          } else {
-            track.style.transition = "none";
-          }
-
+          track.style.transition = animated
+            ? "transform 0.5s ease-in-out"
+            : "none";
           track.style.transform = `translateX(-${index * slideWidth}px)`;
           currentSlide = index;
+          updateDots(index);
         }
 
         function nextSlide() {
           if (currentSlide >= totalOriginalCards) {
-            // Snap back to 0 without transition
             slideTo(0, false);
-            // Force reflow
             track.offsetHeight;
-            // Slide to 1 with transition
             setTimeout(() => {
               slideTo(1, true);
             }, 50);
@@ -2231,19 +2845,33 @@
           }
         }
 
-        // Handle window resize to recalculate slide width dynamically
+        function handleManualNav(action) {
+          stopAutoplay();
+          action();
+          startAutoplay();
+        }
+
+        dots.forEach((dot) => {
+          dot.addEventListener("click", () => {
+            const targetIndex = Number(dot.dataset.index);
+            if (Number.isNaN(targetIndex) || targetIndex === getDotIndex(currentSlide)) {
+              return;
+            }
+            handleManualNav(() => slideTo(targetIndex, true));
+          });
+        });
+
         window.addEventListener("resize", () => {
           slideTo(currentSlide, false);
         });
 
-        // Pause scroll on hover
         const carouselContainer = document.getElementById(
           "testimonial-carousel",
         );
         carouselContainer.addEventListener("mouseenter", stopAutoplay);
         carouselContainer.addEventListener("mouseleave", startAutoplay);
 
-        // Start the autoplay loop
+        slideTo(0, false);
         startAutoplay();
       });
     </script>
