@@ -1259,7 +1259,7 @@ summary {
 
 .about-sub-nav__link {
   padding: 14px 20px;
-  font-size: 13px;
+  font-size: 14px;
   color: #a1a1aa;
   border-bottom: 2px solid transparent;
   white-space: nowrap;
@@ -1278,6 +1278,62 @@ summary {
   color: #b8860b;
   font-weight: 600;
   border-bottom-color: #b8860b;
+}
+
+/* Public site — horizontal page tab bars (not dashboard) */
+.site-page-tabs {
+  font-size: 14px;
+}
+
+.gp-tab {
+  position: relative;
+  padding: 18px 4px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #71717a;
+  transition: color 0.2s;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+@media (max-width: 639px) {
+  .gp-tab {
+    padding: 12px 4px;
+    font-size: 14px;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 1.35;
+    min-width: 0;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+@media (min-width: 640px) {
+  .gp-tab {
+    white-space: nowrap;
+  }
+}
+
+.gp-tab:hover {
+  color: #1a1a1a;
+}
+
+.gp-tab.is-active {
+  color: #b8860b;
+}
+
+.gp-tab.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  background: #b8860b;
 }
 
 /* ==========================================
@@ -1349,8 +1405,10 @@ summary {
    BOARD HERO CARD
    ========================================== */
 .board-hero-card {
-  background: linear-gradient(135deg, #27272a, #1a1408);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(ellipse 70% 80% at 100% 100%, rgba(184, 134, 11, 0.45) 0%, rgba(120, 90, 8, 0.2) 40%, transparent 70%),
+    linear-gradient(135deg, #3d3008 0%, #2a2006 45%, #1a1404 100%);
+  border: 1px solid rgba(184, 134, 11, 0.2);
   padding: 48px;
   display: flex;
   gap: 40px;
@@ -1361,12 +1419,24 @@ summary {
 }
 
 .board-hero-card img {
-  width: 160px;
-  height: 200px;
+  width: calc((min(80rem, 100vw - 3rem) - 1rem) / 2);
+  height: auto;
   object-fit: cover;
   border: 3px solid #b8860b;
   flex-shrink: 0;
   border-radius: var(--radius);
+}
+
+@media (min-width: 640px) {
+  .board-hero-card img {
+    width: calc((min(80rem, 100vw - 3rem) - 1.5rem) / 2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .board-hero-card img {
+    width: calc((min(80rem, 100vw - 3rem) - 6rem) / 4);
+  }
 }
 
 .board-hero-card__role {
@@ -1413,6 +1483,18 @@ summary {
 
 .board-members-grid > .reveal:nth-child(4n + 4) {
   --reveal-delay: 300ms;
+}
+
+.board-member-card__name {
+  color: #27272a;
+}
+
+.board-member-card__role {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: #b8860b;
 }
 
 .reveal--smooth,
@@ -1886,8 +1968,8 @@ section.bg-cream.pb-24 .lg\:col-span-4 > div {
 
 .member-card__logo img,
 #modal-shop-logo-container img {
-  max-width: 150px;
-  max-height: 40px;
+  max-width: 180px;
+  max-height: 52px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -1897,9 +1979,68 @@ section.bg-cream.pb-24 .lg\:col-span-4 > div {
 
 #modal-shop-logo-container {
   width: auto;
-  min-width: 40px;
-  max-width: 150px;
-  height: 40px;
+  min-width: 52px;
+  max-width: 180px;
+  height: 52px;
+}
+
+.member-modal__logo {
+  border-radius: var(--radius);
+}
+
+.member-modal__logo--initial {
+  width: 72px;
+  min-width: 72px;
+  max-width: 72px;
+  height: 72px;
+  padding: 8px;
+  box-sizing: border-box;
+  background: linear-gradient(to bottom right, #efe6cf, #fdfbf5);
+  border: 1px solid rgba(251, 191, 36, 0.6);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.member-modal__logo--image {
+  width: auto;
+  min-width: 0;
+  max-width: 180px;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.member-modal__logo--initial img,
+.member-modal__logo--image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.member-modal__logo--image img {
+  max-width: 180px;
+  max-height: 52px;
+}
+
+.member-modal__member-info #modal-status-badge {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.member-modal__passport-photo {
+  width: 120px;
+  aspect-ratio: 35 / 45;
+  border-radius: var(--radius);
+}
+
+.member-modal__passport-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .member-card__id {
@@ -2392,6 +2533,53 @@ button#bajus-burger {
   padding-right: 0;
 }
 
+/* Member dashboard — main content padding */
+.dashboard-page main {
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .dashboard-page main {
+    padding: 1.5rem;
+  }
+}
+
+/* Dashboard page title divider — compact spacing above/below the line */
+.dashboard-page main > [class*="border-b"]:has(h1.font-serif) {
+  padding-bottom: 0.75rem;
+  margin-bottom: 0;
+}
+
+.dashboard-page main > [class*="border-b"]:has(h1.font-serif) + * {
+  margin-top: 1rem;
+}
+
+.dashboard-page main > div:first-child:has(> h1.font-serif) > p[class*="mb-"] {
+  margin-bottom: 0;
+}
+
+.dashboard-page main > div:first-child:has(> h1.font-serif) > [class*="border-b"] {
+  margin-bottom: 0.75rem;
+}
+
+.dashboard-page main .dashboard-list-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.dashboard-page main .dashboard-list-panel .pagination {
+  padding-top: 0;
+}
+
+.dashboard-page main .dashboard-list-search .form-input {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-right: 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.25;
+}
+
 /* Member dashboard — buttons & cards use site border radius */
 .dashboard-page main .border[class*="border-zinc"],
 .dashboard-page main .border[class*="border-amber"],
@@ -2404,6 +2592,27 @@ button#bajus-burger {
 .dashboard-page main .custom-month-tile,
 .dashboard-page header .absolute.bg-white.border {
   border-radius: var(--radius);
+}
+
+.dashboard-page #contact-list .contact-card__photo {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.dashboard-page #contact-list .contact-card__photo img {
+  border-radius: 50%;
+}
+
+.doc-tile__preview {
+  aspect-ratio: 4 / 3;
+}
+
+.dashboard-page #contact-list .doc-tile--compact .doc-tile__preview {
+  width: 100%;
+  height: 2.5rem;
+  aspect-ratio: auto;
+  border: none;
+  background: transparent;
 }
 
 .dashboard-page main .overflow-x-auto.border {

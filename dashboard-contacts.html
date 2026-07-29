@@ -273,13 +273,9 @@
           class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-zinc-150"
         >
           <div>
-            <h1 class="font-serif text-2xl md:text-3xl text-charcoal">
-              Registered
-              <span class="text-gold italic font-medium">Contacts</span>
-            </h1>
+            <h1 class="font-serif text-2xl md:text-3xl text-charcoal">My Registered <span class="text-gold italic font-medium">Contacts</span></h1>
             <p class="text-xs text-zinc-500 mt-1">
-              Contact persons linked to your BAJUS member account, with passport
-              and card records on file.
+              Review contact persons linked to your member account, passport records, and delegation details.
             </p>
           </div>
           <a
@@ -290,9 +286,10 @@
           </a>
         </div>
 
+        <section class="dashboard-list-panel">
         <!-- SEARCH + SUMMARY -->
         <div
-          class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4"
+          class="dashboard-list-search flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4"
         >
           <div class="relative w-full sm:max-w-xs">
             <input
@@ -317,7 +314,7 @@
         <!-- CONTACT LIST -->
         <div
           id="contact-list"
-          class="grid lg:grid-cols-2 gap-6 scroll-mt-24"
+          class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 scroll-mt-24"
         ></div>
 
         <div
@@ -336,7 +333,78 @@
           class="pagination pt-2"
           aria-label="Contacts pagination"
         ></nav>
+        </section>
       </main>
+    </div>
+
+    <!-- CONTACT DETAIL MODAL -->
+    <div
+      id="contact-detail-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="contact-detail-name"
+    >
+      <div
+        id="contact-detail-overlay"
+        class="absolute inset-0 bg-zinc-950/60 backdrop-blur-sm"
+      ></div>
+      <div
+        class="relative bg-white max-w-3xl w-full max-h-[90vh] overflow-hidden border border-zinc-200 shadow-2xl flex flex-col modal-panel z-10"
+      >
+        <div
+          class="px-6 py-5 border-b border-zinc-200 flex items-start justify-between gap-4 shrink-0 bg-zinc-50"
+        >
+          <div class="flex items-start gap-4 min-w-0">
+            <div
+              id="contact-detail-avatar"
+              class="size-14 rounded-sm overflow-hidden border border-zinc-200 bg-gold/10 text-gold flex items-center justify-center font-serif font-bold flex-shrink-0"
+            ></div>
+            <div class="min-w-0">
+              <h2
+                id="contact-detail-name"
+                class="font-serif text-xl text-charcoal"
+              ></h2>
+              <p
+                id="contact-detail-designation"
+                class="text-xs text-zinc-500 mt-1"
+              ></p>
+              <div id="contact-detail-role" class="mt-2"></div>
+            </div>
+          </div>
+          <button
+            type="button"
+            id="contact-detail-close"
+            class="size-9 flex items-center justify-center rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-500 hover:text-charcoal transition-colors shrink-0"
+            aria-label="Close"
+          >
+            <i class="ph ph-x text-lg"></i>
+          </button>
+        </div>
+
+        <div
+          id="contact-detail-body"
+          class="flex-1 overflow-y-auto p-6 bg-cream space-y-6"
+        ></div>
+
+        <div
+          class="px-6 py-4 border-t border-zinc-200 flex flex-wrap gap-3 shrink-0 bg-white"
+        >
+          <a
+            id="contact-detail-edit"
+            href="#"
+            class="px-4 py-2 border border-zinc-200 text-xs font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors"
+            >Edit</a
+          >
+          <button
+            type="button"
+            id="contact-detail-close-btn"
+            class="px-4 py-2 bg-gold hover:bg-[#a3760a] text-cream text-xs font-semibold uppercase tracking-wider transition-colors"
+          >
+            Close
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- DOCUMENT LIGHTBOX -->
@@ -380,7 +448,7 @@
       const searchEl = document.getElementById("contact-search");
       const paginationEl = document.getElementById("contact-pagination");
 
-      const CONTACTS_PER_PAGE = 4;
+      const CONTACTS_PER_PAGE = 6;
       let currentPage = 1;
       let filteredContacts = [...BAJUS_CONTACTS];
 
@@ -426,79 +494,130 @@
           .toUpperCase();
       }
 
-      function documentTile(label, url, contactName) {
+      function documentTile(label, url, contactName, { compact = false } = {}) {
+        const tileClass = compact
+          ? "doc-tile doc-tile--compact group text-left min-w-0"
+          : "doc-tile group text-left min-w-0";
+        const labelClass = compact
+          ? "doc-tile__label block text-[9px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-gold transition-colors mt-1 truncate leading-tight"
+          : "doc-tile__label block text-[9px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-gold transition-colors mt-2";
+        const previewClass = compact
+          ? "doc-tile__preview block overflow-hidden rounded-sm"
+          : "doc-tile__preview block overflow-hidden rounded-sm border border-zinc-200 bg-zinc-50 group-hover:border-gold transition-colors";
         return `
-        <button type="button" class="doc-tile group text-left" data-src="${url}" data-caption="${contactName} — ${label}">
-          <span class="block aspect-[4/3] overflow-hidden rounded-sm border border-zinc-200 bg-zinc-50 group-hover:border-gold transition-colors">
+        <button type="button" class="${tileClass}" data-src="${url}" data-caption="${contactName} — ${label}">
+          <span class="${previewClass}">
             <img src="${url}" alt="${label} of ${contactName}" loading="lazy"
               class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-300" />
           </span>
-          <span class="block text-[9px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-gold transition-colors mt-2">${label}</span>
+          <span class="${labelClass}">${label}</span>
         </button>`;
       }
 
-      function contactCard(contact) {
-        const ownerBadge = contact.is_owner
-          ? '<span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-gold bg-gold-soft border border-gold/30 px-2.5 py-1 rounded-full"><i class="ph ph-crown-simple text-[11px]"></i> Owner</span>'
-          : '<span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-zinc-600 bg-zinc-100 border border-zinc-200 px-2.5 py-1 rounded-full">Staff</span>';
+      function roleBadgeHtml(isOwner, { selfStart = false } = {}) {
+        const base =
+          `inline-flex items-center gap-0.5 text-[8px] font-bold uppercase tracking-wide px-1.5 pt-[3px] pb-[2px] rounded-full leading-none${selfStart ? " self-start" : ""}`;
+        return isOwner
+          ? `<span class="${base} text-gold bg-gold-soft border border-gold/30"><i class="ph ph-crown-simple text-[8px]"></i> Owner</span>`
+          : `<span class="${base} text-zinc-600 bg-zinc-100 border border-zinc-200">Staff</span>`;
+      }
 
+      function contactCard(contact) {
         return `
-        <article class="border border-zinc-200 p-6 rounded-sm bg-white hover:shadow-sm hover:border-gold transition-all duration-300">
-          <div class="flex items-start justify-between gap-4">
-            <div class="flex items-start gap-4 min-w-0">
-              <div class="size-14 rounded-sm overflow-hidden border border-zinc-200 bg-gold/10 text-gold flex items-center justify-center font-serif font-bold flex-shrink-0">
-                <img src="${contact.passport_photo_url}" alt="${contact.name}" loading="lazy"
-                  class="w-full h-full object-cover"
-                  onerror="this.parentElement.textContent='${initials(contact.name)}';" />
-              </div>
-              <div class="min-w-0">
-                <h3 class="font-serif text-lg font-bold text-charcoal truncate">${contact.name}</h3>
-                <p class="text-xs text-zinc-500 mt-0.5">${contact.designation}</p>
-                <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mt-1.5">Contact ID: ${contact.id}</p>
+        <div class="border border-zinc-200 hover:border-gold p-6 rounded-sm bg-white hover:shadow-sm transition-all duration-300 flex flex-col">
+          <div class="flex items-start gap-3">
+            <div class="contact-card__photo size-12 border border-zinc-200 bg-gold/10 text-gold flex items-center justify-center font-serif font-bold flex-shrink-0 text-sm">
+              <img src="${contact.passport_photo_url}" alt="${contact.name}" loading="lazy"
+                class="w-full h-full object-cover"
+                onerror="this.parentElement.textContent='${initials(contact.name)}';" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-serif text-xl font-bold text-charcoal leading-tight">${contact.name}</h3>
+              <div class="mt-1.5 flex items-center justify-between gap-2">
+                <p class="text-xs text-zinc-500 flex items-start gap-1.5 min-w-0"><i class="ph ph-briefcase text-gold mt-0.5 flex-shrink-0"></i> <span class="truncate">${contact.designation}</span></p>
+                ${roleBadgeHtml(contact.is_owner)}
               </div>
             </div>
-            ${ownerBadge}
           </div>
 
-          <div class="grid sm:grid-cols-2 gap-4 mt-5 pt-5 border-t border-zinc-100 text-xs">
-            <a href="mailto:${contact.email}" class="flex items-center gap-2 text-zinc-600 hover:text-gold transition-colors min-w-0">
+          <div class="mt-5 border-t border-zinc-100 pt-4">
+            <div class="grid grid-cols-2 gap-3 text-xs">
+            <a href="tel:${contact.phone}" class="flex items-center gap-2 text-zinc-600 hover:text-gold transition-colors min-w-0 leading-relaxed">
+              <i class="ph ph-phone text-gold text-sm flex-shrink-0"></i><span class="truncate">${contact.phone}</span>
+            </a>
+            <a href="mailto:${contact.email}" class="flex items-center gap-2 text-zinc-600 hover:text-gold transition-colors min-w-0 leading-relaxed">
               <i class="ph ph-envelope-simple text-gold text-sm flex-shrink-0"></i><span class="truncate">${contact.email}</span>
             </a>
-            <a href="tel:${contact.phone}" class="flex items-center gap-2 text-zinc-600 hover:text-gold transition-colors">
-              <i class="ph ph-phone text-gold text-sm flex-shrink-0"></i><span>${contact.phone}</span>
-            </a>
-          </div>
-
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-5 pt-5 border-t border-zinc-100 text-xs">
-            <div>
-              <span class="text-zinc-400 block mb-1">Passport No.</span>
-              <strong class="text-charcoal font-semibold">${contact.passport_no}</strong>
             </div>
-            <div>
-              <span class="text-zinc-400 block mb-1">Passport Expiry</span>
-              <strong class="${passportExpiryTone(contact.passport_expiry_date)} font-semibold">${formatDate(contact.passport_expiry_date)}</strong>
-            </div>
-            <div>
-              <span class="text-zinc-400 block mb-1">Card Expiry</span>
-              <strong class="${cardExpiryTone(contact.credit_card_expiry_date)} font-semibold">${contact.credit_card_expiry_date}</strong>
+            <div class="grid grid-cols-3 gap-1.5 mt-2">
+              ${documentTile("Passport Copy", contact.passport_copy_url, contact.name, { compact: true })}
+              ${documentTile("Credit Card", contact.credit_card_copy_url, contact.name, { compact: true })}
+              ${documentTile("Visiting Card", contact.visiting_card_url, contact.name, { compact: true })}
             </div>
           </div>
 
-          <div class="mt-5 pt-5 border-t border-zinc-100">
-            <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Attached Documents</div>
-            <div class="grid grid-cols-4 gap-3">
+          <div class="flex items-center justify-between gap-2 mt-4 pt-4 border-t border-zinc-100">
+            <button type="button" class="contact-details-btn px-4 py-2 bg-gold hover:bg-[#a3760a] text-cream text-xs font-semibold uppercase tracking-wider text-center transition-colors" data-contact-id="${contact.id}">Details</button>
+            <a href="dashboard-add-contact.html?contact=${contact.id}" class="px-4 py-2 border border-zinc-200 text-xs font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors text-center shrink-0">Edit</a>
+          </div>
+        </div>`;
+      }
+
+      const detailModal = document.getElementById("contact-detail-modal");
+      const detailOverlay = document.getElementById("contact-detail-overlay");
+      const detailBody = document.getElementById("contact-detail-body");
+      const detailName = document.getElementById("contact-detail-name");
+      const detailDesignation = document.getElementById("contact-detail-designation");
+      const detailRole = document.getElementById("contact-detail-role");
+      const detailAvatar = document.getElementById("contact-detail-avatar");
+      const detailEdit = document.getElementById("contact-detail-edit");
+
+      function openContactDetails(contact) {
+        detailName.textContent = contact.name;
+        detailDesignation.textContent = contact.designation;
+        detailRole.innerHTML = roleBadgeHtml(contact.is_owner);
+        detailEdit.href = `dashboard-add-contact.html?contact=${contact.id}`;
+        detailAvatar.innerHTML = `<img src="${contact.passport_photo_url}" alt="${contact.name}" class="w-full h-full object-cover" onerror="this.parentElement.textContent='${initials(contact.name)}';" />`;
+
+        detailBody.innerHTML = `
+          <div class="bg-white border border-zinc-200 p-5 rounded-sm">
+            <h3 class="text-[10px] font-bold uppercase tracking-widest text-gold mb-4 border-b border-zinc-100 pb-2">Contact Information</h3>
+            <div class="grid sm:grid-cols-2 gap-4 text-xs">
+              <div><span class="text-zinc-400 block mb-1">Contact ID</span><strong class="text-charcoal font-semibold">${contact.id}</strong></div>
+              <div><span class="text-zinc-400 block mb-1">Email</span><a href="mailto:${contact.email}" class="text-charcoal font-semibold hover:text-gold transition-colors">${contact.email}</a></div>
+              <div><span class="text-zinc-400 block mb-1">Mobile</span><a href="tel:${contact.phone}" class="text-charcoal font-semibold hover:text-gold transition-colors">${contact.phone}</a></div>
+              <div><span class="text-zinc-400 block mb-1">Designation</span><strong class="text-charcoal font-semibold">${contact.designation}</strong></div>
+            </div>
+          </div>
+
+          <div class="bg-white border border-zinc-200 p-5 rounded-sm">
+            <h3 class="text-[10px] font-bold uppercase tracking-widest text-gold mb-4 border-b border-zinc-100 pb-2">Passport &amp; Card</h3>
+            <div class="grid sm:grid-cols-3 gap-4 text-xs">
+              <div><span class="text-zinc-400 block mb-1">Passport No.</span><strong class="text-charcoal font-semibold">${contact.passport_no}</strong></div>
+              <div><span class="text-zinc-400 block mb-1">Passport Expiry</span><strong class="${passportExpiryTone(contact.passport_expiry_date)} font-semibold">${formatDate(contact.passport_expiry_date)}</strong></div>
+              <div><span class="text-zinc-400 block mb-1">Card Expiry</span><strong class="${cardExpiryTone(contact.credit_card_expiry_date)} font-semibold">${contact.credit_card_expiry_date || "—"}</strong></div>
+            </div>
+          </div>
+
+          <div class="bg-white border border-zinc-200 p-5 rounded-sm">
+            <h3 class="text-[10px] font-bold uppercase tracking-widest text-gold mb-4 border-b border-zinc-100 pb-2">Attached Documents</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
               ${documentTile("Passport Photo", contact.passport_photo_url, contact.name)}
               ${documentTile("Passport Copy", contact.passport_copy_url, contact.name)}
               ${documentTile("Credit Card", contact.credit_card_copy_url, contact.name)}
               ${documentTile("Visiting Card", contact.visiting_card_url, contact.name)}
             </div>
-          </div>
+          </div>`;
 
-          <div class="flex flex-wrap gap-2 mt-5 pt-5 border-t border-zinc-100">
-            <a href="dashboard-add-contact.html?contact=${contact.id}" class="px-4 py-2 border border-zinc-200 text-xs font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors">Edit</a>
-            <a href="mailto:${contact.email}" class="px-4 py-2 bg-gold hover:bg-[#a3760a] text-cream text-xs font-semibold uppercase tracking-wider transition-colors">Email</a>
-          </div>
-        </article>`;
+        detailModal.classList.remove("hidden");
+        detailModal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeContactDetails() {
+        detailModal.classList.add("hidden");
+        detailModal.classList.remove("flex");
+        document.body.style.overflow = "";
       }
 
       function pageButton(
@@ -585,7 +704,33 @@
       searchEl.addEventListener("input", (e) => applySearch(e.target.value));
       renderContacts();
 
-      // Document lightbox
+      listEl.addEventListener("click", (e) => {
+        const detailsBtn = e.target.closest(".contact-details-btn");
+        if (detailsBtn) {
+          const contact = BAJUS_CONTACTS.find(
+            (item) => String(item.id) === detailsBtn.dataset.contactId,
+          );
+          if (contact) openContactDetails(contact);
+          return;
+        }
+
+        const tile = e.target.closest(".doc-tile");
+        if (tile) openLightbox(tile.dataset.src, tile.dataset.caption);
+      });
+
+      detailBody.addEventListener("click", (e) => {
+        const tile = e.target.closest(".doc-tile");
+        if (tile) openLightbox(tile.dataset.src, tile.dataset.caption);
+      });
+
+      document
+        .getElementById("contact-detail-close")
+        .addEventListener("click", closeContactDetails);
+      document
+        .getElementById("contact-detail-close-btn")
+        .addEventListener("click", closeContactDetails);
+      detailOverlay.addEventListener("click", closeContactDetails);
+
       const lightbox = document.getElementById("doc-lightbox");
       const lightboxImage = document.getElementById("doc-lightbox-image");
       const lightboxCaption = document.getElementById("doc-lightbox-caption");
@@ -596,19 +741,12 @@
         lightboxCaption.textContent = caption;
         lightbox.classList.remove("hidden");
         lightbox.classList.add("flex");
-        document.body.style.overflow = "hidden";
       }
 
       function closeLightbox() {
         lightbox.classList.add("hidden");
         lightbox.classList.remove("flex");
-        document.body.style.overflow = "";
       }
-
-      listEl.addEventListener("click", (e) => {
-        const tile = e.target.closest(".doc-tile");
-        if (tile) openLightbox(tile.dataset.src, tile.dataset.caption);
-      });
 
       document
         .getElementById("doc-lightbox-close")
@@ -616,9 +754,12 @@
       lightbox.addEventListener("click", (e) => {
         if (e.target === lightbox) closeLightbox();
       });
+
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && !lightbox.classList.contains("hidden"))
-          closeLightbox();
+        if (e.key !== "Escape") return;
+        if (!lightbox.classList.contains("hidden")) closeLightbox();
+        else if (!detailModal.classList.contains("hidden"))
+          closeContactDetails();
       });
     </script>
   </body>
