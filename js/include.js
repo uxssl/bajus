@@ -105,7 +105,7 @@
         if (mobile) {
           return `
             <details class="group border-b border-zinc-100">
-              <summary class="flex justify-between items-center py-4 px-2 text-base font-medium tracking-wide text-charcoal list-none cursor-pointer">
+              <summary class="flex justify-between items-center py-4 px-2 text-base font-semibold tracking-wide text-black list-none cursor-pointer">
                 <span class="${isSubActive ? "text-gold" : ""}">${n.label}</span>
                 <svg class="size-4 transition-transform duration-200 group-open:rotate-180 text-zinc-400 group-hover:text-gold" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
               </summary>
@@ -113,7 +113,7 @@
                 ${n.submenu
                   .map((sub) => {
                     const isActive = isSubItemActive(sub.href, current);
-                    return `<a href="${BASE}/${sub.href}" class="py-2.5 px-2 text-sm font-medium ${isActive ? "text-gold" : "text-zinc-500 hover:text-gold"}">${sub.label}</a>`;
+                    return `<a href="${BASE}/${sub.href}" class="py-2.5 px-2 text-sm font-semibold ${isActive ? "text-gold" : "text-black hover:text-gold"}">${sub.label}</a>`;
                   })
                   .join("")}
               </div>
@@ -122,7 +122,7 @@
         } else {
           return `
             <div class="relative group py-6">
-              <button class="flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors ${isSubActive ? "text-gold" : isDark ? "text-zinc-200 hover:text-gold" : "text-charcoal hover:text-gold"} focus:outline-none">
+              <button class="flex items-center gap-1.5 text-sm font-semibold tracking-wide transition-colors ${isSubActive ? "text-gold" : isDark ? "text-zinc-200 hover:text-gold" : "text-black hover:text-gold"} focus:outline-none">
                 <span>${n.label}</span>
                 <svg class="size-3.5 transition-transform duration-300 group-hover:rotate-180 text-zinc-400 group-hover:text-gold" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
               </button>
@@ -131,7 +131,7 @@
                   ${n.submenu
                     .map((sub) => {
                       const isActive = isSubItemActive(sub.href, current);
-                      return `<a href="${BASE}/${sub.href}" class="block px-5 py-2.5 text-[11px] uppercase tracking-wider font-semibold ${isActive ? "text-gold" : isDark ? "text-zinc-300 hover:text-gold hover:bg-zinc-900" : "text-charcoal hover:text-gold hover:bg-zinc-50"} transition-colors">${sub.label}</a>`;
+                      return `<a href="${BASE}/${sub.href}" class="block px-5 py-2.5 text-[11px] uppercase tracking-wider font-semibold ${isActive ? "text-gold" : isDark ? "text-zinc-300 hover:text-gold hover:bg-zinc-900" : "text-black hover:text-gold hover:bg-zinc-50"} transition-colors">${sub.label}</a>`;
                     })
                     .join("")}
                 </div>
@@ -142,13 +142,13 @@
       } else {
         const isActive = n.href === active;
         const base = mobile
-          ? "block py-4 px-2 text-base border-b border-zinc-100 font-medium tracking-wide"
-          : "text-sm font-medium tracking-wide transition-colors py-6";
+          ? "block py-4 px-2 text-base border-b border-zinc-100 font-semibold tracking-wide"
+          : "text-sm font-semibold tracking-wide transition-colors py-6";
         const color = isActive
           ? "text-gold"
           : isDark
             ? "text-zinc-200 hover:text-gold"
-            : "text-charcoal hover:text-gold";
+            : "text-black hover:text-gold";
         return `<a href="${BASE}/${n.href}" class="${base} ${color}">${n.label}</a>`;
       }
     }).join("");
@@ -182,7 +182,7 @@
         </div>
       </div>
 
-      <div class="bajus-header-row max-w-7xl mx-auto px-6 h-[4.5rem] flex items-center justify-between">
+      <div class="bajus-header-row max-w-7xl mx-auto px-6 h-[5rem] flex items-center justify-between">
         <a href="${BASE}/index.html" class="flex items-center gap-3">
           <img src="${BASE}/assets/logo.png" alt="BAJUS — Bangladesh Jewellers Association" class="bajus-header-logo h-9 md:h-10 w-auto" />
         </a>
@@ -190,10 +190,10 @@
           ${navLinks(active, false, isDark)}
         </nav>
         <div class="hidden md:flex items-center gap-3">
-          <a href="${BASE}/login.html" class="text-sm font-medium px-4 py-2 hover:text-gold transition-colors ${isDark ? "text-zinc-300" : "text-charcoal"}">Login</a>
+          <a href="${BASE}/login.html" class="text-sm font-semibold px-4 py-2 hover:text-gold transition-colors ${isDark ? "text-zinc-300" : "text-black"}">Login</a>
           <a href="${BASE}/signup.html" class="btn-gold text-sm font-medium tracking-wide px-5 py-2">Apply Now</a>
         </div>
-        <button id="bajus-burger" class="lg:hidden p-2 shrink-0 ${isDark ? "text-zinc-200" : "text-charcoal"}" aria-label="Open menu">
+        <button id="bajus-burger" class="lg:hidden p-2 shrink-0 ${isDark ? "text-zinc-200" : "text-black"}" aria-label="Open menu">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
         </button>
       </div>
@@ -368,7 +368,7 @@
           ? "0 8px 24px -12px rgba(0,0,0,0.18)"
           : "";
         if (headerRow) {
-          headerRow.style.height = scrolled ? "3.5rem" : "4.5rem";
+          headerRow.style.height = scrolled ? "3.75rem" : "5rem";
         }
         if (headerLogo) {
           headerLogo.style.height = scrolled

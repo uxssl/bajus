@@ -3471,6 +3471,7 @@ article img:not([class*="rounded-full"]) {
    these rules provide the smooth transition + a CSS-only fallback)
    Note: the ticker marquee stays visible/sticky at all scroll positions. */
 .bajus-header-row {
+  height: 5rem;
   transition: height 0.35s ease !important;
 }
 
@@ -3483,11 +3484,38 @@ article img:not([class*="rounded-full"]) {
 }
 
 #bajus-main-header.is-scrolled .bajus-header-row {
-  height: 3.5rem !important;
+  height: 3.75rem !important;
 }
 
 #bajus-main-header.is-scrolled .bajus-header-logo {
   height: 2rem !important;
+}
+
+/* Main header menu — solid black on light header */
+#bajus-main-header:not(.dark-header) nav > a,
+#bajus-main-header:not(.dark-header) nav .relative.group > button,
+#bajus-main-header:not(.dark-header) nav .absolute a {
+  color: #000000;
+  font-weight: 600;
+}
+
+#bajus-main-header:not(.dark-header) nav > a:hover,
+#bajus-main-header:not(.dark-header) nav .relative.group:hover > button,
+#bajus-main-header:not(.dark-header) nav .relative.group > button:hover,
+#bajus-main-header:not(.dark-header) nav .absolute a:hover {
+  color: var(--color-gold);
+}
+
+#bajus-main-header:not(.dark-header) nav > a.text-gold,
+#bajus-main-header:not(.dark-header) nav .relative.group > button.text-gold,
+#bajus-main-header:not(.dark-header) nav .absolute a.text-gold {
+  color: var(--color-gold);
+}
+
+#bajus-main-header nav > a,
+#bajus-main-header nav .relative.group > button,
+#bajus-main-header nav .absolute a {
+  font-weight: 600;
 }
 
 @media (min-width: 768px) {
