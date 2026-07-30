@@ -87,23 +87,26 @@
             <div class="flex flex-col sm:flex-row gap-6 items-start">
               <div class="flex-shrink-0">
                 <span class="form-label mb-2 block">Owner Photo <span class="text-red-500">*</span></span>
-                <label
-                  class="bajus-photo-tile relative flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm cursor-pointer w-16 h-16 text-center transition-all group overflow-hidden">
-                  <input name="owner_photo" class="hidden bajus-file-input" type="file" accept="image/*" required />
-                  <img class="bajus-photo-preview absolute inset-0 w-full h-full object-cover hidden" alt="" />
-                  <span class="bajus-photo-placeholder relative z-[1] flex flex-col items-center justify-center text-gold">
-                    <i class="bi bi-camera text-lg"></i>
-                    <span class="text-[8px] font-bold uppercase tracking-wider mt-0.5">Upload</span>
-                  </span>
-                  <span
-                    class="bajus-photo-replace absolute inset-0 z-[1] flex flex-col items-center justify-center bg-zinc-950/50 text-cream opacity-0 group-hover:opacity-100 transition-opacity hidden">
-                    <i class="bi bi-camera text-sm"></i>
-                    <span class="text-[8px] font-bold uppercase tracking-wider mt-0.5">Replace</span>
-                  </span>
-                </label>
+                <div class="bajus-upload-tile bajus-owner-photo-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all flex flex-col" data-label="Owner Photo">
+                  <input id="owner-photo-file" name="owner_photo" class="hidden bajus-file-input" type="file" accept="image/*" required />
+                  <label for="owner-photo-file" class="bajus-upload-empty flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
+                    <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-camera"></i></span>
+                    <span class="bajus-upload-text text-[10px] font-bold uppercase tracking-wider text-gold">Upload Photo</span>
+                    <span class="bajus-upload-help text-[10px] text-zinc-400">JPG/PNG</span>
+                  </label>
+                  <div class="bajus-upload-filled hidden flex flex-col">
+                    <div class="bg-zinc-100 overflow-hidden grid place-items-center p-2">
+                      <img class="bajus-upload-preview" alt="Owner photo preview" />
+                    </div>
+                    <div class="flex border-t border-zinc-100 bg-white">
+                      <button type="button" class="bajus-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100">Preview</button>
+                      <label for="owner-photo-file" class="bajus-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer">Change</label>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="flex-1 grid md:grid-cols-2 gap-6 w-full">
-                <div>
+              <div>
                   <span class="form-label mb-2 block">NID Copy <span class="text-red-500">*</span></span>
                   <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="NID Copy">
                     <input id="owner-nid-file" name="owner_nid_file" class="hidden bajus-file-input" type="file" accept="image/*" required />

@@ -989,6 +989,29 @@ textarea:focus {
   margin-bottom: 0.4rem;
 }
 
+/* Signup — owner photo upload (square preview area) */
+.bajus-owner-photo-tile {
+  width: 9rem;
+  min-height: 0;
+}
+
+.bajus-owner-photo-tile .bajus-upload-empty,
+.bajus-owner-photo-tile .bajus-upload-filled > div:first-child {
+  width: 9rem;
+  height: 9rem;
+  min-height: 9rem;
+  max-height: 9rem;
+  flex: none;
+}
+
+.bajus-owner-photo-tile .bajus-upload-preview {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
 /* Member dashboard — profile form label/value states */
 .profile-form.is-view-mode .profile-field-label {
   display: block;
