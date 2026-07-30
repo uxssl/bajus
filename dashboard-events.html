@@ -75,7 +75,7 @@
     <main class="flex-1 min-w-0 bg-cream p-6 md:p-12 space-y-8">
       <div class="pb-6 border-b border-zinc-150">
         <h1 class="font-serif text-2xl md:text-3xl text-charcoal">Event <span class="text-gold italic font-medium">Stall Booking</span></h1>
-        <p class="text-xs text-zinc-500 mt-1 max-w-2xl">Members can register for exhibition stalls at International and Domestic events. Public ticket purchases for domestic events are available on the <a href="events.html" class="text-gold font-semibold hover:underline">public Events page</a> without login.</p>
+        <p class="text-xs text-zinc-500 mt-1 max-w-2xl">Browse upcoming events to book or register, then track every step of your requests under My Bookings. Public tickets for domestic events are on the <a href="events.html" class="text-gold font-semibold hover:underline">public Events page</a>.</p>
       </div>
 
       <!-- Tabs -->
@@ -83,108 +83,75 @@
         <div class="flex gap-6 sm:gap-10 overflow-x-auto">
           <button type="button" class="dash-tab is-active shrink-0" data-tab="domestic"><i class="ph ph-map-pin mr-1.5"></i> Domestic Events</button>
           <button type="button" class="dash-tab shrink-0" data-tab="international"><i class="ph ph-globe mr-1.5"></i> International Events</button>
+          <button type="button" class="dash-tab shrink-0" data-tab="bookings"><i class="ph ph-ticket mr-1.5"></i> My Bookings</button>
         </div>
       </div>
 
       <!-- Domestic Events -->
       <section class="dash-panel is-active space-y-6" data-panel="domestic">
-        <div class="flex items-center justify-between gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <h2 class="font-serif text-xl text-charcoal">Domestic Events</h2>
-          <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold text-gold bg-gold-soft border border-gold/30 px-2.5 py-1 rounded-full"><i class="ph ph-map-pin text-xs"></i> In Bangladesh</span>
+          <div class="flex flex-wrap items-center gap-3">
+            <span id="domestic-events-count" class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"></span>
+            <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold text-gold bg-gold-soft border border-gold/30 px-2.5 py-1 rounded-full"><i class="ph ph-map-pin text-xs"></i> In Bangladesh</span>
+          </div>
         </div>
 
-        <article class="event-card-domestic bg-white border border-zinc-200 grid md:grid-cols-12 overflow-hidden card-shadow">
-          <div class="md:col-span-4 aspect-[4/3] md:aspect-auto"><img src="./assets/news3.jpg" alt="BAJUS Jewellery Expo 2026" class="w-full h-full object-cover" loading="lazy" /></div>
-          <div class="md:col-span-6 p-6 md:p-8">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-[10px] font-bold text-gold uppercase tracking-widest">Domestic · Trade Expo</span>
-              <span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200/50 px-2.5 py-1 rounded-full"><i class="bi bi-check-circle-fill text-[10px]"></i> Booked</span>
-            </div>
-            <h3 class="font-serif text-xl md:text-2xl font-bold text-charcoal mb-2">BAJUS Jewellery Expo 2026</h3>
-            <p class="text-sm text-zinc-500 leading-relaxed mb-3">A three-day national exhibition showcasing Bangladeshi craftsmanship, manufacturing technology, and trade partnerships.</p>
-            <ul class="text-xs text-zinc-600 space-y-1">
-              <li><span class="text-gold font-semibold">When:</span> 14 – 16 February 2026</li>
-              <li><span class="text-gold font-semibold">Where:</span> International Convention City Bashundhara, Dhaka</li>
-              <li><span class="text-gold font-semibold">Stalls:</span> 3m × 3m, 3m × 6m, corner premium</li>
-              <li><span class="text-gold font-semibold">Your booking:</span> Stall B-14 (3m × 3m) · Ref. EVT-2026-0142</li>
-            </ul>
-          </div>
-          <div class="md:col-span-2 bg-emerald-50/50 border-t md:border-t-0 md:border-l border-emerald-200/60 p-6 flex flex-col items-center justify-center text-center gap-4">
-            <div><div class="text-[11px] uppercase tracking-widest text-gold font-bold">Feb</div><div class="text-5xl font-serif text-charcoal leading-none my-1">14</div><div class="text-[11px] uppercase tracking-widest text-zinc-400">2026</div></div>
-            <span class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-emerald-100 text-emerald-800 border border-emerald-200 text-[10px] font-bold uppercase tracking-wider"><i class="bi bi-check-lg"></i> Stall Booked</span>
-            <p class="text-[10px] text-zinc-500 leading-snug">Confirmed 12 Jan 2026</p>
-          </div>
-        </article>
-
-        <article class="event-card-domestic bg-white border border-zinc-200 grid md:grid-cols-12 overflow-hidden card-shadow">
-          <div class="md:col-span-4 aspect-[4/3] md:aspect-auto"><img src="./assets/news2.jpg" alt="National Hallmarking Conference" class="w-full h-full object-cover" loading="lazy" /></div>
-          <div class="md:col-span-6 p-6 md:p-8">
-            <div class="text-[10px] font-bold text-gold uppercase tracking-widest mb-2">Domestic · Conference</div>
-            <h3 class="font-serif text-xl md:text-2xl font-bold text-charcoal mb-2">National Hallmarking Conference</h3>
-            <p class="text-sm text-zinc-500 leading-relaxed mb-3">Industry leaders convene to align on the next phase of mandatory hallmarking certification across all 64 districts.</p>
-            <ul class="text-xs text-zinc-600 space-y-1">
-              <li><span class="text-gold font-semibold">When:</span> 08 March 2026</li>
-              <li><span class="text-gold font-semibold">Where:</span> BAJUS Bhaban, Baitul Mukarram, Dhaka</li>
-              <li><span class="text-gold font-semibold">Stalls:</span> Exhibitor booths for assay &amp; hallmarking services</li>
-            </ul>
-          </div>
-          <div class="md:col-span-2 bg-cream-50 border-t md:border-t-0 md:border-l border-zinc-200 p-6 flex flex-col items-center justify-center text-center gap-4">
-            <div><div class="text-[11px] uppercase tracking-widest text-gold font-bold">Mar</div><div class="text-5xl font-serif text-charcoal leading-none my-1">08</div><div class="text-[11px] uppercase tracking-widest text-zinc-400">2026</div></div>
-            <button type="button" onclick="bookStall(this, 'National Hallmarking Conference', 'Domestic')" class="btn-gold w-full text-xs py-3">Book Stall</button>
-          </div>
-        </article>
+        <div id="domestic-events-list" class="space-y-6"></div>
+        <nav id="domestic-events-pagination" class="pagination pt-2" aria-label="Domestic events pagination"></nav>
       </section>
 
       <!-- International Events -->
       <section class="dash-panel space-y-6" data-panel="international">
-        <div class="flex items-center justify-between gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <h2 class="font-serif text-xl text-charcoal">International Events</h2>
-          <span class="event-badge-overseas"><i class="ph ph-globe text-xs"></i> Overseas Delegation</span>
+          <div class="flex flex-wrap items-center gap-3">
+            <span id="international-events-count" class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"></span>
+            <span class="event-badge-overseas"><i class="ph ph-globe text-xs"></i> Overseas Delegation</span>
+          </div>
         </div>
 
-        <article class="event-card-international grid md:grid-cols-12 overflow-hidden card-shadow">
-          <div class="md:col-span-4 aspect-[4/3] md:aspect-auto"><img src="./assets/craft.jpg" alt="Dubai International Jewellery Show" class="w-full h-full object-cover" loading="lazy" /></div>
-          <div class="md:col-span-6 p-6 md:p-8 bg-white">
-            <div class="text-[10px] font-bold text-gold uppercase tracking-widest mb-2">International · Trade Mission</div>
-            <h3 class="font-serif text-xl md:text-2xl font-bold text-charcoal mb-2">Dubai International Jewellery Show — BAJUS Delegation</h3>
-            <p class="text-sm text-zinc-500 leading-relaxed mb-3">A 30-member Bangladeshi delegation, coordinated by BAJUS, representing the country at one of the world's premier jewellery shows.</p>
-            <ul class="text-xs text-zinc-600 space-y-1">
-              <li><span class="text-gold font-semibold">When:</span> 22 – 26 April 2026</li>
-              <li><span class="text-gold font-semibold">Where:</span> Dubai World Trade Centre, UAE</li>
-              <li><span class="text-gold font-semibold">Stalls:</span> BAJUS national pavilion — shared &amp; private booths</li>
-            </ul>
-          </div>
-          <div class="event-intl-sidebar md:col-span-2 border-t md:border-t-0 md:border-l p-6 flex flex-col items-center justify-center text-center gap-4">
-            <div><div class="event-intl-date-month text-[11px] uppercase tracking-widest font-bold">Apr</div><div class="text-5xl font-serif text-charcoal leading-none my-1">22</div><div class="text-[11px] uppercase tracking-widest text-zinc-400">2026</div></div>
-            <button type="button" onclick="registerEvent(this, 'Dubai International Jewellery Show')" class="btn-gold w-full text-xs py-3">Register</button>
-          </div>
-        </article>
+        <div id="international-events-list" class="space-y-6"></div>
+        <nav id="international-events-pagination" class="pagination pt-2" aria-label="International events pagination"></nav>
+      </section>
 
-        <article class="event-card-international grid md:grid-cols-12 overflow-hidden card-shadow">
-          <div class="md:col-span-4 aspect-[4/3] md:aspect-auto"><img src="./assets/news1.jpg" alt="Hong Kong International Jewellery Fair" class="w-full h-full object-cover" loading="lazy" /></div>
-          <div class="md:col-span-6 p-6 md:p-8 bg-white">
-            <div class="text-[10px] font-bold text-gold uppercase tracking-widest mb-2">International · Exhibition</div>
-            <h3 class="font-serif text-xl md:text-2xl font-bold text-charcoal mb-2">Hong Kong International Jewellery Fair</h3>
-            <p class="text-sm text-zinc-500 leading-relaxed mb-3">BAJUS-coordinated pavilion for certified Bangladeshi jewellers at Asia's largest jewellery sourcing fair.</p>
-            <ul class="text-xs text-zinc-600 space-y-1">
-              <li><span class="text-gold font-semibold">When:</span> 03 – 07 September 2026</li>
-              <li><span class="text-gold font-semibold">Where:</span> Hong Kong Convention and Exhibition Centre</li>
-              <li><span class="text-gold font-semibold">Stalls:</span> Coordinated BAJUS pavilion allocation</li>
-            </ul>
+      <!-- My Bookings — stall bookings + registrations with full journey -->
+      <section class="dash-panel space-y-6" data-panel="bookings">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <h2 class="font-serif text-xl text-charcoal">My Bookings</h2>
+            <p class="text-xs text-zinc-500 mt-1">All stall bookings and international registrations — open any item to see the full journey and history.</p>
           </div>
-          <div class="event-intl-sidebar md:col-span-2 border-t md:border-t-0 md:border-l p-6 flex flex-col items-center justify-center text-center gap-4">
-            <div><div class="event-intl-date-month text-[11px] uppercase tracking-widest font-bold">Sep</div><div class="text-5xl font-serif text-charcoal leading-none my-1">03</div><div class="text-[11px] uppercase tracking-widest text-zinc-400">2026</div></div>
-            <button type="button" onclick="registerEvent(this, 'Hong Kong International Jewellery Fair')" class="btn-gold w-full text-xs py-3">Register</button>
-          </div>
-        </article>
+          <span id="booking-count" class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"></span>
+        </div>
 
-        <!-- My Registrations -->
-        <div class="pt-6 border-t border-zinc-150">
-          <div class="flex items-center justify-between gap-4 mb-4">
-            <h3 class="font-serif text-lg text-charcoal">My Registrations</h3>
-            <span id="registration-count" class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"></span>
+        <div class="flex flex-wrap items-center gap-2" id="booking-filters" role="group" aria-label="Filter bookings">
+          <button type="button" class="booking-type-filter is-active px-3 py-2 text-[10px] font-bold uppercase tracking-wider border border-gold bg-gold-soft text-gold rounded-sm" data-type="all">All</button>
+          <button type="button" class="booking-type-filter px-3 py-2 text-[10px] font-bold uppercase tracking-wider border border-zinc-200 bg-white text-zinc-500 hover:border-gold hover:text-gold rounded-sm transition-colors" data-type="domestic">Domestic</button>
+          <button type="button" class="booking-type-filter px-3 py-2 text-[10px] font-bold uppercase tracking-wider border border-zinc-200 bg-white text-zinc-500 hover:border-gold hover:text-gold rounded-sm transition-colors" data-type="international">International</button>
+          <div class="relative">
+            <select id="booking-status-filter" aria-label="Filter by status" class="appearance-none bg-white border border-zinc-200 text-zinc-500 hover:border-gold hover:text-gold text-[10px] font-bold uppercase tracking-wider px-3 py-2 pr-8 rounded-sm focus:outline-none focus:border-gold transition-colors cursor-pointer h-[34px] leading-none">
+              <option value="all">Status</option>
+              <option value="Pending">Pending</option>
+              <option value="New">New</option>
+              <option value="Verified">Verified</option>
+              <option value="In Payment">In Payment</option>
+              <option value="Paid">Paid</option>
+              <option value="Booked">Booked</option>
+              <option value="Rejected">Rejected</option>
+            </select>
+            <span class="absolute inset-y-0 right-2.5 flex items-center pointer-events-none text-zinc-400">
+              <i class="ph ph-caret-down text-xs"></i>
+            </span>
           </div>
-          <div id="registration-list" class="space-y-3"></div>
+        </div>
+
+        <div id="booking-list" class="space-y-3"></div>
+        <nav id="booking-pagination" class="pagination pt-2" aria-label="Bookings pagination"></nav>
+        <div id="booking-empty" class="hidden border border-dashed border-zinc-200 bg-white px-6 py-12 text-center">
+          <i class="ph ph-ticket text-3xl text-zinc-300"></i>
+          <p class="mt-3 text-sm text-zinc-500">No bookings match this filter.</p>
+          <p class="mt-1 text-xs text-zinc-400">Book a domestic stall or register for an international event to see them here.</p>
         </div>
       </section>
 
@@ -262,8 +229,16 @@
           <div><span class="text-zinc-400 block mb-1">Submitted</span><strong id="request-submitted" class="text-charcoal font-semibold"></strong></div>
           <div>
             <span class="text-zinc-400 block mb-1">Status</span>
-            <span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full"><i class="bi bi-hourglass-split"></i> Pending Board Approval</span>
+            <span id="request-status-badge" class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-zinc-600 bg-zinc-100 border border-zinc-200 px-2.5 py-1 rounded-full">New</span>
           </div>
+        </div>
+        <div>
+          <span class="form-label">Status steps</span>
+          <div id="request-status-steps" class="flex flex-wrap gap-x-2 gap-y-2"></div>
+        </div>
+        <div class="border-t border-b border-zinc-100 py-5">
+          <span class="form-label">History</span>
+          <ol id="request-timeline" class="space-y-0"></ol>
         </div>
         <div>
           <div class="flex items-end justify-between gap-4 mb-2">
@@ -272,11 +247,11 @@
           </div>
           <ul id="request-stores" class="grid sm:grid-cols-2 gap-2 max-h-72 overflow-y-auto custom-scrollbar text-xs text-zinc-600"></ul>
         </div>
-        <p class="text-[11px] text-zinc-500 leading-relaxed bg-zinc-50 rounded-sm px-3.5 py-3">
+        <p id="request-note" class="text-[11px] text-zinc-500 leading-relaxed bg-zinc-50 rounded-sm px-3.5 py-3">
           The BAJUS Board reviews stall requests in the order received. You will be notified once a stall is allocated to each store.
         </p>
         <div class="flex justify-end pt-1">
-          <button type="button" onclick="closeRequestModal()" class="btn-outline px-6 py-3 text-xs font-bold uppercase tracking-widest">Close</button>
+          <button type="button" id="request-details-action" class="btn-gold px-6 py-3 text-xs font-bold uppercase tracking-widest hidden"></button>
         </div>
       </div>
     </div>
@@ -315,7 +290,7 @@
       <form id="reg-step-delegates" class="hidden px-6 md:px-8 pb-6 md:pb-8 pt-4 space-y-5">
         <div>
           <span class="form-label">Nominate 2 delegates per store</span>
-          <div id="reg-delegate-list" class="space-y-3 max-h-96 overflow-y-auto custom-scrollbar pr-1"></div>
+          <div id="reg-delegate-list" class="space-y-3 pr-1"></div>
           <p id="reg-delegate-hint" class="text-[11px] text-red-600 mt-2 hidden"></p>
         </div>
         <div class="flex flex-col-reverse sm:flex-row gap-3 pt-1">
@@ -363,14 +338,20 @@
           <div><span class="text-zinc-400 block mb-1">Submitted</span><strong id="reg-details-submitted" class="text-charcoal font-semibold"></strong></div>
           <div><span class="text-zinc-400 block mb-1">Status</span><span id="reg-details-status"></span></div>
         </div>
-        <div id="reg-details-timeline" class="flex flex-wrap gap-x-2 gap-y-2"></div>
+        <div>
+          <span class="form-label">Status steps</span>
+          <div id="reg-details-timeline" class="flex flex-wrap gap-x-2 gap-y-2"></div>
+        </div>
+        <div class="border-t border-b border-zinc-100 py-5">
+          <span class="form-label">History</span>
+          <ol id="reg-details-history" class="space-y-0"></ol>
+        </div>
         <div>
           <span class="form-label">Stores &amp; delegates</span>
           <ul id="reg-details-entries" class="space-y-2 max-h-80 overflow-y-auto custom-scrollbar text-xs text-zinc-600"></ul>
         </div>
         <p id="reg-details-note" class="text-[11px] text-zinc-500 leading-relaxed bg-zinc-50 rounded-sm px-3.5 py-3"></p>
-        <div class="flex flex-col-reverse sm:flex-row gap-3 pt-1 justify-end">
-          <button type="button" onclick="closeRegDetails()" class="btn-outline px-6 py-3 text-xs font-bold uppercase tracking-widest">Close</button>
+        <div class="flex justify-end pt-1">
           <button type="button" id="reg-details-action" class="btn-gold px-6 py-3 text-xs font-bold uppercase tracking-widest hidden"></button>
         </div>
       </div>
@@ -605,17 +586,34 @@
       const stores = selectedStores();
       if (!stores.length || !pendingBooking) return;
 
+      const submittedAt = new Date();
       const request = {
+        type: "domestic",
         reference: bookingReference(),
         eventName: pendingBooking.eventName,
         eventType: pendingBooking.eventType,
-        submittedAt: new Date(),
-        stores
+        image: eventImage(pendingBooking.eventName),
+        submittedAt,
+        status: "New",
+        stores,
+        history: [
+          {
+            label: "Request submitted",
+            at: submittedAt,
+            detail: `Stall booking request sent for ${stores.length} ${stores.length === 1 ? "store" : "stores"}.`
+          },
+          {
+            label: "Awaiting verification",
+            at: submittedAt,
+            detail: "Queued for BAJUS Board review.",
+            current: true
+          }
+        ]
       };
-      const button = pendingBooking.button;
-
+      domesticBookings.unshift(request);
       closeStallModal();
-      markRequestPending(button, request);
+      renderDomesticEvents();
+      renderBookings();
       window.showToast(
         `Booking request ${request.reference} sent to the BAJUS Board for ` +
         `${stores.length} ${stores.length === 1 ? "store" : "stores"}.`
@@ -627,17 +625,86 @@
     const requestModalEvent = document.getElementById("request-modal-event");
     const requestReference = document.getElementById("request-reference");
     const requestSubmitted = document.getElementById("request-submitted");
+    const requestStatusBadge = document.getElementById("request-status-badge");
+    const requestTimeline = document.getElementById("request-timeline");
+    const requestStatusSteps = document.getElementById("request-status-steps");
     const requestStoreCount = document.getElementById("request-store-count");
     const requestStores = document.getElementById("request-stores");
+    const requestNote = document.getElementById("request-note");
+    const requestDetailsAction = document.getElementById("request-details-action");
+
+    // Shared status flow for domestic stall bookings and international registrations.
+    const BOOKING_FLOW = ["New", "Verified", "In Payment", "Paid", "Booked"];
+
+    const STATUS_TONES = {
+      "Pending": "text-amber-800 bg-amber-50 border-amber-200",
+      "New": "text-zinc-600 bg-zinc-100 border-zinc-200",
+      "Verified": "text-sky-700 bg-sky-50 border-sky-200",
+      "In Payment": "text-amber-800 bg-amber-50 border-amber-200",
+      "Paid": "text-emerald-700 bg-emerald-50 border-emerald-200",
+      "Booked": "text-gold bg-gold-soft border-gold/30",
+      "Rejected": "text-red-700 bg-red-50 border-red-200"
+    };
+
+    const STATUS_NOTES = {
+      "Pending": "Your request is pending board review.",
+      "New": "Your request is queued for verification by the BAJUS Board.",
+      "Verified": "Verified by the Board. A payment request will be issued shortly where applicable.",
+      "In Payment": "Payment is now due. Stalls are held for 7 days from the payment request.",
+      "Paid": "Payment received. Stall allocation is being finalised by the Board.",
+      "Booked": "Stalls confirmed. Allocation details will be shared before the event.",
+      "Rejected": "This request was not approved."
+    };
+
+    function statusStepsHtml(item) {
+      if (item.status === "Rejected") {
+        return ["New", "Rejected"].map((step, index) => `
+          <span class="inline-flex items-center gap-2">
+            ${index ? '<i class="ph ph-caret-right text-zinc-300 text-xs"></i>' : ""}
+            ${statusBadge(step)}
+          </span>`).join("");
+      }
+
+      // Pending is the earliest domestic wait state — treat like New on the shared flow.
+      const flowStatus = item.status === "Pending" ? "New" : item.status;
+      const reached = Math.max(0, BOOKING_FLOW.indexOf(flowStatus));
+      return BOOKING_FLOW.map((step, index) => `
+        <span class="inline-flex items-center gap-2">
+          ${index ? '<i class="ph ph-caret-right text-zinc-300 text-xs"></i>' : ""}
+          <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border ${
+            index <= reached ? STATUS_TONES[step] : "text-zinc-400 bg-white border-zinc-200"
+          }">${step}</span>
+        </span>`).join("");
+    }
 
     function openRequestModal(request) {
-      requestModalEvent.textContent = `${request.eventName} · ${request.eventType} Event`;
+      requestModalEvent.textContent = `${request.eventName} · ${request.eventType || "Domestic"} Event`;
       requestReference.textContent = request.reference;
-      requestSubmitted.textContent = request.submittedAt.toLocaleDateString("en-GB", {
-        day: "2-digit", month: "short", year: "numeric"
-      });
-      requestStoreCount.textContent = `${request.stores.length} ${request.stores.length === 1 ? "store" : "stores"}`;
-      requestStores.innerHTML = request.stores.map(storeListItem).join("");
+      requestSubmitted.textContent = formatDate(request.submittedAt);
+      const tone = STATUS_TONES[request.status] || STATUS_TONES.New;
+      requestStatusBadge.className = `inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider border px-2.5 py-1 rounded-full ${tone}`;
+      requestStatusBadge.textContent = request.status;
+      requestStatusSteps.innerHTML = statusStepsHtml(request);
+      requestStoreCount.textContent = request.stores
+        ? `${request.stores.length} ${request.stores.length === 1 ? "store" : "stores"}`
+        : "";
+      requestStores.innerHTML = (request.stores || []).map(storeListItem).join("");
+      requestTimeline.innerHTML = renderHistoryItems(request.history || []);
+      requestNote.textContent = request.stall
+        ? `Confirmed stall: ${request.stall}. Allocation details were shared with your store contacts.`
+        : STATUS_NOTES[request.status] || STATUS_NOTES.New;
+
+      requestDetailsAction.classList.add("hidden");
+      requestDetailsAction.onclick = null;
+      if (request.status === "In Payment") {
+        requestDetailsAction.textContent = `Pay ${formatBookingMoney(request, registrationTotal(request))}`;
+        requestDetailsAction.classList.remove("hidden");
+        requestDetailsAction.onclick = () => { closeRequestModal(); openPayModal(request); };
+      } else if (request.invoiceNo) {
+        requestDetailsAction.textContent = "View Invoice";
+        requestDetailsAction.classList.remove("hidden");
+        requestDetailsAction.onclick = () => { closeRequestModal(); openInvoiceModal(request); };
+      }
 
       requestModal.classList.remove("hidden");
       requestModal.setAttribute("aria-hidden", "false");
@@ -650,41 +717,210 @@
       document.body.style.overflow = "";
     }
 
+    function renderHistoryItems(history) {
+      if (!history.length) {
+        return `<li class="text-xs text-zinc-400">No history recorded yet.</li>`;
+      }
+      return history.map((item, index) => {
+        const isLast = index === history.length - 1;
+        const isCurrent = item.current || isLast;
+        return `
+          <li class="flex gap-3">
+            <div class="flex flex-col items-center flex-shrink-0 w-3 pt-0.5">
+              <span class="size-2.5 rounded-full border-2 box-border flex-shrink-0 ${
+                isCurrent ? "bg-gold border-gold" : "bg-white border-zinc-300"
+              }"></span>
+              ${isLast ? "" : '<span class="w-px flex-1 bg-zinc-200 mt-1.5 min-h-[1.25rem]" aria-hidden="true"></span>'}
+            </div>
+            <div class="min-w-0 flex-1 ${isLast ? "pb-0" : "pb-4"}">
+              <div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
+                <strong class="text-xs font-semibold text-charcoal">${item.label}</strong>
+                <time class="text-[10px] uppercase tracking-wider text-zinc-400 font-medium">${formatDate(item.at)}</time>
+              </div>
+              ${item.detail ? `<p class="text-[11px] text-zinc-500 mt-0.5 leading-relaxed">${item.detail}</p>` : ""}
+            </div>
+          </li>`;
+      }).join("");
+    }
+
     /* ============================================================
        INTERNATIONAL EVENT REGISTRATION
        ============================================================ */
 
     const STALL_FEE_USD = 1200;
+    const DOMESTIC_STALL_FEE = 25000;
     const DELEGATES_PER_STORE = 2;
-    // Board workflow a registration moves through; "Rejected" ends it early.
-    const REGISTRATION_FLOW = ["New", "Verified", "In Payment", "Paid", "Booked"];
-
-    const STATUS_TONES = {
-      "New": "text-zinc-600 bg-zinc-100 border-zinc-200",
-      "Verified": "text-sky-700 bg-sky-50 border-sky-200",
-      "In Payment": "text-amber-800 bg-amber-50 border-amber-200",
-      "Paid": "text-emerald-700 bg-emerald-50 border-emerald-200",
-      "Booked": "text-gold bg-gold-soft border-gold/30",
-      "Rejected": "text-red-700 bg-red-50 border-red-200"
-    };
 
     const contactById = (id) => BAJUS_CONTACTS.find((contact) => contact.id === id);
     const storeById = (id) => MEMBER_STORES.find((store) => store.id === id);
 
+    const EVENT_IMAGES = {
+      "BAJUS Jewellery Expo 2026": "./assets/news3.jpg",
+      "National Hallmarking Conference": "./assets/news2.jpg",
+      "Chittagong Gold & Gem Fair": "./assets/hero.jpg",
+      "Dhaka Retail Jewellers Summit": "./assets/news1.jpg",
+      "Sylhet Craft Jewellery Mela": "./assets/craft.jpg",
+      "Khulna Trade License Workshop Expo": "./assets/news2.jpg",
+      "Dubai International Jewellery Show": "./assets/craft.jpg",
+      "Hong Kong International Jewellery Fair": "./assets/news1.jpg",
+      "Bangkok Gems & Jewelry Fair": "./assets/craft.jpg",
+      "Vicenzaoro Winter — Italy": "./assets/news1.jpg",
+      "Istanbul Jewelry Show": "./assets/news2.jpg",
+      "Baselworld Watch & Jewellery Show": "./assets/hero.jpg",
+      "Singapore International Jewelry Expo": "./assets/news3.jpg",
+      "Jaipur Jewellery Show — India": "./assets/craft.jpg"
+    };
+
+    function eventImage(eventName) {
+      return EVENT_IMAGES[eventName] || "./assets/news3.jpg";
+    }
+
+    // Domestic stall bookings (My Bookings tab)
+    const domesticBookings = [
+      {
+        type: "domestic",
+        reference: "EVT-2026-0142",
+        eventName: "BAJUS Jewellery Expo 2026",
+        eventType: "Domestic",
+        image: "./assets/news3.jpg",
+        submittedAt: new Date(2026, 0, 5),
+        status: "Booked",
+        stall: "Stall B-14 (3m × 3m)",
+        invoiceNo: "INV-2026-0142",
+        paidAt: new Date(2026, 0, 12),
+        paymentMethod: "Bank Transfer",
+        stores: [storeById(1), storeById(4)].filter(Boolean),
+        history: [
+          { label: "Request submitted", at: new Date(2026, 0, 5), detail: "Stall booking request sent for 2 stores. Status: New." },
+          { label: "Verified", at: new Date(2026, 0, 10), detail: "Request verified by the BAJUS Board." },
+          { label: "Payment received", at: new Date(2026, 0, 12), detail: "Bank Transfer · INV-2026-0142." },
+          { label: "Booked", at: new Date(2026, 0, 12), detail: "Stall B-14 (3m × 3m) confirmed. Confirmation issued to member contacts.", current: true }
+        ]
+      },
+      {
+        type: "domestic",
+        reference: "REQ-2026-0188",
+        eventName: "National Hallmarking Conference",
+        eventType: "Domestic",
+        image: "./assets/news2.jpg",
+        submittedAt: new Date(2026, 2, 1),
+        status: "Pending",
+        stores: [storeById(1)].filter(Boolean),
+        history: [
+          {
+            label: "Request submitted",
+            at: new Date(2026, 2, 1),
+            detail: "Stall booking request sent for 1 store. Awaiting board review.",
+            current: true
+          }
+        ]
+      },
+      {
+        type: "domestic",
+        reference: "REQ-2026-0201",
+        eventName: "Chittagong Gold & Gem Fair",
+        eventType: "Domestic",
+        image: "./assets/hero.jpg",
+        submittedAt: new Date(2026, 3, 8),
+        status: "New",
+        stores: [storeById(4)].filter(Boolean),
+        history: [
+          {
+            label: "Request submitted",
+            at: new Date(2026, 3, 8),
+            detail: "Stall booking request sent for 1 store. Queued for verification.",
+            current: true
+          }
+        ]
+      },
+      {
+        type: "domestic",
+        reference: "REQ-2026-0214",
+        eventName: "Dhaka Retail Jewellers Summit",
+        eventType: "Domestic",
+        image: "./assets/news1.jpg",
+        submittedAt: new Date(2026, 1, 20),
+        status: "Verified",
+        stores: [storeById(1), storeById(9)].filter(Boolean),
+        history: [
+          { label: "Request submitted", at: new Date(2026, 1, 20), detail: "Stall booking request sent for 2 stores." },
+          { label: "Verified", at: new Date(2026, 1, 26), detail: "Board verification complete. Payment request forthcoming.", current: true }
+        ]
+      },
+      {
+        type: "domestic",
+        reference: "REQ-2026-0220",
+        eventName: "Sylhet Craft Jewellery Mela",
+        eventType: "Domestic",
+        image: "./assets/craft.jpg",
+        submittedAt: new Date(2026, 4, 4),
+        status: "In Payment",
+        stores: [storeById(1)].filter(Boolean),
+        history: [
+          { label: "Request submitted", at: new Date(2026, 4, 4), detail: "Stall booking request sent for 1 store." },
+          { label: "Verified", at: new Date(2026, 4, 9), detail: "Request verified by the BAJUS Board." },
+          { label: "Payment requested", at: new Date(2026, 4, 11), detail: "Stall fee due within 7 days.", current: true }
+        ]
+      },
+      {
+        type: "domestic",
+        reference: "REQ-2025-0310",
+        eventName: "Khulna Trade License Workshop Expo",
+        eventType: "Domestic",
+        image: "./assets/news2.jpg",
+        submittedAt: new Date(2025, 8, 12),
+        status: "Paid",
+        invoiceNo: "INV-2025-0310",
+        paidAt: new Date(2025, 8, 22),
+        paymentMethod: "bKash",
+        stores: [storeById(4)].filter(Boolean),
+        history: [
+          { label: "Request submitted", at: new Date(2025, 8, 12), detail: "Stall booking request sent for 1 store." },
+          { label: "Verified", at: new Date(2025, 8, 15), detail: "Board verification complete." },
+          { label: "Payment requested", at: new Date(2025, 8, 17), detail: "Stall fee invoice issued." },
+          { label: "Payment received", at: new Date(2025, 8, 22), detail: "bKash · INV-2025-0310. Allocation in progress.", current: true }
+        ]
+      },
+      {
+        type: "domestic",
+        reference: "REQ-2026-0195",
+        eventName: "Rajshahi Heritage Jewellery Fair",
+        eventType: "Domestic",
+        image: "./assets/news3.jpg",
+        submittedAt: new Date(2026, 2, 18),
+        status: "Rejected",
+        rejectionReason: "Selected store membership was expired at the time of review.",
+        stores: [storeById(9)].filter(Boolean),
+        history: [
+          { label: "Request submitted", at: new Date(2026, 2, 18), detail: "Stall booking request sent for 1 store." },
+          { label: "Rejected by Board", at: new Date(2026, 2, 21), detail: "Selected store membership was expired at the time of review.", current: true }
+        ]
+      }
+    ];
+
     const registrations = [
       {
+        type: "international",
         reference: "INT-2026-0118",
         eventName: "Bangkok Gems & Jewelry Fair",
+        image: "./assets/craft.jpg",
         submittedAt: new Date(2026, 5, 18),
         status: "In Payment",
         entries: [
           { store: storeById(1), delegates: [contactById(66), contactById(65)] },
           { store: storeById(4), delegates: [contactById(69), contactById(70)] }
+        ],
+        history: [
+          { label: "Registration submitted", at: new Date(2026, 5, 18), detail: "2 stores · 4 delegates nominated." },
+          { label: "Delegates verified", at: new Date(2026, 5, 22), detail: "Passports and documents cleared by the Board." },
+          { label: "Payment requested", at: new Date(2026, 5, 25), detail: "Stall fee due within 7 days.", current: true }
         ]
       },
       {
+        type: "international",
         reference: "INT-2025-0094",
         eventName: "Vicenzaoro Winter — Italy",
+        image: "./assets/news1.jpg",
         submittedAt: new Date(2025, 10, 9),
         status: "Booked",
         paidAt: new Date(2025, 10, 21),
@@ -692,22 +928,676 @@
         invoiceNo: "INV-2025-0094",
         entries: [
           { store: storeById(1), delegates: [contactById(66), contactById(67)] }
+        ],
+        history: [
+          { label: "Registration submitted", at: new Date(2025, 10, 9), detail: "1 store · 2 delegates nominated." },
+          { label: "Delegates verified", at: new Date(2025, 10, 14), detail: "Board verification complete." },
+          { label: "Payment requested", at: new Date(2025, 10, 16), detail: "Stall fee invoice issued." },
+          { label: "Payment received", at: new Date(2025, 10, 21), detail: "Bank Transfer · INV-2025-0094." },
+          { label: "Stall booked", at: new Date(2025, 10, 24), detail: "Pavilion booth confirmed for Vicenzaoro Winter.", current: true }
         ]
       },
       {
+        type: "international",
         reference: "INT-2026-0121",
         eventName: "Istanbul Jewelry Show",
+        image: "./assets/news2.jpg",
         submittedAt: new Date(2026, 6, 2),
         status: "Rejected",
         rejectionReason: "Delegate passports expire within six months of the travel date.",
         entries: [
           { store: storeById(9), delegates: [contactById(72), contactById(73)] }
+        ],
+        history: [
+          { label: "Registration submitted", at: new Date(2026, 6, 2), detail: "1 store · 2 delegates nominated." },
+          { label: "Rejected by Board", at: new Date(2026, 6, 5), detail: "Delegate passports expire within six months of the travel date.", current: true }
+        ]
+      },
+      {
+        type: "international",
+        reference: "INT-2026-0130",
+        eventName: "Hong Kong International Jewellery Fair",
+        image: "./assets/news1.jpg",
+        submittedAt: new Date(2026, 6, 14),
+        status: "New",
+        entries: [
+          { store: storeById(1), delegates: [contactById(66), contactById(67)] }
+        ],
+        history: [
+          {
+            label: "Registration submitted",
+            at: new Date(2026, 6, 14),
+            detail: "1 store · 2 delegates nominated. Queued for verification.",
+            current: true
+          }
+        ]
+      },
+      {
+        type: "international",
+        reference: "INT-2026-0135",
+        eventName: "Dubai International Jewellery Show",
+        image: "./assets/craft.jpg",
+        submittedAt: new Date(2026, 5, 2),
+        status: "Verified",
+        entries: [
+          { store: storeById(4), delegates: [contactById(69), contactById(70)] },
+          { store: storeById(1), delegates: [contactById(65), contactById(68)] }
+        ],
+        history: [
+          { label: "Registration submitted", at: new Date(2026, 5, 2), detail: "2 stores · 4 delegates nominated." },
+          { label: "Delegates verified", at: new Date(2026, 5, 8), detail: "Passports and documents cleared. Payment request forthcoming.", current: true }
+        ]
+      },
+      {
+        type: "international",
+        reference: "INT-2026-0108",
+        eventName: "Baselworld Watch & Jewellery Show",
+        image: "./assets/hero.jpg",
+        submittedAt: new Date(2026, 4, 10),
+        status: "Paid",
+        paidAt: new Date(2026, 4, 28),
+        paymentMethod: "Card",
+        invoiceNo: "INV-2026-0108",
+        entries: [
+          { store: storeById(1), delegates: [contactById(66), contactById(65)] }
+        ],
+        history: [
+          { label: "Registration submitted", at: new Date(2026, 4, 10), detail: "1 store · 2 delegates nominated." },
+          { label: "Delegates verified", at: new Date(2026, 4, 16), detail: "Board verification complete." },
+          { label: "Payment requested", at: new Date(2026, 4, 18), detail: "Stall fee invoice issued." },
+          { label: "Payment received", at: new Date(2026, 4, 28), detail: "Card · INV-2026-0108. Stall allocation in progress.", current: true }
+        ]
+      },
+      {
+        type: "international",
+        reference: "INT-2026-0140",
+        eventName: "Singapore International Jewelry Expo",
+        image: "./assets/news3.jpg",
+        submittedAt: new Date(2026, 6, 20),
+        status: "Pending",
+        entries: [
+          { store: storeById(9), delegates: [contactById(72), contactById(73)] }
+        ],
+        history: [
+          {
+            label: "Registration submitted",
+            at: new Date(2026, 6, 20),
+            detail: "1 store · 2 delegates nominated. Pending initial board acknowledgement.",
+            current: true
+          }
+        ]
+      },
+      {
+        type: "international",
+        reference: "INT-2025-0081",
+        eventName: "Jaipur Jewellery Show — India",
+        image: "./assets/craft.jpg",
+        submittedAt: new Date(2025, 9, 3),
+        status: "Booked",
+        paidAt: new Date(2025, 9, 18),
+        paymentMethod: "Bank Transfer",
+        invoiceNo: "INV-2025-0081",
+        entries: [
+          { store: storeById(4), delegates: [contactById(69), contactById(71)] }
+        ],
+        history: [
+          { label: "Registration submitted", at: new Date(2025, 9, 3), detail: "1 store · 2 delegates nominated." },
+          { label: "Delegates verified", at: new Date(2025, 9, 8), detail: "Board verification complete." },
+          { label: "Payment requested", at: new Date(2025, 9, 10), detail: "Stall fee invoice issued." },
+          { label: "Payment received", at: new Date(2025, 9, 18), detail: "Bank Transfer · INV-2025-0081." },
+          { label: "Stall booked", at: new Date(2025, 9, 22), detail: "Pavilion booth confirmed for Jaipur Jewellery Show.", current: true }
         ]
       }
     ];
 
+    const DOMESTIC_EVENT_CATALOG = [
+      {
+        name: "BAJUS Jewellery Expo 2026",
+        category: "Domestic · Trade Expo",
+        image: "./assets/news3.jpg",
+        description: "A three-day national exhibition showcasing Bangladeshi craftsmanship, manufacturing technology, and trade partnerships.",
+        when: "14 – 16 February 2026",
+        where: "International Convention City Bashundhara, Dhaka",
+        stalls: "3m × 3m, 3m × 6m, corner premium",
+        dateMonth: "Feb", dateDay: "14", dateYear: "2026"
+      },
+      {
+        name: "National Hallmarking Conference",
+        category: "Domestic · Conference",
+        image: "./assets/news2.jpg",
+        description: "Industry leaders convene to align on the next phase of mandatory hallmarking certification across all 64 districts.",
+        when: "08 March 2026",
+        where: "BAJUS Bhaban, Baitul Mukarram, Dhaka",
+        stalls: "Exhibitor booths for assay & hallmarking services",
+        dateMonth: "Mar", dateDay: "08", dateYear: "2026"
+      },
+      {
+        name: "Dhaka Retail Jewellers Summit",
+        category: "Domestic · Summit",
+        image: "./assets/news1.jpg",
+        description: "Retail jewellers from across Dhaka gather to discuss consumer trends, digital sales, and showroom compliance standards.",
+        when: "18 – 19 April 2026",
+        where: "Radisson Blu Dhaka Water Garden",
+        stalls: "Premium corner and inline booths",
+        dateMonth: "Apr", dateDay: "18", dateYear: "2026"
+      },
+      {
+        name: "Chittagong Gold & Gem Fair",
+        category: "Domestic · Regional Expo",
+        image: "./assets/hero.jpg",
+        description: "Port-city trade fair connecting Chittagong manufacturers with national buyers and export facilitators.",
+        when: "10 – 12 May 2026",
+        where: "Chittagong Convention Centre",
+        stalls: "Standard 3m × 3m and shared pavilion slots",
+        dateMonth: "May", dateDay: "10", dateYear: "2026"
+      },
+      {
+        name: "Sylhet Craft Jewellery Mela",
+        category: "Domestic · Craft Fair",
+        image: "./assets/craft.jpg",
+        description: "Celebrating Sylheti filigree and hand-crafted gold work with live demonstrations and artisan networking.",
+        when: "06 – 08 June 2026",
+        where: "Sylhet International Cricket Stadium Expo Hall",
+        stalls: "Artisan booths and craft demonstration zones",
+        dateMonth: "Jun", dateDay: "06", dateYear: "2026"
+      },
+      {
+        name: "Khulna Trade License Workshop Expo",
+        category: "Domestic · Workshop Expo",
+        image: "./assets/news2.jpg",
+        description: "Compliance-focused expo for Khulna members covering trade licence renewal, hallmarking, and retail documentation.",
+        when: "14 – 15 September 2025",
+        where: "Khulna City Corporation Community Hall",
+        stalls: "Compact exhibitor tables for service providers",
+        dateMonth: "Sep", dateDay: "14", dateYear: "2025"
+      },
+      {
+        name: "Rajshahi Heritage Jewellery Fair",
+        category: "Domestic · Heritage Fair",
+        image: "./assets/news3.jpg",
+        description: "Showcase of Rajshahi's traditional goldsmithing heritage alongside modern retail collections from northern districts.",
+        when: "22 – 24 March 2026",
+        where: "Rajshahi Convention Hall",
+        stalls: "Heritage craft and standard retail stalls",
+        dateMonth: "Mar", dateDay: "22", dateYear: "2026"
+      },
+      {
+        name: "Barishal Silver & Pearl Expo",
+        category: "Domestic · Regional Expo",
+        image: "./assets/about/jewellery-1.jpg",
+        description: "Southern-region expo highlighting pearl jewellery, silver craft, and coastal trade partnerships for BAJUS members.",
+        when: "28 – 30 July 2026",
+        where: "Barishal Divisional Commissioner's Auditorium",
+        stalls: "Open booking — standard and premium stalls available",
+        dateMonth: "Jul", dateDay: "28", dateYear: "2026"
+      }
+    ];
+
+    const INTERNATIONAL_EVENT_CATALOG = [
+      {
+        name: "Vicenzaoro Winter — Italy",
+        registerName: "Vicenzaoro Winter — Italy",
+        category: "International · Trade Fair",
+        image: "./assets/news1.jpg",
+        description: "Italy's premier gold and jewellery fair — BAJUS pavilion placement for certified Bangladeshi exporters.",
+        when: "17 – 21 January 2026",
+        where: "Fiera di Vicenza, Vicenza, Italy",
+        stalls: "BAJUS coordinated pavilion booths",
+        dateMonth: "Jan", dateDay: "17", dateYear: "2026"
+      },
+      {
+        name: "Jaipur Jewellery Show — India",
+        registerName: "Jaipur Jewellery Show — India",
+        category: "International · Exhibition",
+        image: "./assets/craft.jpg",
+        description: "South Asia's leading gem and jewellery sourcing show with dedicated BAJUS member delegation support.",
+        when: "19 – 22 December 2025",
+        where: "Jaipur Exhibition & Convention Centre, India",
+        stalls: "Shared and private pavilion allocation",
+        dateMonth: "Dec", dateDay: "19", dateYear: "2025"
+      },
+      {
+        name: "Dubai International Jewellery Show — BAJUS Delegation",
+        registerName: "Dubai International Jewellery Show",
+        category: "International · Trade Mission",
+        image: "./assets/craft.jpg",
+        description: "A 30-member Bangladeshi delegation, coordinated by BAJUS, representing the country at one of the world's premier jewellery shows.",
+        when: "22 – 26 April 2026",
+        where: "Dubai World Trade Centre, UAE",
+        stalls: "BAJUS national pavilion — shared & private booths",
+        dateMonth: "Apr", dateDay: "22", dateYear: "2026"
+      },
+      {
+        name: "Bangkok Gems & Jewelry Fair",
+        registerName: "Bangkok Gems & Jewelry Fair",
+        category: "International · Sourcing Fair",
+        image: "./assets/craft.jpg",
+        description: "Southeast Asia's key gem and jewellery sourcing event with BAJUS-facilitated delegate and stall coordination.",
+        when: "02 – 06 September 2026",
+        where: "Queen Sirikit National Convention Center, Bangkok",
+        stalls: "BAJUS pavilion — per-store booth allocation",
+        dateMonth: "Sep", dateDay: "02", dateYear: "2026"
+      },
+      {
+        name: "Baselworld Watch & Jewellery Show",
+        registerName: "Baselworld Watch & Jewellery Show",
+        category: "International · Luxury Fair",
+        image: "./assets/hero.jpg",
+        description: "Global luxury watch and jewellery showcase with curated BAJUS member participation and buyer introductions.",
+        when: "30 April – 04 May 2026",
+        where: "Messe Basel, Switzerland",
+        stalls: "Private booth and shared pavilion options",
+        dateMonth: "Apr", dateDay: "30", dateYear: "2026"
+      },
+      {
+        name: "Hong Kong International Jewellery Fair",
+        registerName: "Hong Kong International Jewellery Fair",
+        category: "International · Exhibition",
+        image: "./assets/news1.jpg",
+        description: "BAJUS-coordinated pavilion for certified Bangladeshi jewellers at Asia's largest jewellery sourcing fair.",
+        when: "03 – 07 September 2026",
+        where: "Hong Kong Convention and Exhibition Centre",
+        stalls: "Coordinated BAJUS pavilion allocation",
+        dateMonth: "Sep", dateDay: "03", dateYear: "2026"
+      },
+      {
+        name: "Singapore International Jewelry Expo",
+        registerName: "Singapore International Jewelry Expo",
+        category: "International · Expo",
+        image: "./assets/news3.jpg",
+        description: "Gateway expo for ASEAN buyers with BAJUS-led Bangladesh pavilion and delegate visa support.",
+        when: "11 – 13 October 2026",
+        where: "Marina Bay Sands Expo & Convention Centre",
+        stalls: "National pavilion and private booth tiers",
+        dateMonth: "Oct", dateDay: "11", dateYear: "2026"
+      },
+      {
+        name: "Istanbul Jewelry Show",
+        registerName: "Istanbul Jewelry Show",
+        category: "International · Trade Show",
+        image: "./assets/news2.jpg",
+        description: "Bridge between European and Middle Eastern markets — BAJUS coordinates Bangladeshi exhibitor placement.",
+        when: "09 – 12 June 2026",
+        where: "CNR Expo Istanbul, Turkey",
+        stalls: "BAJUS group pavilion allocation",
+        dateMonth: "Jun", dateDay: "09", dateYear: "2026"
+      },
+      {
+        name: "Milan Jewellery Week",
+        registerName: "Milan Jewellery Week",
+        category: "International · Design Week",
+        image: "./assets/about/jewellery-4.jpg",
+        description: "Design-led European showcase for contemporary Bangladeshi jewellery brands — registration now open for BAJUS members.",
+        when: "24 – 28 February 2027",
+        where: "Fiera Milano, Milan, Italy",
+        stalls: "Open registration — design studio and retail booths",
+        dateMonth: "Feb", dateDay: "24", dateYear: "2027"
+      }
+    ];
+
+    function domesticBookingForEvent(eventName) {
+      return domesticBookings.find((booking) => booking.eventName === eventName);
+    }
+
+    function sortedDomesticEvents() {
+      return [...DOMESTIC_EVENT_CATALOG].sort((a, b) => {
+        const aOpen = !domesticBookingForEvent(a.name);
+        const bOpen = !domesticBookingForEvent(b.name);
+        if (aOpen === bOpen) return 0;
+        return aOpen ? -1 : 1;
+      });
+    }
+
+    function sortedInternationalEvents() {
+      return [...INTERNATIONAL_EVENT_CATALOG].sort((a, b) => {
+        const aOpen = !registrationForEvent(a.registerName);
+        const bOpen = !registrationForEvent(b.registerName);
+        if (aOpen === bOpen) return 0;
+        return aOpen ? -1 : 1;
+      });
+    }
+
+    function registrationForEvent(registerName) {
+      return registrations.find((registration) => registration.eventName === registerName);
+    }
+
+    function eventDateBlock(month, day, year, intl = false) {
+      const monthClass = intl ? "event-intl-date-month text-[11px] uppercase tracking-widest font-bold" : "text-[11px] uppercase tracking-widest text-gold font-bold";
+      return `
+        <div>
+          <div class="${monthClass}">${month}</div>
+          <div class="text-5xl font-serif text-charcoal leading-none my-1">${day}</div>
+          <div class="text-[11px] uppercase tracking-widest text-zinc-400">${year}</div>
+        </div>`;
+    }
+
+    function bookingExtraLine(booking) {
+      if (!booking) return "";
+      if (booking.status === "Booked" && booking.stall) {
+        return `<li><span class="text-gold font-semibold">Your booking:</span> ${booking.stall} · Ref. ${booking.reference}</li>`;
+      }
+      return `<li><span class="text-gold font-semibold">Your request:</span> Ref. ${booking.reference} · ${booking.status}</li>`;
+    }
+
+    function domesticSidebarTone(status) {
+      if (status === "Booked" || status === "Paid") return "bg-emerald-50/50 border-emerald-200/60";
+      if (status === "Rejected") return "bg-red-50/50 border-red-200/60";
+      if (status === "Verified") return "bg-sky-50/50 border-sky-200/60";
+      if (status === "Pending" || status === "New" || status === "In Payment") return "bg-amber-50/50 border-amber-200/60";
+      return "bg-cream-50 border-zinc-200";
+    }
+
+    function internationalSidebarTone(status) {
+      return domesticSidebarTone(status);
+    }
+
+    function domesticSidebarActions(booking) {
+      if (!booking) {
+        return `<button type="button" data-book-stall class="btn-gold w-full text-xs py-3">Book Stall</button>`;
+      }
+
+      const detailsBtn = `<button type="button" data-view-request class="w-full text-[10px] font-bold uppercase tracking-wider text-gold hover:underline">View Details</button>`;
+      const storeLabel = `${(booking.stores || []).length} ${(booking.stores || []).length === 1 ? "store" : "stores"}`;
+
+      if (booking.status === "Booked") {
+        return `
+          <span class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-emerald-100 text-emerald-800 border border-emerald-200 text-[10px] font-bold uppercase tracking-wider"><i class="bi bi-check-lg"></i> Stall Booked</span>
+          ${detailsBtn.replace("View Details", "View Journey")}
+          <p class="text-[10px] text-zinc-500 leading-snug">Confirmed ${formatDate(booking.paidAt || booking.submittedAt)}</p>`;
+      }
+
+      if (booking.status === "Paid") {
+        return `
+          <span class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-emerald-100 text-emerald-800 border border-emerald-200 text-[10px] font-bold uppercase tracking-wider"><i class="bi bi-credit-card"></i> Paid</span>
+          <button type="button" data-view-invoice class="w-full px-3 py-2.5 border border-zinc-200 text-[10px] font-bold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors">Invoice</button>
+          ${detailsBtn}
+          <p class="text-[10px] text-zinc-500 leading-snug">Paid ${formatDate(booking.paidAt)}</p>`;
+      }
+
+      if (booking.status === "In Payment") {
+        return `
+          <span class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-amber-100 text-amber-800 border border-amber-200 text-[10px] font-bold uppercase tracking-wider"><i class="bi bi-exclamation-circle"></i> Payment Due</span>
+          <button type="button" data-pay-request class="btn-gold w-full text-xs py-3">Pay ${formatBookingMoney(booking, registrationTotal(booking))}</button>
+          ${detailsBtn}`;
+      }
+
+      if (booking.status === "Rejected") {
+        return `
+          <span class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-red-100 text-red-800 border border-red-200 text-[10px] font-bold uppercase tracking-wider"><i class="bi bi-x-circle"></i> Rejected</span>
+          ${detailsBtn}
+          <p class="text-[10px] text-zinc-500 leading-snug">Reviewed ${formatDate((booking.history || []).slice(-1)[0]?.at || booking.submittedAt)}</p>`;
+      }
+
+      if (booking.status === "Verified") {
+        return `
+          <span class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-sky-100 text-sky-800 border border-sky-200 text-[10px] font-bold uppercase tracking-wider"><i class="bi bi-patch-check"></i> Verified</span>
+          ${detailsBtn}
+          <p class="text-[10px] text-zinc-500 leading-snug">${storeLabel} · Awaiting payment request</p>`;
+      }
+
+      if (booking.status === "Pending" || booking.status === "New") {
+        return `
+          <span class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-amber-100 text-amber-800 border border-amber-200 text-[10px] font-bold uppercase tracking-wider"><i class="bi bi-hourglass-split"></i> Request Sent</span>
+          ${detailsBtn}
+          <p class="text-[10px] text-zinc-500 leading-snug">${storeLabel} · Submitted ${formatDate(booking.submittedAt)}</p>`;
+      }
+
+      return detailsBtn;
+    }
+
+    function internationalSidebarActions(registration) {
+      if (!registration) {
+        return `<button type="button" data-register class="btn-gold w-full text-xs py-3">Register</button>`;
+      }
+
+      const detailsBtn = `<button type="button" data-view-registration class="w-full text-[10px] font-bold uppercase tracking-wider text-gold hover:underline">View Details</button>`;
+      const storeCount = (registration.entries || []).length;
+
+      if (registration.status === "Booked") {
+        return `
+          <span class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-emerald-100 text-emerald-800 border border-emerald-200 text-[10px] font-bold uppercase tracking-wider"><i class="bi bi-check-lg"></i> Registered</span>
+          ${detailsBtn.replace("View Details", "View Journey")}
+          <p class="text-[10px] text-zinc-500 leading-snug">Confirmed ${formatDate(registration.paidAt || registration.submittedAt)}</p>`;
+      }
+
+      if (registration.status === "Paid") {
+        return `
+          <span class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-emerald-100 text-emerald-800 border border-emerald-200 text-[10px] font-bold uppercase tracking-wider"><i class="bi bi-credit-card"></i> Paid</span>
+          <button type="button" data-view-invoice class="w-full px-3 py-2.5 border border-zinc-200 text-[10px] font-bold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors">Invoice</button>
+          ${detailsBtn}
+          <p class="text-[10px] text-zinc-500 leading-snug">Paid ${formatDate(registration.paidAt)}</p>`;
+      }
+
+      if (registration.status === "In Payment") {
+        return `
+          <span class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-amber-100 text-amber-800 border border-amber-200 text-[10px] font-bold uppercase tracking-wider"><i class="bi bi-exclamation-circle"></i> Payment Due</span>
+          <button type="button" data-pay-registration class="btn-gold w-full text-xs py-3">Pay ${formatBookingMoney(registration, registrationTotal(registration))}</button>
+          ${detailsBtn}`;
+      }
+
+      if (registration.status === "Rejected") {
+        return `
+          <span class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-red-100 text-red-800 border border-red-200 text-[10px] font-bold uppercase tracking-wider"><i class="bi bi-x-circle"></i> Rejected</span>
+          ${detailsBtn}
+          <p class="text-[10px] text-zinc-500 leading-snug">Reviewed ${formatDate((registration.history || []).slice(-1)[0]?.at || registration.submittedAt)}</p>`;
+      }
+
+      if (registration.status === "Verified") {
+        return `
+          <span class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-sky-100 text-sky-800 border border-sky-200 text-[10px] font-bold uppercase tracking-wider"><i class="bi bi-patch-check"></i> Verified</span>
+          ${detailsBtn}
+          <p class="text-[10px] text-zinc-500 leading-snug">${storeCount} ${storeCount === 1 ? "store" : "stores"} · Awaiting payment request</p>`;
+      }
+
+      if (registration.status === "Pending" || registration.status === "New") {
+        return `
+          <span class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2.5 bg-amber-100 text-amber-800 border border-amber-200 text-[10px] font-bold uppercase tracking-wider"><i class="bi bi-hourglass-split"></i> Registered</span>
+          ${detailsBtn}
+          <p class="text-[10px] text-zinc-500 leading-snug">${registration.reference} · Submitted ${formatDate(registration.submittedAt)}</p>`;
+      }
+
+      return detailsBtn;
+    }
+
+    function renderDomesticEventCard(event, booking) {
+      const statusBadgeHtml = booking ? statusBadge(booking.status) : "";
+      const headerBadges = statusBadgeHtml
+        ? `<div class="flex flex-wrap items-center gap-2 mb-2"><span class="text-[10px] font-bold text-gold uppercase tracking-widest">${event.category}</span>${statusBadgeHtml}</div>`
+        : `<div class="text-[10px] font-bold text-gold uppercase tracking-widest mb-2">${event.category}</div>`;
+
+      return `
+        <article class="event-card-domestic bg-white border border-zinc-200 grid md:grid-cols-12 overflow-hidden card-shadow" data-event-name="${event.name}">
+          <div class="md:col-span-4 aspect-[4/3] md:aspect-auto">
+            <img src="${event.image}" alt="${event.name}" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="md:col-span-6 p-6 md:p-8">
+            ${headerBadges}
+            <h3 class="font-serif text-xl md:text-2xl font-bold text-charcoal mb-2">${event.name}</h3>
+            <p class="text-sm text-zinc-500 leading-relaxed mb-3">${event.description}</p>
+            <ul class="text-xs text-zinc-600 space-y-1">
+              <li><span class="text-gold font-semibold">When:</span> ${event.when}</li>
+              <li><span class="text-gold font-semibold">Where:</span> ${event.where}</li>
+              <li><span class="text-gold font-semibold">Stalls:</span> ${event.stalls}</li>
+              ${bookingExtraLine(booking)}
+            </ul>
+          </div>
+          <div class="md:col-span-2 border-t md:border-t-0 md:border-l p-6 flex flex-col items-center justify-center text-center gap-4 ${domesticSidebarTone(booking?.status)}">
+            ${eventDateBlock(event.dateMonth, event.dateDay, event.dateYear)}
+            ${domesticSidebarActions(booking)}
+          </div>
+        </article>`;
+    }
+
+    function renderInternationalEventCard(event, registration) {
+      const statusBadgeHtml = registration ? statusBadge(registration.status) : "";
+      const headerBadges = statusBadgeHtml
+        ? `<div class="flex flex-wrap items-center gap-2 mb-2"><span class="text-[10px] font-bold text-gold uppercase tracking-widest">${event.category}</span>${statusBadgeHtml}</div>`
+        : `<div class="text-[10px] font-bold text-gold uppercase tracking-widest mb-2">${event.category}</div>`;
+
+      const regLine = registration
+        ? `<li><span class="text-gold font-semibold">Your registration:</span> Ref. ${registration.reference} · ${registration.status}</li>`
+        : "";
+
+      return `
+        <article class="event-card-international grid md:grid-cols-12 overflow-hidden card-shadow" data-register-name="${event.registerName}">
+          <div class="md:col-span-4 aspect-[4/3] md:aspect-auto">
+            <img src="${event.image}" alt="${event.name}" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="md:col-span-6 p-6 md:p-8 bg-white">
+            ${headerBadges}
+            <h3 class="font-serif text-xl md:text-2xl font-bold text-charcoal mb-2">${event.name}</h3>
+            <p class="text-sm text-zinc-500 leading-relaxed mb-3">${event.description}</p>
+            <ul class="text-xs text-zinc-600 space-y-1">
+              <li><span class="text-gold font-semibold">When:</span> ${event.when}</li>
+              <li><span class="text-gold font-semibold">Where:</span> ${event.where}</li>
+              <li><span class="text-gold font-semibold">Stalls:</span> ${event.stalls}</li>
+              ${regLine}
+            </ul>
+          </div>
+          <div class="event-intl-sidebar md:col-span-2 border-t md:border-t-0 md:border-l p-6 flex flex-col items-center justify-center text-center gap-4 ${internationalSidebarTone(registration?.status)}">
+            ${eventDateBlock(event.dateMonth, event.dateDay, event.dateYear, true)}
+            ${internationalSidebarActions(registration)}
+          </div>
+        </article>`;
+    }
+
+    function renderDomesticEvents() {
+      const listEl = document.getElementById("domestic-events-list");
+      const countEl = document.getElementById("domestic-events-count");
+      const paginationEl = document.getElementById("domestic-events-pagination");
+      if (!listEl) return;
+
+      const items = sortedDomesticEvents();
+      const totalPages = Math.max(1, Math.ceil(items.length / EVENTS_PER_PAGE));
+      domesticEventsPage = Math.min(domesticEventsPage, totalPages);
+
+      const start = (domesticEventsPage - 1) * EVENTS_PER_PAGE;
+      const pageItems = items.slice(start, start + EVENTS_PER_PAGE);
+
+      listEl.innerHTML = pageItems.map((event) =>
+        renderDomesticEventCard(event, domesticBookingForEvent(event.name))
+      ).join("");
+
+      if (countEl) {
+        const shown = items.length ? `${start + 1}–${start + pageItems.length}` : "0";
+        countEl.textContent = `Showing ${shown} of ${items.length} events`;
+      }
+
+      renderEventsPagination(paginationEl, domesticEventsPage, totalPages, (page) => {
+        domesticEventsPage = page;
+        renderDomesticEvents();
+        listEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+
+    function renderInternationalEvents() {
+      const listEl = document.getElementById("international-events-list");
+      const countEl = document.getElementById("international-events-count");
+      const paginationEl = document.getElementById("international-events-pagination");
+      if (!listEl) return;
+
+      const items = sortedInternationalEvents();
+      const totalPages = Math.max(1, Math.ceil(items.length / EVENTS_PER_PAGE));
+      internationalEventsPage = Math.min(internationalEventsPage, totalPages);
+
+      const start = (internationalEventsPage - 1) * EVENTS_PER_PAGE;
+      const pageItems = items.slice(start, start + EVENTS_PER_PAGE);
+
+      listEl.innerHTML = pageItems.map((event) =>
+        renderInternationalEventCard(event, registrationForEvent(event.registerName))
+      ).join("");
+
+      if (countEl) {
+        const shown = items.length ? `${start + 1}–${start + pageItems.length}` : "0";
+        countEl.textContent = `Showing ${shown} of ${items.length} events`;
+      }
+
+      renderEventsPagination(paginationEl, internationalEventsPage, totalPages, (page) => {
+        internationalEventsPage = page;
+        renderInternationalEvents();
+        listEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+
+    const EVENTS_PER_PAGE = 4;
+    let domesticEventsPage = 1;
+    let internationalEventsPage = 1;
+
+    function eventsPageButton(label, page, { active = false, disabled = false } = {}, onGoToPage) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `page-btn${active ? " active" : ""}${disabled ? " opacity-40 pointer-events-none" : ""}`;
+      button.innerHTML = label;
+      if (active) button.setAttribute("aria-current", "page");
+      if (disabled) button.disabled = true;
+      else button.addEventListener("click", () => onGoToPage(page));
+      return button;
+    }
+
+    function renderEventsPagination(paginationEl, currentPage, totalPages, onGoToPage) {
+      if (!paginationEl) return;
+      paginationEl.innerHTML = "";
+      if (totalPages <= 1) return;
+
+      paginationEl.appendChild(
+        eventsPageButton('<i class="ph ph-caret-left"></i>', currentPage - 1, {
+          disabled: currentPage === 1,
+        }, onGoToPage)
+      );
+
+      for (let page = 1; page <= totalPages; page++) {
+        paginationEl.appendChild(
+          eventsPageButton(String(page), page, { active: page === currentPage }, onGoToPage)
+        );
+      }
+
+      paginationEl.appendChild(
+        eventsPageButton('<i class="ph ph-caret-right"></i>', currentPage + 1, {
+          disabled: currentPage === totalPages,
+        }, onGoToPage)
+      );
+    }
+
+    function wireEventTabActions() {
+      document.getElementById("domestic-events-list")?.addEventListener("click", (e) => {
+        const card = e.target.closest("[data-event-name]");
+        if (!card) return;
+        const eventName = card.dataset.eventName;
+        const booking = domesticBookingForEvent(eventName);
+
+        if (e.target.closest("[data-book-stall]")) {
+          bookStall(e.target.closest("[data-book-stall]"), eventName, "Domestic");
+        } else if (e.target.closest("[data-view-request]")) {
+          if (booking) openRequestModal(booking);
+        } else if (e.target.closest("[data-pay-request]")) {
+          if (booking) openPayModal(booking);
+        } else if (e.target.closest("[data-view-invoice]")) {
+          if (booking) openInvoiceModal(booking);
+        }
+      });
+
+      document.getElementById("international-events-list")?.addEventListener("click", (e) => {
+        const card = e.target.closest("[data-register-name]");
+        if (!card) return;
+        const registerName = card.dataset.registerName;
+        const registration = registrationForEvent(registerName);
+
+        if (e.target.closest("[data-register]")) {
+          registerEvent(e.target.closest("[data-register]"), registerName);
+        } else if (e.target.closest("[data-view-registration]")) {
+          if (registration) openRegDetails(registration);
+        } else if (e.target.closest("[data-pay-registration]")) {
+          if (registration) openPayModal(registration);
+        } else if (e.target.closest("[data-view-invoice]")) {
+          if (registration) openInvoiceModal(registration);
+        }
+      });
+    }
+
     function formatDate(date) {
-      return date.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+      if (!date) return "—";
+      const parsed = date instanceof Date ? date : new Date(date);
+      return parsed.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
     }
 
     function formatMoney(amount) {
@@ -715,58 +1605,224 @@
     }
 
     function registrationTotal(registration) {
-      return registration.entries.length * STALL_FEE_USD;
+      if (registration.type === "domestic") {
+        return (registration.stores || []).length * DOMESTIC_STALL_FEE;
+      }
+      return (registration.entries || []).length * STALL_FEE_USD;
+    }
+
+    function formatBookingMoney(item, amount) {
+      if (item && item.type === "domestic") {
+        return "৳ " + Number(amount).toLocaleString("en-BD");
+      }
+      return formatMoney(amount);
+    }
+
+    function invoiceLineItems(item) {
+      if (item.type === "domestic") {
+        return (item.stores || []).map((store) => ({
+          title: `Exhibition stall — ${store.name}`,
+          subtitle: item.stall || store.membership_id || "",
+          amount: DOMESTIC_STALL_FEE
+        }));
+      }
+      return (item.entries || []).map((entry) => ({
+        title: `Exhibition stall — ${entry.store.name}`,
+        subtitle: entry.delegates.map((d) => d.name).join(", "),
+        amount: STALL_FEE_USD
+      }));
     }
 
     function statusBadge(status, extraClass = "") {
-      return `<span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider ${STATUS_TONES[status]} border px-2.5 py-1 rounded-full ${extraClass}">${status}</span>`;
+      const tone = STATUS_TONES[status] || "text-zinc-600 bg-zinc-100 border-zinc-200";
+      return `<span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider ${tone} border px-2.5 py-1 rounded-full ${extraClass}">${status}</span>`;
     }
 
     function registrationReference() {
       return "INT-" + new Date().getFullYear() + "-" + String(Math.floor(1000 + Math.random() * 9000));
     }
 
-    /* ---------- Registration list ---------- */
+    /* ---------- My Bookings list ---------- */
 
-    const registrationList = document.getElementById("registration-list");
-    const registrationCount = document.getElementById("registration-count");
+    const bookingList = document.getElementById("booking-list");
+    const bookingCount = document.getElementById("booking-count");
+    const bookingEmpty = document.getElementById("booking-empty");
+    const bookingPaginationEl = document.getElementById("booking-pagination");
+    const BOOKINGS_PER_PAGE = 5;
+    let bookingTypeFilter = "all";
+    let bookingStatusFilter = "all";
+    let bookingCurrentPage = 1;
 
-    function renderRegistrations() {
-      registrationCount.textContent = `${registrations.length} ${registrations.length === 1 ? "registration" : "registrations"}`;
+    function allBookings() {
+      return [...domesticBookings, ...registrations].sort(
+        (a, b) => b.submittedAt - a.submittedAt
+      );
+    }
 
-      registrationList.innerHTML = registrations.map((registration, index) => {
-        const delegates = registration.entries.length * DELEGATES_PER_STORE;
-        const canPay = registration.status === "In Payment";
-        const hasInvoice = Boolean(registration.invoiceNo);
+    function filteredBookings() {
+      return allBookings().filter((item) => {
+        if (bookingTypeFilter !== "all" && item.type !== bookingTypeFilter) return false;
+        if (bookingStatusFilter !== "all" && item.status !== bookingStatusFilter) return false;
+        return true;
+      });
+    }
+
+    function bookingMeta(item) {
+      if (item.type === "domestic") {
+        const storeCount = (item.stores || []).length;
+        const stall = item.stall ? ` · ${item.stall}` : "";
+        return `Ref. ${item.reference} · Domestic · ${storeCount} ${storeCount === 1 ? "store" : "stores"}${stall} · Submitted ${formatDate(item.submittedAt)}`;
+      }
+      const delegates = (item.entries || []).length * DELEGATES_PER_STORE;
+      return `Ref. ${item.reference} · International · ${(item.entries || []).length} ${(item.entries || []).length === 1 ? "store" : "stores"} · ${delegates} delegates · Submitted ${formatDate(item.submittedAt)}`;
+    }
+
+    function latestHistoryNote(item) {
+      const history = item.history || [];
+      if (!history.length) return "";
+      const last = history[history.length - 1];
+      return last.detail || last.label;
+    }
+
+    function setTypeFilterActive(type) {
+      document.querySelectorAll(".booking-type-filter").forEach((el) => {
+        const active = el.dataset.type === type;
+        el.classList.toggle("is-active", active);
+        el.classList.toggle("border-gold", active);
+        el.classList.toggle("bg-gold-soft", active);
+        el.classList.toggle("text-gold", active);
+        el.classList.toggle("border-zinc-200", !active);
+        el.classList.toggle("bg-white", !active);
+        el.classList.toggle("text-zinc-500", !active);
+      });
+    }
+
+    function bookingPageButton(label, page, { active = false, disabled = false } = {}) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `page-btn${active ? " active" : ""}${disabled ? " opacity-40 pointer-events-none" : ""}`;
+      button.innerHTML = label;
+      if (active) button.setAttribute("aria-current", "page");
+      if (disabled) button.disabled = true;
+      else button.addEventListener("click", () => goToBookingPage(page));
+      return button;
+    }
+
+    function renderBookingPagination(totalPages) {
+      bookingPaginationEl.innerHTML = "";
+      if (totalPages <= 1) return;
+
+      bookingPaginationEl.appendChild(
+        bookingPageButton('<i class="ph ph-caret-left"></i>', bookingCurrentPage - 1, {
+          disabled: bookingCurrentPage === 1,
+        })
+      );
+
+      for (let page = 1; page <= totalPages; page++) {
+        bookingPaginationEl.appendChild(
+          bookingPageButton(String(page), page, { active: page === bookingCurrentPage })
+        );
+      }
+
+      bookingPaginationEl.appendChild(
+        bookingPageButton('<i class="ph ph-caret-right"></i>', bookingCurrentPage + 1, {
+          disabled: bookingCurrentPage === totalPages,
+        })
+      );
+    }
+
+    function goToBookingPage(page) {
+      bookingCurrentPage = page;
+      renderBookings();
+      bookingList.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function renderBookings() {
+      const items = filteredBookings();
+      const totalPages = Math.max(1, Math.ceil(items.length / BOOKINGS_PER_PAGE));
+      bookingCurrentPage = Math.min(bookingCurrentPage, totalPages);
+
+      const start = (bookingCurrentPage - 1) * BOOKINGS_PER_PAGE;
+      const pageItems = items.slice(start, start + BOOKINGS_PER_PAGE);
+
+      const shown = items.length ? `${start + 1}–${start + pageItems.length}` : "0";
+      bookingCount.textContent = `Showing ${shown} of ${items.length} ${items.length === 1 ? "booking" : "bookings"}`;
+      bookingEmpty.classList.toggle("hidden", items.length > 0);
+      bookingList.classList.toggle("hidden", items.length === 0);
+      bookingPaginationEl.classList.toggle("hidden", items.length === 0);
+
+      bookingList.innerHTML = pageItems.map((item) => {
+        const indexKey = item.type === "domestic"
+          ? `d-${domesticBookings.indexOf(item)}`
+          : `i-${registrations.indexOf(item)}`;
+        const canPay = item.status === "In Payment";
+        const hasInvoice = Boolean(item.invoiceNo);
+        const typeBadge = item.type === "domestic"
+          ? `<span class="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider text-gold bg-gold-soft border border-gold/30 px-2 py-0.5 rounded-full"><i class="ph ph-map-pin"></i> Domestic</span>`
+          : `<span class="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider text-sky-700 bg-sky-50 border border-sky-200 px-2 py-0.5 rounded-full"><i class="ph ph-globe"></i> International</span>`;
 
         return `
-          <div class="border border-zinc-200 rounded-sm bg-white p-4 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-gold transition-colors">
-            <div class="min-w-0">
-              <div class="flex flex-wrap items-center gap-2">
-                <h4 class="font-semibold text-sm text-charcoal">${registration.eventName}</h4>
-                ${statusBadge(registration.status)}
+          <div class="border border-zinc-200 rounded-sm bg-white overflow-hidden hover:border-gold transition-colors">
+            <div class="flex flex-col sm:flex-row">
+              <div class="sm:w-36 md:w-40 flex-shrink-0 aspect-[16/10] sm:aspect-auto sm:min-h-[7.5rem] bg-zinc-100">
+                <img src="${item.image || eventImage(item.eventName)}" alt="${item.eventName}" class="w-full h-full object-cover" loading="lazy" />
               </div>
-              <p class="text-[11px] text-zinc-500 mt-1">
-                Ref. ${registration.reference} · ${registration.entries.length} ${registration.entries.length === 1 ? "store" : "stores"} ·
-                ${delegates} delegates · Submitted ${formatDate(registration.submittedAt)}
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-2 flex-shrink-0">
-              ${canPay ? `<button type="button" data-pay="${index}" class="px-4 py-2 bg-gold hover:bg-[#a3760a] text-cream text-[11px] font-semibold uppercase tracking-wider transition-colors">Pay ${formatMoney(registrationTotal(registration))}</button>` : ""}
-              ${hasInvoice ? `<button type="button" data-invoice="${index}" class="px-4 py-2 border border-zinc-200 text-[11px] font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors">Invoice</button>` : ""}
-              <button type="button" data-details="${index}" class="px-4 py-2 border border-zinc-200 text-[11px] font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors">Details</button>
+              <div class="flex-1 min-w-0 p-4 flex flex-col md:flex-row md:items-start justify-between gap-4">
+                <div class="min-w-0">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <h4 class="font-semibold text-sm text-charcoal">${item.eventName}</h4>
+                    ${typeBadge}
+                    ${statusBadge(item.status)}
+                  </div>
+                  <p class="text-[11px] text-zinc-500 mt-1">${bookingMeta(item)}</p>
+                  <p class="text-[11px] text-zinc-600 mt-2">
+                    <span class="font-semibold text-charcoal">Latest:</span> ${latestHistoryNote(item)}
+                  </p>
+                </div>
+                <div class="flex flex-wrap gap-2 flex-shrink-0">
+                  ${canPay ? `<button type="button" data-pay="${indexKey}" class="px-4 py-2 bg-gold hover:bg-[#a3760a] text-cream text-[11px] font-semibold uppercase tracking-wider transition-colors">Pay ${formatBookingMoney(item, registrationTotal(item))}</button>` : ""}
+                  ${hasInvoice ? `<button type="button" data-invoice="${indexKey}" class="px-4 py-2 border border-zinc-200 text-[11px] font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors">Invoice</button>` : ""}
+                  <button type="button" data-details="${indexKey}" class="px-4 py-2 border border-zinc-200 text-[11px] font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors">Details</button>
+                </div>
+              </div>
             </div>
           </div>`;
       }).join("");
+
+      renderBookingPagination(totalPages);
     }
 
-    registrationList.addEventListener("click", (e) => {
+    function resolveBookingKey(key) {
+      const [kind, index] = key.split("-");
+      if (kind === "d") return domesticBookings[Number(index)];
+      return registrations[Number(index)];
+    }
+
+    document.getElementById("booking-filters").addEventListener("click", (e) => {
+      const btn = e.target.closest(".booking-type-filter");
+      if (!btn) return;
+      bookingTypeFilter = btn.dataset.type;
+      bookingCurrentPage = 1;
+      setTypeFilterActive(bookingTypeFilter);
+      renderBookings();
+    });
+
+    document.getElementById("booking-status-filter").addEventListener("change", (e) => {
+      bookingStatusFilter = e.target.value;
+      bookingCurrentPage = 1;
+      renderBookings();
+    });
+
+    bookingList.addEventListener("click", (e) => {
       const button = e.target.closest("button[data-pay], button[data-invoice], button[data-details]");
       if (!button) return;
+      const item = resolveBookingKey(button.dataset.pay || button.dataset.invoice || button.dataset.details);
+      if (!item) return;
 
-      if (button.dataset.pay !== undefined) openPayModal(registrations[button.dataset.pay]);
-      else if (button.dataset.invoice !== undefined) openInvoiceModal(registrations[button.dataset.invoice]);
-      else openRegDetails(registrations[button.dataset.details]);
+      if (button.dataset.pay !== undefined) openPayModal(item);
+      else if (button.dataset.invoice !== undefined) openInvoiceModal(item);
+      else if (item.type === "domestic") openRequestModal(item);
+      else openRegDetails(item);
     });
 
     /* ---------- Registration modal ---------- */
@@ -1036,18 +2092,26 @@
       if (!pendingRegistration || !pendingRegistration.entries.length) return;
 
       const registration = {
+        type: "international",
         reference: registrationReference(),
         eventName: pendingRegistration.eventName,
+        image: eventImage(pendingRegistration.eventName),
         submittedAt: new Date(),
         status: "New",
-        entries: pendingRegistration.entries
+        entries: pendingRegistration.entries,
+        history: [
+          {
+            label: "Registration submitted",
+            at: new Date(),
+            detail: `${pendingRegistration.entries.length} ${pendingRegistration.entries.length === 1 ? "store" : "stores"} · ${pendingRegistration.entries.length * DELEGATES_PER_STORE} delegates nominated.`,
+            current: true
+          }
+        ]
       };
-      const button = pendingRegistration.button;
-
       registrations.unshift(registration);
       closeRegModal();
-      renderRegistrations();
-      markEventRegistered(button, registration);
+      renderInternationalEvents();
+      renderBookings();
       window.showToast(`Registration ${registration.reference} submitted to the BAJUS Board.`);
     });
 
@@ -1072,37 +2136,13 @@
     const regDetailsSubmitted = document.getElementById("reg-details-submitted");
     const regDetailsStatus = document.getElementById("reg-details-status");
     const regDetailsTimeline = document.getElementById("reg-details-timeline");
+    const regDetailsHistory = document.getElementById("reg-details-history");
     const regDetailsEntries = document.getElementById("reg-details-entries");
     const regDetailsNote = document.getElementById("reg-details-note");
     const regDetailsAction = document.getElementById("reg-details-action");
 
-    const STATUS_NOTES = {
-      "New": "Your registration is queued for verification by the BAJUS Board.",
-      "Verified": "Delegates verified. A payment request will be issued shortly.",
-      "In Payment": "Payment is now due. Stalls are held for 7 days from the payment request.",
-      "Paid": "Payment received. Stall allocation is being finalised by the Board.",
-      "Booked": "Stalls confirmed. Allocation details will be shared before the event.",
-      "Rejected": "This registration was not approved."
-    };
-
     function renderTimeline(registration) {
-      if (registration.status === "Rejected") {
-        regDetailsTimeline.innerHTML = ["New", "Rejected"].map((step, index) => `
-          <span class="inline-flex items-center gap-2">
-            ${index ? '<i class="ph ph-caret-right text-zinc-300 text-xs"></i>' : ""}
-            ${statusBadge(step)}
-          </span>`).join("");
-        return;
-      }
-
-      const reached = REGISTRATION_FLOW.indexOf(registration.status);
-      regDetailsTimeline.innerHTML = REGISTRATION_FLOW.map((step, index) => `
-        <span class="inline-flex items-center gap-2">
-          ${index ? '<i class="ph ph-caret-right text-zinc-300 text-xs"></i>' : ""}
-          <span class="inline-flex items-center text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border ${
-            index <= reached ? STATUS_TONES[step] : "text-zinc-400 bg-white border-zinc-200"
-          }">${step}</span>
-        </span>`).join("");
+      regDetailsTimeline.innerHTML = statusStepsHtml(registration);
     }
 
     function openRegDetails(registration) {
@@ -1116,12 +2156,13 @@
         : STATUS_NOTES[registration.status];
 
       renderTimeline(registration);
+      regDetailsHistory.innerHTML = renderHistoryItems(registration.history || []);
 
       regDetailsAction.classList.add("hidden");
       regDetailsAction.onclick = null;
 
       if (registration.status === "In Payment") {
-        regDetailsAction.textContent = `Pay ${formatMoney(registrationTotal(registration))}`;
+        regDetailsAction.textContent = `Pay ${formatBookingMoney(registration, registrationTotal(registration))}`;
         regDetailsAction.classList.remove("hidden");
         regDetailsAction.onclick = () => { closeRegDetails(); openPayModal(registration); };
       } else if (registration.invoiceNo) {
@@ -1153,10 +2194,14 @@
 
     function openPayModal(registration) {
       payingRegistration = registration;
+      const storeCount = registration.type === "domestic"
+        ? (registration.stores || []).length
+        : (registration.entries || []).length;
+      const rate = registration.type === "domestic" ? DOMESTIC_STALL_FEE : STALL_FEE_USD;
       payModalEvent.textContent = `${registration.eventName} · Ref. ${registration.reference}`;
-      payRate.textContent = formatMoney(STALL_FEE_USD);
-      payStores.textContent = `${registration.entries.length} × stall`;
-      payTotal.textContent = formatMoney(registrationTotal(registration));
+      payRate.textContent = formatBookingMoney(registration, rate);
+      payStores.textContent = `${storeCount} × stall`;
+      payTotal.textContent = formatBookingMoney(registration, registrationTotal(registration));
 
       payModal.classList.remove("hidden");
       payModal.setAttribute("aria-hidden", "false");
@@ -1178,11 +2223,21 @@
       registration.status = "Paid";
       registration.paidAt = new Date();
       registration.paymentMethod = payForm.querySelector('input[name="pay-method"]:checked').value;
-      registration.invoiceNo = registration.reference.replace("INT", "INV");
+      registration.invoiceNo = registration.reference.replace(/^(INT|EVT|REQ)/, "INV");
+      if (!registration.history) registration.history = [];
+      registration.history.forEach((step) => { step.current = false; });
+      registration.history.push({
+        label: "Payment received",
+        at: registration.paidAt,
+        detail: `${registration.paymentMethod} · ${registration.invoiceNo}`,
+        current: true
+      });
 
       closePayModal();
-      renderRegistrations();
-      window.showToast(`Payment of ${formatMoney(registrationTotal(registration))} received. Invoice ${registration.invoiceNo} is ready.`);
+      renderDomesticEvents();
+      renderInternationalEvents();
+      renderBookings();
+      window.showToast(`Payment of ${formatBookingMoney(registration, registrationTotal(registration))} received. Invoice ${registration.invoiceNo} is ready.`);
       openInvoiceModal(registration);
     });
 
@@ -1205,15 +2260,15 @@
       invoiceReference.textContent = registration.reference;
       invoiceDate.textContent = formatDate(registration.paidAt);
       invoiceMethod.textContent = registration.paymentMethod;
-      invoiceLines.innerHTML = registration.entries.map((entry) => `
+      invoiceLines.innerHTML = invoiceLineItems(registration).map((line) => `
         <li class="flex items-center justify-between gap-4 px-4 py-2.5">
           <span class="min-w-0">
-            <strong class="text-charcoal font-semibold block truncate">Exhibition stall — ${entry.store.name}</strong>
-            <span class="text-[11px] text-zinc-400 truncate">${entry.delegates.map((d) => d.name).join(", ")}</span>
+            <strong class="text-charcoal font-semibold block truncate">${line.title}</strong>
+            ${line.subtitle ? `<span class="text-[11px] text-zinc-400 truncate">${line.subtitle}</span>` : ""}
           </span>
-          <span class="text-charcoal font-semibold flex-shrink-0">${formatMoney(STALL_FEE_USD)}</span>
+          <span class="text-charcoal font-semibold flex-shrink-0">${formatBookingMoney(registration, line.amount)}</span>
         </li>`).join("");
-      invoiceTotal.textContent = formatMoney(registrationTotal(registration));
+      invoiceTotal.textContent = formatBookingMoney(registration, registrationTotal(registration));
 
       invoiceModal.classList.remove("hidden");
       invoiceModal.setAttribute("aria-hidden", "false");
@@ -1230,7 +2285,10 @@
       window.showToast(`Invoice ${invoiceRegistration.invoiceNo} download started. (Mockup — backend not connected.)`);
     });
 
-    renderRegistrations();
+    renderDomesticEvents();
+    renderInternationalEvents();
+    wireEventTabActions();
+    renderBookings();
 
     document.addEventListener("keydown", (e) => {
       if (e.key !== "Escape") return;

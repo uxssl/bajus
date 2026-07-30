@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" />
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body class="dashboard-page bg-cream text-charcoal min-h-screen flex flex-col font-sans">
@@ -99,11 +100,17 @@
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
               <label class="block text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-2">Start Date *</label>
-              <input type="date" id="start-date" onchange="calculateDays()" class="w-full form-input bg-white border border-zinc-200 px-4 py-3 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all rounded-sm" required />
+              <div class="relative">
+                <input type="text" id="start-date" placeholder="Select date" autocomplete="off" data-fp-change="calculateDays" class="bajus-datepicker w-full form-input bg-white border border-zinc-200 px-4 py-3 pr-10 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all rounded-sm" required />
+                <i class="ph ph-calendar-blank absolute right-3 top-1/2 -translate-y-1/2 text-gold text-sm pointer-events-none"></i>
+              </div>
             </div>
             <div>
               <label class="block text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-2">End Date *</label>
-              <input type="date" id="end-date" onchange="calculateDays()" class="w-full form-input bg-white border border-zinc-200 px-4 py-3 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all rounded-sm" required />
+              <div class="relative">
+                <input type="text" id="end-date" placeholder="Select date" autocomplete="off" data-fp-change="calculateDays" class="bajus-datepicker w-full form-input bg-white border border-zinc-200 px-4 py-3 pr-10 text-sm focus:outline-none focus:border-gold focus:ring-3 focus:ring-gold/10 transition-all rounded-sm" required />
+                <i class="ph ph-calendar-blank absolute right-3 top-1/2 -translate-y-1/2 text-gold text-sm pointer-events-none"></i>
+              </div>
             </div>
           </div>
 
@@ -113,9 +120,25 @@
           </div>
 
           <div>
-            <label class="block text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-2">Attachment (Optional)</label>
-            <input type="file" id="leave-attachment" class="w-full text-xs text-zinc-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-sm file:border-0 file:text-xs file:font-semibold file:bg-zinc-100 file:text-charcoal hover:file:bg-gold hover:file:text-zinc-950 transition-all" />
-            <span class="text-[10px] text-zinc-400 mt-1.5 block">Supported files: PDF, JPG, PNG (Max size: 5MB). Medical certificate required for sick leave > 2 days.</span>
+            <span class="block text-xs uppercase tracking-wider font-semibold text-zinc-500 mb-2">Attachment (Optional)</span>
+            <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col max-w-xs" data-label="Leave Attachment">
+              <input id="leave-attachment" class="hidden bajus-file-input" type="file" accept="image/*" />
+              <label for="leave-attachment" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
+                <span class="bajus-upload-icon text-gold text-2xl"><i class="ph ph-paperclip"></i></span>
+                <span class="bajus-upload-text text-[10px] font-bold uppercase tracking-wider text-gold">Upload Attachment</span>
+                <span class="bajus-upload-help text-[10px] text-zinc-400">JPG/PNG</span>
+              </label>
+              <div class="bajus-upload-filled hidden flex-1 flex flex-col">
+                <div class="flex-1 bg-zinc-100 overflow-hidden min-h-[5.5rem] grid place-items-center">
+                  <img class="bajus-upload-preview w-full h-full max-h-28 object-cover" alt="Leave attachment preview" />
+                </div>
+                <div class="flex border-t border-zinc-100 bg-white">
+                  <button type="button" class="bajus-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100">Preview</button>
+                  <label for="leave-attachment" class="bajus-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer">Change</label>
+                </div>
+              </div>
+            </div>
+            <span class="text-[10px] text-zinc-400 mt-1.5 block">Medical certificate required for sick leave &gt; 2 days.</span>
           </div>
 
           <div class="pt-2 flex gap-4">
@@ -134,6 +157,9 @@
   <div id="bajus-footer"></div>
   <script src="./js/include.js"></script>
   <script src="./js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+  <script src="./js/bajus-datepicker.js"></script>
+  <script src="./js/bajus-upload.js"></script>
   <script>
     const STORAGE_KEY = 'bajus_leave_requests';
 
@@ -145,8 +171,8 @@
     ];
 
     function calculateDays() {
-      const startInput = document.getElementById('start-date').value;
-      const endInput = document.getElementById('end-date').value;
+      const startInput = bajusGetIsoDate(document.getElementById('start-date'));
+      const endInput = bajusGetIsoDate(document.getElementById('end-date'));
       const indicator = document.getElementById('days-calculated');
 
       if (!startInput || !endInput) {
@@ -154,8 +180,8 @@
         return 0;
       }
 
-      const start = new Date(startInput);
-      const end = new Date(endInput);
+      const start = new Date(startInput + 'T00:00:00');
+      const end = new Date(endInput + 'T00:00:00');
 
       if (end < start) {
         indicator.innerHTML = '<span class="text-red-600 font-semibold">End date cannot be before start date!</span>';
@@ -171,8 +197,8 @@
     function submitLeave(e) {
       e.preventDefault();
       const type = document.getElementById('leave-type').value;
-      const start = document.getElementById('start-date').value;
-      const end = document.getElementById('end-date').value;
+      const start = bajusGetIsoDate(document.getElementById('start-date'));
+      const end = bajusGetIsoDate(document.getElementById('end-date'));
       const reason = document.getElementById('leave-reason').value;
 
       const days = calculateDays();
@@ -191,13 +217,15 @@
         status: 'Pending'
       };
 
-      // Prepend so it shows first in requests list
       leaves.unshift(newLeave);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(leaves));
-
-      // Redirect immediately
       window.location.href = 'dashboard-leave-management.html?applied=true';
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      bajusInitDatepickers();
+      bajusInitUploads();
+    });
   </script>
 </body>
 </html>

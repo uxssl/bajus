@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" />
     <link rel="stylesheet" href="./css/styles.css" />
     <link
       rel="stylesheet"
@@ -550,11 +551,17 @@
           <div class="grid md:grid-cols-4 gap-6 mb-8 items-end reveal">
             <div>
               <label class="gp-label">From Date</label>
-              <input type="date" class="gp-input" value="2026-05-01" />
+              <div class="relative">
+                <input type="text" class="gp-input bajus-datepicker !pr-10" placeholder="Select date" autocomplete="off" data-fp-default="2026-05-01" data-fp-year-start="2016" data-fp-year-end="2026" />
+                <i class="ph ph-calendar-blank absolute right-3 top-1/2 -translate-y-1/2 text-gold text-sm pointer-events-none"></i>
+              </div>
             </div>
             <div>
               <label class="gp-label">To Date</label>
-              <input type="date" class="gp-input" value="2026-06-03" />
+              <div class="relative">
+                <input type="text" class="gp-input bajus-datepicker !pr-10" placeholder="Select date" autocomplete="off" data-fp-default="2026-06-03" data-fp-year-start="2016" data-fp-year-end="2026" />
+                <i class="ph ph-calendar-blank absolute right-3 top-1/2 -translate-y-1/2 text-gold text-sm pointer-events-none"></i>
+              </div>
             </div>
             <div>
               <label class="gp-label">Category</label>
@@ -608,6 +615,13 @@
 
     <div id="bajus-footer"></div>
     <script src="./js/include.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+    <script src="./js/bajus-datepicker.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        bajusInitDatepickers();
+      });
+    </script>
     <script src="./js/main.js"></script>
     <script>
       // Tabs

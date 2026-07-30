@@ -14,6 +14,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Hind+Siliguri:wght@400;500;600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
@@ -64,8 +65,12 @@
                   placeholder="10 or 17 digit NID" required /></div>
               <div><label class="form-label">TIN</label><input name="owner_tin" class="form-input" type="text"
                   placeholder="Tax Identification Number" /></div>
-              <div><label class="form-label">Date of Birth *</label><input name="owner_dob" class="form-input"
-                  type="date" required />
+              <div>
+                <label class="form-label">Date of Birth *</label>
+                <div class="relative">
+                  <input name="owner_dob" class="form-input bajus-datepicker !pr-10" type="text" placeholder="Select date" autocomplete="off" data-fp-year-start="1926" data-fp-year-end="2016" required />
+                  <i class="bi bi-calendar3 absolute right-3 top-1/2 -translate-y-1/2 text-gold text-sm pointer-events-none"></i>
+                </div>
               </div>
             </div>
 
@@ -79,52 +84,65 @@
 
           <div>
             <h3 class="font-serif text-lg text-charcoal font-medium mb-4">Document Uploads</h3>
-            <div class="grid md:grid-cols-3 gap-6">
-              <div>
-                <label class="form-label mb-2 block">Owner Photo <span class="text-red-500">*</span></label>
+            <div class="flex flex-col sm:flex-row gap-6 items-start">
+              <div class="flex-shrink-0">
+                <span class="form-label mb-2 block">Owner Photo <span class="text-red-500">*</span></span>
                 <label
-                  class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
-                  <input name="owner_photo" class="hidden file-upload-input" type="file" accept="image/*" required />
-                  <div
-                    class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
-                    <i class="bi bi-camera text-3xl"></i>
-                  </div>
+                  class="bajus-photo-tile relative flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm cursor-pointer w-16 h-16 text-center transition-all group overflow-hidden">
+                  <input name="owner_photo" class="hidden bajus-file-input" type="file" accept="image/*" required />
+                  <img class="bajus-photo-preview absolute inset-0 w-full h-full object-cover hidden" alt="" />
+                  <span class="bajus-photo-placeholder relative z-[1] flex flex-col items-center justify-center text-gold">
+                    <i class="bi bi-camera text-lg"></i>
+                    <span class="text-[8px] font-bold uppercase tracking-wider mt-0.5">Upload</span>
+                  </span>
                   <span
-                    class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
-                    Photo</span>
-                  <span class="upload-help-text text-[10px] text-zinc-400">JPG/PNG, max 2MB</span>
+                    class="bajus-photo-replace absolute inset-0 z-[1] flex flex-col items-center justify-center bg-zinc-950/50 text-cream opacity-0 group-hover:opacity-100 transition-opacity hidden">
+                    <i class="bi bi-camera text-sm"></i>
+                    <span class="text-[8px] font-bold uppercase tracking-wider mt-0.5">Replace</span>
+                  </span>
                 </label>
               </div>
-              <div>
-                <label class="form-label mb-2 block">NID Copy <span class="text-red-500">*</span></label>
-                <label
-                  class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
-                  <input name="owner_nid_file" class="hidden file-upload-input" type="file" accept="image/*,.pdf"
-                    required />
-                  <div
-                    class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
-                    <i class="bi bi-person-vcard text-3xl"></i>
+              <div class="flex-1 grid md:grid-cols-2 gap-6 w-full">
+                <div>
+                  <span class="form-label mb-2 block">NID Copy <span class="text-red-500">*</span></span>
+                  <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="NID Copy">
+                    <input id="owner-nid-file" name="owner_nid_file" class="hidden bajus-file-input" type="file" accept="image/*" required />
+                    <label for="owner-nid-file" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
+                      <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-person-vcard"></i></span>
+                      <span class="bajus-upload-text text-[10px] font-bold uppercase tracking-wider text-gold">Upload NID</span>
+                      <span class="bajus-upload-help text-[10px] text-zinc-400">JPG/PNG</span>
+                    </label>
+                    <div class="bajus-upload-filled hidden flex-1 flex flex-col">
+                      <div class="flex-1 bg-zinc-100 overflow-hidden min-h-[5.5rem] max-h-28 grid place-items-center p-2">
+                        <img class="bajus-upload-preview max-w-full max-h-28 w-auto h-auto object-contain" alt="NID copy preview" />
+                      </div>
+                      <div class="flex border-t border-zinc-100 bg-white">
+                        <button type="button" class="bajus-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100">Preview</button>
+                        <label for="owner-nid-file" class="bajus-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer">Change</label>
+                      </div>
+                    </div>
                   </div>
-                  <span
-                    class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
-                    NID</span>
-                  <span class="upload-help-text text-[10px] text-zinc-400">PDF/JPG/PNG, max 5MB</span>
-                </label>
-              </div>
-              <div>
-                <label class="form-label mb-2 block">TIN Certificate</label>
-                <label
-                  class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
-                  <input name="owner_tin_file" class="hidden file-upload-input" type="file" accept="image/*,.pdf" />
-                  <div
-                    class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
-                    <i class="bi bi-file-earmark-text text-3xl"></i>
+                </div>
+                <div>
+                  <span class="form-label mb-2 block">TIN Certificate</span>
+                  <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="TIN Certificate">
+                    <input id="owner-tin-file" name="owner_tin_file" class="hidden bajus-file-input" type="file" accept="image/*" />
+                    <label for="owner-tin-file" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
+                      <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-file-earmark-text"></i></span>
+                      <span class="bajus-upload-text text-[10px] font-bold uppercase tracking-wider text-gold">Upload TIN</span>
+                      <span class="bajus-upload-help text-[10px] text-zinc-400">JPG/PNG</span>
+                    </label>
+                    <div class="bajus-upload-filled hidden flex-1 flex flex-col">
+                      <div class="flex-1 bg-zinc-100 overflow-hidden min-h-[5.5rem] max-h-28 grid place-items-center p-2">
+                        <img class="bajus-upload-preview max-w-full max-h-28 w-auto h-auto object-contain" alt="TIN certificate preview" />
+                      </div>
+                      <div class="flex border-t border-zinc-100 bg-white">
+                        <button type="button" class="bajus-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100">Preview</button>
+                        <label for="owner-tin-file" class="bajus-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer">Change</label>
+                      </div>
+                    </div>
                   </div>
-                  <span
-                    class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
-                    TIN</span>
-                  <span class="upload-help-text text-[10px] text-zinc-400">PDF/JPG/PNG, max 5MB</span>
-                </label>
+                </div>
               </div>
             </div>
           </div>
@@ -182,8 +200,13 @@
                     <div><label class="form-label">Trade License No. *</label><input
                         class="form-input shop-trade-license-input" type="text" placeholder="Trade license number"
                         required /></div>
-                    <div><label class="form-label">Trade License Expiry Date *</label><input
-                        class="form-input shop-trade-license-expiry-input" type="date" required /></div>
+                    <div>
+                      <label class="form-label">Trade License Expiry Date *</label>
+                      <div class="relative">
+                        <input class="form-input shop-trade-license-expiry-input bajus-datepicker !pr-10" type="text" placeholder="Select date" autocomplete="off" required />
+                        <i class="bi bi-calendar3 absolute right-3 top-1/2 -translate-y-1/2 text-gold text-sm pointer-events-none"></i>
+                      </div>
+                    </div>
                     <div><label class="form-label">VAT / BIN</label><input class="form-input shop-vat-input" type="text"
                         placeholder="VAT registration number" /></div>
                   </div>
@@ -195,83 +218,104 @@
                 <h4 class="font-serif text-lg text-charcoal font-medium mb-4">Shop Document Uploads</h4>
                 <div class="grid md:grid-cols-3 gap-6">
                   <div>
-                    <label class="form-label mb-2 block">Trade License <span class="text-red-500">*</span></label>
-                    <label
-                      class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
-                      <input class="hidden file-upload-input shop-trade-license-file-input" type="file"
-                        accept="image/*,.pdf" required />
-                      <div
-                        class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
-                        <i class="bi bi-file-earmark-check text-3xl"></i>
+                    <span class="form-label mb-2 block">Trade License <span class="text-red-500">*</span></span>
+                    <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="Trade License">
+                      <input id="shop-trade-license-1" class="hidden bajus-file-input shop-trade-license-file-input" type="file" accept="image/*" required />
+                      <label for="shop-trade-license-1" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
+                        <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-file-earmark-check"></i></span>
+                        <span class="bajus-upload-text text-[10px] font-bold uppercase tracking-wider text-gold">Upload Trade License</span>
+                        <span class="bajus-upload-help text-[10px] text-zinc-400">JPG/PNG</span>
+                      </label>
+                      <div class="bajus-upload-filled hidden flex-1 flex flex-col">
+                        <div class="flex-1 bg-zinc-100 overflow-hidden min-h-[5.5rem] max-h-28 grid place-items-center p-2">
+                          <img class="bajus-upload-preview max-w-full max-h-28 w-auto h-auto object-contain" alt="Trade license preview" />
+                        </div>
+                        <div class="flex border-t border-zinc-100 bg-white">
+                          <button type="button" class="bajus-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100">Preview</button>
+                          <label for="shop-trade-license-1" class="bajus-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer">Change</label>
+                        </div>
                       </div>
-                      <span
-                        class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
-                        Trade License</span>
-                      <span class="upload-help-text text-[10px] text-zinc-400">PDF/JPG/PNG, max 5MB</span>
-                    </label>
+                    </div>
                   </div>
                   <div>
-                    <label class="form-label mb-2 block">Dealing License</label>
-                    <label
-                      class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
-                      <input class="hidden file-upload-input shop-dealing-license-file-input" type="file"
-                        accept="image/*,.pdf" />
-                      <div
-                        class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
-                        <i class="bi bi-file-earmark-text text-3xl"></i>
+                    <span class="form-label mb-2 block">Dealing License</span>
+                    <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="Dealing License">
+                      <input id="shop-dealing-license-1" class="hidden bajus-file-input shop-dealing-license-file-input" type="file" accept="image/*" />
+                      <label for="shop-dealing-license-1" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
+                        <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-file-earmark-text"></i></span>
+                        <span class="bajus-upload-text text-[10px] font-bold uppercase tracking-wider text-gold">Upload Dealing License</span>
+                        <span class="bajus-upload-help text-[10px] text-zinc-400">JPG/PNG</span>
+                      </label>
+                      <div class="bajus-upload-filled hidden flex-1 flex flex-col">
+                        <div class="flex-1 bg-zinc-100 overflow-hidden min-h-[5.5rem] max-h-28 grid place-items-center p-2">
+                          <img class="bajus-upload-preview max-w-full max-h-28 w-auto h-auto object-contain" alt="Dealing license preview" />
+                        </div>
+                        <div class="flex border-t border-zinc-100 bg-white">
+                          <button type="button" class="bajus-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100">Preview</button>
+                          <label for="shop-dealing-license-1" class="bajus-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer">Change</label>
+                        </div>
                       </div>
-                      <span
-                        class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
-                        Dealing License</span>
-                      <span class="upload-help-text text-[10px] text-zinc-400">PDF/JPG/PNG, max 5MB</span>
-                    </label>
+                    </div>
                   </div>
                   <div>
-                    <label class="form-label mb-2 block">VAT Registration</label>
-                    <label
-                      class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
-                      <input class="hidden file-upload-input shop-vat-file-input" type="file" accept="image/*,.pdf" />
-                      <div
-                        class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
-                        <i class="bi bi-receipt text-3xl"></i>
+                    <span class="form-label mb-2 block">VAT Registration</span>
+                    <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="VAT Registration">
+                      <input id="shop-vat-file-1" class="hidden bajus-file-input shop-vat-file-input" type="file" accept="image/*" />
+                      <label for="shop-vat-file-1" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
+                        <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-receipt"></i></span>
+                        <span class="bajus-upload-text text-[10px] font-bold uppercase tracking-wider text-gold">Upload VAT Reg</span>
+                        <span class="bajus-upload-help text-[10px] text-zinc-400">JPG/PNG</span>
+                      </label>
+                      <div class="bajus-upload-filled hidden flex-1 flex flex-col">
+                        <div class="flex-1 bg-zinc-100 overflow-hidden min-h-[5.5rem] max-h-28 grid place-items-center p-2">
+                          <img class="bajus-upload-preview max-w-full max-h-28 w-auto h-auto object-contain" alt="VAT registration preview" />
+                        </div>
+                        <div class="flex border-t border-zinc-100 bg-white">
+                          <button type="button" class="bajus-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100">Preview</button>
+                          <label for="shop-vat-file-1" class="bajus-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer">Change</label>
+                        </div>
                       </div>
-                      <span
-                        class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
-                        VAT Reg</span>
-                      <span class="upload-help-text text-[10px] text-zinc-400">PDF/JPG/PNG, max 5MB</span>
-                    </label>
+                    </div>
                   </div>
                   <div>
-                    <label class="form-label mb-2 block">Visiting Card</label>
-                    <label
-                      class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
-                      <input class="hidden file-upload-input shop-visiting-card-file-input" type="file"
-                        accept="image/*,.pdf" />
-                      <div
-                        class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
-                        <i class="bi bi-person-badge text-3xl"></i>
+                    <span class="form-label mb-2 block">Visiting Card</span>
+                    <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="Visiting Card">
+                      <input id="shop-visiting-card-1" class="hidden bajus-file-input shop-visiting-card-file-input" type="file" accept="image/*" />
+                      <label for="shop-visiting-card-1" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
+                        <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-person-badge"></i></span>
+                        <span class="bajus-upload-text text-[10px] font-bold uppercase tracking-wider text-gold">Upload Visiting Card</span>
+                        <span class="bajus-upload-help text-[10px] text-zinc-400">JPG/PNG</span>
+                      </label>
+                      <div class="bajus-upload-filled hidden flex-1 flex flex-col">
+                        <div class="flex-1 bg-zinc-100 overflow-hidden min-h-[5.5rem] max-h-28 grid place-items-center p-2">
+                          <img class="bajus-upload-preview max-w-full max-h-28 w-auto h-auto object-contain" alt="Visiting card preview" />
+                        </div>
+                        <div class="flex border-t border-zinc-100 bg-white">
+                          <button type="button" class="bajus-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100">Preview</button>
+                          <label for="shop-visiting-card-1" class="bajus-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer">Change</label>
+                        </div>
                       </div>
-                      <span
-                        class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
-                        Visiting Card</span>
-                      <span class="upload-help-text text-[10px] text-zinc-400">PDF/JPG/PNG, max 5MB</span>
-                    </label>
+                    </div>
                   </div>
                   <div>
-                    <label class="form-label mb-2 block">Partnership Agreement</label>
-                    <label
-                      class="flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2">
-                      <input class="hidden file-upload-input shop-partnership-file-input" type="file"
-                        accept="image/*,.pdf" />
-                      <div
-                        class="upload-icon-wrapper text-gold mb-3 transition-transform duration-300 group-hover:-translate-y-1">
-                        <i class="bi bi-file-earmark-post text-3xl"></i>
+                    <span class="form-label mb-2 block">Partnership Agreement</span>
+                    <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="Partnership Agreement">
+                      <input id="shop-partnership-1" class="hidden bajus-file-input shop-partnership-file-input" type="file" accept="image/*" />
+                      <label for="shop-partnership-1" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
+                        <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-file-earmark-post"></i></span>
+                        <span class="bajus-upload-text text-[10px] font-bold uppercase tracking-wider text-gold">Upload Agreement</span>
+                        <span class="bajus-upload-help text-[10px] text-zinc-400">JPG/PNG</span>
+                      </label>
+                      <div class="bajus-upload-filled hidden flex-1 flex flex-col">
+                        <div class="flex-1 bg-zinc-100 overflow-hidden min-h-[5.5rem] max-h-28 grid place-items-center p-2">
+                          <img class="bajus-upload-preview max-w-full max-h-28 w-auto h-auto object-contain" alt="Partnership agreement preview" />
+                        </div>
+                        <div class="flex border-t border-zinc-100 bg-white">
+                          <button type="button" class="bajus-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100">Preview</button>
+                          <label for="shop-partnership-1" class="bajus-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer">Change</label>
+                        </div>
                       </div>
-                      <span
-                        class="upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block">Upload
-                        Agreement</span>
-                      <span class="upload-help-text text-[10px] text-zinc-400">PDF/JPG/PNG, max 5MB</span>
-                    </label>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -502,43 +546,11 @@
   <div id="bajus-footer"></div>
   <script src="./js/include.js"></script>
   <script src="./js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+  <script src="./js/bajus-datepicker.js"></script>
+  <script src="./js/bajus-upload.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // Setup file upload inputs
-      function setupUploadInput(input) {
-        const label = input.closest('label');
-        const textSpan = label.querySelector('.upload-btn-text');
-        const iconWrapper = label.querySelector('.upload-icon-wrapper');
-
-        // Save original states if they aren't already saved
-        if (textSpan && !textSpan.hasAttribute('data-orig-text')) {
-          textSpan.setAttribute('data-orig-text', textSpan.textContent);
-        }
-        if (iconWrapper && !iconWrapper.hasAttribute('data-orig-icon')) {
-          iconWrapper.setAttribute('data-orig-icon', iconWrapper.innerHTML);
-        }
-
-        input.addEventListener('change', function (e) {
-          const file = e.target.files[0];
-          const helpSpan = label.querySelector('.upload-help-text');
-          if (file) {
-            textSpan.textContent = "File Selected";
-            textSpan.className = "upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block";
-            helpSpan.textContent = file.name;
-            helpSpan.className = "upload-help-text text-[10px] text-zinc-600 font-medium truncate max-w-full px-2";
-            label.classList.add('border-gold/50', 'bg-gold/[0.02]');
-            label.classList.remove('border-zinc-200');
-
-            if (file.type.startsWith('image/')) {
-              const imgUrl = URL.createObjectURL(file);
-              iconWrapper.innerHTML = `<img src="${imgUrl}" class="size-14 object-cover rounded-sm border border-zinc-200 shadow-sm" alt="Preview" />`;
-            } else {
-              iconWrapper.innerHTML = `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-gold"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`;
-            }
-          }
-        });
-      }
-
       // Setup store toggle collapse/expand
       function setupStoreToggle(block) {
         const header = block.querySelector(".store-header");
@@ -570,10 +582,9 @@
         }
       }
 
-      // Initialize all upload fields
-      document.querySelectorAll('.file-upload-input').forEach(setupUploadInput);
-
-      // Initialize toggles for existing blocks
+      // Initialize datepickers, uploads, and store toggles
+      bajusInitDatepickers();
+      bajusInitUploads();
       document.querySelectorAll('.store-block').forEach(setupStoreToggle);
 
       // Handle Adding Multiple Stores
@@ -600,45 +611,27 @@
           if (chevron) chevron.classList.remove("-rotate-180");
           if (mandate) mandate.textContent = "Shop Registration Details";
 
-          // Clear text fields, date fields, checkboxes and select options
-          clone.querySelectorAll("input").forEach(input => {
+          // Clear text / select fields
+          clone.querySelectorAll("input").forEach((input) => {
             if (input.type === "file") {
               input.value = "";
-              // Reset file upload container state
-              const label = input.closest('label');
-              const textSpan = label.querySelector('.upload-btn-text');
-              const helpSpan = label.querySelector('.upload-help-text');
-              const iconWrapper = label.querySelector('.upload-icon-wrapper');
-
-              if (textSpan) {
-                textSpan.textContent = textSpan.getAttribute("data-orig-text") || textSpan.textContent;
-                textSpan.className = "upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block";
-              }
-              if (helpSpan) {
-                helpSpan.textContent = "PDF/JPG/PNG, max 5MB";
-                helpSpan.className = "upload-help-text text-[10px] text-zinc-400";
-              }
-              if (iconWrapper) {
-                const origIcon = iconWrapper.getAttribute("data-orig-icon");
-                if (origIcon) iconWrapper.innerHTML = origIcon;
-              }
-
-              label.className = "flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2";
-            } else {
+            } else if (input.type !== "hidden") {
               input.value = "";
             }
           });
-
-          clone.querySelectorAll("select").forEach(select => {
+          clone.querySelectorAll("select").forEach((select) => {
             select.selectedIndex = 0;
           });
+
+          bajusPrepareClonedDateInputs(clone);
+          bajusResetUploadTiles(clone);
+          bajusAssignUniqueUploadIds(clone, "shop-doc-" + index);
 
           // Clean existing headers in clone to add the correct Remove Button
           const header = clone.querySelector(".store-header");
           const existingRemove = header.querySelector("button");
-          if (existingRemove) existingRemove.remove(); // Remove cloned remove button
+          if (existingRemove) existingRemove.remove();
 
-          // Add Remove Button to the new store block
           const removeBtn = document.createElement("button");
           removeBtn.type = "button";
           removeBtn.className = "text-xs font-semibold uppercase tracking-wider text-red-500 hover:text-red-700 transition-colors flex items-center gap-1.5 focus:outline-none";
@@ -647,9 +640,8 @@
             Remove
           `;
           removeBtn.addEventListener("click", function (e) {
-            e.stopPropagation(); // Avoid triggering collapse on header click
+            e.stopPropagation();
             clone.remove();
-            // Re-index remaining stores
             container.querySelectorAll(".store-block").forEach((block, idx) => {
               block.setAttribute("data-store-index", idx + 1);
               const title = block.querySelector(".store-title");
@@ -659,13 +651,9 @@
           const actionsContainer = header.querySelector('.store-actions') || header;
           actionsContainer.insertBefore(removeBtn, actionsContainer.firstElementChild);
 
-          // Re-bind file upload input listeners
-          clone.querySelectorAll(".file-upload-input").forEach(setupUploadInput);
-
-          // Setup collapse/expand toggle on the clone
           setupStoreToggle(clone);
-
           container.appendChild(clone);
+          bajusInitDatepickers(clone);
         });
       }
 
@@ -949,32 +937,10 @@
           setTimeout(() => {
             alert("Application submitted successfully!\nYour files and information have been registered. (Mockup — backend not connected.)");
             form.reset();
-
-            // Reset all file input indicators to their default states
-            document.querySelectorAll('.file-upload-input').forEach(input => {
-              const label = input.closest('label');
-              if (!label) return;
-              const textSpan = label.querySelector('.upload-btn-text');
-              const helpSpan = label.querySelector('.upload-help-text');
-              const iconWrapper = label.querySelector('.upload-icon-wrapper');
-
-              if (textSpan) {
-                textSpan.textContent = textSpan.getAttribute("data-orig-text") || textSpan.textContent;
-                textSpan.className = "upload-btn-text text-[11px] font-bold text-gold uppercase tracking-widest mb-1 block";
-              }
-              if (helpSpan) {
-                if (label.innerHTML.includes("Photo")) {
-                  helpSpan.textContent = "JPG/PNG, max 2MB";
-                } else {
-                  helpSpan.textContent = "PDF/JPG/PNG, max 5MB";
-                }
-                helpSpan.className = "upload-help-text text-[10px] text-zinc-400";
-              }
-              if (iconWrapper) {
-                const origIcon = iconWrapper.getAttribute("data-orig-icon");
-                if (origIcon) iconWrapper.innerHTML = origIcon;
-              }
-              label.className = "flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold hover:bg-gold/[0.02] bg-zinc-50/10 rounded-sm cursor-pointer p-6 text-center transition-all duration-200 h-40 group mt-2";
+            bajusResetUploadTiles(form);
+            form.querySelectorAll(".bajus-datepicker").forEach((input) => {
+              if (input._flatpickr) input._flatpickr.clear();
+              else input.value = "";
             });
 
             // Reset dynamic stores back to just 1 store
@@ -996,6 +962,10 @@
               const chevron = firstBlock.querySelector(".store-chevron");
               if (content) content.classList.remove("hidden");
               if (chevron) chevron.classList.remove("-rotate-180");
+
+              bajusResetUploadTiles(firstBlock);
+              bajusPrepareClonedDateInputs(firstBlock);
+              bajusInitDatepickers(firstBlock);
             }
           }, 350);
         });

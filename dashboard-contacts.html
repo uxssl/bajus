@@ -20,6 +20,14 @@
       rel="stylesheet"
       href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/plugins/monthSelect/style.css"
+    />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
 
@@ -273,66 +281,71 @@
           class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-zinc-150"
         >
           <div>
-            <h1 class="font-serif text-2xl md:text-3xl text-charcoal">My Registered <span class="text-gold italic font-medium">Contacts</span></h1>
+            <h1 class="font-serif text-2xl md:text-3xl text-charcoal">
+              My Registered
+              <span class="text-gold italic font-medium">Contacts</span>
+            </h1>
             <p class="text-xs text-zinc-500 mt-1">
-              Review contact persons linked to your member account, passport records, and delegation details.
+              Review contact persons linked to your member account, passport
+              records, and delegation details.
             </p>
           </div>
-          <a
-            href="dashboard-add-contact.html"
+          <button
+            type="button"
+            id="contact-add-open"
             class="px-4 py-2.5 bg-charcoal hover:bg-gold text-cream hover:text-zinc-950 text-xs font-bold uppercase tracking-widest transition-all inline-flex items-center gap-1.5"
           >
             <i class="ph ph-plus-bold text-sm"></i> Add Contact
-          </a>
+          </button>
         </div>
 
         <section class="dashboard-list-panel">
-        <!-- SEARCH + SUMMARY -->
-        <div
-          class="dashboard-list-search flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4"
-        >
-          <div class="relative w-full sm:max-w-xs">
-            <input
-              id="contact-search"
-              type="search"
-              placeholder="Search by name, designation or email"
-              class="form-input !pl-10 text-sm"
-              aria-label="Search contacts"
-            />
-            <span
-              class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-zinc-400"
-            >
-              <i class="ph ph-magnifying-glass text-base"></i>
-            </span>
+          <!-- SEARCH + SUMMARY -->
+          <div
+            class="dashboard-list-search flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4"
+          >
+            <div class="relative w-full sm:max-w-xs">
+              <input
+                id="contact-search"
+                type="search"
+                placeholder="Search by name, designation or email"
+                class="form-input !pl-10 text-sm"
+                aria-label="Search contacts"
+              />
+              <span
+                class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-zinc-400"
+              >
+                <i class="ph ph-magnifying-glass text-base"></i>
+              </span>
+            </div>
+            <p
+              id="contact-count"
+              class="text-[11px] uppercase tracking-widest font-bold text-zinc-400"
+            ></p>
           </div>
-          <p
-            id="contact-count"
-            class="text-[11px] uppercase tracking-widest font-bold text-zinc-400"
-          ></p>
-        </div>
 
-        <!-- CONTACT LIST -->
-        <div
-          id="contact-list"
-          class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 scroll-mt-24"
-        ></div>
+          <!-- CONTACT LIST -->
+          <div
+            id="contact-list"
+            class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 scroll-mt-24"
+          ></div>
 
-        <div
-          id="contact-empty"
-          class="hidden border border-dashed border-zinc-300 rounded-sm p-10 text-center bg-white"
-        >
-          <i class="ph ph-address-book text-4xl text-zinc-300"></i>
-          <p class="text-sm text-zinc-500 mt-3">
-            No contacts match your search.
-          </p>
-        </div>
+          <div
+            id="contact-empty"
+            class="hidden border border-dashed border-zinc-300 rounded-sm p-10 text-center bg-white"
+          >
+            <i class="ph ph-address-book text-4xl text-zinc-300"></i>
+            <p class="text-sm text-zinc-500 mt-3">
+              No contacts match your search.
+            </p>
+          </div>
 
-        <!-- PAGINATION -->
-        <nav
-          id="contact-pagination"
-          class="pagination pt-2"
-          aria-label="Contacts pagination"
-        ></nav>
+          <!-- PAGINATION -->
+          <nav
+            id="contact-pagination"
+            class="pagination pt-2"
+            aria-label="Contacts pagination"
+          ></nav>
         </section>
       </main>
     </div>
@@ -355,22 +368,37 @@
         <div
           class="px-6 py-5 border-b border-zinc-200 flex items-start justify-between gap-4 shrink-0 bg-zinc-50"
         >
-          <div class="flex items-start gap-4 min-w-0">
+          <!-- View header: identity summary -->
+          <div
+            id="contact-detail-header-view"
+            class="flex items-start gap-4 min-w-0"
+          >
             <div
               id="contact-detail-avatar"
-              class="size-14 rounded-sm overflow-hidden border border-zinc-200 bg-gold/10 text-gold flex items-center justify-center font-serif font-bold flex-shrink-0"
+              class="size-20 rounded-full overflow-hidden border border-zinc-200 bg-gold/10 text-gold flex items-center justify-center font-serif font-bold flex-shrink-0"
             ></div>
             <div class="min-w-0">
               <h2
                 id="contact-detail-name"
-                class="font-serif text-xl text-charcoal"
+                class="font-serif text-xl text-charcoal leading-tight"
               ></h2>
               <p
-                id="contact-detail-designation"
-                class="text-xs text-zinc-500 mt-1"
-              ></p>
+                class="text-xs text-zinc-500 mt-1 flex items-center gap-1.5 min-w-0"
+              >
+                <i class="ph ph-briefcase text-gold flex-shrink-0"></i>
+                <span id="contact-detail-designation" class="truncate"></span>
+              </p>
               <div id="contact-detail-role" class="mt-2"></div>
             </div>
+          </div>
+          <!-- Edit header: title only (fields live in the form below) -->
+          <div id="contact-detail-header-edit" class="hidden min-w-0">
+            <h2 class="font-serif text-xl text-charcoal leading-tight">
+              Edit Contact
+            </h2>
+            <p class="text-xs text-zinc-500 mt-1">
+              Update photo, role, details, and documents.
+            </p>
           </div>
           <button
             type="button"
@@ -382,26 +410,916 @@
           </button>
         </div>
 
+        <!-- VIEW PANEL -->
         <div
           id="contact-detail-body"
           class="flex-1 overflow-y-auto p-6 bg-cream space-y-6"
         ></div>
 
+        <!-- EDIT PANEL (hidden by default) -->
         <div
-          class="px-6 py-4 border-t border-zinc-200 flex flex-wrap gap-3 shrink-0 bg-white"
+          id="contact-edit-panel"
+          class="flex-1 overflow-y-auto p-6 bg-cream hidden"
         >
-          <a
-            id="contact-detail-edit"
-            href="#"
-            class="px-4 py-2 border border-zinc-200 text-xs font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors"
-            >Edit</a
-          >
+          <form id="contact-edit-form" class="space-y-5">
+            <!-- PHOTO + ROLE -->
+            <div
+              class="bg-white border border-zinc-200 p-5 rounded-sm space-y-4"
+            >
+              <h3
+                class="text-[10px] font-bold uppercase tracking-widest text-gold border-b border-zinc-100 pb-2"
+              >
+                Photo &amp; Role
+              </h3>
+              <div class="flex flex-col sm:flex-row gap-5 items-start">
+                <div class="flex-shrink-0">
+                  <label class="block text-xs text-zinc-400 mb-2"
+                    >Passport Photo</label
+                  >
+                  <label
+                    class="edit-upload-tile relative flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm cursor-pointer w-16 h-16 text-center transition-all group overflow-hidden"
+                  >
+                    <input
+                      id="edit-photo"
+                      class="hidden edit-file-input"
+                      type="file"
+                      accept="image/*"
+                      data-field="passport_photo_url"
+                    />
+                    <img
+                      id="edit-photo-preview"
+                      src=""
+                      alt="Passport photo"
+                      class="absolute inset-0 w-full h-full object-cover hidden"
+                    />
+                    <span
+                      id="edit-photo-placeholder"
+                      class="relative z-[1] flex flex-col items-center justify-center text-gold"
+                    >
+                      <i class="ph ph-camera text-lg"></i>
+                      <span
+                        class="text-[8px] font-bold uppercase tracking-wider mt-0.5"
+                        >Upload</span
+                      >
+                    </span>
+                    <span
+                      class="absolute inset-0 z-[1] flex flex-col items-center justify-center bg-zinc-950/50 text-cream opacity-0 group-hover:opacity-100 transition-opacity hidden"
+                      id="edit-photo-replace"
+                    >
+                      <i class="ph ph-camera text-sm"></i>
+                      <span
+                        class="text-[8px] font-bold uppercase tracking-wider mt-0.5"
+                        >Replace</span
+                      >
+                    </span>
+                  </label>
+                </div>
+                <div class="flex-1 w-full space-y-4">
+                  <div>
+                    <label class="block text-xs text-zinc-400 mb-2"
+                      >Contact Role <span class="text-red-500">*</span></label
+                    >
+                    <div class="flex flex-wrap gap-3">
+                      <label class="choice-tile">
+                        <input
+                          type="radio"
+                          name="edit-role"
+                          id="edit-role-staff"
+                          value="false"
+                          class="size-4 accent-[#b8860b]"
+                          required
+                        />
+                        <span class="font-medium text-xs">Staff</span>
+                      </label>
+                      <label class="choice-tile">
+                        <input
+                          type="radio"
+                          name="edit-role"
+                          id="edit-role-owner"
+                          value="true"
+                          class="size-4 accent-[#b8860b]"
+                        />
+                        <span class="font-medium text-xs">Owner</span>
+                      </label>
+                    </div>
+                  </div>
+                  <p class="text-[11px] text-zinc-400 leading-relaxed">
+                    Owner marks the account proprietor; Staff are registered
+                    contact persons for events and delegations.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- PERSONAL INFORMATION -->
+            <div
+              class="bg-white border border-zinc-200 p-5 rounded-sm space-y-4"
+            >
+              <h3
+                class="text-[10px] font-bold uppercase tracking-widest text-gold border-b border-zinc-100 pb-2"
+              >
+                Personal Information
+              </h3>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    class="block text-xs text-zinc-400 mb-1"
+                    for="edit-name"
+                    >Full Name <span class="text-red-500">*</span></label
+                  >
+                  <input
+                    id="edit-name"
+                    type="text"
+                    required
+                    class="w-full border border-zinc-200 rounded-sm px-3 py-2 text-xs text-charcoal focus:outline-none focus:border-gold transition-colors bg-zinc-50"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-xs text-zinc-400 mb-1"
+                    for="edit-designation"
+                    >Designation <span class="text-red-500">*</span></label
+                  >
+                  <input
+                    id="edit-designation"
+                    type="text"
+                    required
+                    class="w-full border border-zinc-200 rounded-sm px-3 py-2 text-xs text-charcoal focus:outline-none focus:border-gold transition-colors bg-zinc-50"
+                  />
+                </div>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    class="block text-xs text-zinc-400 mb-1"
+                    for="edit-phone"
+                    >Mobile <span class="text-red-500">*</span></label
+                  >
+                  <input
+                    id="edit-phone"
+                    type="tel"
+                    required
+                    class="w-full border border-zinc-200 rounded-sm px-3 py-2 text-xs text-charcoal focus:outline-none focus:border-gold transition-colors bg-zinc-50"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-xs text-zinc-400 mb-1"
+                    for="edit-email"
+                    >Email</label
+                  >
+                  <input
+                    id="edit-email"
+                    type="email"
+                    class="w-full border border-zinc-200 rounded-sm px-3 py-2 text-xs text-charcoal focus:outline-none focus:border-gold transition-colors bg-zinc-50"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- PASSPORT & CARD -->
+            <div
+              class="bg-white border border-zinc-200 p-5 rounded-sm space-y-4"
+            >
+              <h3
+                class="text-[10px] font-bold uppercase tracking-widest text-gold border-b border-zinc-100 pb-2"
+              >
+                Passport &amp; Card
+              </h3>
+              <div class="grid sm:grid-cols-3 gap-4">
+                <div>
+                  <label
+                    class="block text-xs text-zinc-400 mb-1"
+                    for="edit-passport-no"
+                    >Passport No.</label
+                  >
+                  <input
+                    id="edit-passport-no"
+                    type="text"
+                    class="w-full border border-zinc-200 rounded-sm px-3 py-2 text-xs text-charcoal focus:outline-none focus:border-gold transition-colors bg-zinc-50"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-xs text-zinc-400 mb-1"
+                    for="edit-passport-expiry"
+                    >Passport Expiry</label
+                  >
+                  <div class="relative">
+                    <input
+                      id="edit-passport-expiry"
+                      type="text"
+                      placeholder="Select date"
+                      autocomplete="off"
+                      class="bajus-datepicker w-full border border-zinc-200 rounded-sm px-3 py-2 pr-9 text-xs text-charcoal focus:outline-none focus:border-gold transition-colors bg-zinc-50"
+                    />
+                    <i
+                      class="ph ph-calendar-blank absolute right-3 top-1/2 -translate-y-1/2 text-gold text-sm pointer-events-none"
+                    ></i>
+                  </div>
+                </div>
+                <div>
+                  <label
+                    class="block text-xs text-zinc-400 mb-1"
+                    for="edit-card-expiry"
+                    >Card Expiry</label
+                  >
+                  <div class="relative">
+                    <input
+                      id="edit-card-expiry"
+                      type="text"
+                      placeholder="MM/YY"
+                      autocomplete="off"
+                      maxlength="5"
+                      class="bajus-monthpicker w-full border border-zinc-200 rounded-sm px-3 py-2 pr-9 text-xs text-charcoal focus:outline-none focus:border-gold transition-colors bg-zinc-50"
+                    />
+                    <i
+                      class="ph ph-calendar-blank absolute right-3 top-1/2 -translate-y-1/2 text-gold text-sm pointer-events-none"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ATTACHED DOCUMENTS -->
+            <div
+              class="bg-white border border-zinc-200 p-5 rounded-sm space-y-4"
+            >
+              <h3
+                class="text-[10px] font-bold uppercase tracking-widest text-gold border-b border-zinc-100 pb-2"
+              >
+                Attached Documents
+              </h3>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <span class="block text-xs text-zinc-400 mb-2"
+                    >Passport Copy</span
+                  >
+                  <div
+                    class="edit-doc-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col"
+                    data-label="Passport Copy"
+                  >
+                    <input
+                      id="edit-passport-copy"
+                      class="hidden edit-file-input"
+                      type="file"
+                      accept="image/*"
+                      data-field="passport_copy_url"
+                    />
+                    <label
+                      for="edit-passport-copy"
+                      class="edit-doc-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer"
+                    >
+                      <span class="text-gold text-2xl"
+                        ><i class="ph ph-identification-card"></i
+                      ></span>
+                      <span
+                        class="text-[10px] font-bold uppercase tracking-wider text-gold"
+                        >Upload Passport</span
+                      >
+                      <span class="text-[10px] text-zinc-400">JPG/PNG</span>
+                    </label>
+                    <div class="edit-doc-filled hidden flex-1 flex flex-col">
+                      <div
+                        class="flex-1 bg-zinc-100 overflow-hidden min-h-[5.5rem] grid place-items-center"
+                      >
+                        <img
+                          id="edit-passport-copy-preview"
+                          class="edit-doc-preview-img w-full h-full max-h-28 object-cover"
+                          alt="Passport copy preview"
+                        />
+                      </div>
+                      <div class="flex border-t border-zinc-100 bg-white">
+                        <button
+                          type="button"
+                          class="edit-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100"
+                        >
+                          Preview
+                        </button>
+                        <label
+                          for="edit-passport-copy"
+                          class="edit-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer"
+                          >Change</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <span class="block text-xs text-zinc-400 mb-2"
+                    >Credit Card</span
+                  >
+                  <div
+                    class="edit-doc-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col"
+                    data-label="Credit Card"
+                  >
+                    <input
+                      id="edit-credit-card"
+                      class="hidden edit-file-input"
+                      type="file"
+                      accept="image/*"
+                      data-field="credit_card_copy_url"
+                    />
+                    <label
+                      for="edit-credit-card"
+                      class="edit-doc-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer"
+                    >
+                      <span class="text-gold text-2xl"
+                        ><i class="ph ph-credit-card"></i
+                      ></span>
+                      <span
+                        class="text-[10px] font-bold uppercase tracking-wider text-gold"
+                        >Upload Card</span
+                      >
+                      <span class="text-[10px] text-zinc-400">JPG/PNG</span>
+                    </label>
+                    <div class="edit-doc-filled hidden flex-1 flex flex-col">
+                      <div
+                        class="flex-1 bg-zinc-100 overflow-hidden min-h-[5.5rem] grid place-items-center"
+                      >
+                        <img
+                          id="edit-credit-card-preview"
+                          class="edit-doc-preview-img w-full h-full max-h-28 object-cover"
+                          alt="Credit card preview"
+                        />
+                      </div>
+                      <div class="flex border-t border-zinc-100 bg-white">
+                        <button
+                          type="button"
+                          class="edit-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100"
+                        >
+                          Preview
+                        </button>
+                        <label
+                          for="edit-credit-card"
+                          class="edit-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer"
+                          >Change</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <span class="block text-xs text-zinc-400 mb-2"
+                    >Visiting Card</span
+                  >
+                  <div
+                    class="edit-doc-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col"
+                    data-label="Visiting Card"
+                  >
+                    <input
+                      id="edit-visiting-card"
+                      class="hidden edit-file-input"
+                      type="file"
+                      accept="image/*"
+                      data-field="visiting_card_url"
+                    />
+                    <label
+                      for="edit-visiting-card"
+                      class="edit-doc-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer"
+                    >
+                      <span class="text-gold text-2xl"
+                        ><i class="ph ph-address-book"></i
+                      ></span>
+                      <span
+                        class="text-[10px] font-bold uppercase tracking-wider text-gold"
+                        >Upload Visiting Card</span
+                      >
+                      <span class="text-[10px] text-zinc-400">JPG/PNG</span>
+                    </label>
+                    <div class="edit-doc-filled hidden flex-1 flex flex-col">
+                      <div
+                        class="flex-1 bg-zinc-100 overflow-hidden min-h-[5.5rem] grid place-items-center"
+                      >
+                        <img
+                          id="edit-visiting-card-preview"
+                          class="edit-doc-preview-img w-full h-full max-h-28 object-cover"
+                          alt="Visiting card preview"
+                        />
+                      </div>
+                      <div class="flex border-t border-zinc-100 bg-white">
+                        <button
+                          type="button"
+                          class="edit-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100"
+                        >
+                          Preview
+                        </button>
+                        <label
+                          for="edit-visiting-card"
+                          class="edit-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer"
+                          >Change</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- FOOTER -->
+        <div
+          class="px-6 py-4 border-t border-zinc-200 flex flex-wrap items-center gap-3 shrink-0 bg-white"
+        >
+          <!-- view mode -->
           <button
             type="button"
-            id="contact-detail-close-btn"
-            class="px-4 py-2 bg-gold hover:bg-[#a3760a] text-cream text-xs font-semibold uppercase tracking-wider transition-colors"
+            id="contact-detail-edit-btn"
+            class="px-4 py-2 border border-zinc-200 rounded-sm text-xs font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors"
           >
-            Close
+            Edit
+          </button>
+          <!-- edit mode (hidden by default) -->
+          <button
+            type="button"
+            id="contact-edit-save"
+            class="hidden px-4 py-2 bg-gold hover:bg-[#a3760a] text-cream rounded-sm text-xs font-semibold uppercase tracking-wider transition-colors"
+          >
+            Save Changes
+          </button>
+          <button
+            type="button"
+            id="contact-edit-cancel"
+            class="hidden px-4 py-2 border border-zinc-200 rounded-sm text-xs font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADD CONTACT MODAL -->
+    <div
+      id="contact-add-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="contact-add-title"
+    >
+      <div
+        id="contact-add-overlay"
+        class="absolute inset-0 bg-zinc-950/60 backdrop-blur-sm"
+      ></div>
+      <div
+        class="relative bg-white max-w-3xl w-full max-h-[90vh] overflow-hidden border border-zinc-200 shadow-2xl flex flex-col modal-panel z-10"
+      >
+        <div
+          class="px-6 py-5 border-b border-zinc-200 flex items-start justify-between gap-4 shrink-0 bg-zinc-50"
+        >
+          <div class="min-w-0">
+            <h2
+              id="contact-add-title"
+              class="font-serif text-xl text-charcoal leading-tight"
+            >
+              Add Contact
+            </h2>
+            <p class="text-xs text-zinc-500 mt-1">
+              Register a contact person with photo, role, and documents.
+            </p>
+          </div>
+          <button
+            type="button"
+            id="contact-add-close"
+            class="size-9 flex items-center justify-center rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-500 hover:text-charcoal transition-colors shrink-0"
+            aria-label="Close"
+          >
+            <i class="ph ph-x text-lg"></i>
+          </button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-6 bg-cream">
+          <form id="contact-add-form" class="space-y-5">
+            <!-- PHOTO + ROLE -->
+            <div
+              class="bg-white border border-zinc-200 p-5 rounded-sm space-y-4"
+            >
+              <h3
+                class="text-[10px] font-bold uppercase tracking-widest text-gold border-b border-zinc-100 pb-2"
+              >
+                Photo &amp; Role
+              </h3>
+              <div class="flex flex-col sm:flex-row gap-5 items-start">
+                <div class="flex-shrink-0">
+                  <label class="block text-xs text-zinc-400 mb-2"
+                    >Passport Photo</label
+                  >
+                  <label
+                    class="add-upload-tile relative flex flex-col items-center justify-center border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm cursor-pointer w-16 h-16 text-center transition-all group overflow-hidden"
+                  >
+                    <input
+                      id="add-photo"
+                      name="passport_photo_url"
+                      class="hidden add-file-input"
+                      type="file"
+                      accept="image/*"
+                      data-field="passport_photo_url"
+                    />
+                    <img
+                      id="add-photo-preview"
+                      src=""
+                      alt=""
+                      class="absolute inset-0 w-full h-full object-cover hidden"
+                    />
+                    <span
+                      id="add-photo-placeholder"
+                      class="relative z-[1] flex flex-col items-center justify-center text-gold"
+                    >
+                      <i class="ph ph-camera text-lg"></i>
+                      <span
+                        class="text-[8px] font-bold uppercase tracking-wider mt-0.5"
+                        >Upload</span
+                      >
+                    </span>
+                    <span
+                      class="absolute inset-0 z-[1] flex flex-col items-center justify-center bg-zinc-950/50 text-cream opacity-0 group-hover:opacity-100 transition-opacity hidden"
+                      id="add-photo-replace"
+                    >
+                      <i class="ph ph-camera text-sm"></i>
+                      <span
+                        class="text-[8px] font-bold uppercase tracking-wider mt-0.5"
+                        >Replace</span
+                      >
+                    </span>
+                  </label>
+                </div>
+                <div class="flex-1 w-full space-y-4">
+                  <div>
+                    <label class="block text-xs text-zinc-400 mb-2"
+                      >Contact Role <span class="text-red-500">*</span></label
+                    >
+                    <div class="flex flex-wrap gap-3">
+                      <label class="choice-tile">
+                        <input
+                          type="radio"
+                          name="add-role"
+                          id="add-role-staff"
+                          value="false"
+                          class="size-4 accent-[#b8860b]"
+                          checked
+                          required
+                        />
+                        <span class="font-medium text-xs">Staff</span>
+                      </label>
+                      <label class="choice-tile">
+                        <input
+                          type="radio"
+                          name="add-role"
+                          id="add-role-owner"
+                          value="true"
+                          class="size-4 accent-[#b8860b]"
+                        />
+                        <span class="font-medium text-xs">Owner</span>
+                      </label>
+                    </div>
+                  </div>
+                  <p class="text-[11px] text-zinc-400 leading-relaxed">
+                    Owner marks the account proprietor; Staff are registered
+                    contact persons for events and delegations.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- PERSONAL INFORMATION -->
+            <div
+              class="bg-white border border-zinc-200 p-5 rounded-sm space-y-4"
+            >
+              <h3
+                class="text-[10px] font-bold uppercase tracking-widest text-gold border-b border-zinc-100 pb-2"
+              >
+                Personal Information
+              </h3>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs text-zinc-400 mb-1" for="add-name"
+                    >Full Name <span class="text-red-500">*</span></label
+                  >
+                  <input
+                    id="add-name"
+                    name="name"
+                    type="text"
+                    required
+                    placeholder="As per passport"
+                    class="w-full border border-zinc-200 rounded-sm px-3 py-2 text-xs text-charcoal focus:outline-none focus:border-gold transition-colors bg-zinc-50"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-xs text-zinc-400 mb-1"
+                    for="add-designation"
+                    >Designation <span class="text-red-500">*</span></label
+                  >
+                  <input
+                    id="add-designation"
+                    name="designation"
+                    type="text"
+                    required
+                    placeholder="e.g. Manager"
+                    class="w-full border border-zinc-200 rounded-sm px-3 py-2 text-xs text-charcoal focus:outline-none focus:border-gold transition-colors bg-zinc-50"
+                  />
+                </div>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label
+                    class="block text-xs text-zinc-400 mb-1"
+                    for="add-phone"
+                    >Mobile <span class="text-red-500">*</span></label
+                  >
+                  <input
+                    id="add-phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    placeholder="01XXXXXXXXX"
+                    class="w-full border border-zinc-200 rounded-sm px-3 py-2 text-xs text-charcoal focus:outline-none focus:border-gold transition-colors bg-zinc-50"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-xs text-zinc-400 mb-1"
+                    for="add-email"
+                    >Email</label
+                  >
+                  <input
+                    id="add-email"
+                    name="email"
+                    type="email"
+                    placeholder="name@company.com"
+                    class="w-full border border-zinc-200 rounded-sm px-3 py-2 text-xs text-charcoal focus:outline-none focus:border-gold transition-colors bg-zinc-50"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- PASSPORT & CARD -->
+            <div
+              class="bg-white border border-zinc-200 p-5 rounded-sm space-y-4"
+            >
+              <h3
+                class="text-[10px] font-bold uppercase tracking-widest text-gold border-b border-zinc-100 pb-2"
+              >
+                Passport &amp; Card
+              </h3>
+              <div class="grid sm:grid-cols-3 gap-4">
+                <div>
+                  <label
+                    class="block text-xs text-zinc-400 mb-1"
+                    for="add-passport-no"
+                    >Passport No.</label
+                  >
+                  <input
+                    id="add-passport-no"
+                    name="passport_no"
+                    type="text"
+                    placeholder="e.g. A123456798"
+                    class="w-full border border-zinc-200 rounded-sm px-3 py-2 text-xs text-charcoal focus:outline-none focus:border-gold transition-colors bg-zinc-50"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-xs text-zinc-400 mb-1"
+                    for="add-passport-expiry"
+                    >Passport Expiry</label
+                  >
+                  <div class="relative">
+                    <input
+                      id="add-passport-expiry"
+                      name="passport_expiry_date"
+                      type="text"
+                      placeholder="Select date"
+                      autocomplete="off"
+                      class="bajus-datepicker w-full border border-zinc-200 rounded-sm px-3 py-2 pr-9 text-xs text-charcoal focus:outline-none focus:border-gold transition-colors bg-zinc-50"
+                    />
+                    <i
+                      class="ph ph-calendar-blank absolute right-3 top-1/2 -translate-y-1/2 text-gold text-sm pointer-events-none"
+                    ></i>
+                  </div>
+                </div>
+                <div>
+                  <label
+                    class="block text-xs text-zinc-400 mb-1"
+                    for="add-card-expiry"
+                    >Card Expiry</label
+                  >
+                  <div class="relative">
+                    <input
+                      id="add-card-expiry"
+                      name="credit_card_expiry_date"
+                      type="text"
+                      placeholder="MM/YY"
+                      autocomplete="off"
+                      maxlength="5"
+                      class="bajus-monthpicker w-full border border-zinc-200 rounded-sm px-3 py-2 pr-9 text-xs text-charcoal focus:outline-none focus:border-gold transition-colors bg-zinc-50"
+                    />
+                    <i
+                      class="ph ph-calendar-blank absolute right-3 top-1/2 -translate-y-1/2 text-gold text-sm pointer-events-none"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOCUMENT UPLOADS -->
+            <div
+              class="bg-white border border-zinc-200 p-5 rounded-sm space-y-4"
+            >
+              <h3
+                class="text-[10px] font-bold uppercase tracking-widest text-gold border-b border-zinc-100 pb-2"
+              >
+                Document Uploads
+              </h3>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <span class="block text-xs text-zinc-400 mb-2"
+                    >Passport Copy</span
+                  >
+                  <div
+                    class="add-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col"
+                    data-label="Passport Copy"
+                  >
+                    <input
+                      id="add-passport-copy"
+                      name="passport_copy_url"
+                      class="hidden add-file-input"
+                      type="file"
+                      accept="image/*"
+                      data-field="passport_copy_url"
+                    />
+                    <label
+                      for="add-passport-copy"
+                      class="add-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer"
+                    >
+                      <span class="add-upload-icon text-gold text-2xl"
+                        ><i class="ph ph-identification-card"></i
+                      ></span>
+                      <span
+                        class="add-upload-text text-[10px] font-bold uppercase tracking-wider text-gold"
+                        >Upload Passport</span
+                      >
+                      <span class="add-upload-help text-[10px] text-zinc-400"
+                        >JPG/PNG</span
+                      >
+                    </label>
+                    <div class="add-upload-filled hidden flex-1 flex flex-col">
+                      <div
+                        class="flex-1 bg-zinc-100 overflow-hidden min-h-[5.5rem] grid place-items-center"
+                      >
+                        <img
+                          class="add-upload-preview w-full h-full max-h-28 object-cover"
+                          alt="Passport copy preview"
+                        />
+                      </div>
+                      <div class="flex border-t border-zinc-100 bg-white">
+                        <button
+                          type="button"
+                          class="add-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100"
+                        >
+                          Preview
+                        </button>
+                        <label
+                          for="add-passport-copy"
+                          class="add-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer"
+                          >Change</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <span class="block text-xs text-zinc-400 mb-2"
+                    >Credit Card</span
+                  >
+                  <div
+                    class="add-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col"
+                    data-label="Credit Card"
+                  >
+                    <input
+                      id="add-credit-card"
+                      name="credit_card_copy_url"
+                      class="hidden add-file-input"
+                      type="file"
+                      accept="image/*"
+                      data-field="credit_card_copy_url"
+                    />
+                    <label
+                      for="add-credit-card"
+                      class="add-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer"
+                    >
+                      <span class="add-upload-icon text-gold text-2xl"
+                        ><i class="ph ph-credit-card"></i
+                      ></span>
+                      <span
+                        class="add-upload-text text-[10px] font-bold uppercase tracking-wider text-gold"
+                        >Upload Card</span
+                      >
+                      <span class="add-upload-help text-[10px] text-zinc-400"
+                        >JPG/PNG</span
+                      >
+                    </label>
+                    <div class="add-upload-filled hidden flex-1 flex flex-col">
+                      <div
+                        class="flex-1 bg-zinc-100 overflow-hidden min-h-[5.5rem] grid place-items-center"
+                      >
+                        <img
+                          class="add-upload-preview w-full h-full max-h-28 object-cover"
+                          alt="Credit card preview"
+                        />
+                      </div>
+                      <div class="flex border-t border-zinc-100 bg-white">
+                        <button
+                          type="button"
+                          class="add-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100"
+                        >
+                          Preview
+                        </button>
+                        <label
+                          for="add-credit-card"
+                          class="add-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer"
+                          >Change</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <span class="block text-xs text-zinc-400 mb-2"
+                    >Visiting Card</span
+                  >
+                  <div
+                    class="add-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col"
+                    data-label="Visiting Card"
+                  >
+                    <input
+                      id="add-visiting-card"
+                      name="visiting_card_url"
+                      class="hidden add-file-input"
+                      type="file"
+                      accept="image/*"
+                      data-field="visiting_card_url"
+                    />
+                    <label
+                      for="add-visiting-card"
+                      class="add-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer"
+                    >
+                      <span class="add-upload-icon text-gold text-2xl"
+                        ><i class="ph ph-address-book"></i
+                      ></span>
+                      <span
+                        class="add-upload-text text-[10px] font-bold uppercase tracking-wider text-gold"
+                        >Upload Visiting Card</span
+                      >
+                      <span class="add-upload-help text-[10px] text-zinc-400"
+                        >JPG/PNG</span
+                      >
+                    </label>
+                    <div class="add-upload-filled hidden flex-1 flex flex-col">
+                      <div
+                        class="flex-1 bg-zinc-100 overflow-hidden min-h-[5.5rem] grid place-items-center"
+                      >
+                        <img
+                          class="add-upload-preview w-full h-full max-h-28 object-cover"
+                          alt="Visiting card preview"
+                        />
+                      </div>
+                      <div class="flex border-t border-zinc-100 bg-white">
+                        <button
+                          type="button"
+                          class="add-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100"
+                        >
+                          Preview
+                        </button>
+                        <label
+                          for="add-visiting-card"
+                          class="add-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer"
+                          >Change</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div
+          class="px-6 py-4 border-t border-zinc-200 flex flex-wrap items-center gap-3 shrink-0 bg-white"
+        >
+          <button
+            type="submit"
+            form="contact-add-form"
+            class="px-4 py-2 bg-gold hover:bg-[#a3760a] text-cream rounded-sm text-xs font-semibold uppercase tracking-wider transition-colors"
+          >
+            Save Contact
+          </button>
+          <button
+            type="button"
+            id="contact-add-cancel"
+            class="px-4 py-2 border border-zinc-200 rounded-sm text-xs font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors"
+          >
+            Cancel
           </button>
         </div>
       </div>
@@ -441,6 +1359,8 @@
     <script src="./js/contacts-data.js"></script>
     <script src="./js/include.js"></script>
     <script src="./js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/plugins/monthSelect/index.js"></script>
     <script>
       const listEl = document.getElementById("contact-list");
       const emptyEl = document.getElementById("contact-empty");
@@ -452,7 +1372,122 @@
       let currentPage = 1;
       let filteredContacts = [...BAJUS_CONTACTS];
 
+      function parseCardExpiry(value) {
+        const [month, year] = String(value || "")
+          .split("/")
+          .map(Number);
+        if (!month || !year) return null;
+        const fullYear = year < 100 ? 2000 + year : year;
+        return new Date(fullYear, month - 1, 1);
+      }
+
+      function isoFromPicker(fp) {
+        if (!fp || !fp.selectedDates.length) return "";
+        return flatpickr.formatDate(fp.selectedDates[0], "Y-m-d");
+      }
+
+      function cardFromPicker(fp) {
+        if (!fp || !fp.selectedDates.length) return "";
+        return flatpickr.formatDate(fp.selectedDates[0], "m/y");
+      }
+
+      function syncYearDropdown(fp) {
+        const select =
+          fp.calendarContainer &&
+          fp.calendarContainer.querySelector("select.bajus-year-select");
+        if (select) select.value = String(fp.currentYear);
+      }
+
+      function attachYearDropdown(fp, yearStart, yearEnd) {
+        const yearInput = fp.currentYearElement;
+        if (!yearInput || !yearInput.parentNode) return;
+        const wrapper = yearInput.parentNode;
+        if (wrapper.dataset.yearDropdown === "1") {
+          syncYearDropdown(fp);
+          return;
+        }
+        wrapper.dataset.yearDropdown = "1";
+        wrapper.classList.add("bajus-year-dropdown-wrap");
+        yearInput.style.display = "none";
+        wrapper.querySelectorAll(".arrowUp, .arrowDown").forEach((el) => {
+          el.style.display = "none";
+        });
+
+        const select = document.createElement("select");
+        select.className = "bajus-year-select";
+        select.setAttribute("aria-label", "Select year");
+        for (let year = yearStart; year <= yearEnd; year++) {
+          const option = document.createElement("option");
+          option.value = String(year);
+          option.textContent = String(year);
+          select.appendChild(option);
+        }
+        select.value = String(fp.currentYear);
+        select.addEventListener("change", () => {
+          fp.changeYear(Number(select.value));
+        });
+        wrapper.appendChild(select);
+      }
+
+      function withYearDropdown(baseOpts, yearStart, yearEnd) {
+        const prevReady = [].concat(baseOpts.onReady || []);
+        const prevYear = [].concat(baseOpts.onYearChange || []);
+        const prevOpen = [].concat(baseOpts.onOpen || []);
+        return {
+          ...baseOpts,
+          monthSelectorType: "dropdown",
+          onReady: [
+            ...prevReady,
+            (_d, _s, fp) => attachYearDropdown(fp, yearStart, yearEnd),
+          ],
+          onYearChange: [...prevYear, (_d, _s, fp) => syncYearDropdown(fp)],
+          onOpen: [...prevOpen, (_d, _s, fp) => syncYearDropdown(fp)],
+        };
+      }
+
+      const nowYear = new Date().getFullYear();
+
+      const datePickerOpts = withYearDropdown(
+        {
+          dateFormat: "j M Y",
+          disableMobile: true,
+          allowInput: false,
+          animate: true,
+          nextArrow: '<i class="ph ph-caret-right"></i>',
+          prevArrow: '<i class="ph ph-caret-left"></i>',
+        },
+        nowYear - 5,
+        nowYear + 40,
+      );
+
+      const monthPickerOpts = withYearDropdown(
+        {
+          disableMobile: true,
+          allowInput: false,
+          animate: true,
+          nextArrow: '<i class="ph ph-caret-right"></i>',
+          prevArrow: '<i class="ph ph-caret-left"></i>',
+          plugins: [
+            new monthSelectPlugin({
+              shorthand: true,
+              dateFormat: "m/y",
+              altFormat: "M Y",
+            }),
+          ],
+        },
+        nowYear - 1,
+        nowYear + 20,
+      );
+
+      const pickers = {
+        editPassport: flatpickr("#edit-passport-expiry", datePickerOpts),
+        editCard: flatpickr("#edit-card-expiry", monthPickerOpts),
+        addPassport: flatpickr("#add-passport-expiry", datePickerOpts),
+        addCard: flatpickr("#add-card-expiry", monthPickerOpts),
+      };
+
       function formatDate(value) {
+        if (!value) return "—";
         const parsed = new Date(value + "T00:00:00");
         if (isNaN(parsed)) return value;
         return parsed.toLocaleDateString("en-GB", {
@@ -494,13 +1529,29 @@
           .toUpperCase();
       }
 
-      function documentTile(label, url, contactName, { compact = false } = {}) {
+      function documentTile(
+        label,
+        url,
+        contactName,
+        { compact = false, modal = false } = {},
+      ) {
+        if (!url) {
+          return `
+          <div class="doc-tile doc-tile--empty ${compact ? "doc-tile--compact" : ""} min-w-0 opacity-60 cursor-default">
+            <span class="doc-tile__preview block overflow-hidden rounded-sm bg-zinc-50 border border-zinc-200 grid place-items-center">
+              <i class="ph ph-image text-zinc-300 text-base"></i>
+            </span>
+            <span class="${compact ? "doc-tile__label block text-xs text-zinc-400 mt-2 truncate leading-tight" : "doc-tile__label block text-[11px] font-semibold capitalize text-zinc-400 mt-3"}">${label}</span>
+          </div>`;
+        }
         const tileClass = compact
           ? "doc-tile doc-tile--compact group text-left min-w-0"
           : "doc-tile group text-left min-w-0";
         const labelClass = compact
-          ? "doc-tile__label block text-[9px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-gold transition-colors mt-1 truncate leading-tight"
-          : "doc-tile__label block text-[9px] font-bold uppercase tracking-wider text-zinc-400 group-hover:text-gold transition-colors mt-2";
+          ? "doc-tile__label block text-xs text-zinc-400 group-hover:text-gold transition-colors mt-2 truncate leading-tight"
+          : modal
+            ? "doc-tile__label block text-[11px] font-medium text-zinc-500 group-hover:text-gold transition-colors mt-3"
+            : "doc-tile__label block text-[11px] font-semibold capitalize text-zinc-500 group-hover:text-gold transition-colors mt-3";
         const previewClass = compact
           ? "doc-tile__preview block overflow-hidden rounded-sm"
           : "doc-tile__preview block overflow-hidden rounded-sm border border-zinc-200 bg-zinc-50 group-hover:border-gold transition-colors";
@@ -508,28 +1559,37 @@
         <button type="button" class="${tileClass}" data-src="${url}" data-caption="${contactName} — ${label}">
           <span class="${previewClass}">
             <img src="${url}" alt="${label} of ${contactName}" loading="lazy"
-              class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-300" />
+              class="${compact ? "w-auto h-full object-cover" : "w-full h-auto"} rounded-sm group-hover:scale-[1.04] transition-transform duration-300" />
           </span>
           <span class="${labelClass}">${label}</span>
         </button>`;
       }
 
       function roleBadgeHtml(isOwner, { selfStart = false } = {}) {
-        const base =
-          `inline-flex items-center gap-0.5 text-[8px] font-bold uppercase tracking-wide px-1.5 pt-[3px] pb-[2px] rounded-full leading-none${selfStart ? " self-start" : ""}`;
+        const base = `inline-flex items-center gap-0.5 text-[8px] font-bold uppercase tracking-wide px-1.5 pt-[3px] pb-[2px] rounded-full leading-none${selfStart ? " self-start" : ""}`;
         return isOwner
           ? `<span class="${base} text-gold bg-gold-soft border border-gold/30"><i class="ph ph-crown-simple text-[8px]"></i> Owner</span>`
           : `<span class="${base} text-zinc-600 bg-zinc-100 border border-zinc-200">Staff</span>`;
       }
 
       function contactCard(contact) {
+        const photoHtml = contact.passport_photo_url
+          ? `<img src="${contact.passport_photo_url}" alt="${contact.name}" loading="lazy"
+                class="w-full h-full object-cover"
+                onerror="this.parentElement.textContent='${initials(contact.name)}';" />`
+          : initials(contact.name);
+        const emailHtml = contact.email
+          ? `<a href="mailto:${contact.email}" class="flex items-center gap-2 text-zinc-600 hover:text-gold transition-colors min-w-0 leading-relaxed">
+              <i class="ph ph-envelope-simple text-gold text-sm flex-shrink-0"></i><span class="truncate">${contact.email}</span>
+            </a>`
+          : `<span class="flex items-center gap-2 text-zinc-400 min-w-0 leading-relaxed">
+              <i class="ph ph-envelope-simple text-zinc-300 text-sm flex-shrink-0"></i><span class="truncate">No email</span>
+            </span>`;
         return `
         <div class="border border-zinc-200 hover:border-gold p-6 rounded-sm bg-white hover:shadow-sm transition-all duration-300 flex flex-col">
           <div class="flex items-start gap-3">
             <div class="contact-card__photo size-12 border border-zinc-200 bg-gold/10 text-gold flex items-center justify-center font-serif font-bold flex-shrink-0 text-sm">
-              <img src="${contact.passport_photo_url}" alt="${contact.name}" loading="lazy"
-                class="w-full h-full object-cover"
-                onerror="this.parentElement.textContent='${initials(contact.name)}';" />
+              ${photoHtml}
             </div>
             <div class="min-w-0 flex-1">
               <h3 class="font-serif text-xl font-bold text-charcoal leading-tight">${contact.name}</h3>
@@ -545,20 +1605,18 @@
             <a href="tel:${contact.phone}" class="flex items-center gap-2 text-zinc-600 hover:text-gold transition-colors min-w-0 leading-relaxed">
               <i class="ph ph-phone text-gold text-sm flex-shrink-0"></i><span class="truncate">${contact.phone}</span>
             </a>
-            <a href="mailto:${contact.email}" class="flex items-center gap-2 text-zinc-600 hover:text-gold transition-colors min-w-0 leading-relaxed">
-              <i class="ph ph-envelope-simple text-gold text-sm flex-shrink-0"></i><span class="truncate">${contact.email}</span>
-            </a>
+            ${emailHtml}
             </div>
-            <div class="grid grid-cols-3 gap-1.5 mt-2">
+            <div class="grid grid-cols-3 gap-1.5 mt-4">
               ${documentTile("Passport Copy", contact.passport_copy_url, contact.name, { compact: true })}
               ${documentTile("Credit Card", contact.credit_card_copy_url, contact.name, { compact: true })}
               ${documentTile("Visiting Card", contact.visiting_card_url, contact.name, { compact: true })}
             </div>
           </div>
 
-          <div class="flex items-center justify-between gap-2 mt-4 pt-4 border-t border-zinc-100">
+          <div class="flex items-center justify-start gap-3 mt-4 pt-4 border-t border-zinc-100">
             <button type="button" class="contact-details-btn px-4 py-2 bg-gold hover:bg-[#a3760a] text-cream text-xs font-semibold uppercase tracking-wider text-center transition-colors" data-contact-id="${contact.id}">Details</button>
-            <a href="dashboard-add-contact.html?contact=${contact.id}" class="px-4 py-2 border border-zinc-200 text-xs font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors text-center shrink-0">Edit</a>
+            <button type="button" class="contact-edit-btn px-4 py-2 border border-zinc-200 text-xs font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors text-center shrink-0" data-contact-id="${contact.id}">Edit</button>
           </div>
         </div>`;
       }
@@ -567,33 +1625,225 @@
       const detailOverlay = document.getElementById("contact-detail-overlay");
       const detailBody = document.getElementById("contact-detail-body");
       const detailName = document.getElementById("contact-detail-name");
-      const detailDesignation = document.getElementById("contact-detail-designation");
+      const detailDesignation = document.getElementById(
+        "contact-detail-designation",
+      );
       const detailRole = document.getElementById("contact-detail-role");
       const detailAvatar = document.getElementById("contact-detail-avatar");
-      const detailEdit = document.getElementById("contact-detail-edit");
+      const editPanel = document.getElementById("contact-edit-panel");
+      const editForm = document.getElementById("contact-edit-form");
+      const editSaveBtn = document.getElementById("contact-edit-save");
+      const editCancelBtn = document.getElementById("contact-edit-cancel");
+      const editBtn = document.getElementById("contact-detail-edit-btn");
+
+      let activeContact = null;
+      // Pending replacements while editing (object URLs or existing paths).
+      let editDraft = {
+        passport_photo_url: null,
+        passport_copy_url: null,
+        credit_card_copy_url: null,
+        visiting_card_url: null,
+      };
+
+      const headerView = document.getElementById("contact-detail-header-view");
+      const headerEdit = document.getElementById("contact-detail-header-edit");
+
+      function showViewMode() {
+        detailBody.classList.remove("hidden");
+        editPanel.classList.add("hidden");
+        headerView.classList.remove("hidden");
+        headerEdit.classList.add("hidden");
+        editBtn.classList.remove("hidden");
+        editSaveBtn.classList.add("hidden");
+        editCancelBtn.classList.add("hidden");
+      }
+
+      function setEditPhoto(url) {
+        const preview = document.getElementById("edit-photo-preview");
+        const placeholder = document.getElementById("edit-photo-placeholder");
+        const replace = document.getElementById("edit-photo-replace");
+        const tile = document
+          .getElementById("edit-photo")
+          ?.closest(".edit-upload-tile");
+        if (url) {
+          if (preview) {
+            preview.src = url;
+            preview.classList.remove("hidden");
+          }
+          if (placeholder) placeholder.classList.add("hidden");
+          if (replace) replace.classList.remove("hidden");
+          if (tile) {
+            tile.classList.add("border-gold");
+            tile.classList.remove("border-zinc-200");
+          }
+        } else {
+          if (preview) {
+            preview.src = "";
+            preview.classList.add("hidden");
+          }
+          if (placeholder) placeholder.classList.remove("hidden");
+          if (replace) replace.classList.add("hidden");
+          if (tile) {
+            tile.classList.remove("border-gold", "border-gold/50");
+            tile.classList.add("border-zinc-200");
+          }
+        }
+      }
+
+      function setEditDocTile(tile, url) {
+        if (!tile) return;
+        const empty = tile.querySelector(".edit-doc-empty");
+        const filled = tile.querySelector(".edit-doc-filled");
+        const preview = tile.querySelector(".edit-doc-preview-img");
+        if (url) {
+          if (empty) empty.classList.add("hidden");
+          if (filled) filled.classList.remove("hidden");
+          if (preview) {
+            preview.src = url;
+            preview.classList.remove("hidden");
+          }
+          tile.classList.add("border-gold");
+          tile.classList.remove("border-zinc-200");
+        } else {
+          if (empty) empty.classList.remove("hidden");
+          if (filled) filled.classList.add("hidden");
+          if (preview) {
+            preview.src = "";
+            preview.classList.add("hidden");
+          }
+          tile.classList.remove("border-gold", "border-gold/50");
+          tile.classList.add("border-zinc-200");
+        }
+      }
+
+      function resetEditFileInputs() {
+        editForm.querySelectorAll(".edit-file-input").forEach((input) => {
+          input.value = "";
+        });
+      }
+
+      function showEditMode(contact) {
+        editDraft = {
+          passport_photo_url: contact.passport_photo_url || null,
+          passport_copy_url: contact.passport_copy_url || null,
+          credit_card_copy_url: contact.credit_card_copy_url || null,
+          visiting_card_url: contact.visiting_card_url || null,
+        };
+
+        document.getElementById("edit-name").value = contact.name || "";
+        document.getElementById("edit-designation").value =
+          contact.designation || "";
+        document.getElementById("edit-phone").value = contact.phone || "";
+        document.getElementById("edit-email").value = contact.email || "";
+        document.getElementById("edit-passport-no").value =
+          contact.passport_no || "";
+        pickers.editPassport.setDate(
+          contact.passport_expiry_date || null,
+          false,
+        );
+        pickers.editCard.setDate(
+          parseCardExpiry(contact.credit_card_expiry_date),
+          false,
+        );
+
+        if (contact.is_owner) {
+          document.getElementById("edit-role-owner").checked = true;
+        } else {
+          document.getElementById("edit-role-staff").checked = true;
+        }
+
+        setEditPhoto(editDraft.passport_photo_url);
+        setEditDocTile(
+          document
+            .getElementById("edit-passport-copy")
+            ?.closest(".edit-doc-tile"),
+          editDraft.passport_copy_url,
+        );
+        setEditDocTile(
+          document
+            .getElementById("edit-credit-card")
+            ?.closest(".edit-doc-tile"),
+          editDraft.credit_card_copy_url,
+        );
+        setEditDocTile(
+          document
+            .getElementById("edit-visiting-card")
+            ?.closest(".edit-doc-tile"),
+          editDraft.visiting_card_url,
+        );
+        resetEditFileInputs();
+
+        detailBody.classList.add("hidden");
+        editPanel.classList.remove("hidden");
+        headerView.classList.add("hidden");
+        headerEdit.classList.remove("hidden");
+        editBtn.classList.add("hidden");
+        editSaveBtn.classList.remove("hidden");
+        editCancelBtn.classList.remove("hidden");
+      }
+
+      editForm.addEventListener("change", (e) => {
+        const input = e.target.closest(".edit-file-input");
+        if (!input) return;
+        const file = input.files && input.files[0];
+        if (!file) return;
+
+        if (!file.type.startsWith("image/")) {
+          input.value = "";
+          if (typeof showToast === "function")
+            showToast("Please upload an image (JPG or PNG).", "error");
+          return;
+        }
+
+        const field = input.dataset.field;
+        const objectUrl = URL.createObjectURL(file);
+        editDraft[field] = objectUrl;
+
+        if (field === "passport_photo_url") {
+          setEditPhoto(objectUrl);
+          return;
+        }
+
+        setEditDocTile(input.closest(".edit-doc-tile"), objectUrl);
+      });
+
+      editForm.addEventListener("click", (e) => {
+        const previewBtn = e.target.closest(".edit-doc-preview");
+        if (!previewBtn) return;
+        e.preventDefault();
+        const tile = previewBtn.closest(".edit-doc-tile");
+        if (!tile) return;
+        const input = tile.querySelector(".edit-file-input");
+        const field = input && input.dataset.field;
+        const src = field && editDraft[field];
+        if (!src) return;
+        openLightbox(src, tile.dataset.label || "Document");
+      });
 
       function openContactDetails(contact) {
+        activeContact = contact;
+        showViewMode();
         detailName.textContent = contact.name;
         detailDesignation.textContent = contact.designation;
         detailRole.innerHTML = roleBadgeHtml(contact.is_owner);
-        detailEdit.href = `dashboard-add-contact.html?contact=${contact.id}`;
-        detailAvatar.innerHTML = `<img src="${contact.passport_photo_url}" alt="${contact.name}" class="w-full h-full object-cover" onerror="this.parentElement.textContent='${initials(contact.name)}';" />`;
+        detailAvatar.innerHTML = contact.passport_photo_url
+          ? `<img src="${contact.passport_photo_url}" alt="${contact.name}" class="w-full h-full object-cover" onerror="this.parentElement.textContent='${initials(contact.name)}';" />`
+          : initials(contact.name);
 
         detailBody.innerHTML = `
           <div class="bg-white border border-zinc-200 p-5 rounded-sm">
             <h3 class="text-[10px] font-bold uppercase tracking-widest text-gold mb-4 border-b border-zinc-100 pb-2">Contact Information</h3>
             <div class="grid sm:grid-cols-2 gap-4 text-xs">
               <div><span class="text-zinc-400 block mb-1">Contact ID</span><strong class="text-charcoal font-semibold">${contact.id}</strong></div>
-              <div><span class="text-zinc-400 block mb-1">Email</span><a href="mailto:${contact.email}" class="text-charcoal font-semibold hover:text-gold transition-colors">${contact.email}</a></div>
               <div><span class="text-zinc-400 block mb-1">Mobile</span><a href="tel:${contact.phone}" class="text-charcoal font-semibold hover:text-gold transition-colors">${contact.phone}</a></div>
-              <div><span class="text-zinc-400 block mb-1">Designation</span><strong class="text-charcoal font-semibold">${contact.designation}</strong></div>
+              <div class="sm:col-span-2"><span class="text-zinc-400 block mb-1">Email</span>${contact.email ? `<a href="mailto:${contact.email}" class="text-charcoal font-semibold hover:text-gold transition-colors">${contact.email}</a>` : `<strong class="text-zinc-400 font-semibold">—</strong>`}</div>
             </div>
           </div>
 
           <div class="bg-white border border-zinc-200 p-5 rounded-sm">
             <h3 class="text-[10px] font-bold uppercase tracking-widest text-gold mb-4 border-b border-zinc-100 pb-2">Passport &amp; Card</h3>
             <div class="grid sm:grid-cols-3 gap-4 text-xs">
-              <div><span class="text-zinc-400 block mb-1">Passport No.</span><strong class="text-charcoal font-semibold">${contact.passport_no}</strong></div>
+              <div><span class="text-zinc-400 block mb-1">Passport No.</span><strong class="text-charcoal font-semibold">${contact.passport_no || "—"}</strong></div>
               <div><span class="text-zinc-400 block mb-1">Passport Expiry</span><strong class="${passportExpiryTone(contact.passport_expiry_date)} font-semibold">${formatDate(contact.passport_expiry_date)}</strong></div>
               <div><span class="text-zinc-400 block mb-1">Card Expiry</span><strong class="${cardExpiryTone(contact.credit_card_expiry_date)} font-semibold">${contact.credit_card_expiry_date || "—"}</strong></div>
             </div>
@@ -601,11 +1851,10 @@
 
           <div class="bg-white border border-zinc-200 p-5 rounded-sm">
             <h3 class="text-[10px] font-bold uppercase tracking-widest text-gold mb-4 border-b border-zinc-100 pb-2">Attached Documents</h3>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              ${documentTile("Passport Photo", contact.passport_photo_url, contact.name)}
-              ${documentTile("Passport Copy", contact.passport_copy_url, contact.name)}
-              ${documentTile("Credit Card", contact.credit_card_copy_url, contact.name)}
-              ${documentTile("Visiting Card", contact.visiting_card_url, contact.name)}
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4">
+              ${documentTile("Passport Copy", contact.passport_copy_url, contact.name, { compact: true })}
+              ${documentTile("Credit Card", contact.credit_card_copy_url, contact.name, { compact: true })}
+              ${documentTile("Visiting Card", contact.visiting_card_url, contact.name, { compact: true })}
             </div>
           </div>`;
 
@@ -714,28 +1963,276 @@
           return;
         }
 
+        const editCardBtn = e.target.closest(".contact-edit-btn");
+        if (editCardBtn) {
+          const contact = BAJUS_CONTACTS.find(
+            (item) => String(item.id) === editCardBtn.dataset.contactId,
+          );
+          if (contact) {
+            openContactDetails(contact);
+            showEditMode(contact);
+          }
+          return;
+        }
+
         const tile = e.target.closest(".doc-tile");
-        if (tile) openLightbox(tile.dataset.src, tile.dataset.caption);
+        if (
+          tile &&
+          tile.dataset.src &&
+          !tile.classList.contains("doc-tile--empty")
+        ) {
+          openLightbox(tile.dataset.src, tile.dataset.caption);
+        }
       });
 
       detailBody.addEventListener("click", (e) => {
         const tile = e.target.closest(".doc-tile");
-        if (tile) openLightbox(tile.dataset.src, tile.dataset.caption);
+        if (
+          tile &&
+          tile.dataset.src &&
+          !tile.classList.contains("doc-tile--empty")
+        ) {
+          openLightbox(tile.dataset.src, tile.dataset.caption);
+        }
       });
 
       document
         .getElementById("contact-detail-close")
         .addEventListener("click", closeContactDetails);
-      document
-        .getElementById("contact-detail-close-btn")
-        .addEventListener("click", closeContactDetails);
       detailOverlay.addEventListener("click", closeContactDetails);
+
+      editBtn.addEventListener("click", () => showEditMode(activeContact));
+      editCancelBtn.addEventListener("click", () => showViewMode());
+      editSaveBtn.addEventListener("click", () => {
+        if (!editForm.reportValidity()) return;
+
+        const name = document.getElementById("edit-name").value.trim();
+        const designation = document
+          .getElementById("edit-designation")
+          .value.trim();
+        const phone = document.getElementById("edit-phone").value.trim();
+        if (!name || !designation || !phone) {
+          if (typeof showToast === "function")
+            showToast("Name, designation, and mobile are required.", "error");
+          return;
+        }
+
+        activeContact.name = name;
+        activeContact.designation = designation;
+        activeContact.phone = phone;
+        activeContact.email = document
+          .getElementById("edit-email")
+          .value.trim();
+        activeContact.passport_no = document
+          .getElementById("edit-passport-no")
+          .value.trim();
+        activeContact.passport_expiry_date = isoFromPicker(
+          pickers.editPassport,
+        );
+        activeContact.credit_card_expiry_date = cardFromPicker(
+          pickers.editCard,
+        );
+        activeContact.is_owner =
+          document.getElementById("edit-role-owner").checked;
+
+        if (editDraft.passport_photo_url)
+          activeContact.passport_photo_url = editDraft.passport_photo_url;
+        if (editDraft.passport_copy_url)
+          activeContact.passport_copy_url = editDraft.passport_copy_url;
+        if (editDraft.credit_card_copy_url)
+          activeContact.credit_card_copy_url = editDraft.credit_card_copy_url;
+        if (editDraft.visiting_card_url)
+          activeContact.visiting_card_url = editDraft.visiting_card_url;
+
+        openContactDetails(activeContact);
+        renderContacts();
+        if (typeof showToast === "function") {
+          showToast("Contact updated successfully.");
+        }
+      });
+
+      // ——— Add Contact modal ———
+      const addModal = document.getElementById("contact-add-modal");
+      const addForm = document.getElementById("contact-add-form");
+      const addDraft = {
+        passport_photo_url: null,
+        passport_copy_url: null,
+        credit_card_copy_url: null,
+        visiting_card_url: null,
+      };
+
+      function openAddContact() {
+        closeContactDetails();
+        addForm.reset();
+        document.getElementById("add-role-staff").checked = true;
+        Object.keys(addDraft).forEach((key) => {
+          addDraft[key] = null;
+        });
+        pickers.addPassport.clear();
+        pickers.addCard.clear();
+
+        const photoPreview = document.getElementById("add-photo-preview");
+        const photoPlaceholder = document.getElementById(
+          "add-photo-placeholder",
+        );
+        const photoReplace = document.getElementById("add-photo-replace");
+        photoPreview.src = "";
+        photoPreview.classList.add("hidden");
+        photoPlaceholder.classList.remove("hidden");
+        photoReplace.classList.add("hidden");
+
+        addForm.querySelectorAll(".add-upload-tile").forEach((tile) => {
+          // Skip passport photo tile (different structure)
+          if (!tile.querySelector(".add-upload-empty")) return;
+          tile.classList.remove("border-gold", "border-gold/50");
+          tile.classList.add("border-zinc-200");
+          const empty = tile.querySelector(".add-upload-empty");
+          const filled = tile.querySelector(".add-upload-filled");
+          const preview = tile.querySelector(".add-upload-preview");
+          const fileIcon = tile.querySelector(".add-upload-file-icon");
+          if (empty) empty.classList.remove("hidden");
+          if (filled) filled.classList.add("hidden");
+          if (preview) {
+            preview.src = "";
+            preview.classList.add("hidden");
+          }
+          if (fileIcon) fileIcon.classList.add("hidden");
+        });
+
+        addModal.classList.remove("hidden");
+        addModal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeAddContact() {
+        addModal.classList.add("hidden");
+        addModal.classList.remove("flex");
+        if (detailModal.classList.contains("hidden")) {
+          document.body.style.overflow = "";
+        }
+      }
+
+      document
+        .getElementById("contact-add-open")
+        .addEventListener("click", openAddContact);
+      document
+        .getElementById("contact-add-close")
+        .addEventListener("click", closeAddContact);
+      document
+        .getElementById("contact-add-cancel")
+        .addEventListener("click", closeAddContact);
+      document
+        .getElementById("contact-add-overlay")
+        .addEventListener("click", closeAddContact);
+
+      addForm.querySelectorAll(".add-upload-icon").forEach((el) => {
+        el.dataset.defaultIcon = el.innerHTML;
+      });
+
+      addForm.addEventListener("change", (e) => {
+        const input = e.target.closest(".add-file-input");
+        if (!input) return;
+        const file = input.files && input.files[0];
+        if (!file) return;
+
+        const field = input.dataset.field;
+        const objectUrl = URL.createObjectURL(file);
+        addDraft[field] = objectUrl;
+
+        const tile = input.closest(".add-upload-tile");
+        if (tile) {
+          tile.classList.add("border-gold");
+          tile.classList.remove("border-zinc-200");
+        }
+
+        if (field === "passport_photo_url") {
+          const preview = document.getElementById("add-photo-preview");
+          const placeholder = document.getElementById("add-photo-placeholder");
+          const replace = document.getElementById("add-photo-replace");
+          preview.src = objectUrl;
+          preview.classList.remove("hidden");
+          placeholder.classList.add("hidden");
+          replace.classList.remove("hidden");
+          return;
+        }
+
+        if (!tile) return;
+        if (!file.type.startsWith("image/")) {
+          input.value = "";
+          if (typeof showToast === "function")
+            showToast("Please upload an image (JPG or PNG).", "error");
+          return;
+        }
+
+        const empty = tile.querySelector(".add-upload-empty");
+        const filled = tile.querySelector(".add-upload-filled");
+        const preview = tile.querySelector(".add-upload-preview");
+
+        if (empty) empty.classList.add("hidden");
+        if (filled) filled.classList.remove("hidden");
+        if (preview) {
+          preview.src = objectUrl;
+          preview.classList.remove("hidden");
+        }
+      });
+
+      addForm.addEventListener("click", (e) => {
+        const previewBtn = e.target.closest(".add-doc-preview");
+        if (!previewBtn) return;
+        e.preventDefault();
+        const tile = previewBtn.closest(".add-upload-tile");
+        if (!tile) return;
+        const input = tile.querySelector(".add-file-input");
+        const field = input && input.dataset.field;
+        const src = field && addDraft[field];
+        if (!src) return;
+        openLightbox(src, tile.dataset.label || "Document");
+      });
+
+      addForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const nextId =
+          BAJUS_CONTACTS.reduce(
+            (max, c) => Math.max(max, Number(c.id) || 0),
+            0,
+          ) + 1;
+        const newContact = {
+          id: nextId,
+          is_owner: document.getElementById("add-role-owner").checked,
+          name: document.getElementById("add-name").value.trim(),
+          designation: document.getElementById("add-designation").value.trim(),
+          phone: document.getElementById("add-phone").value.trim(),
+          email: document.getElementById("add-email").value.trim(),
+          passport_no: document.getElementById("add-passport-no").value.trim(),
+          passport_expiry_date: isoFromPicker(pickers.addPassport),
+          credit_card_expiry_date: cardFromPicker(pickers.addCard),
+          passport_photo_url: addDraft.passport_photo_url || "",
+          passport_copy_url: addDraft.passport_copy_url || "",
+          credit_card_copy_url: addDraft.credit_card_copy_url || "",
+          visiting_card_url: addDraft.visiting_card_url || "",
+        };
+
+        BAJUS_CONTACTS.unshift(newContact);
+        applySearch(searchEl.value);
+        closeAddContact();
+        if (typeof showToast === "function") {
+          showToast("Contact added successfully.");
+        }
+      });
+
+      // Deep-link: ?add=1 opens the add modal (also used by the old add page redirect)
+      if (new URLSearchParams(window.location.search).get("add") === "1") {
+        openAddContact();
+        history.replaceState({}, "", "dashboard-contacts.html");
+      }
 
       const lightbox = document.getElementById("doc-lightbox");
       const lightboxImage = document.getElementById("doc-lightbox-image");
       const lightboxCaption = document.getElementById("doc-lightbox-caption");
 
       function openLightbox(src, caption) {
+        if (!src) return;
         lightboxImage.src = src;
         lightboxImage.alt = caption;
         lightboxCaption.textContent = caption;
@@ -758,6 +2255,7 @@
       document.addEventListener("keydown", (e) => {
         if (e.key !== "Escape") return;
         if (!lightbox.classList.contains("hidden")) closeLightbox();
+        else if (!addModal.classList.contains("hidden")) closeAddContact();
         else if (!detailModal.classList.contains("hidden"))
           closeContactDetails();
       });
