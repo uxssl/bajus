@@ -12,6 +12,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" />
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body class="dashboard-page bg-cream text-charcoal min-h-screen flex flex-col font-sans">
@@ -73,9 +74,14 @@
     </aside>
 
     <main class="flex-1 min-w-0 bg-cream p-6 md:p-12 space-y-8">
-      <div class="pb-6 border-b border-zinc-150">
-        <h1 class="font-serif text-2xl md:text-3xl text-charcoal">Event <span class="text-gold italic font-medium">Stall Booking</span></h1>
-        <p class="text-xs text-zinc-500 mt-1 max-w-2xl">Browse upcoming events to book or register, then track every step of your requests under My Bookings. Public tickets for domestic events are on the <a href="events.html" class="text-gold font-semibold hover:underline">public Events page</a>.</p>
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-zinc-150">
+        <div>
+          <h1 class="font-serif text-2xl md:text-3xl text-charcoal">Event <span class="text-gold italic font-medium">Stall Booking</span></h1>
+          <p class="text-xs text-zinc-500 mt-1 max-w-2xl">Browse upcoming events to book or register, then track every step of your requests under My Bookings. Public tickets for domestic events are on the <a href="events.html" class="text-gold font-semibold hover:underline">public Events page</a>.</p>
+        </div>
+        <button type="button" id="event-add-open" class="px-4 py-2.5 bg-charcoal hover:bg-gold text-cream hover:text-zinc-950 text-xs font-bold uppercase tracking-widest transition-all inline-flex items-center gap-1.5 shrink-0">
+          <i class="ph ph-plus-bold text-sm"></i> Add Event
+        </button>
       </div>
 
       <!-- Tabs -->
@@ -436,10 +442,110 @@
     </div>
   </div>
 
+  <!-- ADD EVENT MODAL -->
+  <div id="event-add-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="event-add-title">
+    <div id="event-add-overlay" class="absolute inset-0 bg-zinc-950/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white max-w-3xl w-full max-h-[90vh] overflow-hidden border border-zinc-200 shadow-2xl flex flex-col modal-panel z-10">
+      <div class="px-6 py-5 border-b border-zinc-200 flex items-start justify-between gap-4 shrink-0 bg-zinc-50">
+        <div class="min-w-0">
+          <h2 id="event-add-title" class="font-serif text-xl text-charcoal leading-tight">Add Event</h2>
+          <p class="text-xs text-zinc-500 mt-1">Publish a domestic stall event or international delegation to the member portal.</p>
+        </div>
+        <button type="button" id="event-add-close" class="size-9 flex items-center justify-center rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-500 hover:text-charcoal transition-colors shrink-0" aria-label="Close">
+          <i class="ph ph-x text-lg"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-6 bg-cream custom-scrollbar">
+        <form id="event-add-form" class="space-y-5">
+          <div class="bg-white border border-zinc-200 p-5 rounded-sm space-y-4">
+            <h3 class="text-[10px] font-bold uppercase tracking-widest text-gold border-b border-zinc-100 pb-2">Event Type</h3>
+            <div class="flex flex-wrap gap-3">
+              <label class="choice-tile">
+                <input type="radio" name="event-add-type" value="domestic" class="size-4 accent-[#b8860b]" checked />
+                <span class="font-medium text-xs">Domestic</span>
+              </label>
+              <label class="choice-tile">
+                <input type="radio" name="event-add-type" value="international" class="size-4 accent-[#b8860b]" />
+                <span class="font-medium text-xs">International</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="bg-white border border-zinc-200 p-5 rounded-sm space-y-4">
+            <h3 class="text-[10px] font-bold uppercase tracking-widest text-gold border-b border-zinc-100 pb-2">Event Details</h3>
+            <div>
+              <label for="event-add-name" class="form-label">Event Name <span class="text-red-500">*</span></label>
+              <input id="event-add-name" type="text" class="form-input" placeholder="e.g. BAJUS Jewellery Expo 2027" required />
+            </div>
+            <div>
+              <label for="event-add-category" class="form-label">Category <span class="text-red-500">*</span></label>
+              <select id="event-add-category" class="form-input" required></select>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="event-add-start" class="form-label">Start Date <span class="text-red-500">*</span></label>
+                <input id="event-add-start" type="text" class="form-input bajus-datepicker" placeholder="Select date" required autocomplete="off" />
+              </div>
+              <div>
+                <label for="event-add-end" class="form-label">End Date</label>
+                <input id="event-add-end" type="text" class="form-input bajus-datepicker" placeholder="Optional" autocomplete="off" />
+              </div>
+            </div>
+            <div>
+              <label for="event-add-where" class="form-label">Venue / Location <span class="text-red-500">*</span></label>
+              <input id="event-add-where" type="text" class="form-input" placeholder="e.g. ICCB, Dhaka" required />
+            </div>
+            <div>
+              <label for="event-add-stalls" class="form-label">Stall Information <span class="text-red-500">*</span></label>
+              <input id="event-add-stalls" type="text" class="form-input" placeholder="e.g. 3m × 3m, corner premium" required />
+            </div>
+            <div>
+              <label for="event-add-description" class="form-label">Description <span class="text-red-500">*</span></label>
+              <textarea id="event-add-description" rows="3" class="form-input resize-y min-h-[5rem]" placeholder="Brief summary for members" required></textarea>
+            </div>
+          </div>
+
+          <div class="bg-white border border-zinc-200 p-5 rounded-sm space-y-4">
+            <h3 class="text-[10px] font-bold uppercase tracking-widest text-gold border-b border-zinc-100 pb-2">Cover Image</h3>
+            <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[10rem] flex flex-col" data-label="Event cover">
+              <input id="event-add-image" class="hidden bajus-file-input" type="file" accept="image/*" />
+              <label for="event-add-image" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
+                <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-image"></i></span>
+                <span class="bajus-upload-text text-[10px] font-bold uppercase tracking-wider text-gold">Upload Cover Image</span>
+                <span class="bajus-upload-help text-[10px] text-zinc-400">JPG/PNG · Recommended 4:3 ratio</span>
+              </label>
+              <div class="bajus-upload-filled hidden flex-1 flex flex-col">
+                <div class="flex-1 bg-zinc-100 overflow-hidden min-h-[7rem] grid place-items-center p-2">
+                  <img class="bajus-upload-preview w-full h-full max-h-36 object-contain" alt="Event cover preview" />
+                </div>
+                <div class="flex border-t border-zinc-100 bg-white">
+                  <button type="button" class="bajus-doc-preview flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-gold hover:bg-gold-soft transition-colors border-r border-zinc-100">Preview</button>
+                  <label for="event-add-image" class="bajus-doc-change flex-1 px-2 py-2.5 text-[10px] font-bold uppercase tracking-wider text-charcoal hover:text-gold hover:bg-zinc-50 transition-colors text-center cursor-pointer">Change</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p id="event-add-error" class="hidden text-[11px] text-red-600 bg-red-50 border border-red-200 rounded-sm px-3 py-2"></p>
+        </form>
+      </div>
+
+      <div class="px-6 py-4 border-t border-zinc-200 bg-white flex flex-col-reverse sm:flex-row gap-3 shrink-0">
+        <button type="button" id="event-add-cancel" class="btn-outline flex-1 px-6 py-3 text-xs font-bold uppercase tracking-widest">Cancel</button>
+        <button type="submit" form="event-add-form" class="btn-gold flex-1 px-6 py-3 text-xs font-bold uppercase tracking-widest">Publish Event</button>
+      </div>
+    </div>
+  </div>
+
   <div id="bajus-footer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+  <script src="./js/bajus-datepicker.js"></script>
+  <script src="./js/bajus-upload.js"></script>
   <script src="./js/stores-data.js"></script>
   <script src="./js/contacts-data.js"></script>
   <script src="./js/include.js"></script>
+  <script src="./js/dashboard-user.js"></script>
   <script src="./js/main.js"></script>
   <script>
     const MEMBER_STORES = BAJUS_STORES;
@@ -1050,7 +1156,7 @@
       }
     ];
 
-    const DOMESTIC_EVENT_CATALOG = [
+    let DOMESTIC_EVENT_CATALOG = [
       {
         name: "BAJUS Jewellery Expo 2026",
         category: "Domestic · Trade Expo",
@@ -1133,7 +1239,7 @@
       }
     ];
 
-    const INTERNATIONAL_EVENT_CATALOG = [
+    let INTERNATIONAL_EVENT_CATALOG = [
       {
         name: "Vicenzaoro Winter — Italy",
         registerName: "Vicenzaoro Winter — Italy",
@@ -2285,6 +2391,221 @@
       window.showToast(`Invoice ${invoiceRegistration.invoiceNo} download started. (Mockup — backend not connected.)`);
     });
 
+    /* ---------- Add Event modal ---------- */
+
+    const EVENT_DOMESTIC_CATEGORIES = [
+      "Trade Expo", "Conference", "Summit", "Regional Expo", "Craft Fair", "Workshop Expo", "Heritage Fair"
+    ];
+    const EVENT_INTERNATIONAL_CATEGORIES = [
+      "Trade Fair", "Exhibition", "Trade Mission", "Sourcing Fair", "Luxury Fair", "Expo", "Trade Show", "Design Week"
+    ];
+    const DEFAULT_EVENT_IMAGE = "./assets/news3.jpg";
+
+    const eventAddModal = document.getElementById("event-add-modal");
+    const eventAddForm = document.getElementById("event-add-form");
+    const eventAddError = document.getElementById("event-add-error");
+    const eventAddCategory = document.getElementById("event-add-category");
+
+    function switchEventsTab(target) {
+      document.querySelectorAll(".dash-tab").forEach((tab) => {
+        tab.classList.toggle("is-active", tab.dataset.tab === target);
+      });
+      document.querySelectorAll(".dash-panel").forEach((panel) => {
+        panel.classList.toggle("is-active", panel.dataset.panel === target);
+      });
+    }
+
+    function activeEventsTab() {
+      return document.querySelector(".dash-tab.is-active")?.dataset.tab || "domestic";
+    }
+
+    function populateEventCategoryOptions(type) {
+      const prefix = type === "international" ? "International" : "Domestic";
+      const options = type === "international" ? EVENT_INTERNATIONAL_CATEGORIES : EVENT_DOMESTIC_CATEGORIES;
+      eventAddCategory.innerHTML = options.map((label) =>
+        `<option value="${prefix} · ${label}">${prefix} · ${label}</option>`
+      ).join("");
+    }
+
+    function parseEventDate(value) {
+      if (!value) return null;
+      const parsed = value.includes("-") ? new Date(value + "T12:00:00") : new Date(value);
+      return Number.isNaN(parsed.getTime()) ? null : parsed;
+    }
+
+    function formatEventWhen(start, end) {
+      const monthYear = (date) =>
+        date.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+      if (!end || start.toDateString() === end.toDateString()) {
+        return `${start.getDate()} ${monthYear(start)}`;
+      }
+      const sameMonth =
+        start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear();
+      if (sameMonth) {
+        return `${start.getDate()} – ${end.getDate()} ${monthYear(start)}`;
+      }
+      const startLabel = `${start.getDate()} ${start.toLocaleDateString("en-GB", { month: "long" })}`;
+      return `${startLabel} – ${end.getDate()} ${monthYear(end)}`;
+    }
+
+    function eventSidebarDateParts(date) {
+      return {
+        dateMonth: date.toLocaleDateString("en-US", { month: "short" }),
+        dateDay: String(date.getDate()),
+        dateYear: String(date.getFullYear()),
+      };
+    }
+
+    function resetEventAddForm() {
+      eventAddForm.reset();
+      eventAddError.classList.add("hidden");
+      eventAddError.textContent = "";
+      document.querySelector('input[name="event-add-type"][value="domestic"]').checked = true;
+      populateEventCategoryOptions("domestic");
+      bajusResetUploadTiles(eventAddModal);
+      document.getElementById("event-add-start")._flatpickr?.clear();
+      document.getElementById("event-add-end")._flatpickr?.clear();
+    }
+
+    function openAddEventModal(preferredType) {
+      resetEventAddForm();
+      const type = preferredType === "international" ? "international" : "domestic";
+      document.querySelector(`input[name="event-add-type"][value="${type}"]`).checked = true;
+      populateEventCategoryOptions(type);
+      eventAddModal.classList.remove("hidden");
+      eventAddModal.classList.add("flex");
+      eventAddModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      document.getElementById("event-add-name").focus();
+    }
+
+    function closeAddEventModal() {
+      eventAddModal.classList.add("hidden");
+      eventAddModal.classList.remove("flex");
+      eventAddModal.setAttribute("aria-hidden", "true");
+      if (
+        stallModal.classList.contains("hidden") &&
+        regModal.classList.contains("hidden") &&
+        payModal.classList.contains("hidden") &&
+        invoiceModal.classList.contains("hidden") &&
+        regDetailsModal.classList.contains("hidden") &&
+        requestModal.classList.contains("hidden")
+      ) {
+        document.body.style.overflow = "";
+      }
+    }
+
+    function eventCatalogHasName(type, name) {
+      const trimmed = name.trim();
+      if (type === "domestic") {
+        return DOMESTIC_EVENT_CATALOG.some((event) => event.name === trimmed);
+      }
+      return INTERNATIONAL_EVENT_CATALOG.some(
+        (event) => event.name === trimmed || event.registerName === trimmed
+      );
+    }
+
+    function buildEventCatalogEntry(type, formData) {
+      const startDate = parseEventDate(formData.start);
+      const endDate = parseEventDate(formData.end) || startDate;
+      const sidebar = eventSidebarDateParts(startDate);
+      const imagePreview = eventAddModal.querySelector("#event-add-image")
+        ?.closest(".bajus-upload-tile")
+        ?.querySelector(".bajus-upload-preview")
+        ?.src;
+
+      const base = {
+        name: formData.name.trim(),
+        category: formData.category,
+        image: imagePreview || DEFAULT_EVENT_IMAGE,
+        description: formData.description.trim(),
+        when: formatEventWhen(startDate, endDate),
+        where: formData.where.trim(),
+        stalls: formData.stalls.trim(),
+        ...sidebar,
+      };
+
+      if (type === "international") {
+        return {
+          ...base,
+          registerName: base.name.replace(/\s*—\s*BAJUS Delegation$/i, "").trim(),
+        };
+      }
+      return base;
+    }
+
+    document.getElementById("event-add-open").addEventListener("click", () => {
+      const tab = activeEventsTab();
+      openAddEventModal(tab === "international" ? "international" : "domestic");
+    });
+    document.getElementById("event-add-close").addEventListener("click", closeAddEventModal);
+    document.getElementById("event-add-cancel").addEventListener("click", closeAddEventModal);
+    document.getElementById("event-add-overlay").addEventListener("click", closeAddEventModal);
+
+    eventAddForm.querySelectorAll('input[name="event-add-type"]').forEach((input) => {
+      input.addEventListener("change", () => populateEventCategoryOptions(input.value));
+    });
+
+    eventAddForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      eventAddError.classList.add("hidden");
+
+      const type = eventAddForm.querySelector('input[name="event-add-type"]:checked').value;
+      const formData = {
+        name: document.getElementById("event-add-name").value,
+        category: eventAddCategory.value,
+        start: bajusGetIsoDate(document.getElementById("event-add-start")),
+        end: bajusGetIsoDate(document.getElementById("event-add-end")),
+        where: document.getElementById("event-add-where").value,
+        stalls: document.getElementById("event-add-stalls").value,
+        description: document.getElementById("event-add-description").value,
+      };
+
+      if (!formData.start) {
+        eventAddError.textContent = "Please select a valid start date.";
+        eventAddError.classList.remove("hidden");
+        return;
+      }
+
+      if (formData.end && parseEventDate(formData.end) < parseEventDate(formData.start)) {
+        eventAddError.textContent = "End date cannot be before the start date.";
+        eventAddError.classList.remove("hidden");
+        return;
+      }
+
+      if (eventCatalogHasName(type, formData.name)) {
+        eventAddError.textContent = "An event with this name already exists.";
+        eventAddError.classList.remove("hidden");
+        return;
+      }
+
+      const entry = buildEventCatalogEntry(type, formData);
+
+      if (type === "domestic") {
+        DOMESTIC_EVENT_CATALOG.unshift(entry);
+        domesticEventsPage = 1;
+        renderDomesticEvents();
+        switchEventsTab("domestic");
+      } else {
+        INTERNATIONAL_EVENT_CATALOG.unshift(entry);
+        internationalEventsPage = 1;
+        renderInternationalEvents();
+        switchEventsTab("international");
+      }
+
+      closeAddEventModal();
+      window.showToast(`${entry.name} published to ${type === "domestic" ? "Domestic" : "International"} Events.`);
+    });
+
+    bajusInitDatepickers(eventAddModal);
+    bajusInitUploads();
+    populateEventCategoryOptions("domestic");
+
+    if (new URLSearchParams(window.location.search).get("add") === "1") {
+      const tab = new URLSearchParams(window.location.search).get("tab");
+      openAddEventModal(tab === "international" ? "international" : "domestic");
+    }
+
     renderDomesticEvents();
     renderInternationalEvents();
     wireEventTabActions();
@@ -2292,7 +2613,8 @@
 
     document.addEventListener("keydown", (e) => {
       if (e.key !== "Escape") return;
-      if (!stallModal.classList.contains("hidden")) closeStallModal();
+      if (!eventAddModal.classList.contains("hidden")) closeAddEventModal();
+      else if (!stallModal.classList.contains("hidden")) closeStallModal();
       else if (!regModal.classList.contains("hidden")) closeRegModal();
       else if (!payModal.classList.contains("hidden")) closePayModal();
       else if (!invoiceModal.classList.contains("hidden")) closeInvoiceModal();

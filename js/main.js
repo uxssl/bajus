@@ -374,6 +374,9 @@ window.showToast = function(message, type = 'success') {
     initCommitteesAccordion(); 
     initCommitteeSearch(); 
     initFormValidation();
+    if (typeof window.initDashboardUserMenu === "function") {
+      window.initDashboardUserMenu();
+    }
   }
 
   if (document.readyState === "loading") {
