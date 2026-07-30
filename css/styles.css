@@ -2205,6 +2205,53 @@ section.bg-cream.pb-24 .lg\:col-span-4 > div {
   line-height: 1.5;
 }
 
+/* Member directory — 3-column layout & larger typography */
+.member-directory-page {
+  font-size: 1.0625rem;
+}
+
+.member-directory-page .member-card {
+  padding: 24px;
+  gap: 18px;
+}
+
+.member-directory-page .member-card__logo {
+  min-width: 48px;
+  height: 48px;
+  font-size: 18px;
+}
+
+.member-directory-page .member-card__id {
+  font-size: 11px;
+}
+
+.member-directory-page .member-card__name {
+  font-size: 19px;
+  margin-bottom: 8px;
+}
+
+.member-directory-page .member-card__owner {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.member-directory-page .member-card__location {
+  font-size: 13px;
+}
+
+.member-directory-page .member-filter-bar .btn-gold {
+  font-size: 0.9375rem;
+}
+
+.member-directory-page #member-detail-modal .text-\[11px\],
+.member-directory-page #member-detail-modal .text-\[10px\] {
+  font-size: 0.8125rem;
+}
+
+.member-directory-page #member-detail-modal .text-\[13px\] {
+  font-size: 0.9375rem;
+}
+
 .verified-badge {
   display: inline-flex;
   align-items: center;
