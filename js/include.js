@@ -15,6 +15,7 @@
           label: "President's Message",
         },
         { href: "about-board.html", label: "Board of Directors" },
+        { href: "about-past-leaders.html", label: "Past Leaders" },
         { href: "about-committees.html", label: "Committees" },
         {
           href: "about-divisional-committee.html",
@@ -63,13 +64,7 @@
         { href: "resource-links.html", label: "Useful Link" },
       ],
     },
-    {
-      label: "Institute",
-      submenu: [
-        { href: "bajus-institute.html", label: "Training/Course Outline" },
-        { href: "institute-gallery.html", label: "Gallery" },
-      ],
-    },
+    { href: "bajus-institute.html", label: "Institute" },
     { href: "contact.html", label: "Contact" },
   ];
 
@@ -86,6 +81,177 @@
 
   function hrefPage(href) {
     return (href || "").split("#")[0];
+  }
+
+  const LOGIN_KEY = "bajus_member_logged_in";
+  const MEMBER_KEY = "bajus_dashboard_member";
+
+  function isMemberLoggedIn() {
+    return sessionStorage.getItem(LOGIN_KEY) === "1";
+  }
+
+  function getHeaderMember() {
+    const defaults = {
+      name: "Md. Alamgir",
+      memberId: "BAJUS-DH-001247",
+      photo: "assets/members/mohammed_morshed_alam.jpg",
+    };
+    try {
+      const raw = sessionStorage.getItem(MEMBER_KEY);
+      if (raw) return { ...defaults, ...JSON.parse(raw) };
+    } catch (_) {}
+    return defaults;
+  }
+
+  function getHeaderMemberId(member) {
+    return member.memberId || member.id || "BAJUS-DH-001247";
+  }
+
+  function renderHeaderAvatar(member) {
+    const photoSrc = memberPhotoSrc(member.photo);
+    const inner = photoSrc
+      ? `<img src="${photoSrc}" alt="" class="bajus-header-user__photo" loading="lazy" />`
+      : `<span class="bajus-header-user__initials" aria-hidden="true">${memberInitials(member.name)}</span>`;
+    return `<span class="bajus-header-user__avatar">${inner}</span>`;
+  }
+
+  function memberPhotoSrc(photo) {
+    if (!photo) return "";
+    const path = photo.replace(/^\.\//, "");
+    return `${BASE}/${path}`;
+  }
+
+  function memberInitials(name) {
+    return (name || "")
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((part) => part[0])
+      .join("")
+      .toUpperCase();
+  }
+
+  function renderMemberHeaderUser(isDark, options) {
+    const opts = options || {};
+    const inPortal = Boolean(opts.inPortal);
+    const member = getHeaderMember();
+    const memberId = getHeaderMemberId(member);
+    const avatar = renderHeaderAvatar(member);
+
+    const menuPanel = isDark
+      ? "bg-black border border-zinc-800 text-zinc-200"
+      : "bg-cream border border-zinc-200";
+    const menuLink = isDark
+      ? "text-zinc-300 hover:text-gold hover:bg-zinc-900"
+      : "text-charcoal hover:text-gold hover:bg-zinc-50";
+
+    const memberPortalDesktop = inPortal
+      ? ""
+      : `<a href="${BASE}/dashboard.html" class="block px-4 py-2.5 text-sm font-semibold ${menuLink} transition-colors">Member Portal</a>`;
+
+    const memberPortalMobile = inPortal
+      ? ""
+      : `<a href="${BASE}/dashboard.html" class="btn-gold text-center">Member Portal</a>`;
+
+    return {
+      desktop: `
+        <div class="bajus-header-user group relative">
+          <button type="button" class="bajus-header-user__trigger ${isDark ? "bajus-header-user__trigger--dark" : ""}" aria-haspopup="true" aria-expanded="false">
+            ${avatar}
+            <span class="bajus-header-user__text hidden xl:block">
+              <span class="bajus-header-user__name">${member.name}</span>
+              <span class="bajus-header-user__member-id">${memberId}</span>
+            </span>
+            <svg class="bajus-header-user__chevron hidden xl:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+          </button>
+          <div class="bajus-header-user__menu">
+            <div class="${menuPanel} bajus-header-user__menu-panel shadow-xl py-2 rounded-sm min-w-[11rem]">
+              ${memberPortalDesktop}
+              <a href="${BASE}/dashboard-profile.html" class="block px-4 py-2.5 text-sm font-semibold ${menuLink} transition-colors">My Profile</a>
+              <button type="button" data-bajus-logout class="block w-full text-left px-4 py-2.5 text-sm font-semibold ${menuLink} transition-colors">Log Out</button>
+            </div>
+          </div>
+        </div>
+      `,
+      mobile: `
+        <div class="bajus-header-user-mobile">
+          <div class="bajus-header-user-mobile__profile">
+            ${avatar}
+            <div>
+              <div class="bajus-header-user-mobile__name">${member.name}</div>
+              <div class="bajus-header-user-mobile__member-id">${memberId}</div>
+            </div>
+          </div>
+          ${memberPortalMobile}
+          <button type="button" data-bajus-logout class="btn-outline text-center">Log Out</button>
+        </div>
+      `,
+    };
+  }
+
+  function renderHeaderAuth(isDark) {
+    if (!isMemberLoggedIn()) {
+      return {
+        desktop: `
+          <a href="${BASE}/login.html" class="text-sm font-semibold px-4 py-2 hover:text-gold transition-colors ${isDark ? "text-zinc-300" : "text-black"}">Login</a>
+          <a href="${BASE}/signup.html" class="btn-gold text-sm font-medium tracking-wide px-5 py-2">Apply Now</a>
+        `,
+        mobile: `
+          <a href="${BASE}/login.html" class="btn-outline text-center">Login</a>
+          <a href="${BASE}/signup.html" class="btn-gold text-center">Apply for Membership</a>
+        `,
+      };
+    }
+
+    return renderMemberHeaderUser(isDark);
+  }
+
+  let headerAuthDocumentBound = false;
+
+  function bindHeaderAuth() {
+    document.querySelectorAll("[data-bajus-logout]").forEach((btn) => {
+      if (btn.dataset.bajusAuthBound) return;
+      btn.dataset.bajusAuthBound = "1";
+      btn.addEventListener("click", () => {
+        sessionStorage.removeItem(LOGIN_KEY);
+        sessionStorage.removeItem(MEMBER_KEY);
+        window.location.href = `${BASE}/index.html`;
+      });
+    });
+
+    document.querySelectorAll(".bajus-header-user").forEach((user) => {
+      if (user.dataset.bajusAuthBound) return;
+      user.dataset.bajusAuthBound = "1";
+
+      const trigger = user.querySelector(".bajus-header-user__trigger");
+      if (!trigger) return;
+
+      trigger.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isOpen = user.classList.toggle("is-open");
+        trigger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+
+      user.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          user.classList.remove("is-open");
+          trigger.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+
+    if (headerAuthDocumentBound) return;
+    headerAuthDocumentBound = true;
+
+    document.addEventListener("click", (event) => {
+      document.querySelectorAll(".bajus-header-user.is-open").forEach((user) => {
+        if (!user.contains(event.target)) {
+          user.classList.remove("is-open");
+          const trigger = user.querySelector(".bajus-header-user__trigger");
+          trigger?.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
   }
 
   function isSubItemActive(subHref, current) {
@@ -162,19 +328,20 @@
 
   function renderHeader(isDark = false) {
     const active = activePage();
+    const auth = renderHeaderAuth(isDark);
     return `
     <!-- Utility Bar -->
-    <div class="bajus-utility-bar ${isDark ? "bg-black border-b border-zinc-900 text-zinc-450" : "bg-zinc-100/60 border-b border-zinc-200"} hidden md:block">
-      <div class="max-w-7xl mx-auto px-6 h-8 flex items-center justify-between text-[10px] uppercase tracking-widest font-medium ${isDark ? "text-zinc-400" : "text-zinc-500"}">
+    <div class="bajus-utility-bar ${isDark ? "bajus-utility-bar--dark bg-black border-b border-zinc-900" : "bg-zinc-100/60 border-b border-zinc-200"} hidden md:block">
+      <div class="bajus-utility-bar__inner max-w-7xl mx-auto px-6 h-8 flex items-center justify-between uppercase tracking-widest font-medium">
         <div class="flex gap-6">
           <span><i class="bi bi-telephone text-gold mr-1"></i>+880 2 8159193</span>
           <span><i class="bi bi-envelope text-gold mr-1"></i>info@bajus.org.bd</span>
         </div>
         <div class="flex gap-4 items-center">
-          <a href="${BASE}/dashboard.html" class="hover:text-gold">Member Portal</a>
-          <span class="text-zinc-300">|</span>
-          <button class="hover:text-gold font-semibold text-gold">EN</button>
-          <button class="${isDark ? "hover:text-zinc-200" : "hover:text-charcoal"}">বাংলা</button>
+          <a href="${BASE}/dashboard.html" class="bajus-utility-bar__link hover:text-gold">Member Portal</a>
+          <span class="bajus-utility-bar__sep" aria-hidden="true">|</span>
+          <button type="button" class="bajus-utility-bar__link bajus-utility-bar__lang bajus-utility-bar__lang--active" aria-current="true">EN</button>
+          <button type="button" class="bajus-utility-bar__link bajus-utility-bar__lang">বাংলা</button>
         </div>
       </div>
     </div>
@@ -195,9 +362,8 @@
         <nav class="hidden lg:flex items-center gap-5">
           ${navLinks(active, false, isDark)}
         </nav>
-        <div class="hidden md:flex items-center gap-3">
-          <a href="${BASE}/login.html" class="text-sm font-semibold px-4 py-2 hover:text-gold transition-colors ${isDark ? "text-zinc-300" : "text-black"}">Login</a>
-          <a href="${BASE}/signup.html" class="btn-gold text-sm font-medium tracking-wide px-5 py-2">Apply Now</a>
+        <div class="bajus-header-auth hidden md:flex items-center gap-3">
+          ${auth.desktop}
         </div>
         <button id="bajus-burger" class="lg:hidden p-2 shrink-0 ${isDark ? "text-zinc-200" : "text-black"}" aria-label="Open menu">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
@@ -215,8 +381,7 @@
       </div>
       <nav>${navLinks(active, true)}</nav>
       <div class="mt-8 flex flex-col gap-3">
-        <a href="${BASE}/login.html" class="btn-outline text-center">Login</a>
-        <a href="${BASE}/signup.html" class="btn-gold text-center">Apply for Membership</a>
+        ${auth.mobile}
       </div>
     </div>
     <div id="bajus-backdrop" class="fixed inset-0 bg-black/40 z-40 hidden lg:hidden"></div>
@@ -225,26 +390,23 @@
 
   function tickerRow() {
     const items = [
-      ["22K Gold", '<span class="font-bangla">৳</span>1,72,883 / Bhori'],
-      ["21K Gold", '<span class="font-bangla">৳</span>1,65,016 / Bhori'],
-      ["18K Gold", '<span class="font-bangla">৳</span>1,41,449 / Bhori'],
-      [
-        "Traditional Gold",
-        '<span class="font-bangla">৳</span>1,17,036 / Bhori',
-      ],
-      ["Silver 22K", '<span class="font-bangla">৳</span>2,567 / Bhori'],
-      ["Silver 21K", '<span class="font-bangla">৳</span>2,449 / Bhori'],
-      ["Silver Traditional", '<span class="font-bangla">৳</span>1,633 / Bhori'],
+      ["22K Gold", '<span class="font-bangla">৳</span>1,72,883 / Gram'],
+      ["21K Gold", '<span class="font-bangla">৳</span>1,65,016 / Gram'],
+      ["18K Gold", '<span class="font-bangla">৳</span>1,41,449 / Gram'],
+      ["Traditional Gold", '<span class="font-bangla">৳</span>1,17,036 / Gram'],
+      ["Silver 22K", '<span class="font-bangla">৳</span>2,567 / Gram'],
+      ["Silver 21K", '<span class="font-bangla">৳</span>2,449 / Gram'],
+      ["Silver Traditional", '<span class="font-bangla">৳</span>1,633 / Gram'],
     ];
     return (
       `<div class="flex gap-12 px-6 items-center">` +
       items
         .map(
           ([k, v]) =>
-            `<span class="flex items-center gap-2"><span class="text-gold">●</span><span class="text-gold">${k}:</span> ${v}</span>`,
+            `<span class="flex items-center gap-2"><span class="ticker-price-accent">●</span><span class="ticker-price-accent">${k}:</span> ${v}</span>`,
         )
         .join("") +
-      `<span class="text-gold/50 px-4">| Updated: Jun 03, 2026</span>` +
+      `<span class="ticker-price-muted"><span class="ticker-price-separator" aria-hidden="true">|</span><span>Updated: Jun 03, 2026</span></span>` +
       `</div>`
     );
   }
@@ -359,6 +521,7 @@
     if (burger) burger.addEventListener("click", open);
     if (close) close.addEventListener("click", shut);
     if (back) back.addEventListener("click", shut);
+    bindHeaderAuth();
 
     // Shrink header on scroll (ticker marquee stays visible/sticky always)
     const mainHeader = document.getElementById("bajus-main-header");
@@ -633,6 +796,10 @@
       renderCalWidget();
     }
   }
+
+  window.bajusRenderMemberHeaderUser = renderMemberHeaderUser;
+  window.bajusBindHeaderAuth = bindHeaderAuth;
+  window.bajusGetHeaderMember = getHeaderMember;
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", inject);

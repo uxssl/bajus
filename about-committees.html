@@ -36,6 +36,7 @@
         <a href="./about.html" class="about-sub-nav__link">About BAJUS</a>
         <a href="./about-presidents-message.html" class="about-sub-nav__link">President's Message</a>
         <a href="./about-board.html" class="about-sub-nav__link">Board of Directors</a>
+        <a href="./about-past-leaders.html" class="about-sub-nav__link">Past Leaders</a>
         <a href="./about-committees.html" class="about-sub-nav__link is-active">Committees</a>
         <a href="./about-divisional-committee.html" class="about-sub-nav__link">Divisional Committee</a>
         <a href="./about-district-committee.html" class="about-sub-nav__link">District Committee</a>
@@ -72,18 +73,7 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Oversees matters related to banking policies, financial services, and loan
                 accessibility for BAJUS members to foster industry growth.</p>
-              <div class="mb-6 relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                  <i class="bi bi-search text-zinc-400"></i>
-                </span>
-                <input type="text" class="form-input committee-search pl-10 pr-10" placeholder="Search members...">
-                <button type="button"
-                  class="clear-search absolute inset-y-0 right-0 flex items-center pr-3.5 text-zinc-400 hover:text-gold hidden"
-                  aria-label="Clear search">
-                  <i class="bi bi-x-lg text-sm"></i>
-                </button>
-              </div>
-              <div class="committee-members-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8">
                 <!-- Members list is currently empty on live site -->
               </div>
             </div>
@@ -109,77 +99,64 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Convenes regularly to determine and announce official gold and silver
                 prices for the Bangladesh market based on international market data.</p>
-              <div class="mb-6 relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg class="text-zinc-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                  </svg>
-                </span>
-                <input type="text" class="form-input committee-search pl-10 pr-10" placeholder="Search members...">
-                <button type="button"
-                  class="clear-search absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400 hover:text-gold hidden"
-                  aria-label="Clear search">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
-              </div>
-              <div class="committee-members-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8">
                 <div class="committee-member">
                   <div class="committee-member__avatar">DA</div>
-                  <div>
+                  <div class="committee-member__info">
                     <div class="committee-member__name">Dewan Aminul Islam</div>
                     <div class="committee-member__role">Chairman</div>
                   </div>
                 </div>
                 <div class="committee-member">
-                  <div class="committee-member__avatar overflow-hidden"><img src="./assets/members/azad_ahmed.jpg"
-                      alt="Azad Ahmed" class="w-full h-full object-cover rounded-full" loading="lazy" /></div>
-                  <div>
+                  <div class="committee-member__avatar committee-member__avatar--photo">
+                    <img src="./assets/members/azad_ahmed.jpg" alt="Azad Ahmed" class="committee-member__photo"
+                      loading="lazy" />
+                  </div>
+                  <div class="committee-member__info">
                     <div class="committee-member__name">Azad Ahmed</div>
                     <div class="committee-member__role">Vice Chairman</div>
                   </div>
                 </div>
                 <div class="committee-member">
-                  <div class="committee-member__avatar overflow-hidden"><img src="./assets/members/bablu_dutta.jpg"
-                      alt="Bablu Dutta" class="w-full h-full object-cover rounded-full" loading="lazy" /></div>
-                  <div>
+                  <div class="committee-member__avatar committee-member__avatar--photo">
+                    <img src="./assets/members/bablu_dutta.jpg" alt="Bablu Dutta" class="committee-member__photo"
+                      loading="lazy" />
+                  </div>
+                  <div class="committee-member__info">
                     <div class="committee-member__name">Bablu Dutta</div>
                     <div class="committee-member__role">Member Secretary</div>
                   </div>
                 </div>
                 <div class="committee-member">
                   <div class="committee-member__avatar">BM</div>
-                  <div>
+                  <div class="committee-member__info">
                     <div class="committee-member__name">Biplob Malaker</div>
                     <div class="committee-member__role">Member</div>
                   </div>
                 </div>
                 <div class="committee-member">
-                  <div class="committee-member__avatar overflow-hidden"><img
-                      src="./assets/members/sumon_chandra_dey.jpg" alt="Sumon Chandra Dey"
-                      class="w-full h-full object-cover rounded-full" loading="lazy" /></div>
-                  <div>
+                  <div class="committee-member__avatar committee-member__avatar--photo">
+                    <img src="./assets/members/sumon_chandra_dey.jpg" alt="Sumon Chandra Dey"
+                      class="committee-member__photo" loading="lazy" />
+                  </div>
+                  <div class="committee-member__info">
                     <div class="committee-member__name">Sumon Chandra Dey</div>
                     <div class="committee-member__role">Member</div>
                   </div>
                 </div>
                 <div class="committee-member">
-                  <div class="committee-member__avatar overflow-hidden"><img src="./assets/members/ganesh_debnath.jpg"
-                      alt="Ganesh Debnath" class="w-full h-full object-cover rounded-full" loading="lazy" /></div>
-                  <div>
+                  <div class="committee-member__avatar committee-member__avatar--photo">
+                    <img src="./assets/members/ganesh_debnath.jpg" alt="Ganesh Debnath" class="committee-member__photo"
+                      loading="lazy" />
+                  </div>
+                  <div class="committee-member__info">
                     <div class="committee-member__name">Ganesh Debnath</div>
                     <div class="committee-member__role">Member</div>
                   </div>
                 </div>
                 <div class="committee-member">
                   <div class="committee-member__avatar">SD</div>
-                  <div>
+                  <div class="committee-member__info">
                     <div class="committee-member__name">Swarup Dey</div>
                     <div class="committee-member__role">Member</div>
                   </div>
@@ -208,27 +185,7 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Advises on export opportunities, international market development, and
                 strengthening Bangladesh jewellery presence globally.</p>
-              <div class="mb-6 relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg class="text-zinc-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                  </svg>
-                </span>
-                <input type="text" class="form-input committee-search pl-10 pr-10" placeholder="Search members...">
-                <button type="button"
-                  class="clear-search absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400 hover:text-gold hidden"
-                  aria-label="Clear search">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
-              </div>
-              <div class="committee-members-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
             </div>
           </div>
         </div>
@@ -252,27 +209,7 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Engages with the National Board of Revenue to advocate for fair taxation,
                 VAT policies, and customs duties for the jewellery sector.</p>
-              <div class="mb-6 relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg class="text-zinc-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                  </svg>
-                </span>
-                <input type="text" class="form-input committee-search pl-10 pr-10" placeholder="Search members...">
-                <button type="button"
-                  class="clear-search absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400 hover:text-gold hidden"
-                  aria-label="Clear search">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
-              </div>
-              <div class="committee-members-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
             </div>
           </div>
         </div>
@@ -296,27 +233,7 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Supports women entrepreneurs and professionals in the jewellery sector,
                 addressing their specific needs and promoting equality.</p>
-              <div class="mb-6 relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg class="text-zinc-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                  </svg>
-                </span>
-                <input type="text" class="form-input committee-search pl-10 pr-10" placeholder="Search members...">
-                <button type="button"
-                  class="clear-search absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400 hover:text-gold hidden"
-                  aria-label="Clear search">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
-              </div>
-              <div class="committee-members-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
             </div>
           </div>
         </div>
@@ -340,27 +257,7 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Collaborates with law enforcement agencies to combat gold smuggling,
                 theft, and ensure a secure environment for jewellers.</p>
-              <div class="mb-6 relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg class="text-zinc-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                  </svg>
-                </span>
-                <input type="text" class="form-input committee-search pl-10 pr-10" placeholder="Search members...">
-                <button type="button"
-                  class="clear-search absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400 hover:text-gold hidden"
-                  aria-label="Clear search">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
-              </div>
-              <div class="committee-members-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
             </div>
           </div>
         </div>
@@ -384,27 +281,7 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Conducts research on consumer trends, market demands, and technological
                 advancements to guide the industry's strategic direction.</p>
-              <div class="mb-6 relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg class="text-zinc-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                  </svg>
-                </span>
-                <input type="text" class="form-input committee-search pl-10 pr-10" placeholder="Search members...">
-                <button type="button"
-                  class="clear-search absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400 hover:text-gold hidden"
-                  aria-label="Clear search">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
-              </div>
-              <div class="committee-members-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
             </div>
           </div>
         </div>
@@ -428,27 +305,7 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Organizes major trade events, jewellery exhibitions, and the BAJUS Annual
                 Conference to showcase local craftsmanship.</p>
-              <div class="mb-6 relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg class="text-zinc-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                  </svg>
-                </span>
-                <input type="text" class="form-input committee-search pl-10 pr-10" placeholder="Search members...">
-                <button type="button"
-                  class="clear-search absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400 hover:text-gold hidden"
-                  aria-label="Clear search">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
-              </div>
-              <div class="committee-members-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
             </div>
           </div>
         </div>
@@ -472,27 +329,7 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Oversees legal matters, constitutional amendments, dispute resolution, and
                 member registration and welfare schemes.</p>
-              <div class="mb-6 relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg class="text-zinc-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                  </svg>
-                </span>
-                <input type="text" class="form-input committee-search pl-10 pr-10" placeholder="Search members...">
-                <button type="button"
-                  class="clear-search absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400 hover:text-gold hidden"
-                  aria-label="Clear search">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
-              </div>
-              <div class="committee-members-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
             </div>
           </div>
         </div>

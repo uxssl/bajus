@@ -1,11 +1,14 @@
 /**
- * Shared document/photo upload tiles (matches dashboard-contacts Add Contact UX).
+ * Shared document/photo upload tiles with optional selection crop (Cropper.js).
  *
- * Photo: .bajus-photo-tile + .bajus-file-input + .bajus-photo-preview / placeholder / replace
- * Docs:  .bajus-upload-tile + .bajus-file-input + .bajus-upload-empty / filled / preview
+ * Enable crop on a tile: data-crop
+ * Optional fixed aspect on tile: data-crop-aspect="1" (square owner photo only).
  */
 (function (global) {
   let wired = false;
+  let cropperInstance = null;
+  let cropObjectUrl = null;
+  let cropPending = null;
 
   function ensureLightbox() {
     let lb = document.getElementById("bajus-upload-lightbox");
@@ -37,6 +40,214 @@
     });
 
     return lb;
+  }
+
+  function ensureCropModal() {
+    let modal = document.getElementById("bajus-crop-modal");
+    if (modal) return modal;
+
+    modal = document.createElement("div");
+    modal.id = "bajus-crop-modal";
+    modal.className = "bajus-crop-modal hidden";
+    modal.setAttribute("role", "dialog");
+    modal.setAttribute("aria-modal", "true");
+    modal.setAttribute("aria-labelledby", "bajus-crop-modal-title");
+    modal.innerHTML =
+      '<div class="bajus-crop-modal__backdrop" aria-hidden="true"></div>' +
+      '<div class="bajus-crop-modal__panel modal-panel">' +
+      '<button type="button" class="bajus-crop-modal__close" aria-label="Close crop">&times;</button>' +
+      '<div class="bajus-crop-modal__header">' +
+      '<p id="bajus-crop-modal-title" class="bajus-crop-modal__title font-serif">Crop Document</p>' +
+      '<p class="bajus-crop-modal__hint">Drag to reposition. Resize the selection to keep the area you need.</p>' +
+      "</div>" +
+      '<div class="bajus-crop-modal__stage">' +
+      '<img id="bajus-crop-image" class="bajus-crop-modal__image" alt="Crop preview" />' +
+      "</div>" +
+      '<div class="bajus-crop-modal__actions">' +
+      '<button type="button" class="bajus-crop-modal__cancel btn-outline">Cancel</button>' +
+      '<button type="button" class="bajus-crop-modal__apply btn-gold">Apply Crop</button>' +
+      "</div>" +
+      "</div>";
+    document.body.appendChild(modal);
+
+    modal.querySelector(".bajus-crop-modal__backdrop").addEventListener("click", () => {
+      closeCropModal(true);
+    });
+    modal.querySelector(".bajus-crop-modal__close").addEventListener("click", () => {
+      closeCropModal(true);
+    });
+    modal.querySelector(".bajus-crop-modal__cancel").addEventListener("click", () => {
+      closeCropModal(true);
+    });
+    modal.querySelector(".bajus-crop-modal__apply").addEventListener("click", () => {
+      applyCropSelection();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+        closeCropModal(true);
+      }
+    });
+
+    return modal;
+  }
+
+  function destroyCropper() {
+    if (cropperInstance) {
+      cropperInstance.destroy();
+      cropperInstance = null;
+    }
+    if (cropObjectUrl) {
+      URL.revokeObjectURL(cropObjectUrl);
+      cropObjectUrl = null;
+    }
+  }
+
+  function closeCropModal(cancelled) {
+    const modal = document.getElementById("bajus-crop-modal");
+    const pending = cropPending;
+
+    destroyCropper();
+
+    if (modal) {
+      modal.classList.add("hidden");
+      modal.setAttribute("aria-hidden", "true");
+    }
+    document.body.classList.remove("modal-open");
+
+    cropPending = null;
+
+    if (!pending) return;
+
+    if (cancelled) {
+      if (pending.input) pending.input.value = "";
+      if (pending.reject) pending.reject(new Error("crop-cancelled"));
+    }
+  }
+
+  function startCropper(img, tile) {
+    const aspectRaw = tile.getAttribute("data-crop-aspect");
+    const aspectRatio = aspectRaw ? parseFloat(aspectRaw) : null;
+
+    const cropperOptions = {
+      viewMode: 1,
+      dragMode: "move",
+      autoCropArea: 0.92,
+      responsive: true,
+      restore: false,
+      guides: true,
+      center: true,
+      highlight: true,
+      cropBoxMovable: true,
+      cropBoxResizable: true,
+      toggleDragModeOnDblclick: false,
+      background: false,
+      modal: true,
+    };
+
+    if (Number.isFinite(aspectRatio)) {
+      cropperOptions.aspectRatio = aspectRatio;
+    }
+
+    cropperInstance = new global.Cropper(img, cropperOptions);
+  }
+
+  function applyCropSelection() {
+    if (!cropperInstance || !cropPending) return;
+
+    const canvas = cropperInstance.getCroppedCanvas({
+      maxWidth: 2400,
+      maxHeight: 2400,
+      imageSmoothingEnabled: true,
+      imageSmoothingQuality: "high",
+    });
+
+    if (!canvas) {
+      closeCropModal(true);
+      return;
+    }
+
+    canvas.toBlob(
+      (blob) => {
+        if (!blob || !cropPending) {
+          closeCropModal(true);
+          return;
+        }
+
+        const { input, tile, file, resolve } = cropPending;
+        const croppedFile = new File([blob], file.name, {
+          type: blob.type || file.type || "image/jpeg",
+          lastModified: Date.now(),
+        });
+
+        const dt = new DataTransfer();
+        dt.items.add(croppedFile);
+        input.files = dt.files;
+
+        const previewUrl = URL.createObjectURL(croppedFile);
+        const photoTile = tile.closest(".bajus-photo-tile");
+        if (photoTile) {
+          setPhotoTile(photoTile, previewUrl);
+        } else {
+          setDocTile(tile, previewUrl);
+        }
+
+        resolve(croppedFile);
+
+        cropPending = null;
+        destroyCropper();
+
+        const modal = document.getElementById("bajus-crop-modal");
+        if (modal) {
+          modal.classList.add("hidden");
+          modal.setAttribute("aria-hidden", "true");
+          document.body.classList.remove("modal-open");
+        }
+      },
+      cropPending.file.type || "image/jpeg",
+      0.92,
+    );
+  }
+
+  function openCropModal(file, tile) {
+    if (typeof global.Cropper === "undefined") {
+      return Promise.reject(new Error("cropper-unavailable"));
+    }
+
+    return new Promise((resolve, reject) => {
+      const modal = ensureCropModal();
+      const img = modal.querySelector("#bajus-crop-image");
+      const title = modal.querySelector("#bajus-crop-modal-title");
+      const label = tile.dataset.label || "Document";
+      const isSquare = tile.hasAttribute("data-crop-aspect");
+      const hint = modal.querySelector(".bajus-crop-modal__hint");
+
+      title.textContent = "Crop " + label;
+      if (hint) {
+        hint.textContent = isSquare
+          ? "Drag to reposition. Selection is locked to a square for your passport photo."
+          : "Drag to reposition and resize the selection freely to include the area you need.";
+      }
+      cropPending = { input: tile.querySelector(".bajus-file-input"), tile, file, resolve, reject };
+
+      destroyCropper();
+      cropObjectUrl = URL.createObjectURL(file);
+      img.src = cropObjectUrl;
+
+      modal.classList.remove("hidden");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+
+      img.onload = function onCropImageLoad() {
+        img.onload = null;
+        startCropper(img, tile);
+      };
+
+      if (img.complete) {
+        img.onload = null;
+        startCropper(img, tile);
+      }
+    });
   }
 
   function openLightbox(src, alt) {
@@ -103,6 +314,18 @@
     }
   }
 
+  function applyFileToTile(input, file) {
+    const objectUrl = URL.createObjectURL(file);
+    const photoTile = input.closest(".bajus-photo-tile");
+    if (photoTile) {
+      setPhotoTile(photoTile, objectUrl);
+      return;
+    }
+
+    const docTile = input.closest(".bajus-upload-tile");
+    if (docTile) setDocTile(docTile, objectUrl);
+  }
+
   function resetUploadTiles(root) {
     const scope = root || document;
     scope.querySelectorAll(".bajus-photo-tile").forEach((tile) => {
@@ -130,14 +353,16 @@
       tile.querySelectorAll("[for]").forEach((el) => {
         el.setAttribute("for", id);
       });
-      if (tile.tagName === "LABEL" && !tile.querySelector(".bajus-upload-empty")) {
-        /* photo tile is itself a label wrapping the input — no for needed */
-      }
     });
+  }
+
+  function tileUsesCrop(tile) {
+    return tile && tile.hasAttribute("data-crop");
   }
 
   function initUploads() {
     ensureLightbox();
+    ensureCropModal();
     if (wired) return;
     wired = true;
 
@@ -151,15 +376,22 @@
         return;
       }
 
-      const objectUrl = URL.createObjectURL(file);
-      const photoTile = input.closest(".bajus-photo-tile");
-      if (photoTile) {
-        setPhotoTile(photoTile, objectUrl);
+      const tile =
+        input.closest(".bajus-upload-tile") || input.closest(".bajus-photo-tile");
+
+      if (tileUsesCrop(tile)) {
+        if (typeof global.Cropper === "undefined") {
+          applyFileToTile(input, file);
+          return;
+        }
+
+        openCropModal(file, tile).catch(() => {
+          input.value = "";
+        });
         return;
       }
 
-      const docTile = input.closest(".bajus-upload-tile");
-      if (docTile) setDocTile(docTile, objectUrl);
+      applyFileToTile(input, file);
     });
 
     document.addEventListener("click", (e) => {

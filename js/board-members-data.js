@@ -1,0 +1,225 @@
+/**
+ * Board member organizational history — update with verified records as available.
+ * Keys match member photo filenames (underscores → hyphens).
+ */
+window.BOARD_MEMBERS_DATA = {
+  "enamul-haque-khan": {
+    name: "Enamul Haque Khan",
+    photo: "./assets/members/enamul_haque_khan.jpg",
+    description:
+      "As President, Enamul Haque Khan's vision is defined by digital transformation, international engagement, and a relentless focus on elevating Bangladesh's jewellery trade to international standards.",
+    currentRole: "President (2025–2027)",
+    pastRoles: [
+      { title: "Senior Vice President", duration: "2022–2025" },
+      { title: "Vice President", duration: "2019–2022" },
+      { title: "Director", duration: "2016–2019" },
+    ],
+  },
+  "ranjit-ghosh": {
+    name: "Ranjit Ghosh",
+    photo: "./assets/members/ranjit_ghosh.jpg",
+    currentRole: "Senior Vice President (2025–2027)",
+    pastRoles: [
+      { title: "Vice President", duration: "2022–2025" },
+      { title: "Director", duration: "2019–2022" },
+    ],
+  },
+  "azad-ahmed": {
+    name: "Azad Ahmed",
+    photo: "./assets/members/azad_ahmed.jpg",
+    currentRole: "Vice President (2025–2027)",
+    pastRoles: [{ title: "Director", duration: "2021–2025" }],
+  },
+  "avi-roy": {
+    name: "Avi Roy",
+    photo: "./assets/members/avi_roy.jpg",
+    currentRole: "Vice President (2025–2027)",
+    pastRoles: [{ title: "Director", duration: "2020–2025" }],
+  },
+  "md-iqbal-hossain-chowdhury": {
+    name: "Md. Iqbal Hossain Chowdhury",
+    photo: "./assets/members/md_iqbal_hossain_chowdhury.jpg",
+    currentRole: "Vice President (2025–2027)",
+    pastRoles: [{ title: "Director", duration: "2019–2025" }],
+  },
+  "amit-ghose": {
+    name: "Amit Ghose",
+    photo: "./assets/members/amit_ghose.jpg",
+    currentRole: "Treasurer (2025–2027)",
+    pastRoles: [{ title: "Director", duration: "2018–2025" }],
+  },
+  "md-milon-mia": {
+    name: "Md. Milon Mia",
+    photo: "./assets/members/md_milon_mia.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "Divisional Committee Member", duration: "2020–2025" }],
+  },
+  "paban-kumar-agarwal": {
+    name: "Paban Kumar Agarwal",
+    photo: "./assets/members/paban_kumar_agarwal.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "District Committee Member", duration: "2019–2025" }],
+  },
+  "tanveer-rahman": {
+    name: "Tanveer Rahman",
+    photo: "./assets/members/tanveer_rahman.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "Divisional Committee Member", duration: "2021–2025" }],
+  },
+  "md-liton-hawlader": {
+    name: "Md. Liton Hawlader",
+    photo: "./assets/members/md_liton_hawlader.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "District Committee Member", duration: "2018–2025" }],
+  },
+  "bablu-dutta": {
+    name: "Bablu Dutta",
+    photo: "./assets/members/bablu_dutta.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "Divisional Committee Member", duration: "2019–2025" }],
+  },
+  "ganesh-debnath": {
+    name: "Ganesh Debnath",
+    photo: "./assets/members/ganesh_debnath.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "District Committee Member", duration: "2020–2025" }],
+  },
+  "ashis-kumar-mondal": {
+    name: "Ashis Kumar Mondal",
+    photo: "./assets/members/ashis_kumar_mondal.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "Divisional Committee Member", duration: "2017–2025" }],
+  },
+  "mizanur-rahman": {
+    name: "Mizanur Rahman",
+    photo: "./assets/members/mizanur_rahman.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "District Committee Member", duration: "2019–2025" }],
+  },
+  "bikash-ghosh": {
+    name: "Bikash Ghosh",
+    photo: "./assets/members/bikash_ghosh.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "Divisional Committee Member", duration: "2020–2025" }],
+  },
+  "sumon-chandra-dey": {
+    name: "Sumon Chandra Dey",
+    photo: "./assets/members/sumon_chandra_dey.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "District Committee Member", duration: "2018–2025" }],
+  },
+  "mostafa-kamal": {
+    name: "Mostafa Kamal",
+    photo: "./assets/members/mostafa_kamal.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "Divisional Committee Member", duration: "2021–2025" }],
+  },
+  "dhananjoy-saha-bipul": {
+    name: "Dhananjoy Saha (Bipul)",
+    photo: "./assets/members/dhananjoy_saha_bipul.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "District Committee Member", duration: "2019–2025" }],
+  },
+  "sreebush-roy": {
+    name: "Sreebush Roy",
+    photo: "./assets/members/sreebush_roy.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "Divisional Committee Member", duration: "2020–2025" }],
+  },
+  "md-ali-hossain": {
+    name: "Md. Ali Hossain",
+    photo: "./assets/members/md_ali_hossain.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "District Committee Member", duration: "2018–2025" }],
+  },
+  "md-rubel": {
+    name: "Md. Rubel",
+    photo: "./assets/members/md_rubel.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "Divisional Committee Member", duration: "2021–2025" }],
+  },
+  "md-nayan-chowdhury": {
+    name: "Md. Nayan Chowdhury",
+    photo: "./assets/members/md_nayan_chowdhury.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "District Committee Member", duration: "2019–2025" }],
+  },
+  "md-salam": {
+    name: "Md. Salam",
+    photo: "./assets/members/md_salam.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "Divisional Committee Member", duration: "2017–2025" }],
+  },
+  "fahad-kamal-lincon": {
+    name: "Fahad Kamal Lincon",
+    photo: "./assets/members/fahad_kamal_lincon.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "District Committee Member", duration: "2020–2025" }],
+  },
+  "goutam-ghosh": {
+    name: "Goutam Ghosh",
+    photo: "./assets/members/goutam_ghosh.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "Divisional Committee Member", duration: "2019–2025" }],
+  },
+  "md-rabiul-islam": {
+    name: "Md. Rabiul Islam",
+    photo: "./assets/members/md_rabiul_islam.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "District Committee Member", duration: "2018–2025" }],
+  },
+  "md-tarequl-islam-chowdhury": {
+    name: "Md Tarequl Islam Chowdhury",
+    photo: "./assets/members/md_tarequl_islam_chowdhury.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "Divisional Committee Member", duration: "2020–2025" }],
+  },
+  "abu-nasir-md-abdullah": {
+    name: "Abu Nasir Md. Abdullah",
+    photo: "./assets/members/abu_nasir_md_abdullah.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "District Committee Member", duration: "2019–2025" }],
+  },
+  "md-rafiqul-islam": {
+    name: "Md. Rafiqul Islam",
+    photo: "./assets/members/md_rafiqul_islam.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "Divisional Committee Member", duration: "2021–2025" }],
+  },
+  "sowmen-saha": {
+    name: "Sowmen Saha",
+    photo: "./assets/members/sowmen_saha.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "District Committee Member", duration: "2018–2025" }],
+  },
+  "akkas-ali": {
+    name: "Akkas Ali",
+    photo: "./assets/members/akkas_ali.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "Divisional Committee Member", duration: "2020–2025" }],
+  },
+  "mohammed-morshed-alam": {
+    name: "Mohammed Morshed Alam",
+    photo: "./assets/members/mohammed_morshed_alam.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "District Committee Member", duration: "2019–2025" }],
+  },
+  "shown-ahmed-chowdhury": {
+    name: "Shown Ahmed Chowdhury",
+    photo: "./assets/members/shown_ahmed_chowdhury.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "Divisional Committee Member", duration: "2017–2025" }],
+  },
+  "md-nazmul-huda-latif": {
+    name: "MD. Nazmul Huda Latif",
+    photo: "./assets/members/md_nazmul_huda_latif.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "District Committee Member", duration: "2020–2025" }],
+  },
+  "palash-kumar-saha": {
+    name: "Palash Kumar Saha",
+    photo: "./assets/members/palash_kumar_saha.jpg",
+    currentRole: "Director (2025–2027)",
+    pastRoles: [{ title: "Divisional Committee Member", duration: "2019–2025" }],
+  },
+};

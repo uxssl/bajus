@@ -15,6 +15,7 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
@@ -87,7 +88,7 @@
             <div class="flex flex-col sm:flex-row gap-6 items-start">
               <div class="flex-shrink-0">
                 <span class="form-label mb-2 block">Owner Photo <span class="text-red-500">*</span></span>
-                <div class="bajus-upload-tile bajus-owner-photo-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all flex flex-col" data-label="Owner Photo">
+                <div class="bajus-upload-tile bajus-owner-photo-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all flex flex-col" data-label="Owner Photo" data-crop data-crop-aspect="1">
                   <input id="owner-photo-file" name="owner_photo" class="hidden bajus-file-input" type="file" accept="image/*" required />
                   <label for="owner-photo-file" class="bajus-upload-empty flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
                     <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-camera"></i></span>
@@ -108,7 +109,7 @@
               <div class="flex-1 grid md:grid-cols-2 gap-6 w-full">
               <div>
                   <span class="form-label mb-2 block">NID Copy <span class="text-red-500">*</span></span>
-                  <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="NID Copy">
+                  <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="NID Copy" data-crop>
                     <input id="owner-nid-file" name="owner_nid_file" class="hidden bajus-file-input" type="file" accept="image/*" required />
                     <label for="owner-nid-file" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
                       <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-person-vcard"></i></span>
@@ -128,7 +129,7 @@
                 </div>
                 <div>
                   <span class="form-label mb-2 block">TIN Certificate</span>
-                  <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="TIN Certificate">
+                  <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="TIN Certificate" data-crop>
                     <input id="owner-tin-file" name="owner_tin_file" class="hidden bajus-file-input" type="file" accept="image/*" />
                     <label for="owner-tin-file" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
                       <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-file-earmark-text"></i></span>
@@ -550,6 +551,7 @@
   <script src="./js/include.js"></script>
   <script src="./js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
   <script src="./js/bajus-datepicker.js"></script>
   <script src="./js/bajus-upload.js"></script>
   <script>

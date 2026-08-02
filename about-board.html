@@ -37,6 +37,7 @@
         <a href="./about.html" class="about-sub-nav__link">About BAJUS</a>
         <a href="./about-presidents-message.html" class="about-sub-nav__link">President's Message</a>
         <a href="./about-board.html" class="about-sub-nav__link is-active">Board of Directors</a>
+        <a href="./about-past-leaders.html" class="about-sub-nav__link">Past Leaders</a>
         <a href="./about-committees.html" class="about-sub-nav__link">Committees</a>
         <a href="./about-divisional-committee.html" class="about-sub-nav__link">Divisional Committee</a>
         <a href="./about-district-committee.html" class="about-sub-nav__link">District Committee</a>
@@ -66,7 +67,7 @@
       <h2 class="font-serif text-3xl mb-8">Board of Directors 2025–2027</h2>
     </div>
 
-    <div class="board-members-grid grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-16">
+    <div class="board-members-grid board-members-grid--directors-term grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-16">
       <div class="text-center reveal">
         <div class="mb-5 overflow-hidden">
           <img src="./assets/members/ranjit_ghosh.jpg" alt="Ranjit Ghosh" class="w-full h-auto" loading="lazy" />
@@ -323,7 +324,67 @@
     </div>
   </section>
 
+  <!-- Board Member Profile Modal -->
+  <div id="board-member-modal" class="board-member-modal hidden" aria-hidden="true" role="dialog"
+    aria-labelledby="board-member-modal-name" aria-modal="true">
+    <div class="board-member-modal__backdrop" aria-hidden="true"></div>
+    <div class="board-member-modal__panel modal-panel">
+      <button type="button" class="board-member-modal__close" aria-label="Close profile">&times;</button>
+      <div class="board-member-modal__body">
+        <div class="board-member-modal__header">
+          <img id="board-member-modal-photo" class="board-member-modal__photo" src="" alt="" width="120" height="150" />
+          <h2 id="board-member-modal-name" class="board-member-modal__name font-serif"></h2>
+        </div>
+        <div id="board-member-modal-description-wrap"
+          class="board-member-modal__section board-member-modal__section--description hidden">
+          <h3 class="board-member-modal__label">Description</h3>
+          <p id="board-member-modal-description" class="board-member-modal__description"></p>
+        </div>
+        <div class="board-member-modal__section">
+          <h3 class="board-member-modal__label">Current Position / Role</h3>
+          <p id="board-member-modal-current-role" class="board-member-modal__current-role"></p>
+        </div>
+        <div class="board-member-modal__section">
+          <h3 class="board-member-modal__label">Past Organizational Roles</h3>
+          <ul id="board-member-modal-past-roles" class="board-member-modal__past-list"></ul>
+        </div>
+        <div class="board-member-modal__section">
+          <h3 class="board-member-modal__label">Institutional Information</h3>
+          <dl class="board-member-modal__institution-grid">
+            <div class="board-member-modal__institution-item">
+              <dt>Business / Shop Name</dt>
+              <dd id="board-member-modal-shop-name"></dd>
+            </div>
+            <div class="board-member-modal__institution-item">
+              <dt>BAJUS Member ID</dt>
+              <dd id="board-member-modal-member-id"></dd>
+            </div>
+            <div class="board-member-modal__institution-item">
+              <dt>Division / District</dt>
+              <dd id="board-member-modal-location"></dd>
+            </div>
+            <div class="board-member-modal__institution-item">
+              <dt>Business Category</dt>
+              <dd id="board-member-modal-category"></dd>
+            </div>
+            <div class="board-member-modal__institution-item">
+              <dt>Membership Status</dt>
+              <dd id="board-member-modal-status"></dd>
+            </div>
+            <div class="board-member-modal__institution-item">
+              <dt>Membership Expiry</dt>
+              <dd id="board-member-modal-expiry"></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="bajus-footer"></div>
+  <script src="./js/board-members-data.js"></script>
+  <script src="./js/board-members-institution.js"></script>
+  <script src="./js/board-member-modal.js"></script>
   <script src="./js/include.js"></script>
   <script src="./js/main.js"></script>
 </body>

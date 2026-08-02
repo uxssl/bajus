@@ -137,61 +137,159 @@
               id="enroll-course-name" class="font-semibold text-gold"></span></p>
         </div>
 
-        <form id="enroll-form" onsubmit="submitEnrollmentForm(event)" class="space-y-4 text-xs">
+        <form id="enroll-form" onsubmit="submitEnrollmentForm(event)" class="space-y-4">
           <div>
-            <label class="block text-zinc-500 font-medium mb-1.5" for="enroll-name">Full Name <span
-                class="text-red-500">*</span></label>
-            <input required id="enroll-name" type="text" placeholder="e.g. Salah Uddin"
-              class="w-full px-3.5 py-2.5 bg-zinc-50 border border-zinc-200 rounded-sm focus:outline-none focus:border-gold transition-colors text-charcoal text-xs" />
+            <label class="form-label" for="enroll-name">Full Name *</label>
+            <input required id="enroll-name" type="text" placeholder="Full name" class="form-input" />
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-zinc-500 font-medium mb-1.5" for="enroll-email">Email Address <span
-                  class="text-red-500">*</span></label>
-              <input required id="enroll-email" type="email" placeholder="salah@domain.com"
-                class="w-full px-3.5 py-2.5 bg-zinc-50 border border-zinc-200 rounded-sm focus:outline-none focus:border-gold transition-colors text-charcoal text-xs" />
+              <label class="form-label" for="enroll-email">Email *</label>
+              <input required id="enroll-email" type="email" placeholder="your@email.com" class="form-input" />
             </div>
             <div>
-              <label class="block text-zinc-500 font-medium mb-1.5" for="enroll-phone">Phone Number <span
-                  class="text-red-500">*</span></label>
-              <input required id="enroll-phone" type="tel" placeholder="+880 1XXX XXXXXX"
-                class="w-full px-3.5 py-2.5 bg-zinc-50 border border-zinc-200 rounded-sm focus:outline-none focus:border-gold transition-colors text-charcoal text-xs" />
+              <label class="form-label" for="enroll-phone">Mobile *</label>
+              <input required id="enroll-phone" type="tel" placeholder="01XXXXXXXXX" class="form-input" />
             </div>
           </div>
 
           <div>
-            <label class="block text-zinc-500 font-medium mb-1.5" for="enroll-company">Company/Shop Name
-              (Optional)</label>
-            <input id="enroll-company" type="text" placeholder="e.g. Al-Amin Jewellers"
-              class="w-full px-3.5 py-2.5 bg-zinc-50 border border-zinc-200 rounded-sm focus:outline-none focus:border-gold transition-colors text-charcoal text-xs" />
+            <label class="form-label" for="enroll-company">Company / Shop Name</label>
+            <input id="enroll-company" type="text" placeholder="Official business name" class="form-input" />
           </div>
 
           <div class="pt-2">
             <label class="inline-flex items-center gap-2 cursor-pointer">
               <input id="enroll-member-toggle" type="checkbox" onchange="toggleMemberId()"
                 class="size-4 accent-gold cursor-pointer" />
-              <span class="text-zinc-650 select-none font-medium">I am a registered BAJUS Member (Staff / Owner)</span>
+              <span class="text-zinc-650 select-none font-medium text-sm">I am a registered BAJUS Member (Staff / Owner)</span>
             </label>
           </div>
 
           <div id="enroll-member-id-wrapper" class="hidden">
-            <label class="block text-zinc-500 font-medium mb-1.5" for="enroll-member-id">BAJUS Membership ID <span
-                class="text-red-500">*</span></label>
-            <input id="enroll-member-id" type="text" placeholder="e.g. M-99812"
-              class="w-full px-3.5 py-2.5 bg-zinc-50 border border-zinc-200 rounded-sm focus:outline-none focus:border-gold transition-colors text-charcoal text-xs" />
+            <label class="form-label" for="enroll-member-id">BAJUS Membership ID *</label>
+            <input id="enroll-member-id" type="text" placeholder="BAJUS-DH-001247" class="form-input" />
           </div>
 
           <div class="pt-3">
             <button type="submit"
               class="btn-gold w-full py-3.5 flex items-center justify-center gap-2 text-xs uppercase tracking-wider font-bold">
-              Submit Application
+              Continue to Payment
             </button>
           </div>
         </form>
       </div>
 
-      <!-- STEP 2: LOADING -->
+      <!-- STEP 2: SSLCOMMERZ PAYMENT -->
+      <div id="enroll-step-payment" class="hidden space-y-6">
+        <div class="border-b border-zinc-100 pb-3">
+          <h3 class="font-serif text-2xl text-charcoal">Complete Payment</h3>
+          <p class="text-xs text-zinc-400 mt-1">Secure your seat in <span id="enroll-payment-course-name"
+              class="font-semibold text-gold"></span> via SSLCommerz</p>
+        </div>
+
+        <div class="border-b border-zinc-200 pb-3 flex justify-between items-center bg-zinc-50 -mx-8 px-8 -mt-2 pt-4">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-zinc-600">SSLCOMMERZ Gateway</span>
+          </div>
+          <div class="text-right">
+            <span class="text-[10px] text-zinc-400 block uppercase font-bold">Total Amount</span>
+            <span id="enroll-payment-amount" class="text-sm font-serif font-bold text-gold">৳0</span>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block mb-2.5">Select Payment
+              Method</span>
+
+            <div class="grid grid-cols-3 gap-2 border-b border-zinc-200 pb-3">
+              <button type="button" onclick="switchEnrollPaymentTab('cards')" id="enroll-tab-cards"
+                class="py-2 text-center text-xs font-bold border-b-2 border-gold text-gold transition-colors focus:outline-none bg-transparent">
+                <i class="bi bi-credit-card block text-base mb-0.5"></i> Cards
+              </button>
+              <button type="button" onclick="switchEnrollPaymentTab('mfs')" id="enroll-tab-mfs"
+                class="py-2 text-center text-xs font-bold border-b-2 border-transparent text-zinc-400 hover:text-charcoal transition-colors focus:outline-none bg-transparent">
+                <i class="bi bi-phone block text-base mb-0.5"></i> Mobile Bank
+              </button>
+              <button type="button" onclick="switchEnrollPaymentTab('banking')" id="enroll-tab-banking"
+                class="py-2 text-center text-xs font-bold border-b-2 border-transparent text-zinc-400 hover:text-charcoal transition-colors focus:outline-none bg-transparent">
+                <i class="bi bi-bank block text-base mb-0.5"></i> Net Bank
+              </button>
+            </div>
+
+            <div class="mt-4">
+              <div id="enroll-panel-cards" class="grid grid-cols-3 gap-2.5">
+                <div onclick="selectEnrollPaymentProvider(this)"
+                  class="payment-provider border border-gold bg-gold-soft/15 p-2.5 rounded-sm flex flex-col items-center justify-center gap-1.5 cursor-pointer hover:border-gold transition-all relative">
+                  <span
+                    class="absolute top-1.5 right-1.5 size-3 bg-gold text-white rounded-full flex items-center justify-center text-[7px]"><i
+                      class="bi bi-check"></i></span>
+                  <i class="bi bi-credit-card-2-front text-2xl text-zinc-700"></i>
+                  <span class="text-[9px] font-semibold text-zinc-600">Visa/Master</span>
+                </div>
+                <div onclick="selectEnrollPaymentProvider(this)"
+                  class="payment-provider border border-zinc-200 p-2.5 rounded-sm flex flex-col items-center justify-center gap-1.5 cursor-pointer hover:border-gold transition-all">
+                  <i class="bi bi-credit-card-2-back text-2xl text-zinc-500"></i>
+                  <span class="text-[9px] font-semibold text-zinc-600">Amex</span>
+                </div>
+                <div onclick="selectEnrollPaymentProvider(this)"
+                  class="payment-provider border border-zinc-200 p-2.5 rounded-sm flex flex-col items-center justify-center gap-1.5 cursor-pointer hover:border-gold transition-all">
+                  <i class="bi bi-wallet2 text-2xl text-zinc-500"></i>
+                  <span class="text-[9px] font-semibold text-zinc-600">NexusPay</span>
+                </div>
+              </div>
+
+              <div id="enroll-panel-mfs" class="hidden grid grid-cols-3 gap-2.5">
+                <div onclick="selectEnrollPaymentProvider(this)"
+                  class="payment-provider border border-zinc-200 p-2.5 rounded-sm flex flex-col items-center justify-center gap-1.5 cursor-pointer hover:border-gold transition-all">
+                  <span
+                    class="size-6 bg-red-500 text-white text-[9px] font-extrabold rounded-full flex items-center justify-center">bK</span>
+                  <span class="text-[9px] font-semibold text-zinc-600">bKash</span>
+                </div>
+                <div onclick="selectEnrollPaymentProvider(this)"
+                  class="payment-provider border border-zinc-200 p-2.5 rounded-sm flex flex-col items-center justify-center gap-1.5 cursor-pointer hover:border-gold transition-all">
+                  <span
+                    class="size-6 bg-amber-500 text-white text-[9px] font-extrabold rounded-full flex items-center justify-center font-sans">Na</span>
+                  <span class="text-[9px] font-semibold text-zinc-600">Nagad</span>
+                </div>
+                <div onclick="selectEnrollPaymentProvider(this)"
+                  class="payment-provider border border-zinc-200 p-2.5 rounded-sm flex flex-col items-center justify-center gap-1.5 cursor-pointer hover:border-gold transition-all">
+                  <span
+                    class="size-6 bg-purple-700 text-white text-[9px] font-extrabold rounded-full flex items-center justify-center">Ro</span>
+                  <span class="text-[9px] font-semibold text-zinc-600">Rocket</span>
+                </div>
+              </div>
+
+              <div id="enroll-panel-banking" class="hidden grid grid-cols-3 gap-2.5">
+                <div onclick="selectEnrollPaymentProvider(this)"
+                  class="payment-provider border border-zinc-200 p-2.5 rounded-sm flex flex-col items-center justify-center gap-1.5 cursor-pointer hover:border-gold transition-all">
+                  <i class="bi bi-bank text-2xl text-zinc-500"></i>
+                  <span class="text-[9px] font-semibold text-zinc-600">CityTouch</span>
+                </div>
+                <div onclick="selectEnrollPaymentProvider(this)"
+                  class="payment-provider border border-zinc-200 p-2.5 rounded-sm flex flex-col items-center justify-center gap-1.5 cursor-pointer hover:border-gold transition-all">
+                  <i class="bi bi-bank2 text-2xl text-zinc-500"></i>
+                  <span class="text-[9px] font-semibold text-zinc-600">IBBL</span>
+                </div>
+                <div onclick="selectEnrollPaymentProvider(this)"
+                  class="payment-provider border border-zinc-200 p-2.5 rounded-sm flex flex-col items-center justify-center gap-1.5 cursor-pointer hover:border-gold transition-all">
+                  <i class="bi bi-globe text-2xl text-zinc-500"></i>
+                  <span class="text-[9px] font-semibold text-zinc-600">Other Bank</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" onclick="completeEnrollmentPayment()"
+          class="btn-gold w-full py-3.5 flex items-center justify-center gap-2 text-xs uppercase tracking-wider font-bold">
+          Pay Now
+        </button>
+      </div>
+
+      <!-- STEP 3: LOADING -->
       <div id="enroll-step-loading" class="hidden text-center py-10 space-y-4">
         <div class="flex items-center justify-center">
           <div class="size-12 border-4 border-gold/20 border-t-gold rounded-full animate-spin"></div>
@@ -200,7 +298,7 @@
         <p class="text-xs text-zinc-400">Verifying credentials and reserving seat at the academy.</p>
       </div>
 
-      <!-- STEP 3: SUCCESS -->
+      <!-- STEP 4: SUCCESS -->
       <div id="enroll-step-success" class="hidden text-center space-y-5 py-2">
         <div class="size-16 bg-gold-soft text-gold rounded-full flex items-center justify-center text-4xl mx-auto mb-2">
           <i class="bi bi-shield-check"></i>
@@ -212,7 +310,7 @@
           <div>Course: <span id="success-course-name" class="font-semibold text-charcoal"></span></div>
         </div>
         <p class="text-[13px] text-zinc-550 leading-relaxed max-w-sm mx-auto">
-          Thank you for registering! Your application is officially confirmed. We have sent the course schedules,
+          Thank you for enrolling! Your registration and payment are confirmed. We have sent the course schedules,
           pre-class checklist, and class details to your registered email address.
         </p>
         <div class="pt-2">
@@ -241,6 +339,8 @@
         schedule: "Mondays & Wednesdays (04:00 PM - 07:00 PM)",
         mode: "In-Person (Hands-on Labs)",
         fee: "Free",
+        feeAmount: 0,
+        memberFeeAmount: 0,
         capacity: "20 Students",
         outlines: [
           { week: "Weeks 1–2", title: "Introduction to Precious Metal Assaying", details: "Overview of gold alloys, karat calculation system, acid testing techniques, and non-destructive testing basics." },
@@ -260,6 +360,8 @@
         schedule: "Saturdays (09:00 AM - 01:00 PM)",
         mode: "Atelier Workshop",
         fee: "BDT 20,000 (BAJUS Member Subsidy: Free)",
+        feeAmount: 20000,
+        memberFeeAmount: 0,
         capacity: "12 Students",
         outlines: [
           { week: "Weeks 1–3", title: "Wire Drawing & Alloy Blending", details: "Drawing fine gold and silver wires using draw-plates, welding ratios, metal bending, and charcoal flame control." },
@@ -279,6 +381,8 @@
         schedule: "Tuesdays & Thursdays (06:30 PM - 09:30 PM)",
         mode: "Hybrid (Online Lectures + Lab)",
         fee: "BDT 25,000 (BAJUS Member Subsidy: BDT 10,000)",
+        feeAmount: 25000,
+        memberFeeAmount: 10000,
         capacity: "25 Students",
         outlines: [
           { week: "Weeks 1–3", title: "Rhino Interface & 2D Curve Drafting", details: "Setting up layouts, drawing ring shanks, mapping layout measurements, and grid constraints." },
@@ -288,10 +392,22 @@
       }
     };
 
+    let currentCourseId = "gold-assaying";
+
+    function getCurrentCourseData() {
+      return COURSE_DATA[currentCourseId] || COURSE_DATA["gold-assaying"];
+    }
+
+    function getEnrollmentAmount() {
+      const data = getCurrentCourseData();
+      const isMember = document.getElementById("enroll-member-toggle")?.checked;
+      return isMember ? (data.memberFeeAmount ?? data.feeAmount ?? 0) : (data.feeAmount ?? 0);
+    }
+
     function initCourseDetails() {
       const urlParams = new URLSearchParams(window.location.search);
-      const courseId = urlParams.get("course") || "gold-assaying";
-      const data = COURSE_DATA[courseId];
+      currentCourseId = urlParams.get("course") || "gold-assaying";
+      const data = COURSE_DATA[currentCourseId];
 
       if (!data) {
         window.location.href = "bajus-institute.html";
@@ -337,6 +453,17 @@
       if (window.bajusObserveReveal) {
         window.bajusObserveReveal(timeline);
       }
+
+      updateEnrollSubmitLabel();
+    }
+
+    function updateEnrollSubmitLabel() {
+      const submitBtn = document.querySelector("#enroll-form button[type='submit']");
+      if (!submitBtn) return;
+      const data = getCurrentCourseData();
+      const isMember = document.getElementById("enroll-member-toggle")?.checked;
+      const amount = isMember ? (data.memberFeeAmount ?? data.feeAmount ?? 0) : (data.feeAmount ?? 0);
+      submitBtn.textContent = amount > 0 ? "Continue to Payment" : "Confirm Enrollment";
     }
 
     function handleEnroll() {
@@ -350,8 +477,11 @@
       document.getElementById("enroll-member-id-wrapper").classList.add("hidden");
       document.getElementById("enroll-member-id").required = false;
 
+      updateEnrollSubmitLabel();
+
       // Show form step, hide others
       document.getElementById("enroll-step-form").classList.remove("hidden");
+      document.getElementById("enroll-step-payment").classList.add("hidden");
       document.getElementById("enroll-step-loading").classList.add("hidden");
       document.getElementById("enroll-step-success").classList.add("hidden");
 
@@ -374,27 +504,84 @@
         input.required = false;
         input.value = "";
       }
+      updateEnrollSubmitLabel();
     }
 
     function submitEnrollmentForm(event) {
       event.preventDefault();
 
-      // Show loading step
+      const amount = getEnrollmentAmount();
+      const courseTitle = document.getElementById("course-title").innerText;
+
+      if (amount <= 0) {
+        document.getElementById("enroll-step-form").classList.add("hidden");
+        document.getElementById("enroll-step-loading").classList.remove("hidden");
+        setTimeout(() => showEnrollmentSuccess(courseTitle), 1500);
+        return;
+      }
+
+      document.getElementById("enroll-payment-course-name").innerText = courseTitle;
+      document.getElementById("enroll-payment-amount").textContent = "৳" + amount.toLocaleString();
+      switchEnrollPaymentTab("cards");
+
       document.getElementById("enroll-step-form").classList.add("hidden");
+      document.getElementById("enroll-step-payment").classList.remove("hidden");
+    }
+
+    function switchEnrollPaymentTab(tab) {
+      ["cards", "mfs", "banking"].forEach((panel) => {
+        const panelEl = document.getElementById("enroll-panel-" + panel);
+        const tabEl = document.getElementById("enroll-tab-" + panel);
+        if (panel === tab) {
+          panelEl.classList.remove("hidden");
+          tabEl.classList.add("border-gold", "text-gold");
+          tabEl.classList.remove("border-transparent", "text-zinc-400");
+        } else {
+          panelEl.classList.add("hidden");
+          tabEl.classList.remove("border-gold", "text-gold");
+          tabEl.classList.add("border-transparent", "text-zinc-400");
+        }
+      });
+    }
+
+    function selectEnrollPaymentProvider(el) {
+      const providers = el.parentElement.querySelectorAll(".payment-provider");
+      providers.forEach((provider) => {
+        provider.classList.remove("border-gold", "bg-gold-soft/15");
+        provider.classList.add("border-zinc-200");
+        const check = provider.querySelector("span.absolute");
+        if (check) check.remove();
+      });
+
+      el.classList.add("border-gold", "bg-gold-soft/15");
+      el.classList.remove("border-zinc-200");
+      const checkEl = document.createElement("span");
+      checkEl.className = "absolute top-1.5 right-1.5 size-3 bg-gold text-white rounded-full flex items-center justify-center text-[7px]";
+      checkEl.innerHTML = '<i class="bi bi-check"></i>';
+      el.appendChild(checkEl);
+    }
+
+    function completeEnrollmentPayment() {
+      const courseTitle = document.getElementById("course-title").innerText;
+
+      document.getElementById("enroll-step-payment").classList.add("hidden");
       document.getElementById("enroll-step-loading").classList.remove("hidden");
 
-      // Simulate API submit delay
-      setTimeout(() => {
-        const regNum = Math.floor(10000 + Math.random() * 90000);
-        const courseTitle = document.getElementById("course-title").innerText;
+      setTimeout(() => showEnrollmentSuccess(courseTitle), 1500);
+    }
 
-        document.getElementById("success-reg-id").innerText = `BI-2026-${regNum}`;
-        document.getElementById("success-course-name").innerText = courseTitle;
+    function showEnrollmentSuccess(courseTitle) {
+      const regNum = Math.floor(10000 + Math.random() * 90000);
 
-        // Hide loading, show success step
-        document.getElementById("enroll-step-loading").classList.add("hidden");
-        document.getElementById("enroll-step-success").classList.remove("hidden");
-      }, 1500);
+      document.getElementById("success-reg-id").innerText = `BI-2026-${regNum}`;
+      document.getElementById("success-course-name").innerText = courseTitle;
+
+      document.getElementById("enroll-step-loading").classList.add("hidden");
+      document.getElementById("enroll-step-success").classList.remove("hidden");
+
+      if (window.showToast) {
+        window.showToast("Course enrollment completed successfully via SSLCOMMERZ!", "success");
+      }
     }
 
     function closeModal() {

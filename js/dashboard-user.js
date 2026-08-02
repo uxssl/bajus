@@ -1,96 +1,72 @@
-/* BAJUS — Dashboard header user menu (photo + name). */
+/* BAJUS — Dashboard header user menu (same as public site index header). */
 
 (function () {
-  const DEFAULT_MEMBER = {
-    name: "Md. Alamgir",
-    role: "Owner Account",
-    photo: "./assets/members/mohammed_morshed_alam.jpg",
-  };
-
-  const PHOTO_BY_NAME = {
-    "Md. Alamgir": DEFAULT_MEMBER.photo,
-    "Md. Alamgir Hossain": DEFAULT_MEMBER.photo,
-  };
-
-  function getStoredMember() {
-    try {
-      const raw = sessionStorage.getItem("bajus_dashboard_member");
-      if (raw) return { ...DEFAULT_MEMBER, ...JSON.parse(raw) };
-    } catch (_) {}
-    return { ...DEFAULT_MEMBER };
+  function findLegacyUserMenu(header) {
+    return Array.from(header.querySelectorAll(".relative.group.cursor-pointer")).find(
+      (group) => !group.querySelector(".ph-bell"),
+    );
   }
 
-  function photoForName(name) {
-    if (!name) return null;
-    if (PHOTO_BY_NAME[name]) return PHOTO_BY_NAME[name];
-    const member = getStoredMember();
-    if (member.name === name && member.photo) return member.photo;
-    return null;
-  }
+  function mountDashboardUserMenu(header) {
+    if (typeof window.bajusRenderMemberHeaderUser !== "function") return;
 
-  function createPhotoEl(src, alt) {
-    const img = document.createElement("img");
-    img.src = src;
-    img.alt = alt;
-    img.className =
-      "dashboard-user-photo size-7 rounded-full object-cover border border-zinc-200 bg-zinc-100 flex-shrink-0";
-    return img;
+    const auth = window.bajusRenderMemberHeaderUser(false, { inPortal: true });
+    const wrap = document.createElement("div");
+    wrap.innerHTML = auth.desktop.trim();
+    const menu = wrap.firstElementChild;
+    if (!menu) return;
+
+    const existing = header.querySelector(".bajus-header-user");
+    const legacy = findLegacyUserMenu(header);
+
+    if (existing) {
+      existing.replaceWith(menu);
+      return;
+    }
+
+    if (legacy) {
+      legacy.replaceWith(menu);
+      return;
+    }
+
+    const actions = header.querySelector(
+      ":scope > div > div.flex.items-center.gap-5, :scope > div > div.flex.items-center.gap-7",
+    );
+    if (actions) actions.appendChild(menu);
   }
 
   function initDashboardUserMenu() {
     if (!document.body.classList.contains("dashboard-page")) return;
 
-    const stored = getStoredMember();
+    document.querySelectorAll("header").forEach(mountDashboardUserMenu);
 
-    document
-      .querySelectorAll("header .relative.group.cursor-pointer")
-      .forEach((group) => {
-        const trigger = group.querySelector(":scope > div.flex.items-center.gap-3");
-        if (!trigger) return;
-
-        const avatar = trigger.querySelector(".size-7.bg-gold");
-        const nameBlock = trigger.querySelector(".text-left");
-        const nameEl = nameBlock?.querySelector("div:first-child");
-        const roleEl = nameBlock?.querySelector("div:last-child");
-
-        const name = nameEl?.textContent?.trim() || stored.name;
-        const photo =
-          stored.photo ||
-          photoForName(name) ||
-          (avatar?.textContent?.trim() === "MA" ? DEFAULT_MEMBER.photo : null);
-
-        if (nameEl && stored.name) {
-          nameEl.textContent = stored.name;
-        }
-
-        if (roleEl && stored.role) {
-          roleEl.textContent = stored.role;
-        }
-
-        if (!photo) return;
-
-        const existing = trigger.querySelector(".dashboard-user-photo");
-        if (existing) {
-          existing.src = photo;
-          existing.alt = name;
-          return;
-        }
-
-        if (avatar) {
-          avatar.replaceWith(createPhotoEl(photo, name));
-        } else if (!trigger.querySelector(".dashboard-user-photo")) {
-          trigger.insertBefore(createPhotoEl(photo, name), trigger.firstChild);
-        }
-      });
+    if (typeof window.bajusBindHeaderAuth === "function") {
+      window.bajusBindHeaderAuth();
+    }
   }
 
   function updateDashboardUserHeader(updates) {
     if (!updates || typeof updates !== "object") return;
-    const current = getStoredMember();
+
+    const defaults = {
+      name: "Md. Alamgir",
+      memberId: "BAJUS-DH-001247",
+      photo: "assets/members/mohammed_morshed_alam.jpg",
+    };
+
+    let current = { ...defaults };
+    try {
+      const raw = sessionStorage.getItem("bajus_dashboard_member");
+      if (raw) current = { ...current, ...JSON.parse(raw) };
+    } catch (_) {}
+
     const next = { ...current, ...updates };
+
     try {
       sessionStorage.setItem("bajus_dashboard_member", JSON.stringify(next));
+      sessionStorage.setItem("bajus_member_logged_in", "1");
     } catch (_) {}
+
     initDashboardUserMenu();
   }
 
