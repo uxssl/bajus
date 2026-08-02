@@ -2834,9 +2834,15 @@ section.bg-cream.pb-24 .lg\:col-span-4 > div {
 }
 
 .member-modal__passport-photo {
-  width: 120px;
+  width: 10.5rem;
   aspect-ratio: 35 / 45;
   border-radius: var(--radius);
+}
+
+@media (min-width: 768px) {
+  .member-modal__passport-photo {
+    width: 12rem;
+  }
 }
 
 .member-modal__passport-photo img {
@@ -2925,6 +2931,30 @@ section.bg-cream.pb-24 .lg\:col-span-4 > div {
 
 .member-directory-page #member-detail-modal .text-\[13px\] {
   font-size: 0.9375rem;
+}
+
+/* Member directory — detail modal border radius */
+.member-directory-page #member-detail-modal #modal-box {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.member-directory-page #member-detail-modal .member-modal__passport-photo,
+.member-directory-page #member-detail-modal .member-modal__passport-photo img {
+  border-radius: var(--radius);
+}
+
+.member-directory-page #member-detail-modal .member-modal__member-info,
+.member-directory-page #member-detail-modal #modal-box .rounded-sm {
+  border-radius: var(--radius);
+}
+
+.member-directory-page #member-detail-modal .member-modal__logo {
+  border-radius: var(--radius);
+}
+
+.member-directory-page #member-detail-modal #close-modal-btn {
+  border-radius: 9999px;
 }
 
 /* Become a member page — larger overall typography */

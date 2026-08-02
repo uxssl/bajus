@@ -791,10 +791,10 @@
                 <div
                   class="text-zinc-400 mb-0.5 uppercase tracking-wider text-[10px] font-bold"
                 >
-                  Est. Year
+                  Member Since
                 </div>
                 <div
-                  id="modal-shop-est"
+                  id="modal-shop-member-since"
                   class="font-medium text-zinc-800"
                 ></div>
               </div>
@@ -1178,7 +1178,7 @@
         "modal-owner-designation",
       );
       const modalShopLocation = document.getElementById("modal-shop-location");
-      const modalShopEst = document.getElementById("modal-shop-est");
+      const modalShopMemberSince = document.getElementById("modal-shop-member-since");
       const modalShopExpiry = document.getElementById("modal-shop-expiry");
       const modalShopPhone = document.getElementById("modal-shop-phone");
       const modalShopEmail = document.getElementById("modal-shop-email");
@@ -1364,9 +1364,11 @@
         // Deterministic mock fields
         const hashVal = Math.abs(hashString(member.id));
 
-        // Established Year (1990 - 2023)
-        const estYear = 1990 + (hashVal % 34);
-        modalShopEst.textContent = estYear;
+        // Member Since — derived from BAJUS serial in member ID (1985–2025)
+        const serialMatch = member.id.match(/(\d+)$/);
+        const memberSerial = serialMatch ? parseInt(serialMatch[1], 10) : hashVal;
+        const memberSinceYear = 1985 + (memberSerial % 41);
+        modalShopMemberSince.textContent = memberSinceYear;
 
         // Phone & Email
         modalShopPhone.textContent = getDeterministicPhone(member.id);
