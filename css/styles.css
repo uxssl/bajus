@@ -318,7 +318,7 @@ body {
 }
 
 .rate-card__unit {
-  font-size: 0.625rem;
+  font-size: 0.875rem;
   color: #3f3f46;
   font-weight: 500;
   letter-spacing: 0.03em;
@@ -327,7 +327,7 @@ body {
 
 @media (min-width: 640px) {
   .rate-card__unit {
-    font-size: 0.75rem;
+    font-size: 1rem;
   }
 }
 
@@ -380,6 +380,13 @@ body {
   display: inline-flex;
   white-space: nowrap;
   animation: ticker-scroll 45s linear infinite;
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+
+#bajus-header .bajus-header-ticker .ticker__track {
+  font-size: 0.875rem;
+  line-height: 1.35;
 }
 
 .ticker:hover .ticker__track {
@@ -387,10 +394,11 @@ body {
 }
 
 @media (max-width: 767px) {
-  .ticker__track {
-    font-size: 10px;
-    padding-top: 0.3rem !important;
-    padding-bottom: 0.3rem !important;
+  .ticker__track,
+  #bajus-header .bajus-header-ticker .ticker__track {
+    font-size: 0.75rem;
+    padding-top: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
   }
 
   .ticker__track > div {
@@ -1577,7 +1585,7 @@ summary {
 
 .board-hero-card__name {
   font-family: "Playfair Display", serif;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 700;
   color: #fff;
   margin-bottom: 8px;
@@ -1614,6 +1622,8 @@ summary {
 
 .board-member-card__name {
   color: #27272a;
+  font-size: 1.375rem;
+  line-height: 1.35;
 }
 
 .board-member-card__role {
@@ -1622,6 +1632,22 @@ summary {
   letter-spacing: 0.1em;
   font-weight: 700;
   color: #b8860b;
+}
+
+@media (min-width: 1024px) {
+  .board-members-grid .board-member-card__name {
+    font-size: 1.625rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .board-members-grid .board-member-card__name {
+    font-size: 1.75rem;
+  }
+
+  .board-members-grid .board-member-card__role {
+    font-size: 14px;
+  }
 }
 
 .reveal--smooth,
@@ -2028,6 +2054,236 @@ form.max-w-5xl label.border-dashed {
   border-radius: var(--btn-radius);
 }
 
+/* Notice page — larger overall typography */
+.notice-page {
+  font-size: 1.0625rem;
+}
+
+.notice-page .text-\[9px\] {
+  font-size: 10px;
+}
+
+.notice-page .text-\[10px\] {
+  font-size: 11px;
+}
+
+.notice-page .text-\[11px\] {
+  font-size: 12px;
+}
+
+.notice-page .text-xs {
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.notice-page .text-sm {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.notice-page .text-base {
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+
+.notice-page .text-lg {
+  font-size: 1.25rem;
+  line-height: 1.65;
+}
+
+.notice-page .page-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+.notice-page .site-page-tabs {
+  font-size: 0.8125rem;
+}
+
+.notice-page .notice-item h3 {
+  font-size: 1.125rem;
+}
+
+.notice-page .notice-item .font-serif.text-2xl {
+  font-size: 1.75rem;
+}
+
+.notice-page .notice-item a.border.border-zinc-200,
+.notice-page .notice-item .flex.items-center.gap-3 > a.btn-gold {
+  font-size: 0.8125rem;
+}
+
+.notice-page #bajus-header,
+.notice-page #bajus-footer {
+  font-size: 1rem;
+}
+
+.notice-page #bajus-header .text-\[10px\],
+.notice-page #bajus-footer .text-\[10px\] {
+  font-size: 10px;
+}
+
+.notice-page #bajus-header .text-\[11px\],
+.notice-page #bajus-footer .text-\[11px\] {
+  font-size: 11px;
+}
+
+.notice-page #bajus-header .text-xs,
+.notice-page #bajus-footer .text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.notice-page #bajus-header .text-sm,
+.notice-page #bajus-footer .text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.notice-page #bajus-header .text-base,
+.notice-page #bajus-footer .text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.notice-page #bajus-header .text-lg,
+.notice-page #bajus-footer .text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+/* News & events pages — larger overall typography */
+.news-page,
+.events-page {
+  font-size: 1.0625rem;
+}
+
+.news-page .text-\[9px\],
+.events-page .text-\[9px\] {
+  font-size: 10px;
+}
+
+.news-page .text-\[10px\],
+.events-page .text-\[10px\] {
+  font-size: 11px;
+}
+
+.news-page .text-\[11px\],
+.events-page .text-\[11px\] {
+  font-size: 12px;
+}
+
+.news-page .text-xs,
+.events-page .text-xs {
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.news-page .text-sm,
+.events-page .text-sm {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.news-page .text-base,
+.events-page .text-base {
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+
+.news-page .text-lg,
+.events-page .text-lg {
+  font-size: 1.25rem;
+  line-height: 1.65;
+}
+
+.news-page .text-xl,
+.events-page .text-xl {
+  font-size: 1.3125rem;
+  line-height: 1.45;
+}
+
+.news-page .page-hero h1,
+.events-page .page-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+.news-page .font-serif.text-3xl,
+.events-page .font-serif.text-3xl {
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  .news-page .font-serif.text-3xl,
+  .events-page .font-serif.text-3xl,
+  .news-page .font-serif.text-3xl.md\:text-4xl,
+  .events-page .font-serif.text-3xl.md\:text-4xl {
+    font-size: 2.375rem;
+  }
+
+  .news-page .font-serif.text-2xl.md\:text-3xl,
+  .events-page .font-serif.text-2xl.md\:text-3xl {
+    font-size: 1.875rem;
+  }
+}
+
+.news-page .font-serif.text-2xl,
+.events-page .font-serif.text-2xl {
+  font-size: 1.625rem;
+}
+
+.news-page #bajus-header,
+.news-page #bajus-footer,
+.events-page #bajus-header,
+.events-page #bajus-footer {
+  font-size: 1rem;
+}
+
+.news-page #bajus-header .text-\[10px\],
+.news-page #bajus-footer .text-\[10px\],
+.events-page #bajus-header .text-\[10px\],
+.events-page #bajus-footer .text-\[10px\] {
+  font-size: 10px;
+}
+
+.news-page #bajus-header .text-\[11px\],
+.news-page #bajus-footer .text-\[11px\],
+.events-page #bajus-header .text-\[11px\],
+.events-page #bajus-footer .text-\[11px\] {
+  font-size: 11px;
+}
+
+.news-page #bajus-header .text-xs,
+.news-page #bajus-footer .text-xs,
+.events-page #bajus-header .text-xs,
+.events-page #bajus-footer .text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.news-page #bajus-header .text-sm,
+.news-page #bajus-footer .text-sm,
+.events-page #bajus-header .text-sm,
+.events-page #bajus-footer .text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.news-page #bajus-header .text-base,
+.news-page #bajus-footer .text-base,
+.events-page #bajus-header .text-base,
+.events-page #bajus-footer .text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.news-page #bajus-header .text-lg,
+.news-page #bajus-footer .text-lg,
+.events-page #bajus-header .text-lg,
+.events-page #bajus-footer .text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
 section.bg-cream.pb-24 .lg\:col-span-4 > div {
   border-radius: var(--radius);
 }
@@ -2250,6 +2506,224 @@ section.bg-cream.pb-24 .lg\:col-span-4 > div {
 
 .member-directory-page #member-detail-modal .text-\[13px\] {
   font-size: 0.9375rem;
+}
+
+/* Become a member page — larger overall typography */
+.member-become-page {
+  font-size: 1.0625rem;
+}
+
+.member-become-page .text-\[10px\] {
+  font-size: 11px;
+}
+
+.member-become-page .text-\[11px\] {
+  font-size: 12px;
+}
+
+.member-become-page .text-xs {
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.member-become-page .text-sm {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.member-become-page .text-lg {
+  font-size: 1.25rem;
+  line-height: 1.65;
+}
+
+/* Reset header & footer typography to standard Tailwind inside become member page */
+#bajus-header,
+#bajus-footer {
+  font-size: 1rem;
+}
+#bajus-header .text-\[10px\],
+#bajus-footer .text-\[10px\] {
+  font-size: 10px;
+}
+#bajus-header .text-\[11px\],
+#bajus-footer .text-\[11px\] {
+  font-size: 11px;
+}
+#bajus-header .text-xs,
+#bajus-footer .text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+#bajus-header .text-sm,
+#bajus-footer .text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+#bajus-header .text-lg,
+#bajus-footer .text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+
+
+.member-become-page .page-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+.member-become-page .election-step__dot {
+  font-size: 13px;
+}
+
+.member-become-page .election-step__title {
+  font-size: 19px;
+}
+
+.member-become-page .election-step__desc {
+  font-size: 15px;
+}
+
+.member-become-page .data-table {
+  font-size: 15px;
+}
+
+.member-become-page .data-table th {
+  font-size: 12px;
+}
+
+.member-become-page .btn-gold,
+.member-become-page .btn-outline {
+  font-size: 0.9375rem;
+}
+
+/* About committees & election pages — larger overall typography */
+.about-detail-page {
+  font-size: 1.0625rem;
+}
+
+.about-detail-page .text-\[10px\] {
+  font-size: 11px;
+}
+
+.about-detail-page .text-\[11px\] {
+  font-size: 12px;
+}
+
+.about-detail-page .text-xs {
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.about-detail-page .text-sm {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.about-detail-page .text-lg {
+  font-size: 1.25rem;
+  line-height: 1.65;
+}
+
+.about-detail-page .font-serif.text-3xl {
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  .about-detail-page .font-serif.text-3xl {
+    font-size: 2.375rem;
+  }
+}
+
+.about-detail-page .font-serif.text-xl {
+  font-size: 1.375rem;
+}
+
+.about-detail-page .page-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+.about-detail-page .about-sub-nav__link {
+  font-size: 15px;
+}
+
+.about-detail-page .committee-card__name {
+  font-size: 19px;
+}
+
+.about-detail-page .committee-card__mandate {
+  font-size: 13px;
+}
+
+.about-detail-page .committee-card__desc {
+  font-size: 15px;
+}
+
+.about-detail-page .committee-member__name {
+  font-size: 14px;
+}
+
+.about-detail-page .committee-member__role {
+  font-size: 12px;
+}
+
+.about-detail-page .election-step__dot {
+  font-size: 13px;
+}
+
+.about-detail-page .election-step__title {
+  font-size: 19px;
+}
+
+.about-detail-page .election-step__date {
+  font-size: 12px;
+}
+
+.about-detail-page .election-step__desc {
+  font-size: 15px;
+}
+
+.about-detail-page .sidebar-widget__title {
+  font-size: 12px;
+}
+
+/* Header & footer — keep home-page typography (not page content scale) */
+.about-detail-page #bajus-header,
+.about-detail-page #bajus-footer {
+  font-size: 1rem;
+}
+
+.about-detail-page #bajus-header .text-\[10px\],
+.about-detail-page #bajus-footer .text-\[10px\] {
+  font-size: 10px;
+}
+
+.about-detail-page #bajus-header .text-\[11px\],
+.about-detail-page #bajus-footer .text-\[11px\] {
+  font-size: 11px;
+}
+
+.about-detail-page #bajus-header .text-xs,
+.about-detail-page #bajus-footer .text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.about-detail-page #bajus-header .text-sm,
+.about-detail-page #bajus-footer .text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.about-detail-page #bajus-header .text-base,
+.about-detail-page #bajus-footer .text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.about-detail-page #bajus-header .text-lg,
+.about-detail-page #bajus-footer .text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .verified-badge {
@@ -3335,10 +3809,24 @@ button#bajus-burger {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.55rem;
+  font-size: 1.7rem;
   transition:
     transform 0.35s ease,
     box-shadow 0.35s ease;
+}
+
+.membership-voice-item h3 {
+  font-size: 1.25rem;
+}
+
+.membership-voice-item p {
+  font-size: 0.9375rem;
+}
+
+@media (min-width: 640px) {
+  .membership-voice-item p {
+    font-size: 1rem;
+  }
 }
 
 .membership-voice-item:hover .membership-voice-icon {
@@ -3493,11 +3981,23 @@ button#bajus-burger {
 }
 
 .testimonial-card-item .testimonial-desc {
-  font-size: 13px;
+  font-size: 14px;
+}
+
+@media (min-width: 640px) {
+  .testimonial-card-item .testimonial-desc {
+    font-size: 15px;
+  }
 }
 
 .upcoming-event-desc {
-  font-size: 13px;
+  font-size: 14px;
+}
+
+@media (min-width: 640px) {
+  .upcoming-event-desc {
+    font-size: 15px;
+  }
 }
 
 .testimonial-carousel-nav {
@@ -4015,7 +4515,7 @@ article img:not([class*="rounded-full"]) {
 
 .about-story-row__full .about-story-body {
   color: #52525b;
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.75;
   width: 100%;
 }

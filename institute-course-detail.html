@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title id="page-title">Course Details — BAJUS Institute</title>
+  <meta name="description"
+    content="View comprehensive course details, schedules, instructor profiles, and training modules at BAJUS Institute." />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body class="bg-cream">
+  <div id="bajus-header"></div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero py-16">
+    <img class="page-hero__media" src="./assets/hero.jpg" alt="" aria-hidden="true" decoding="async" />
+    <div class="max-w-7xl mx-auto px-6">
+      <div id="course-category" class="text-[12px] uppercase tracking-[0.25em] text-gold font-bold mb-4">TECHNICAL
+        TRAINING</div>
+      <h1 id="course-title" class="font-serif text-4xl md:text-5xl leading-tight">Gold Assaying &amp; Hallmarking
+        Standards</h1>
+    </div>
+  </section>
+
+  <!-- CONTENT GRID -->
+  <section class="py-16 max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-12 gap-12 items-start">
+      <!-- Left Column: Outline & Syllabus -->
+      <div class="lg:col-span-8 space-y-12">
+        <div class="reveal">
+          <h2 class="font-serif text-2xl text-charcoal mb-4">About This Course</h2>
+          <p id="course-about" class="text-sm text-zinc-650 leading-relaxed">
+            Detailed information about the training, its core methodologies, and practical significance in the domestic
+            and global jewellery market.
+          </p>
+        </div>
+
+        <!-- SYLLABUS TIMELINE -->
+        <div class="reveal">
+          <h2 class="font-serif text-2xl text-charcoal mb-6">Course Syllabus &amp; Modules</h2>
+          <div id="syllabus-timeline" class="about-history-timeline border-l-2 border-gold/30 space-y-8">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+
+        <!-- INSTRUCTOR SECTION -->
+        <div class="bg-white border border-zinc-200 p-8 rounded-md shadow-sm reveal">
+          <h2 class="font-serif text-2xl text-charcoal mb-6">Meet Your Instructor</h2>
+          <div class="flex flex-col sm:flex-row gap-6 items-start">
+            <div class="size-20 rounded-full overflow-hidden border border-zinc-200 bg-zinc-50 shrink-0">
+              <img id="instructor-img" src="./assets/members/no_photo.jpg" alt="" class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h3 id="instructor-name" class="font-serif text-lg text-charcoal">Ranjit Ghosh</h3>
+              <div id="instructor-title" class="text-[13px] text-gold font-semibold uppercase tracking-wider mb-3">
+                Senior Gold Assayer</div>
+              <p id="instructor-bio" class="text-[13px] text-zinc-500 leading-relaxed">
+                Instructor biography detailing background and active years in jewelry crafting.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Specs Panel -->
+      <div class="lg:col-span-4 space-y-6 sticky top-24 z-20">
+        <div class="bg-white border border-zinc-200 p-6 rounded-md shadow-sm space-y-6 reveal">
+          <h3 class="text-[13px] font-bold text-charcoal uppercase tracking-widest border-b border-zinc-100 pb-3">Course
+            Specifications</h3>
+
+          <div class="space-y-4 text-[13px]">
+            <div class="flex justify-between items-center py-1 border-b border-zinc-50">
+              <span class="text-zinc-400">Duration:</span>
+              <strong id="spec-duration" class="text-charcoal font-semibold">6 Weeks</strong>
+            </div>
+            <div class="flex justify-between items-center py-1 border-b border-zinc-50">
+              <span class="text-zinc-400">Class Schedule:</span>
+              <strong id="spec-schedule" class="text-charcoal font-semibold text-right">Mon &amp; Wed (04:00
+                PM)</strong>
+            </div>
+            <div class="flex justify-between items-center py-1 border-b border-zinc-50">
+              <span class="text-zinc-400">Format:</span>
+              <strong id="spec-mode" class="text-charcoal font-semibold">In-Person (Labs)</strong>
+            </div>
+            <div class="flex justify-between items-center py-1 border-b border-zinc-50">
+              <span class="text-zinc-400">Capacity limit:</span>
+              <strong id="spec-capacity" class="text-charcoal font-semibold">20 Seats</strong>
+            </div>
+            <div class="flex justify-between items-center py-1">
+              <span class="text-zinc-400">Tuition Fee:</span>
+              <strong id="spec-fee" class="text-gold font-bold">BDT 15,000</strong>
+            </div>
+          </div>
+
+          <button onclick="handleEnroll()"
+            class="btn-gold w-full text-center flex items-center justify-center py-3.5 mt-2">
+            Enroll In Course
+          </button>
+        </div>
+
+        <div class="bg-gold-soft/50 border border-gold/20 p-6 rounded-md text-[13px] space-y-3">
+          <h4 class="font-bold text-gold uppercase tracking-wider flex items-center gap-1.5"><i
+              class="bi bi-shield-check"></i> BAJUS Member Discount</h4>
+          <p class="text-zinc-655 leading-relaxed">
+            Registered member outlets of BAJUS receive automated subsidies and discounts for staff tuition enrollments
+            at the skills academy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX NOTIFICATION (ENROLLMENT UX JOURNEY) -->
+  <div id="enrollment-modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-zinc-950/70 p-4"
+    role="dialog" aria-modal="true">
+    <div class="bg-white border border-zinc-200 p-8 rounded-md shadow-2xl max-w-lg w-full relative">
+      <button onclick="closeModal()" type="button" class="absolute top-4 right-4 text-zinc-400 hover:text-gold text-lg"
+        aria-label="Close">
+        <i class="bi bi-x-lg"></i>
+      </button>
+
+      <!-- STEP 1: ENROLLMENT FORM -->
+      <div id="enroll-step-form" class="space-y-5">
+        <div class="border-b border-zinc-100 pb-3">
+          <h3 class="font-serif text-2xl text-charcoal">Course Registration</h3>
+          <p class="text-xs text-zinc-400 mt-1">Please fill in your details to secure a seat in <span
+              id="enroll-course-name" class="font-semibold text-gold"></span></p>
+        </div>
+
+        <form id="enroll-form" onsubmit="submitEnrollmentForm(event)" class="space-y-4 text-xs">
+          <div>
+            <label class="block text-zinc-500 font-medium mb-1.5" for="enroll-name">Full Name <span
+                class="text-red-500">*</span></label>
+            <input required id="enroll-name" type="text" placeholder="e.g. Salah Uddin"
+              class="w-full px-3.5 py-2.5 bg-zinc-50 border border-zinc-200 rounded-sm focus:outline-none focus:border-gold transition-colors text-charcoal text-xs" />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-zinc-500 font-medium mb-1.5" for="enroll-email">Email Address <span
+                  class="text-red-500">*</span></label>
+              <input required id="enroll-email" type="email" placeholder="salah@domain.com"
+                class="w-full px-3.5 py-2.5 bg-zinc-50 border border-zinc-200 rounded-sm focus:outline-none focus:border-gold transition-colors text-charcoal text-xs" />
+            </div>
+            <div>
+              <label class="block text-zinc-500 font-medium mb-1.5" for="enroll-phone">Phone Number <span
+                  class="text-red-500">*</span></label>
+              <input required id="enroll-phone" type="tel" placeholder="+880 1XXX XXXXXX"
+                class="w-full px-3.5 py-2.5 bg-zinc-50 border border-zinc-200 rounded-sm focus:outline-none focus:border-gold transition-colors text-charcoal text-xs" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-zinc-500 font-medium mb-1.5" for="enroll-company">Company/Shop Name
+              (Optional)</label>
+            <input id="enroll-company" type="text" placeholder="e.g. Al-Amin Jewellers"
+              class="w-full px-3.5 py-2.5 bg-zinc-50 border border-zinc-200 rounded-sm focus:outline-none focus:border-gold transition-colors text-charcoal text-xs" />
+          </div>
+
+          <div class="pt-2">
+            <label class="inline-flex items-center gap-2 cursor-pointer">
+              <input id="enroll-member-toggle" type="checkbox" onchange="toggleMemberId()"
+                class="size-4 accent-gold cursor-pointer" />
+              <span class="text-zinc-650 select-none font-medium">I am a registered BAJUS Member (Staff / Owner)</span>
+            </label>
+          </div>
+
+          <div id="enroll-member-id-wrapper" class="hidden">
+            <label class="block text-zinc-500 font-medium mb-1.5" for="enroll-member-id">BAJUS Membership ID <span
+                class="text-red-500">*</span></label>
+            <input id="enroll-member-id" type="text" placeholder="e.g. M-99812"
+              class="w-full px-3.5 py-2.5 bg-zinc-50 border border-zinc-200 rounded-sm focus:outline-none focus:border-gold transition-colors text-charcoal text-xs" />
+          </div>
+
+          <div class="pt-3">
+            <button type="submit"
+              class="btn-gold w-full py-3.5 flex items-center justify-center gap-2 text-xs uppercase tracking-wider font-bold">
+              Submit Application
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- STEP 2: LOADING -->
+      <div id="enroll-step-loading" class="hidden text-center py-10 space-y-4">
+        <div class="flex items-center justify-center">
+          <div class="size-12 border-4 border-gold/20 border-t-gold rounded-full animate-spin"></div>
+        </div>
+        <p class="font-serif text-lg text-charcoal">Processing Registration...</p>
+        <p class="text-xs text-zinc-400">Verifying credentials and reserving seat at the academy.</p>
+      </div>
+
+      <!-- STEP 3: SUCCESS -->
+      <div id="enroll-step-success" class="hidden text-center space-y-5 py-2">
+        <div class="size-16 bg-gold-soft text-gold rounded-full flex items-center justify-center text-4xl mx-auto mb-2">
+          <i class="bi bi-shield-check"></i>
+        </div>
+        <h3 class="font-serif text-2xl text-charcoal">Registration Successful!</h3>
+        <div
+          class="max-w-xs mx-auto bg-zinc-50 border border-zinc-200 p-3 rounded text-[11px] font-mono text-zinc-605 space-y-1 text-left">
+          <div>Registration ID: <span id="success-reg-id" class="font-bold text-gold"></span></div>
+          <div>Course: <span id="success-course-name" class="font-semibold text-charcoal"></span></div>
+        </div>
+        <p class="text-[13px] text-zinc-550 leading-relaxed max-w-sm mx-auto">
+          Thank you for registering! Your application is officially confirmed. We have sent the course schedules,
+          pre-class checklist, and class details to your registered email address.
+        </p>
+        <div class="pt-2">
+          <button onclick="closeModal()" class="btn-gold px-10 py-3 uppercase tracking-wider font-bold text-xs">
+            Done
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="bajus-footer"></div>
+  <script src="./js/include.js"></script>
+  <script src="./js/main.js"></script>
+  <script>
+    const COURSE_DATA = {
+      "gold-assaying": {
+        category: "Technical Training",
+        title: "Gold Assaying & Hallmarking Standards",
+        instructorName: "Ranjit Ghosh",
+        instructorTitle: "Senior Gold Assayer",
+        instructorPhoto: "./assets/members/ranjit_ghosh.jpg",
+        instructorBio: "Ranjit Ghosh has over 15 years of active laboratory experience in fire assaying and hallmark auditing. He oversees the central BAJUS standards committee.",
+        description: "Learn gold purity validation, fire assaying, chemical testing, and X-ray Fluorescence (XRF) spectrometry. Students gain hands-on training to operate hallmark scanning centers. This is highly suitable for assaying staff seeking licensing credentials.",
+        duration: "6 Weeks",
+        schedule: "Mondays & Wednesdays (04:00 PM - 07:00 PM)",
+        mode: "In-Person (Hands-on Labs)",
+        fee: "Free",
+        capacity: "20 Students",
+        outlines: [
+          { week: "Weeks 1–2", title: "Introduction to Precious Metal Assaying", details: "Overview of gold alloys, karat calculation system, acid testing techniques, and non-destructive testing basics." },
+          { week: "Weeks 3–4", title: "Fire Assaying & Cupellation Methods", details: "Detailed walkthrough of heat treatment, melting gold particles, parting acid treatment, and precision weighing scale metrics." },
+          { week: "Weeks 5–6", title: "Modern Spectrometry & Certification", details: "Operating XRF machines, calibrating scanning lasers, generating hallmark report sheets, and complying with national gold policies." }
+        ]
+      },
+      "filigree-crafting": {
+        category: "Heritage Design",
+        title: "Traditional Filigree & Handmade Crafting",
+        instructorName: "Swapan Karmakar",
+        instructorTitle: "Master Jewellery Artisan",
+        instructorPhoto: "./assets/members/bablu_dutta.jpg",
+        instructorBio: "Swapan Karmakar is a 5th-generation master artisan representing the traditional Bengali goldsmith community. He specializes in intricate filigree wireworks.",
+        description: "Master the ancient techniques of fine wire ornament creation, gold engraving, and gem setting. This course preserves traditional Bengali gold craftsmanship and hand tools operations. Students will craft complete rings, necklaces, and bangles as final showcase projects.",
+        duration: "12 Weeks",
+        schedule: "Saturdays (09:00 AM - 01:00 PM)",
+        mode: "Atelier Workshop",
+        fee: "BDT 20,000 (BAJUS Member Subsidy: Free)",
+        capacity: "12 Students",
+        outlines: [
+          { week: "Weeks 1–3", title: "Wire Drawing & Alloy Blending", details: "Drawing fine gold and silver wires using draw-plates, welding ratios, metal bending, and charcoal flame control." },
+          { week: "Weeks 4–8", title: "Ornamental Filigree Solder Patterns", details: "Crafting border frames, filling frames with delicate wire scrolls, and utilizing traditional soldering fluxes." },
+          { week: "Weeks 9–12", title: "Final Polish & Gem Setting", details: "Hand engraving highlights, stone mounting, acid wash baths, and gold-dust recycling practices." }
+        ]
+      },
+      "cad-design": {
+        category: "Modern Technology",
+        title: "CAD Modelling & 3D Jewellery Printing",
+        instructorName: "Kazi Sharmin",
+        instructorTitle: "Lead CAD Designer",
+        instructorPhoto: "./assets/members/shown_ahmed_chowdhury.jpg",
+        instructorBio: "Kazi Sharmin holds a diploma in industrial product design and has consulted for major jewellery export houses in Asia.",
+        description: "Bridge art and technology. Learn RhinoGold, Matrix, and CAD software to design digital ornaments, export STL files, and operate high-precision 3D wax printers. This course will cover scaling, shrinkage allowance, and casting calculations.",
+        duration: "8 Weeks",
+        schedule: "Tuesdays & Thursdays (06:30 PM - 09:30 PM)",
+        mode: "Hybrid (Online Lectures + Lab)",
+        fee: "BDT 25,000 (BAJUS Member Subsidy: BDT 10,000)",
+        capacity: "25 Students",
+        outlines: [
+          { week: "Weeks 1–3", title: "Rhino Interface & 2D Curve Drafting", details: "Setting up layouts, drawing ring shanks, mapping layout measurements, and grid constraints." },
+          { week: "Weeks 4–6", title: "3D Surface Modeling & Gem Placements", details: "Prong designs, channel settings, custom pendants surfacing, and photo-realistic rendering engines." },
+          { week: "Weeks 7–8", title: "3D Printing & Casting Preparation", details: "Slicing models, operating resin/wax printers, post-curing cleanups, and sprue placements for casting." }
+        ]
+      }
+    };
+
+    function initCourseDetails() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const courseId = urlParams.get("course") || "gold-assaying";
+      const data = COURSE_DATA[courseId];
+
+      if (!data) {
+        window.location.href = "bajus-institute.html";
+        return;
+      }
+
+      // Populate Texts
+      document.title = `${data.title} — BAJUS Institute`;
+      document.getElementById("course-category").innerText = data.category;
+      document.getElementById("course-title").innerText = data.title;
+      document.getElementById("course-about").innerText = data.description;
+
+      // Specs
+      document.getElementById("spec-duration").innerText = data.duration;
+      document.getElementById("spec-schedule").innerText = data.schedule;
+      document.getElementById("spec-mode").innerText = data.mode;
+      document.getElementById("spec-capacity").innerText = data.capacity;
+      document.getElementById("spec-fee").innerText = data.fee;
+
+      // Instructor
+      document.getElementById("instructor-img").src = data.instructorPhoto;
+      document.getElementById("instructor-img").alt = data.instructorName;
+      document.getElementById("instructor-name").innerText = data.instructorName;
+      document.getElementById("instructor-title").innerText = data.instructorTitle;
+      document.getElementById("instructor-bio").innerText = data.instructorBio;
+
+      // Syllabus
+      const timeline = document.getElementById("syllabus-timeline");
+      let timelineHtml = "";
+      data.outlines.forEach((o, index) => {
+        timelineHtml += `
+          <div class="relative pl-8 reveal" data-reveal-delay="${index * 100}">
+            <span class="absolute rounded-full bg-gold border-2 border-cream z-10" style="left: -9px; top: 2px; width: 16px; height: 16px;"></span>
+            <div class="text-[12px] uppercase tracking-wider text-gold font-bold mb-1">${o.week}</div>
+            <h3 class="font-serif text-lg text-charcoal mb-2">${o.title}</h3>
+            <p class="text-[13px] text-zinc-555 leading-relaxed">${o.details}</p>
+          </div>
+        `;
+      });
+      timeline.innerHTML = timelineHtml;
+
+      // Re-trigger reveal animations if bajusObserveReveal is active
+      if (window.bajusObserveReveal) {
+        window.bajusObserveReveal(timeline);
+      }
+    }
+
+    function handleEnroll() {
+      // Set course name dynamically in the form
+      const courseTitle = document.getElementById("course-title").innerText;
+      document.getElementById("enroll-course-name").innerText = courseTitle;
+
+      // Reset form fields
+      document.getElementById("enroll-form").reset();
+      document.getElementById("enroll-member-toggle").checked = false;
+      document.getElementById("enroll-member-id-wrapper").classList.add("hidden");
+      document.getElementById("enroll-member-id").required = false;
+
+      // Show form step, hide others
+      document.getElementById("enroll-step-form").classList.remove("hidden");
+      document.getElementById("enroll-step-loading").classList.add("hidden");
+      document.getElementById("enroll-step-success").classList.add("hidden");
+
+      const modal = document.getElementById("enrollment-modal");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    }
+
+    function toggleMemberId() {
+      const isChecked = document.getElementById("enroll-member-toggle").checked;
+      const wrapper = document.getElementById("enroll-member-id-wrapper");
+      const input = document.getElementById("enroll-member-id");
+
+      if (isChecked) {
+        wrapper.classList.remove("hidden");
+        input.required = true;
+      } else {
+        wrapper.classList.add("hidden");
+        input.required = false;
+        input.value = "";
+      }
+    }
+
+    function submitEnrollmentForm(event) {
+      event.preventDefault();
+
+      // Show loading step
+      document.getElementById("enroll-step-form").classList.add("hidden");
+      document.getElementById("enroll-step-loading").classList.remove("hidden");
+
+      // Simulate API submit delay
+      setTimeout(() => {
+        const regNum = Math.floor(10000 + Math.random() * 90000);
+        const courseTitle = document.getElementById("course-title").innerText;
+
+        document.getElementById("success-reg-id").innerText = `BI-2026-${regNum}`;
+        document.getElementById("success-course-name").innerText = courseTitle;
+
+        // Hide loading, show success step
+        document.getElementById("enroll-step-loading").classList.add("hidden");
+        document.getElementById("enroll-step-success").classList.remove("hidden");
+      }, 1500);
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("enrollment-modal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      document.body.style.overflow = "";
+    }
+
+    document.addEventListener("DOMContentLoaded", initCourseDetails);
+  </script>
+</body>
+
+</html>

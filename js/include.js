@@ -63,7 +63,13 @@
         { href: "resource-links.html", label: "Useful Link" },
       ],
     },
-    { href: "bajus-institute.html", label: "Institute" },
+    {
+      label: "Institute",
+      submenu: [
+        { href: "bajus-institute.html", label: "Training/Course Outline" },
+        { href: "institute-gallery.html", label: "Gallery" },
+      ],
+    },
     { href: "contact.html", label: "Contact" },
   ];
 
@@ -177,7 +183,7 @@
     <header id="bajus-main-header" class="sticky top-0 z-40 ${isDark ? "dark-header bg-black/95 border-b border-zinc-900 text-zinc-200" : "bg-white/95 border-b border-zinc-200"} backdrop-blur-md">
       <!-- Market Ticker directly on top of menu -->
       <div class="bajus-header-ticker bg-charcoal text-cream border-b border-gold/30 ticker">
-        <div class="ticker__track py-2 text-xs font-medium uppercase tracking-wider">
+        <div class="ticker__track py-2 font-medium uppercase tracking-wider">
           ${tickerRow()}${tickerRow()}
         </div>
       </div>

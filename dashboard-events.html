@@ -76,7 +76,7 @@
     <main class="flex-1 min-w-0 bg-cream p-6 md:p-12 space-y-8">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-zinc-150">
         <div>
-          <h1 class="font-serif text-2xl md:text-3xl text-charcoal">Event <span class="text-gold italic font-medium">Stall Booking</span></h1>
+        <h1 class="font-serif text-2xl md:text-3xl text-charcoal">Event <span class="text-gold italic font-medium">Stall Booking</span></h1>
           <p class="text-xs text-zinc-500 mt-1 max-w-2xl">Browse upcoming events to book or register, then track every step of your requests under My Bookings. Public tickets for domestic events are on the <a href="events.html" class="text-gold font-semibold hover:underline">public Events page</a>.</p>
         </div>
         <button type="button" id="event-add-open" class="px-4 py-2.5 bg-charcoal hover:bg-gold text-cream hover:text-zinc-950 text-xs font-bold uppercase tracking-widest transition-all inline-flex items-center gap-1.5 shrink-0">
@@ -99,9 +99,9 @@
           <h2 class="font-serif text-xl text-charcoal">Domestic Events</h2>
           <div class="flex flex-wrap items-center gap-3">
             <span id="domestic-events-count" class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"></span>
-            <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold text-gold bg-gold-soft border border-gold/30 px-2.5 py-1 rounded-full"><i class="ph ph-map-pin text-xs"></i> In Bangladesh</span>
-          </div>
+          <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold text-gold bg-gold-soft border border-gold/30 px-2.5 py-1 rounded-full"><i class="ph ph-map-pin text-xs"></i> In Bangladesh</span>
         </div>
+            </div>
 
         <div id="domestic-events-list" class="space-y-6"></div>
         <nav id="domestic-events-pagination" class="pagination pt-2" aria-label="Domestic events pagination"></nav>
@@ -113,7 +113,7 @@
           <h2 class="font-serif text-xl text-charcoal">International Events</h2>
           <div class="flex flex-wrap items-center gap-3">
             <span id="international-events-count" class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"></span>
-            <span class="event-badge-overseas"><i class="ph ph-globe text-xs"></i> Overseas Delegation</span>
+          <span class="event-badge-overseas"><i class="ph ph-globe text-xs"></i> Overseas Delegation</span>
           </div>
         </div>
 
@@ -129,7 +129,7 @@
             <p class="text-xs text-zinc-500 mt-1">All stall bookings and international registrations — open any item to see the full journey and history.</p>
           </div>
           <span id="booking-count" class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"></span>
-        </div>
+          </div>
 
         <div class="flex flex-wrap items-center gap-2" id="booking-filters" role="group" aria-label="Filter bookings">
           <button type="button" class="booking-type-filter is-active px-3 py-2 text-[10px] font-bold uppercase tracking-wider border border-gold bg-gold-soft text-gold rounded-sm" data-type="all">All</button>
@@ -150,7 +150,7 @@
               <i class="ph ph-caret-down text-xs"></i>
             </span>
           </div>
-        </div>
+          </div>
 
         <div id="booking-list" class="space-y-3"></div>
         <nav id="booking-pagination" class="pagination pt-2" aria-label="Bookings pagination"></nav>
@@ -346,7 +346,7 @@
         </div>
         <div>
           <span class="form-label">Status steps</span>
-          <div id="reg-details-timeline" class="flex flex-wrap gap-x-2 gap-y-2"></div>
+        <div id="reg-details-timeline" class="flex flex-wrap gap-x-2 gap-y-2"></div>
         </div>
         <div class="border-t border-b border-zinc-100 py-5">
           <span class="form-label">History</span>
@@ -1874,18 +1874,18 @@
                 <img src="${item.image || eventImage(item.eventName)}" alt="${item.eventName}" class="w-full h-full object-cover" loading="lazy" />
               </div>
               <div class="flex-1 min-w-0 p-4 flex flex-col md:flex-row md:items-start justify-between gap-4">
-                <div class="min-w-0">
-                  <div class="flex flex-wrap items-center gap-2">
+            <div class="min-w-0">
+              <div class="flex flex-wrap items-center gap-2">
                     <h4 class="font-semibold text-sm text-charcoal">${item.eventName}</h4>
                     ${typeBadge}
                     ${statusBadge(item.status)}
-                  </div>
+              </div>
                   <p class="text-[11px] text-zinc-500 mt-1">${bookingMeta(item)}</p>
                   <p class="text-[11px] text-zinc-600 mt-2">
                     <span class="font-semibold text-charcoal">Latest:</span> ${latestHistoryNote(item)}
-                  </p>
-                </div>
-                <div class="flex flex-wrap gap-2 flex-shrink-0">
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 flex-shrink-0">
                   ${canPay ? `<button type="button" data-pay="${indexKey}" class="px-4 py-2 bg-gold hover:bg-[#a3760a] text-cream text-[11px] font-semibold uppercase tracking-wider transition-colors">Pay ${formatBookingMoney(item, registrationTotal(item))}</button>` : ""}
                   ${hasInvoice ? `<button type="button" data-invoice="${indexKey}" class="px-4 py-2 border border-zinc-200 text-[11px] font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors">Invoice</button>` : ""}
                   <button type="button" data-details="${indexKey}" class="px-4 py-2 border border-zinc-200 text-[11px] font-semibold uppercase tracking-wider hover:border-gold hover:text-gold transition-colors">Details</button>
