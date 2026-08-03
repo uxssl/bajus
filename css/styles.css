@@ -5620,15 +5620,21 @@ article img:not([class*="rounded-full"]) {
    ========================================== */
 .past-leaders-timeline {
   position: relative;
-  max-width: 56rem;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
   padding-top: 0.5rem;
+  --timeline-year-col: 9.5rem;
+  --timeline-line-gap: 1rem;
+  --timeline-line-x: calc(var(--timeline-year-col) + var(--timeline-line-gap));
+  --timeline-leader-col: 14rem;
+  --timeline-leader-gap: 2rem;
 }
 
 .past-leaders-timeline::before {
   content: "";
   position: absolute;
-  left: 50%;
+  left: var(--timeline-line-x);
   top: 0;
   bottom: 0;
   width: 2px;
@@ -5640,27 +5646,38 @@ article img:not([class*="rounded-full"]) {
 .past-leaders-timeline__row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.25rem;
-  align-items: center;
-  padding-bottom: 2.5rem;
+  gap: 2rem;
+  align-items: start;
+  padding-bottom: 4rem;
 }
 
 .past-leaders-timeline__row:last-child {
   padding-bottom: 0;
 }
 
-.past-leaders-timeline__center {
-  order: -1;
+.past-leaders-timeline__year-col {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   position: relative;
   z-index: 1;
 }
 
-.past-leaders-timeline__marker {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.past-leaders-timeline__year-col::after {
+  content: "";
+  display: none;
+  position: absolute;
+  left: var(--timeline-line-x);
+  top: 50%;
+  width: 0.875rem;
+  height: 0.875rem;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: var(--color-gold);
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 2px var(--color-gold-soft);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .past-leaders-timeline__year {
@@ -5678,22 +5695,27 @@ article img:not([class*="rounded-full"]) {
   border-radius: 9999px;
 }
 
+.past-leaders-timeline__people {
+  display: grid;
+  grid-template-columns: var(--timeline-leader-col) var(--timeline-leader-col);
+  column-gap: var(--timeline-leader-gap);
+  row-gap: 1.25rem;
+  width: calc(var(--timeline-leader-col) * 2 + var(--timeline-leader-gap));
+  max-width: 100%;
+}
+
 .past-leaders-timeline__leader {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  max-width: 20rem;
-  margin-inline: auto;
-}
-
-.past-leaders-timeline__leader--president {
-  flex-direction: row-reverse;
-  text-align: right;
-}
-
-.past-leaders-timeline__leader--secretary {
-  flex-direction: row;
+  gap: 0.75rem;
   text-align: left;
+  width: 100%;
+  min-width: 0;
+}
+
+.past-leaders-timeline__info {
+  min-width: 0;
+  flex: 1;
 }
 
 .past-leaders-timeline__photo {
@@ -5735,34 +5757,51 @@ article img:not([class*="rounded-full"]) {
   color: var(--color-charcoal);
 }
 
-@media (min-width: 768px) {
-  .past-leaders-timeline__row {
-    grid-template-columns: minmax(0, 1fr) 9.5rem minmax(0, 1fr);
-    gap: 1.5rem;
-    padding-bottom: 3rem;
+@media (max-width: 767px) {
+  .past-leaders-timeline::before,
+  .past-leaders-timeline__year-col::after {
+    display: none;
   }
 
-  .past-leaders-timeline__center {
-    order: 0;
+  .past-leaders-timeline__people {
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .past-leaders-timeline__year-col::after {
+    display: block;
+  }
+
+  .past-leaders-timeline__row {
+    grid-template-columns: var(--timeline-year-col) auto;
+    column-gap: 5rem;
+    row-gap: 0;
+    padding-bottom: 5rem;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .past-leaders-timeline__year-col {
+    justify-content: flex-start;
+    padding-right: 0;
+    padding-top: 0;
+  }
+
+  .past-leaders-timeline {
+    --timeline-leader-col: 16rem;
+    --timeline-leader-gap: 2.5rem;
+  }
+
+  .past-leaders-timeline__people {
+    row-gap: 1.5rem;
   }
 
   .past-leaders-timeline__year {
     min-width: 7rem;
     padding: 0.55rem 1rem;
     font-size: 1rem;
-  }
-
-  .past-leaders-timeline__leader {
-    max-width: none;
-    margin-inline: 0;
-  }
-
-  .past-leaders-timeline__leader--president {
-    justify-self: end;
-  }
-
-  .past-leaders-timeline__leader--secretary {
-    justify-self: start;
   }
 
   .past-leaders-timeline__photo {
@@ -5777,12 +5816,20 @@ article img:not([class*="rounded-full"]) {
 
 @media (min-width: 1024px) {
   .past-leaders-timeline {
-    max-width: 64rem;
+    --timeline-year-col: 10.5rem;
+    --timeline-line-gap: 1rem;
+    --timeline-leader-col: 17.5rem;
+    --timeline-leader-gap: 3rem;
   }
 
   .past-leaders-timeline__row {
-    grid-template-columns: minmax(0, 1fr) 10.5rem minmax(0, 1fr);
-    gap: 2rem;
+    grid-template-columns: var(--timeline-year-col) auto;
+    column-gap: 6.5rem;
+    padding-bottom: 5.5rem;
+  }
+
+  .past-leaders-timeline__people {
+    row-gap: 2rem;
   }
 
   .past-leaders-timeline__year {
