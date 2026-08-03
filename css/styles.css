@@ -3095,10 +3095,12 @@ section.bg-cream.pb-24 .lg\:col-span-4 > div {
 
 .about-detail-page .committee-card__name {
   font-size: 19px;
+  color: #ffb500;
 }
 
 .about-detail-page .committee-card__mandate {
   font-size: 13px;
+  color: #ffffff;
 }
 
 .about-detail-page .committee-card__desc {
@@ -5610,6 +5612,186 @@ article img:not([class*="rounded-full"]) {
   .about-history-item__body {
     padding-left: 2rem;
     border-left: 1px solid #e4e4e7;
+  }
+}
+
+/* ==========================================
+   PAST LEADERS TIMELINE
+   ========================================== */
+.past-leaders-timeline {
+  position: relative;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding-top: 0.5rem;
+}
+
+.past-leaders-timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--color-gold-soft);
+  pointer-events: none;
+}
+
+.past-leaders-timeline__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: center;
+  padding-bottom: 2.5rem;
+}
+
+.past-leaders-timeline__row:last-child {
+  padding-bottom: 0;
+}
+
+.past-leaders-timeline__center {
+  order: -1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.past-leaders-timeline__marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.past-leaders-timeline__year {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 6.5rem;
+  padding: 0.5rem 1.1rem;
+  font-family: var(--font-serif);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  background: var(--color-gold);
+  border-radius: 9999px;
+}
+
+.past-leaders-timeline__leader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 20rem;
+  margin-inline: auto;
+}
+
+.past-leaders-timeline__leader--president {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.past-leaders-timeline__leader--secretary {
+  flex-direction: row;
+  text-align: left;
+}
+
+.past-leaders-timeline__photo {
+  flex-shrink: 0;
+  width: 5.25rem;
+  height: 6.75rem;
+  overflow: hidden;
+  border: 1px solid #e4e4e7;
+  border-radius: 6px;
+  background: #fafafa;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.past-leaders-timeline__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.45s ease;
+}
+
+.past-leaders-timeline__leader:hover .past-leaders-timeline__photo img {
+  transform: scale(1.05);
+}
+
+.past-leaders-timeline__role {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.2rem;
+}
+
+.past-leaders-timeline__name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: var(--color-charcoal);
+}
+
+@media (min-width: 768px) {
+  .past-leaders-timeline__row {
+    grid-template-columns: minmax(0, 1fr) 9.5rem minmax(0, 1fr);
+    gap: 1.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .past-leaders-timeline__center {
+    order: 0;
+  }
+
+  .past-leaders-timeline__year {
+    min-width: 7rem;
+    padding: 0.55rem 1rem;
+    font-size: 1rem;
+  }
+
+  .past-leaders-timeline__leader {
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .past-leaders-timeline__leader--president {
+    justify-self: end;
+  }
+
+  .past-leaders-timeline__leader--secretary {
+    justify-self: start;
+  }
+
+  .past-leaders-timeline__photo {
+    width: 6rem;
+    height: 7.75rem;
+  }
+
+  .past-leaders-timeline__name {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .past-leaders-timeline {
+    max-width: 64rem;
+  }
+
+  .past-leaders-timeline__row {
+    grid-template-columns: minmax(0, 1fr) 10.5rem minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .past-leaders-timeline__year {
+    font-size: 1.0625rem;
+  }
+
+  .past-leaders-timeline__photo {
+    width: 7rem;
+    height: 9rem;
   }
 }
 
