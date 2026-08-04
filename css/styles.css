@@ -5620,9 +5620,10 @@ article img:not([class*="rounded-full"]) {
    ========================================== */
 .past-leaders-timeline {
   position: relative;
-  width: 100%;
-  max-width: none;
-  margin: 0;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   padding-top: 0.5rem;
   --timeline-year-col: 9.5rem;
   --timeline-line-gap: 1rem;
@@ -5657,7 +5658,7 @@ article img:not([class*="rounded-full"]) {
 
 .past-leaders-timeline__year-col {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   position: relative;
   z-index: 1;
@@ -5766,6 +5767,8 @@ article img:not([class*="rounded-full"]) {
   .past-leaders-timeline__people {
     grid-template-columns: 1fr 1fr;
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -5839,6 +5842,146 @@ article img:not([class*="rounded-full"]) {
   .past-leaders-timeline__photo {
     width: 7rem;
     height: 9rem;
+  }
+}
+
+/* ==========================================
+   ADVISER PANEL
+   ========================================== */
+.adviser-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.adviser-panel__chief {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.adviser-panel__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem 1.75rem;
+  width: 100%;
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.adviser-card {
+  text-align: center;
+}
+
+.adviser-card__photo {
+  overflow: hidden;
+  border: 1px solid #e4e4e7;
+  border-radius: 6px;
+  background: #fafafa;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  margin: 0 auto 1.25rem;
+  width: min(100%, 11.5rem);
+  aspect-ratio: 3 / 4;
+}
+
+.adviser-card--chief .adviser-card__photo {
+  width: min(100%, 13rem);
+  margin-bottom: 1.5rem;
+}
+
+.adviser-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.45s ease;
+}
+
+.adviser-card:hover .adviser-card__photo img {
+  transform: scale(1.04);
+}
+
+.adviser-card__name {
+  color: var(--color-charcoal);
+  font-size: 1.25rem;
+  line-height: 1.35;
+  margin-bottom: 0.35rem;
+}
+
+.adviser-card--chief .adviser-card__name {
+  font-size: 1.5rem;
+}
+
+.adviser-card__role {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--color-gold);
+}
+
+.adviser-panel__grid > .reveal:nth-child(3n + 1) {
+  --reveal-delay: 0ms;
+}
+
+.adviser-panel__grid > .reveal:nth-child(3n + 2) {
+  --reveal-delay: 100ms;
+}
+
+.adviser-panel__grid > .reveal:nth-child(3n + 3) {
+  --reveal-delay: 200ms;
+}
+
+@media (min-width: 640px) {
+  .adviser-panel {
+    gap: 3.5rem;
+  }
+
+  .adviser-panel__grid {
+    gap: 3rem 2rem;
+  }
+
+  .adviser-card__name {
+    font-size: 1.375rem;
+  }
+
+  .adviser-card--chief .adviser-card__name {
+    font-size: 1.625rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .adviser-panel {
+    gap: 4rem;
+  }
+
+  .adviser-panel__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3.5rem 2.5rem;
+  }
+
+  .adviser-card__photo {
+    width: min(100%, 12.5rem);
+  }
+
+  .adviser-card--chief .adviser-card__photo {
+    width: min(100%, 14rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .adviser-panel__grid {
+    gap: 4rem 3rem;
+  }
+
+  .adviser-card__photo {
+    width: min(100%, 13.5rem);
+  }
+
+  .adviser-card--chief .adviser-card__photo {
+    width: min(100%, 15rem);
   }
 }
 
