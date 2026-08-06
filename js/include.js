@@ -33,7 +33,7 @@
         { href: "member-become.html", label: "Become a Member" },
       ],
     },
-    { href: "gold-price.html", label: "Gold Price" },
+    { href: "gold-price.html", label: "Price" },
     {
       label: "Notice",
       submenu: [
@@ -245,13 +245,15 @@
     headerAuthDocumentBound = true;
 
     document.addEventListener("click", (event) => {
-      document.querySelectorAll(".bajus-header-user.is-open").forEach((user) => {
-        if (!user.contains(event.target)) {
-          user.classList.remove("is-open");
-          const trigger = user.querySelector(".bajus-header-user__trigger");
-          trigger?.setAttribute("aria-expanded", "false");
-        }
-      });
+      document
+        .querySelectorAll(".bajus-header-user.is-open")
+        .forEach((user) => {
+          if (!user.contains(event.target)) {
+            user.classList.remove("is-open");
+            const trigger = user.querySelector(".bajus-header-user__trigger");
+            trigger?.setAttribute("aria-expanded", "false");
+          }
+        });
     });
   }
 
@@ -295,7 +297,7 @@
         } else {
           return `
             <div class="relative group py-6">
-              <button class="flex items-center gap-1.5 text-sm font-semibold tracking-wide transition-colors ${isSubActive ? "text-gold" : isDark ? "text-zinc-200 hover:text-gold" : "text-black hover:text-gold"} focus:outline-none">
+              <button class="flex items-center gap-1 text-sm font-semibold tracking-wide transition-colors ${isSubActive ? "text-gold" : isDark ? "text-zinc-200 hover:text-gold" : "text-black hover:text-gold"} focus:outline-none">
                 <span>${n.label}</span>
                 <svg class="size-3.5 transition-transform duration-300 group-hover:rotate-180 text-zinc-400 group-hover:text-gold" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
               </button>
@@ -358,7 +360,7 @@
 
       <div class="bajus-header-row max-w-7xl mx-auto px-6 h-[5rem] flex items-center justify-between">
         <a href="${BASE}/index.html" class="flex items-center gap-3">
-          <img src="${BASE}/assets/logo.png" alt="BAJUS — Bangladesh Jewellers Association" class="bajus-header-logo h-9 md:h-10 w-auto" />
+          <img src="${BASE}/assets/logo-bajus.svg" alt="BAJUS — Bangladesh Jewellers Association" class="bajus-header-logo h-10 md:h-12 w-auto" />
         </a>
         <nav class="hidden lg:flex items-center gap-5">
           ${navLinks(active, false, isDark)}
@@ -375,7 +377,7 @@
     <!-- Mobile Nav -->
     <div id="bajus-mobile-nav" class="mobile-nav fixed top-0 right-0 h-full w-[80%] max-w-sm bg-cream z-50 shadow-2xl p-6 overflow-y-auto lg:hidden">
       <div class="flex justify-between items-center mb-8">
-        <img src="${BASE}/assets/logo.png" alt="BAJUS" class="h-8 w-auto" />
+        <img src="${BASE}/assets/logo-bajus.svg" alt="BAJUS" class="h-9 w-auto" />
         <button id="bajus-close" class="p-2" aria-label="Close menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M6 18L18 6" stroke-linecap="round"/></svg>
         </button>
@@ -544,8 +546,8 @@
           headerLogo.style.height = scrolled
             ? "2rem"
             : isDesktop()
-              ? "2.5rem"
-              : "2.25rem";
+              ? "3rem"
+              : "2.5rem";
         }
       };
       applyHeaderScrollState();
