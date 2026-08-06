@@ -33,7 +33,6 @@
         { href: "member-become.html", label: "Become a Member" },
       ],
     },
-    { href: "gold-price.html", label: "Price" },
     {
       label: "Notice",
       submenu: [
@@ -41,6 +40,7 @@
         { href: "notice.html#forms", label: "Forms & Downloads" },
       ],
     },
+    { href: "gold-price.html", label: "Price" },
     {
       label: "Media",
       submenu: [
