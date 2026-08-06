@@ -15,7 +15,7 @@
           label: "President's Message",
         },
         { href: "about-board.html", label: "Board of Directors" },
-        { href: "about-past-leaders.html", label: "Past Leaders" },
+        { href: "about-past-leaders.html", label: "Former Leadership" },
         { href: "about-adviser-panel.html", label: "Adviser Panel" },
         { href: "about-committees.html", label: "Committees" },
         {
