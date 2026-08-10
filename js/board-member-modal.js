@@ -119,12 +119,25 @@
     document.body.classList.remove("modal-open");
   }
 
-  function bindNameTrigger(trigger, memberId, fallback) {
-    trigger.classList.add("board-member-card__name-btn");
-    trigger.setAttribute("type", "button");
-    trigger.setAttribute("aria-haspopup", "dialog");
-    trigger.addEventListener("click", function () {
+  function bindCardTrigger(card, memberId, fallback) {
+    const label = "View profile: " + (fallback.name || "Board Member");
+
+    card.classList.add("board-member-card--interactive");
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-haspopup", "dialog");
+    card.setAttribute("aria-label", label);
+
+    function openProfile() {
       openModal(memberId, fallback);
+    }
+
+    card.addEventListener("click", openProfile);
+    card.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openProfile();
+      }
     });
   }
 
@@ -144,15 +157,24 @@
     };
 
     if (nameHeading.tagName === "BUTTON") {
-      bindNameTrigger(nameHeading, memberId, fallback);
-      return;
+      const heading = document.createElement("h3");
+      heading.className = nameHeading.className.replace(/\s*board-member-card__name-btn\s*/g, " ").trim();
+      heading.textContent = fallback.name;
+      nameHeading.replaceWith(heading);
     }
 
-    const btn = document.createElement("button");
-    btn.className = nameHeading.className;
-    btn.textContent = fallback.name;
-    nameHeading.replaceWith(btn);
-    bindNameTrigger(btn, memberId, fallback);
+    bindCardTrigger(card, memberId, fallback);
+
+    const institution = institutionData[memberId];
+    if (roleEl && institution && institution.shopName) {
+      let companyEl = card.querySelector(".board-member-card__company");
+      if (!companyEl) {
+        companyEl = document.createElement("div");
+        companyEl.className = "board-member-card__company";
+        roleEl.insertAdjacentElement("afterend", companyEl);
+      }
+      companyEl.textContent = institution.shopName;
+    }
   }
 
   function enhancePresidentHero() {
@@ -161,11 +183,23 @@
 
     const img = hero.querySelector("img");
     const nameEl = hero.querySelector(".board-hero-card__name");
+    const roleEl = hero.querySelector(".board-hero-card__role");
     const bioEl = hero.querySelector(".board-hero-card__bio");
     if (!img || !nameEl) return;
 
     const memberId = photoFilenameToId(img.getAttribute("src") || "");
     if (!memberId) return;
+
+    const institution = institutionData[memberId];
+    if (roleEl && institution && institution.shopName) {
+      let companyEl = hero.querySelector(".board-hero-card__company");
+      if (!companyEl) {
+        companyEl = document.createElement("div");
+        companyEl.className = "board-hero-card__company board-member-card__company";
+        roleEl.insertAdjacentElement("afterend", companyEl);
+      }
+      companyEl.textContent = institution.shopName;
+    }
 
     const fallback = {
       name: nameEl.textContent.trim(),
@@ -192,11 +226,20 @@
     });
   }
 
-  document
-    .querySelectorAll(".board-members-grid > .reveal")
-    .forEach(enhanceCard);
+  window.bajusInitBoardMemberCards = function () {
+    document
+      .querySelectorAll(".board-members-grid .board-member-card")
+      .forEach(function (card) {
+        if (!card.dataset.enhanced) {
+          card.dataset.enhanced = "1";
+          enhanceCard(card);
+        }
+      });
+  };
 
-  enhancePresidentHero();
+  document.addEventListener("DOMContentLoaded", function () {
+    enhancePresidentHero();
+  });
 
   closeBtn.addEventListener("click", closeModal);
   backdrop.addEventListener("click", closeModal);

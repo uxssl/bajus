@@ -31,7 +31,7 @@ The brand uses a highly curated, minimal, and harmonious palette. Avoid generic 
 The type scales are optimized for high readability, blending global sans-serif readability with elegant editorial serif headers.
 
 ### Core Typefaces:
-1. **Primary Serif:** `Playfair Display`, `Cormorant Garamond` (used for editorial headers, blockquotes, dates).
+1. **Primary Serif:** `Gilda Display`, `Cormorant Garamond` (used for editorial headers, blockquotes, dates).
 2. **Primary Sans-Serif:** `Inter` (used for body copy, buttons, labels, and numeric figures).
 3. **Bengali Sans-Serif:** `Hind Siliguri`, `Noto Sans Bengali` (harmonized height to display beside Inter seamlessly).
 

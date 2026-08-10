@@ -120,7 +120,7 @@
     if (!pending) return;
 
     if (cancelled) {
-      if (pending.input) pending.input.value = "";
+      if (!pending.recrop && pending.input) pending.input.value = "";
       if (pending.reject) pending.reject(new Error("crop-cancelled"));
     }
   }
@@ -209,10 +209,13 @@
     );
   }
 
-  function openCropModal(file, tile) {
+  function openCropModal(file, tile, options) {
     if (typeof global.Cropper === "undefined") {
       return Promise.reject(new Error("cropper-unavailable"));
     }
+
+    const opts = options || {};
+    const isRecrop = !!opts.recrop;
 
     return new Promise((resolve, reject) => {
       const modal = ensureCropModal();
@@ -222,13 +225,20 @@
       const isSquare = tile.hasAttribute("data-crop-aspect");
       const hint = modal.querySelector(".bajus-crop-modal__hint");
 
-      title.textContent = "Crop " + label;
+      title.textContent = (isRecrop ? "Adjust crop — " : "Crop ") + label;
       if (hint) {
         hint.textContent = isSquare
           ? "Drag to reposition. Selection is locked to a square for your passport photo."
           : "Drag to reposition and resize the selection freely to include the area you need.";
       }
-      cropPending = { input: tile.querySelector(".bajus-file-input"), tile, file, resolve, reject };
+      cropPending = {
+        input: tile.querySelector(".bajus-file-input"),
+        tile,
+        file,
+        resolve,
+        reject,
+        recrop: isRecrop,
+      };
 
       destroyCropper();
       cropObjectUrl = URL.createObjectURL(file);
@@ -360,6 +370,29 @@
     return tile && tile.hasAttribute("data-crop");
   }
 
+  function getUploadTile(el) {
+    return el.closest(".bajus-upload-tile") || el.closest(".bajus-photo-tile");
+  }
+
+  function tileHasUploadedImage(tile) {
+    if (!tile) return false;
+    const docFilled = tile.querySelector(".bajus-upload-filled");
+    if (docFilled && !docFilled.classList.contains("hidden")) return true;
+    const photoPreview = tile.querySelector(".bajus-photo-preview");
+    return !!(photoPreview && !photoPreview.classList.contains("hidden") && photoPreview.src);
+  }
+
+  function reopenCropForTile(tile) {
+    if (!tileUsesCrop(tile) || !tileHasUploadedImage(tile)) return;
+    if (typeof global.Cropper === "undefined") return;
+
+    const input = tile.querySelector(".bajus-file-input");
+    const file = input && input.files && input.files[0];
+    if (!file || !file.type.startsWith("image/")) return;
+
+    openCropModal(file, tile, { recrop: true }).catch(() => {});
+  }
+
   function initUploads() {
     ensureLightbox();
     ensureCropModal();
@@ -396,11 +429,22 @@
 
     document.addEventListener("click", (e) => {
       const previewBtn = e.target.closest(".bajus-doc-preview");
-      if (!previewBtn) return;
+      if (previewBtn) {
+        e.preventDefault();
+        const tile = previewBtn.closest(".bajus-upload-tile");
+        if (!tile || !tile.dataset.src) return;
+        openLightbox(tile.dataset.src, tile.dataset.label || "Document preview");
+        return;
+      }
+
+      const previewImg = e.target.closest(".bajus-upload-preview, .bajus-photo-preview");
+      const previewZone = e.target.closest(".bajus-upload-filled > div:first-child");
+      const tile = getUploadTile(previewImg || previewZone);
+      if (!tile || !tileUsesCrop(tile) || !tileHasUploadedImage(tile)) return;
+      if (!previewImg && !previewZone) return;
+
       e.preventDefault();
-      const tile = previewBtn.closest(".bajus-upload-tile");
-      if (!tile || !tile.dataset.src) return;
-      openLightbox(tile.dataset.src, tile.dataset.label || "Document preview");
+      reopenCropForTile(tile);
     });
   }
 

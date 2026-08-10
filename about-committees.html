@@ -9,7 +9,7 @@
     content="BAJUS operates through specialised standing committees overseeing policy, membership, training, gold pricing, communications, and international affairs." /><link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Gilda+Display&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
@@ -36,7 +36,7 @@
         <a href="./about-board.html" class="about-sub-nav__link">Board of Directors</a>
         <a href="./about-past-leaders.html" class="about-sub-nav__link">Former Leadership</a>
         <a href="./about-adviser-panel.html" class="about-sub-nav__link">Adviser Panel</a>
-        <a href="./about-committees.html" class="about-sub-nav__link is-active">Committees</a>
+        <a href="./about-committees.html" class="about-sub-nav__link is-active">Standing Committees</a>
         <a href="./about-divisional-committee.html" class="about-sub-nav__link">Divisional Committee</a>
         <a href="./about-district-committee.html" class="about-sub-nav__link">District Committee</a>
         <a href="./about-election.html" class="about-sub-nav__link">BAJUS Election</a>
@@ -72,8 +72,23 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Oversees matters related to banking policies, financial services, and loan
                 accessibility for BAJUS members to foster industry growth.</p>
-              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8">
-                <!-- Members list is currently empty on live site -->
+              <div class="committee-tabs">
+                <div class="committee-tabs__nav" role="tablist">
+                  <button type="button" class="committee-tabs__btn is-active" data-tab="members">Members</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="activities">Activities</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="gallery">Photo Gallery</button>
+                </div>
+                <div class="committee-tabs__panel is-active" data-tab-panel="members">
+                  <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8">
+                    <!-- Members list is currently empty on live site -->
+                  </div>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="activities">
+                  <p class="committee-tabs__empty">No activities have been recorded for this committee yet.</p>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="gallery">
+                  <p class="committee-tabs__empty">No photos have been added for this committee yet.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -98,66 +113,292 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Convenes regularly to determine and announce official gold and silver
                 prices for the Bangladesh market based on international market data.</p>
-              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8">
-                <div class="committee-member">
-                  <div class="committee-member__avatar">DA</div>
-                  <div class="committee-member__info">
-                    <div class="committee-member__name">Dewan Aminul Islam</div>
-                    <div class="committee-member__role">Chairman</div>
+              <div class="committee-tabs">
+                <div class="committee-tabs__nav" role="tablist">
+                  <button type="button" class="committee-tabs__btn is-active" data-tab="members">Members</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="activities">Activities</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="gallery">Photo Gallery</button>
+                </div>
+                <div class="committee-tabs__panel is-active" data-tab-panel="members">
+                  <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8">
+                    <div class="committee-member">
+                      <div class="committee-member__avatar">DA</div>
+                      <div class="committee-member__info">
+                        <div class="committee-member__name">Dewan Aminul Islam</div>
+                        <div class="committee-member__role">Chairman</div>
+                      </div>
+                    </div>
+                    <div class="committee-member">
+                      <div class="committee-member__avatar committee-member__avatar--photo">
+                        <img src="./assets/members/azad_ahmed.jpg" alt="Azad Ahmed" class="committee-member__photo"
+                          loading="lazy" />
+                      </div>
+                      <div class="committee-member__info">
+                        <div class="committee-member__name">Azad Ahmed</div>
+                        <div class="committee-member__role">Vice Chairman</div>
+                      </div>
+                    </div>
+                    <div class="committee-member">
+                      <div class="committee-member__avatar committee-member__avatar--photo">
+                        <img src="./assets/members/bablu_dutta.jpg" alt="Bablu Dutta" class="committee-member__photo"
+                          loading="lazy" />
+                      </div>
+                      <div class="committee-member__info">
+                        <div class="committee-member__name">Bablu Dutta</div>
+                        <div class="committee-member__role">Member Secretary</div>
+                      </div>
+                    </div>
+                    <div class="committee-member">
+                      <div class="committee-member__avatar">BM</div>
+                      <div class="committee-member__info">
+                        <div class="committee-member__name">Biplob Malaker</div>
+                        <div class="committee-member__role">Member</div>
+                      </div>
+                    </div>
+                    <div class="committee-member">
+                      <div class="committee-member__avatar committee-member__avatar--photo">
+                        <img src="./assets/members/sumon_chandra_dey.jpg" alt="Sumon Chandra Dey"
+                          class="committee-member__photo" loading="lazy" />
+                      </div>
+                      <div class="committee-member__info">
+                        <div class="committee-member__name">Sumon Chandra Dey</div>
+                        <div class="committee-member__role">Member</div>
+                      </div>
+                    </div>
+                    <div class="committee-member">
+                      <div class="committee-member__avatar committee-member__avatar--photo">
+                        <img src="./assets/members/ganesh_debnath.jpg" alt="Ganesh Debnath"
+                          class="committee-member__photo" loading="lazy" />
+                      </div>
+                      <div class="committee-member__info">
+                        <div class="committee-member__name">Ganesh Debnath</div>
+                        <div class="committee-member__role">Member</div>
+                      </div>
+                    </div>
+                    <div class="committee-member">
+                      <div class="committee-member__avatar">SD</div>
+                      <div class="committee-member__info">
+                        <div class="committee-member__name">Swarup Dey</div>
+                        <div class="committee-member__role">Member</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="committee-member">
-                  <div class="committee-member__avatar committee-member__avatar--photo">
-                    <img src="./assets/members/azad_ahmed.jpg" alt="Azad Ahmed" class="committee-member__photo"
-                      loading="lazy" />
-                  </div>
-                  <div class="committee-member__info">
-                    <div class="committee-member__name">Azad Ahmed</div>
-                    <div class="committee-member__role">Vice Chairman</div>
-                  </div>
+                <div class="committee-tabs__panel" data-tab-panel="activities">
+                  <ol class="committee-timeline">
+                    <li class="committee-timeline__item">
+                      <span class="committee-timeline__icon"><i class="bi bi-calendar-event"></i></span>
+                      <div class="committee-timeline__content">
+                        <div class="committee-timeline__head">
+                          <span class="committee-timeline__type">Meeting</span>
+                          <time class="committee-timeline__date">12 Jan 2025 &middot; 11:00 AM</time>
+                        </div>
+                        <p class="committee-timeline__desc">Monthly committee meeting held at BAJUS Secretariat,
+                          Dhaka, to review gold and silver rate trends over the past month and finalize the daily
+                          pricing formula used for official rate announcements.</p>
+                        <ul class="committee-timeline__meta">
+                          <li><i class="bi bi-geo-alt"></i> BAJUS Secretariat, Dhaka</li>
+                          <li><i class="bi bi-people"></i> 9 committee members attended</li>
+                          <li><i class="bi bi-clipboard-check"></i> Chaired by Dewan Aminul Islam</li>
+                          <li><i class="bi bi-check-circle"></i> Revised pricing formula approved for Q1</li>
+                        </ul>
+                        <div class="committee-timeline__photos">
+                          <div class="committee-gallery-list">
+                            <button type="button" class="committee-gallery-item">
+                              <img src="./assets/about/jewellery-2.jpg" alt="Committee meeting session" loading="lazy" />
+                            </button>
+                            <button type="button" class="committee-gallery-item">
+                              <img src="./assets/banner/banner_2.jpg" alt="Members in discussion" loading="lazy" />
+                            </button>
+                            <button type="button" class="committee-gallery-item">
+                              <img src="./assets/news1.jpg" alt="Meeting documentation" loading="lazy" />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="committee-timeline__item">
+                      <span class="committee-timeline__icon"><i class="bi bi-shop"></i></span>
+                      <div class="committee-timeline__content">
+                        <div class="committee-timeline__head">
+                          <span class="committee-timeline__type">Market Visit</span>
+                          <time class="committee-timeline__date">02 Feb 2025 &middot; 10:30 AM</time>
+                        </div>
+                        <p class="committee-timeline__desc">On-site visit to Tanti Bazar and Bashundhara City
+                          jewellery markets to observe retail pricing practices and gather feedback from shop
+                          owners on rate implementation.</p>
+                        <ul class="committee-timeline__meta">
+                          <li><i class="bi bi-geo-alt"></i> Tanti Bazar &amp; Bashundhara City, Dhaka</li>
+                          <li><i class="bi bi-people"></i> 5 members, 2 secretariat staff</li>
+                          <li><i class="bi bi-shop-window"></i> 18 retail shops visited</li>
+                          <li><i class="bi bi-check-circle"></i> Feedback report submitted to Executive Board</li>
+                        </ul>
+                        <div class="committee-timeline__photos">
+                          <div class="committee-gallery-list">
+                            <button type="button" class="committee-gallery-item">
+                              <img src="./assets/news2.jpg" alt="Market visit at Tanti Bazar" loading="lazy" />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="committee-timeline__item">
+                      <span class="committee-timeline__icon"><i class="bi bi-graph-up-arrow"></i></span>
+                      <div class="committee-timeline__content">
+                        <div class="committee-timeline__head">
+                          <span class="committee-timeline__type">Price Monitoring</span>
+                          <time class="committee-timeline__date">Daily &middot; 9:00 AM</time>
+                        </div>
+                        <p class="committee-timeline__desc">Continuous daily tracking of international bullion
+                          rates, USD/BDT exchange movement, and regional gold exchange data to set the official
+                          local gold and silver price notice.</p>
+                        <ul class="committee-timeline__meta">
+                          <li><i class="bi bi-geo-alt"></i> BAJUS Rate Desk, Secretariat</li>
+                          <li><i class="bi bi-globe"></i> LBMA &amp; regional exchange data sources</li>
+                          <li><i class="bi bi-person-badge"></i> Handled by the Rate Monitoring Cell</li>
+                          <li><i class="bi bi-check-circle"></i> Daily rate notice published by 10:00 AM</li>
+                        </ul>
+                        <div class="committee-timeline__photos">
+                          <div class="committee-gallery-list">
+                            <button type="button" class="committee-gallery-item">
+                              <img src="./assets/news3.jpg" alt="Rate monitoring desk" loading="lazy" />
+                            </button>
+                            <button type="button" class="committee-gallery-item">
+                              <img src="./assets/members/sumon_chandra_dey.jpg" alt="Rate monitoring cell member" loading="lazy" />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="committee-timeline__item">
+                      <span class="committee-timeline__icon"><i class="bi bi-search"></i></span>
+                      <div class="committee-timeline__content">
+                        <div class="committee-timeline__head">
+                          <span class="committee-timeline__type">Inspection</span>
+                          <time class="committee-timeline__date">18 Mar 2025 &middot; 3:00 PM</time>
+                        </div>
+                        <p class="committee-timeline__desc">Surprise inspection drive across member shops in Old
+                          Dhaka to verify compliance with the published daily price list and proper rate display.</p>
+                        <ul class="committee-timeline__meta">
+                          <li><i class="bi bi-geo-alt"></i> Old Dhaka jewellery cluster</li>
+                          <li><i class="bi bi-people"></i> 3-member inspection team</li>
+                          <li><i class="bi bi-shop-window"></i> 12 shops inspected</li>
+                          <li><i class="bi bi-exclamation-triangle"></i> 2 shops issued verbal warning for outdated rate boards</li>
+                        </ul>
+                        <div class="committee-timeline__photos">
+                          <div class="committee-gallery-list">
+                            <button type="button" class="committee-gallery-item">
+                              <img src="./assets/about/jewellery-4.jpg" alt="Shop inspection in Old Dhaka" loading="lazy" />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="committee-timeline__item">
+                      <span class="committee-timeline__icon"><i class="bi bi-shield-check"></i></span>
+                      <div class="committee-timeline__content">
+                        <div class="committee-timeline__head">
+                          <span class="committee-timeline__type">Enforcement-related Activities</span>
+                          <time class="committee-timeline__date">05 Apr 2025 &middot; 2:00 PM</time>
+                        </div>
+                        <p class="committee-timeline__desc">Review meeting to issue formal warnings and
+                          disciplinary notices against members found overcharging or violating the committee's
+                          pricing guidelines.</p>
+                        <ul class="committee-timeline__meta">
+                          <li><i class="bi bi-geo-alt"></i> BAJUS Secretariat, Dhaka</li>
+                          <li><i class="bi bi-people"></i> Joint session with Law &amp; Membership Committee</li>
+                          <li><i class="bi bi-file-earmark-text"></i> 3 cases reviewed</li>
+                          <li><i class="bi bi-check-circle"></i> 1 formal warning issued, 1 case referred for further action</li>
+                        </ul>
+                        <div class="committee-timeline__photos">
+                          <div class="committee-gallery-list">
+                            <button type="button" class="committee-gallery-item">
+                              <img src="./assets/banner/banner_4.jpg" alt="Enforcement review meeting" loading="lazy" />
+                            </button>
+                            <button type="button" class="committee-gallery-item">
+                              <img src="./assets/members/azad_ahmed.jpg" alt="Enforcement review session" loading="lazy" />
+                            </button>
+                            <button type="button" class="committee-gallery-item">
+                              <img src="./assets/banner/banner_3.jpg" alt="Case review session" loading="lazy" />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="committee-timeline__item">
+                      <span class="committee-timeline__icon"><i class="bi bi-megaphone"></i></span>
+                      <div class="committee-timeline__content">
+                        <div class="committee-timeline__head">
+                          <span class="committee-timeline__type">Awareness Program</span>
+                          <time class="committee-timeline__date">22 May 2025 &middot; 4:00 PM</time>
+                        </div>
+                        <p class="committee-timeline__desc">Public awareness campaign at the BAJUS auditorium
+                          explaining how the daily gold rate notice is calculated and how consumers can verify
+                          fair pricing.</p>
+                        <ul class="committee-timeline__meta">
+                          <li><i class="bi bi-geo-alt"></i> BAJUS Auditorium, Dhaka</li>
+                          <li><i class="bi bi-people"></i> 60+ retail members and press attended</li>
+                          <li><i class="bi bi-mic"></i> Presented by the Pricing Committee Chairman</li>
+                          <li><i class="bi bi-check-circle"></i> Rate calculation guide distributed to attendees</li>
+                        </ul>
+                        <div class="committee-timeline__photos">
+                          <div class="committee-gallery-list">
+                            <button type="button" class="committee-gallery-item">
+                              <img src="./assets/about/jewellery-5.jpg" alt="Awareness program at auditorium" loading="lazy" />
+                            </button>
+                            <button type="button" class="committee-gallery-item">
+                              <img src="./assets/craft.jpg" alt="Awareness session display" loading="lazy" />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="committee-timeline__item">
+                      <span class="committee-timeline__icon"><i class="bi bi-easel"></i></span>
+                      <div class="committee-timeline__content">
+                        <div class="committee-timeline__head">
+                          <span class="committee-timeline__type">Seminar / Workshop</span>
+                          <time class="committee-timeline__date">14 Jun 2025 &middot; 10:00 AM</time>
+                        </div>
+                        <p class="committee-timeline__desc">Workshop for BAJUS members on reading international
+                          bullion market signals and understanding their impact on local gold and silver pricing.</p>
+                        <ul class="committee-timeline__meta">
+                          <li><i class="bi bi-geo-alt"></i> BAJUS Conference Hall, Dhaka</li>
+                          <li><i class="bi bi-people"></i> 40 members attended</li>
+                          <li><i class="bi bi-person-video3"></i> Led by a senior bullion market analyst</li>
+                          <li><i class="bi bi-check-circle"></i> Training certificates issued to participants</li>
+                        </ul>
+                        <div class="committee-timeline__photos">
+                          <div class="committee-gallery-list">
+                            <button type="button" class="committee-gallery-item">
+                              <img src="./assets/sliders/slider-1.jpg" alt="Seminar workshop session" loading="lazy" />
+                            </button>
+                            <button type="button" class="committee-gallery-item">
+                              <img src="./assets/sliders/slider-2.jpg" alt="Workshop participants" loading="lazy" />
+                            </button>
+                            <button type="button" class="committee-gallery-item">
+                              <img src="./assets/about/jewellery-1.jpg" alt="Training materials display" loading="lazy" />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ol>
                 </div>
-                <div class="committee-member">
-                  <div class="committee-member__avatar committee-member__avatar--photo">
-                    <img src="./assets/members/bablu_dutta.jpg" alt="Bablu Dutta" class="committee-member__photo"
-                      loading="lazy" />
-                  </div>
-                  <div class="committee-member__info">
-                    <div class="committee-member__name">Bablu Dutta</div>
-                    <div class="committee-member__role">Member Secretary</div>
-                  </div>
-                </div>
-                <div class="committee-member">
-                  <div class="committee-member__avatar">BM</div>
-                  <div class="committee-member__info">
-                    <div class="committee-member__name">Biplob Malaker</div>
-                    <div class="committee-member__role">Member</div>
-                  </div>
-                </div>
-                <div class="committee-member">
-                  <div class="committee-member__avatar committee-member__avatar--photo">
-                    <img src="./assets/members/sumon_chandra_dey.jpg" alt="Sumon Chandra Dey"
-                      class="committee-member__photo" loading="lazy" />
-                  </div>
-                  <div class="committee-member__info">
-                    <div class="committee-member__name">Sumon Chandra Dey</div>
-                    <div class="committee-member__role">Member</div>
-                  </div>
-                </div>
-                <div class="committee-member">
-                  <div class="committee-member__avatar committee-member__avatar--photo">
-                    <img src="./assets/members/ganesh_debnath.jpg" alt="Ganesh Debnath" class="committee-member__photo"
-                      loading="lazy" />
-                  </div>
-                  <div class="committee-member__info">
-                    <div class="committee-member__name">Ganesh Debnath</div>
-                    <div class="committee-member__role">Member</div>
-                  </div>
-                </div>
-                <div class="committee-member">
-                  <div class="committee-member__avatar">SD</div>
-                  <div class="committee-member__info">
-                    <div class="committee-member__name">Swarup Dey</div>
-                    <div class="committee-member__role">Member</div>
+                <div class="committee-tabs__panel" data-tab-panel="gallery">
+                  <div class="committee-gallery-list">
+                    <button type="button" class="committee-gallery-item">
+                      <img src="./assets/about/jewellery-3.jpg" alt="Committee event photo" loading="lazy" />
+                    </button>
+                    <button type="button" class="committee-gallery-item">
+                      <img src="./assets/members/bablu_dutta.jpg" alt="Committee member photo" loading="lazy" />
+                    </button>
+                    <button type="button" class="committee-gallery-item">
+                      <img src="./assets/members/ganesh_debnath.jpg" alt="Field visit photo" loading="lazy" />
+                    </button>
+                    <button type="button" class="committee-gallery-item">
+                      <img src="./assets/sliders/slider-3.jpg" alt="Workshop group photo" loading="lazy" />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -184,7 +425,22 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Advises on export opportunities, international market development, and
                 strengthening Bangladesh jewellery presence globally.</p>
-              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
+              <div class="committee-tabs">
+                <div class="committee-tabs__nav" role="tablist">
+                  <button type="button" class="committee-tabs__btn is-active" data-tab="members">Members</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="activities">Activities</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="gallery">Photo Gallery</button>
+                </div>
+                <div class="committee-tabs__panel is-active" data-tab-panel="members">
+                  <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="activities">
+                  <p class="committee-tabs__empty">No activities have been recorded for this committee yet.</p>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="gallery">
+                  <p class="committee-tabs__empty">No photos have been added for this committee yet.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -208,7 +464,22 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Engages with the National Board of Revenue to advocate for fair taxation,
                 VAT policies, and customs duties for the jewellery sector.</p>
-              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
+              <div class="committee-tabs">
+                <div class="committee-tabs__nav" role="tablist">
+                  <button type="button" class="committee-tabs__btn is-active" data-tab="members">Members</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="activities">Activities</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="gallery">Photo Gallery</button>
+                </div>
+                <div class="committee-tabs__panel is-active" data-tab-panel="members">
+                  <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="activities">
+                  <p class="committee-tabs__empty">No activities have been recorded for this committee yet.</p>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="gallery">
+                  <p class="committee-tabs__empty">No photos have been added for this committee yet.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -232,7 +503,22 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Supports women entrepreneurs and professionals in the jewellery sector,
                 addressing their specific needs and promoting equality.</p>
-              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
+              <div class="committee-tabs">
+                <div class="committee-tabs__nav" role="tablist">
+                  <button type="button" class="committee-tabs__btn is-active" data-tab="members">Members</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="activities">Activities</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="gallery">Photo Gallery</button>
+                </div>
+                <div class="committee-tabs__panel is-active" data-tab-panel="members">
+                  <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="activities">
+                  <p class="committee-tabs__empty">No activities have been recorded for this committee yet.</p>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="gallery">
+                  <p class="committee-tabs__empty">No photos have been added for this committee yet.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -256,7 +542,22 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Collaborates with law enforcement agencies to combat gold smuggling,
                 theft, and ensure a secure environment for jewellers.</p>
-              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
+              <div class="committee-tabs">
+                <div class="committee-tabs__nav" role="tablist">
+                  <button type="button" class="committee-tabs__btn is-active" data-tab="members">Members</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="activities">Activities</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="gallery">Photo Gallery</button>
+                </div>
+                <div class="committee-tabs__panel is-active" data-tab-panel="members">
+                  <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="activities">
+                  <p class="committee-tabs__empty">No activities have been recorded for this committee yet.</p>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="gallery">
+                  <p class="committee-tabs__empty">No photos have been added for this committee yet.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -280,7 +581,22 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Conducts research on consumer trends, market demands, and technological
                 advancements to guide the industry's strategic direction.</p>
-              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
+              <div class="committee-tabs">
+                <div class="committee-tabs__nav" role="tablist">
+                  <button type="button" class="committee-tabs__btn is-active" data-tab="members">Members</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="activities">Activities</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="gallery">Photo Gallery</button>
+                </div>
+                <div class="committee-tabs__panel is-active" data-tab-panel="members">
+                  <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="activities">
+                  <p class="committee-tabs__empty">No activities have been recorded for this committee yet.</p>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="gallery">
+                  <p class="committee-tabs__empty">No photos have been added for this committee yet.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -304,7 +620,22 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Organizes major trade events, jewellery exhibitions, and the BAJUS Annual
                 Conference to showcase local craftsmanship.</p>
-              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
+              <div class="committee-tabs">
+                <div class="committee-tabs__nav" role="tablist">
+                  <button type="button" class="committee-tabs__btn is-active" data-tab="members">Members</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="activities">Activities</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="gallery">Photo Gallery</button>
+                </div>
+                <div class="committee-tabs__panel is-active" data-tab-panel="members">
+                  <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="activities">
+                  <p class="committee-tabs__empty">No activities have been recorded for this committee yet.</p>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="gallery">
+                  <p class="committee-tabs__empty">No photos have been added for this committee yet.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -328,7 +659,22 @@
             <div class="committee-card__body">
               <p class="committee-card__desc">Oversees legal matters, constitutional amendments, dispute resolution, and
                 member registration and welfare schemes.</p>
-              <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
+              <div class="committee-tabs">
+                <div class="committee-tabs__nav" role="tablist">
+                  <button type="button" class="committee-tabs__btn is-active" data-tab="members">Members</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="activities">Activities</button>
+                  <button type="button" class="committee-tabs__btn" data-tab="gallery">Photo Gallery</button>
+                </div>
+                <div class="committee-tabs__panel is-active" data-tab-panel="members">
+                  <div class="committee-members-list grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8"></div>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="activities">
+                  <p class="committee-tabs__empty">No activities have been recorded for this committee yet.</p>
+                </div>
+                <div class="committee-tabs__panel" data-tab-panel="gallery">
+                  <p class="committee-tabs__empty">No photos have been added for this committee yet.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@
     content="Apply for BAJUS membership. Submit your owner, shop, and address details to join the Bangladesh Jewellers' Association." /><link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Hind+Siliguri:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Gilda+Display&family=Hind+Siliguri:wght@400;500;600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" />
@@ -33,8 +33,7 @@
 
   <!-- FORM -->
   <section class="py-16">
-    <form class="max-w-5xl mx-auto px-6 space-y-16"
-      onsubmit="event.preventDefault(); alert('Application submitted successfully.\n(Mockup — backend not connected.)');">
+    <form class="max-w-5xl mx-auto px-6 space-y-16">
 
       <!-- OWNER DETAILS -->
       <div class="border border-zinc-200/80 p-8 bg-white rounded-sm relative reveal">
@@ -53,17 +52,17 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-6">
-              <div><label class="form-label">Mobile *</label><input name="owner_mobile" class="form-input" type="tel"
-                  placeholder="01XXXXXXXXX" required /></div>
+              <div><label class="form-label">Mobile *</label><input name="owner_mobile" class="form-input bajus-digits-only" type="tel"
+                  inputmode="numeric" pattern="[0-9]*" placeholder="01XXXXXXXXX" required /></div>
               <div><label class="form-label">Email *</label><input name="owner_email" class="form-input" type="email"
                   placeholder="your@email.com" required /></div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
-              <div><label class="form-label">NID *</label><input name="owner_nid" class="form-input" type="text"
-                  placeholder="10 or 17 digit NID" required /></div>
-              <div><label class="form-label">TIN</label><input name="owner_tin" class="form-input" type="text"
-                  placeholder="Tax Identification Number" /></div>
+              <div><label class="form-label">NID *</label><input name="owner_nid" class="form-input bajus-digits-only" type="text"
+                  inputmode="numeric" pattern="[0-9]*" placeholder="10 or 17 digit NID" required /></div>
+              <div><label class="form-label">TIN</label><input name="owner_tin" class="form-input bajus-digits-only" type="text"
+                  inputmode="numeric" pattern="[0-9]*" placeholder="Tax Identification Number" /></div>
               <div>
                 <label class="form-label">Date of Birth *</label>
                 <div class="relative">
@@ -192,15 +191,15 @@
                   </div>
 
                   <div class="grid md:grid-cols-2 gap-6">
-                    <div><label class="form-label">Mobile *</label><input class="form-input shop-mobile-input"
-                        type="tel" placeholder="01XXXXXXXXX" required /></div>
+                    <div><label class="form-label">Mobile *</label><input class="form-input shop-mobile-input bajus-digits-only"
+                        type="tel" inputmode="numeric" pattern="[0-9]*" placeholder="01XXXXXXXXX" required /></div>
                     <div><label class="form-label">Email</label><input class="form-input shop-email-input" type="email"
                         placeholder="shop@email.com" /></div>
                   </div>
 
                   <div class="grid md:grid-cols-3 gap-6">
                     <div><label class="form-label">Trade License No. *</label><input
-                        class="form-input shop-trade-license-input" type="text" placeholder="Trade license number"
+                        class="form-input shop-trade-license-input bajus-digits-only" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="Trade license number"
                         required /></div>
                     <div>
                       <label class="form-label">Trade License Expiry Date *</label>
@@ -209,8 +208,8 @@
                         <i class="bi bi-calendar3 absolute right-3 top-1/2 -translate-y-1/2 text-gold text-sm pointer-events-none"></i>
                       </div>
                     </div>
-                    <div><label class="form-label">VAT / BIN</label><input class="form-input shop-vat-input" type="text"
-                        placeholder="VAT registration number" /></div>
+                    <div><label class="form-label">VAT / BIN</label><input class="form-input shop-vat-input bajus-digits-only" type="text"
+                        inputmode="numeric" pattern="[0-9]*" placeholder="VAT registration number" /></div>
                   </div>
                 </div>
               </div>
@@ -218,10 +217,10 @@
               <!-- SHOP DOCUMENT UPLOADS -->
               <div class="mb-10">
                 <h4 class="font-serif text-lg text-charcoal font-medium mb-4">Shop Document Uploads</h4>
-                <div class="grid md:grid-cols-3 gap-6">
+                <div class="grid md:grid-cols-2 gap-6">
                   <div>
                     <span class="form-label mb-2 block">Trade License <span class="text-red-500">*</span></span>
-                    <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="Trade License">
+                    <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="Trade License" data-crop>
                       <input id="shop-trade-license-1" class="hidden bajus-file-input shop-trade-license-file-input" type="file" accept="image/*" required />
                       <label for="shop-trade-license-1" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
                         <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-file-earmark-check"></i></span>
@@ -241,7 +240,7 @@
                   </div>
                   <div>
                     <span class="form-label mb-2 block">Dealing License</span>
-                    <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="Dealing License">
+                    <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="Dealing License" data-crop>
                       <input id="shop-dealing-license-1" class="hidden bajus-file-input shop-dealing-license-file-input" type="file" accept="image/*" />
                       <label for="shop-dealing-license-1" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
                         <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-file-earmark-text"></i></span>
@@ -261,7 +260,7 @@
                   </div>
                   <div>
                     <span class="form-label mb-2 block">VAT Registration</span>
-                    <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="VAT Registration">
+                    <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="VAT Registration" data-crop>
                       <input id="shop-vat-file-1" class="hidden bajus-file-input shop-vat-file-input" type="file" accept="image/*" />
                       <label for="shop-vat-file-1" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
                         <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-receipt"></i></span>
@@ -281,7 +280,7 @@
                   </div>
                   <div>
                     <span class="form-label mb-2 block">Visiting Card</span>
-                    <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="Visiting Card">
+                    <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="Visiting Card" data-crop>
                       <input id="shop-visiting-card-1" class="hidden bajus-file-input shop-visiting-card-file-input" type="file" accept="image/*" />
                       <label for="shop-visiting-card-1" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
                         <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-person-badge"></i></span>
@@ -301,7 +300,7 @@
                   </div>
                   <div>
                     <span class="form-label mb-2 block">Partnership Agreement</span>
-                    <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="Partnership Agreement">
+                    <div class="bajus-upload-tile border border-dashed border-zinc-200 hover:border-gold bg-zinc-50/50 rounded-sm overflow-hidden transition-all min-h-[9rem] flex flex-col" data-label="Partnership Agreement" data-crop>
                       <input id="shop-partnership-1" class="hidden bajus-file-input shop-partnership-file-input" type="file" accept="image/*" />
                       <label for="shop-partnership-1" class="bajus-upload-empty flex-1 flex flex-col items-center justify-center p-4 text-center gap-2 cursor-pointer">
                         <span class="bajus-upload-icon text-gold text-2xl"><i class="bi bi-file-earmark-post"></i></span>
@@ -357,8 +356,8 @@
                   </div>
                   <div><label class="form-label">Division / State *</label><input class="form-input shop-division-input"
                       type="text" required /></div>
-                  <div><label class="form-label">ZIP Code *</label><input class="form-input shop-zip-input" type="text"
-                      placeholder="e.g. 1000" required /></div>
+                  <div><label class="form-label">ZIP Code *</label><input class="form-input shop-zip-input bajus-digits-only" type="text"
+                      inputmode="numeric" pattern="[0-9]*" placeholder="e.g. 1000" required /></div>
                   <div>
                     <label class="form-label">Country *</label>
                     <div class="relative w-full">
@@ -389,7 +388,7 @@
       <!-- TERMS + SUBMIT -->
       <div class="!mt-8 reveal" data-reveal-delay="200">
         <label class="flex items-start gap-3 text-sm text-zinc-600 mb-8">
-          <input type="checkbox" class="size-4 mt-1 accent-[#b8860b]" required />
+          <input id="terms-confirm" name="terms_confirm" type="checkbox" class="size-4 mt-1 accent-[#b8860b]" required />
           <span>I confirm that the information provided is accurate, and I agree to abide by the BAJUS Constitution,
             code of conduct, and hallmark standards.</span>
         </label>
@@ -424,7 +423,7 @@
       </div>
 
       <!-- Modal Body (Scrollable) -->
-      <div class="flex-1 overflow-y-auto p-8 bg-cream-50 space-y-8">
+      <div id="preview-modal-content" class="flex-1 overflow-y-auto p-8 bg-cream-50 space-y-8">
 
         <!-- OWNER PROFILE REVIEW -->
         <div class="border border-zinc-200/80 p-6 bg-white rounded-sm">
@@ -473,38 +472,9 @@
           </div>
 
           <div class="mt-6 pt-4 border-t border-zinc-100">
-            <span class="text-xs text-zinc-400 block uppercase tracking-wider mb-2">Uploaded Documents</span>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div class="flex items-center gap-3 p-3 border border-zinc-200/80 rounded-sm bg-zinc-50">
-                <div id="preview-owner-photo-thumb"
-                  class="size-10 bg-amber-50 border border-amber-200/50 flex items-center justify-center font-serif text-base font-bold text-[#8b6914] shrink-0 rounded-sm overflow-hidden">
-                  <i class="bi bi-camera text-gold"></i>
-                </div>
-                <div class="min-w-0">
-                  <span class="text-xs font-semibold block truncate">Owner Photo</span>
-                  <span id="preview-file-owner-photo" class="text-[10px] text-zinc-500 truncate block">No file</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-3 p-3 border border-zinc-200/80 rounded-sm bg-zinc-50">
-                <div id="preview-owner-nid-thumb"
-                  class="size-10 bg-amber-50 border border-amber-200/50 flex items-center justify-center shrink-0 rounded-sm overflow-hidden">
-                  <i class="bi bi-person-vcard text-gold text-lg"></i>
-                </div>
-                <div class="min-w-0">
-                  <span class="text-xs font-semibold block truncate">NID Copy</span>
-                  <span id="preview-file-owner-nid" class="text-[10px] text-zinc-500 truncate block">No file</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-3 p-3 border border-zinc-200/80 rounded-sm bg-zinc-50">
-                <div id="preview-owner-tin-thumb"
-                  class="size-10 bg-amber-50 border border-amber-200/50 flex items-center justify-center shrink-0 rounded-sm overflow-hidden">
-                  <i class="bi bi-file-earmark-text text-gold text-lg"></i>
-                </div>
-                <div class="min-w-0">
-                  <span class="text-xs font-semibold block truncate">TIN Certificate</span>
-                  <span id="preview-file-owner-tin" class="text-[10px] text-zinc-500 truncate block">No file</span>
-                </div>
-              </div>
+            <h4 class="text-xs font-semibold text-zinc-700 uppercase tracking-wider mb-3">Uploaded Documents</h4>
+            <div id="preview-owner-docs-container" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <!-- Populated when preview modal opens -->
             </div>
           </div>
         </div>
@@ -531,7 +501,11 @@
         class="px-8 py-5 border-t border-zinc-200 flex flex-wrap items-center justify-between gap-4 shrink-0 bg-white">
         <p class="text-[11px] text-zinc-500 max-w-sm">By clicking Confirm & Submit, you certify that all information
           given is complete and accurate.</p>
-        <div class="flex gap-3">
+        <div class="flex flex-wrap gap-3">
+          <button type="button" id="download-preview-pdf-btn"
+            class="btn-outline text-xs font-semibold uppercase tracking-widest py-3 px-6 transition-all duration-300 inline-flex items-center gap-2">
+            <i class="bi bi-file-earmark-pdf"></i> Download PDF
+          </button>
           <button type="button" id="edit-preview-modal-btn"
             class="btn-outline text-xs font-semibold uppercase tracking-widest py-3 px-6 transition-all duration-300">
             Edit Details
@@ -545,6 +519,32 @@
     </div>
   </div>
 
+  <!-- Application Success Modal -->
+  <div id="success-modal" class="fixed inset-0 z-[60] flex items-center justify-center hidden" role="dialog"
+    aria-modal="true" aria-labelledby="success-modal-title">
+    <div id="success-modal-overlay"
+      class="absolute inset-0 bg-zinc-950/60 backdrop-blur-sm transition-opacity duration-300 opacity-0"></div>
+    <div id="success-modal-box"
+      class="relative bg-white max-w-md w-full mx-4 border border-gold/30 shadow-2xl transition-all duration-300 transform scale-95 opacity-0 z-10 modal-panel text-center">
+      <div class="px-8 pt-10 pb-8">
+        <div
+          class="size-16 bg-gold-soft border border-gold/20 flex items-center justify-center mx-auto rounded-full mb-5">
+          <i class="bi bi-check-circle-fill text-gold text-3xl"></i>
+        </div>
+        <h2 id="success-modal-title" class="font-serif text-2xl text-charcoal font-medium">Application Submitted</h2>
+        <p class="text-sm text-zinc-500 mt-2 leading-relaxed">Your membership application and documents have been
+          received. Our team will review your submission and contact you shortly.</p>
+        <p class="text-[11px] text-zinc-400 mt-3 italic">Mockup — backend not connected.</p>
+      </div>
+      <div class="px-8 py-5 border-t border-zinc-200 bg-zinc-50">
+        <button type="button" id="success-modal-close-btn"
+          class="btn-gold w-full text-xs font-semibold uppercase tracking-widest py-3 transition-all duration-300">
+          Continue
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div id="bajus-footer"></div>
   <script src="./js/include.js"></script>
   <script src="./js/main.js"></script>
@@ -552,8 +552,34 @@
   <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
   <script src="./js/bajus-datepicker.js"></script>
   <script src="./js/bajus-upload.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector("form");
+
+      function enforceDigitsOnly(input) {
+        const digits = input.value.replace(/\D/g, "");
+        if (input.value !== digits) input.value = digits;
+      }
+
+      if (form) {
+        form.addEventListener("input", function (e) {
+          const input = e.target.closest(".bajus-digits-only");
+          if (input) enforceDigitsOnly(input);
+        });
+
+        form.addEventListener("paste", function (e) {
+          const input = e.target.closest(".bajus-digits-only");
+          if (!input) return;
+          e.preventDefault();
+          const pasted = (e.clipboardData || window.clipboardData).getData("text").replace(/\D/g, "");
+          const start = input.selectionStart ?? input.value.length;
+          const end = input.selectionEnd ?? input.value.length;
+          input.value = input.value.slice(0, start) + pasted + input.value.slice(end);
+          enforceDigitsOnly(input);
+        });
+      }
+
       // Setup store toggle collapse/expand
       function setupStoreToggle(block) {
         const header = block.querySelector(".store-header");
@@ -661,13 +687,17 @@
       }
 
       // Modal DOM Elements
-      const form = document.querySelector("form");
       const previewModal = document.getElementById("preview-modal");
       const previewOverlay = document.getElementById("preview-modal-overlay");
       const previewBox = document.getElementById("preview-modal-box");
       const closeX = document.getElementById("close-preview-modal-x");
       const editBtn = document.getElementById("edit-preview-modal-btn");
       const confirmSubmitBtn = document.getElementById("confirm-submit-modal-btn");
+      const downloadPdfBtn = document.getElementById("download-preview-pdf-btn");
+      const successModal = document.getElementById("success-modal");
+      const successOverlay = document.getElementById("success-modal-overlay");
+      const successBox = document.getElementById("success-modal-box");
+      const successCloseBtn = document.getElementById("success-modal-close-btn");
 
       // Elements to populate in Preview Modal
       const pOwnerNameEn = document.getElementById("preview-owner-name-en");
@@ -680,11 +710,7 @@
       const pOwnerParent = document.getElementById("preview-owner-parent");
       const pOwnerDealing = document.getElementById("preview-owner-dealing");
 
-      const pFileOwnerPhoto = document.getElementById("preview-file-owner-photo");
-      const pFileOwnerNid = document.getElementById("preview-file-owner-nid");
-      const pFileOwnerTin = document.getElementById("preview-file-owner-tin");
-      const pOwnerPhotoThumb = document.getElementById("preview-owner-photo-thumb");
-
+      const pOwnerDocsContainer = document.getElementById("preview-owner-docs-container");
       const pStoresContainer = document.getElementById("preview-stores-container");
 
       function getInputValue(name) {
@@ -692,9 +718,517 @@
         return input ? input.value.trim() : "";
       }
 
-      function getFileName(name) {
-        const input = form.querySelector(`[name="${name}"]`);
-        return input && input.files && input.files[0] ? input.files[0].name : "No file uploaded";
+      function getUploadPreviewSrc(fileInput) {
+        if (!fileInput) return null;
+
+        const tile = fileInput.closest(".bajus-upload-tile, .bajus-photo-tile");
+        if (tile) {
+          if (tile.dataset.src) return tile.dataset.src;
+          const previewImg = tile.querySelector(".bajus-upload-preview, .bajus-photo-preview");
+          if (
+            previewImg &&
+            previewImg.src &&
+            previewImg.src !== window.location.href &&
+            !previewImg.classList.contains("hidden")
+          ) {
+            return previewImg.src;
+          }
+        }
+
+        const file = fileInput.files && fileInput.files[0];
+        if (file && file.type.startsWith("image/")) {
+          return URL.createObjectURL(file);
+        }
+
+        return null;
+      }
+
+      function makeDocPreviewItem(label, fileInput, defaultIconClass = "bi-file-earmark") {
+        const file = fileInput && fileInput.files ? fileInput.files[0] : null;
+        const previewSrc = getUploadPreviewSrc(fileInput);
+        const hasFile = !!(file || previewSrc);
+        const name = file ? file.name : hasFile ? "Uploaded image" : "No file uploaded";
+        const textClass = hasFile ? "text-zinc-700 font-medium" : "text-zinc-400 italic";
+
+        let thumbHtml = "";
+        if (previewSrc) {
+          thumbHtml = `<button type="button" class="preview-doc-image-btn size-14 shrink-0 rounded-sm border border-zinc-200 overflow-hidden bg-zinc-100 hover:opacity-90 transition-opacity" data-preview-src="${previewSrc}" data-preview-label="${label}" aria-label="Preview ${label}"><img src="${previewSrc}" class="size-full object-contain" alt="${label}" /></button>`;
+        } else if (file && file.type.startsWith("image/")) {
+          const imgUrl = URL.createObjectURL(file);
+          thumbHtml = `<button type="button" class="preview-doc-image-btn size-14 shrink-0 rounded-sm border border-zinc-200 overflow-hidden bg-zinc-100 hover:opacity-90 transition-opacity" data-preview-src="${imgUrl}" data-preview-label="${label}" aria-label="Preview ${label}"><img src="${imgUrl}" class="size-full object-contain" alt="${label}" /></button>`;
+        } else if (file) {
+          thumbHtml = `<div class="size-14 bg-gold/[0.02] border border-gold/50 flex items-center justify-center rounded-sm shrink-0"><i class="bi bi-file-earmark-pdf text-gold"></i></div>`;
+        } else {
+          thumbHtml = `<div class="size-14 bg-zinc-100 border border-zinc-200 flex items-center justify-center rounded-sm shrink-0"><i class="bi ${defaultIconClass} text-zinc-300"></i></div>`;
+        }
+
+        return `
+          <div class="flex items-center gap-2.5 p-2.5 border border-zinc-200/80 rounded-sm bg-zinc-50/50">
+            ${thumbHtml}
+            <div class="min-w-0 flex-1">
+              <span class="text-[9px] font-semibold text-zinc-400 block leading-none uppercase tracking-wider">${label}</span>
+              <span class="text-[10px] ${textClass} truncate block leading-tight mt-1" title="${name}">${name}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      function bindPreviewDocButtons(scope) {
+        if (!scope) return;
+        scope.querySelectorAll(".preview-doc-image-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const src = btn.getAttribute("data-preview-src");
+            const label = btn.getAttribute("data-preview-label") || "Document preview";
+            if (src && typeof bajusOpenUploadLightbox === "function") {
+              bajusOpenUploadLightbox(src, label);
+            }
+          });
+        });
+      }
+
+      async function blobUrlToDataUrl(url) {
+        if (!url || !url.startsWith("blob:")) return url;
+        const response = await fetch(url);
+        const blob = await response.blob();
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
+        });
+      }
+
+      async function getDataUrlFromFileInput(fileInput) {
+        const src = getUploadPreviewSrc(fileInput);
+        if (!src) return null;
+        if (src.startsWith("data:")) return src;
+        if (src.startsWith("blob:")) {
+          try {
+            return await blobUrlToDataUrl(src);
+          } catch (err) {
+            return null;
+          }
+        }
+        return null;
+      }
+
+      function getFileDisplayName(fileInput) {
+        const file = fileInput && fileInput.files ? fileInput.files[0] : null;
+        return file ? file.name : "No file uploaded";
+      }
+
+      function collectStoreBlockData(block, idx) {
+        const index = block.getAttribute("data-store-index") || String(idx + 1);
+        const val = (sel) => {
+          const el = block.querySelector(sel);
+          return el ? (el.tagName === "SELECT" ? el.value : el.value.trim()) : "";
+        };
+
+        return {
+          index,
+          shopName: val(".shop-name-input"),
+          shopNameBn: val(".shop-name-bn-input"),
+          mobile: val(".shop-mobile-input"),
+          email: val(".shop-email-input"),
+          tradeLicense: val(".shop-trade-license-input"),
+          tradeLicenseExpiry: val(".shop-trade-license-expiry-input"),
+          vatBin: val(".shop-vat-input"),
+          street: val(".shop-street-input"),
+          streetBn: val(".shop-street-bn-input"),
+          city: val(".shop-city-input"),
+          cityBn: val(".shop-city-bn-input"),
+          district: val(".shop-district-input"),
+          division: val(".shop-division-input"),
+          zip: val(".shop-zip-input"),
+          country: val(".shop-country-input"),
+          documents: [
+            { label: "Trade License", input: block.querySelector(".shop-trade-license-file-input") },
+            { label: "Dealing License", input: block.querySelector(".shop-dealing-license-file-input") },
+            { label: "VAT Reg", input: block.querySelector(".shop-vat-file-input") },
+            { label: "Visiting Card", input: block.querySelector(".shop-visiting-card-file-input") },
+            { label: "Agreement", input: block.querySelector(".shop-partnership-file-input") },
+          ],
+        };
+      }
+
+      async function downloadApplicationPdf() {
+        const jsPDF = window.jspdf && window.jspdf.jsPDF;
+        if (!jsPDF) {
+          if (typeof showToast === "function") {
+            showToast("PDF download is unavailable right now.", "error");
+          }
+          return;
+        }
+
+        const ownerName = getInputValue("owner_name_en") || "application";
+        let slug = ownerName
+          .trim()
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "");
+        if (!slug) slug = "application";
+        const filename = "bajus-application-" + slug + ".pdf";
+
+        const originalLabel = downloadPdfBtn ? downloadPdfBtn.innerHTML : "";
+        if (downloadPdfBtn) {
+          downloadPdfBtn.disabled = true;
+          downloadPdfBtn.innerHTML =
+            '<i class="bi bi-hourglass-split"></i> Generating PDF...';
+        }
+
+        try {
+          const doc = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
+          const pageW = doc.internal.pageSize.getWidth();
+          const pageH = doc.internal.pageSize.getHeight();
+          const margin = 14;
+          const contentW = pageW - margin * 2;
+          const cardPad = 6;
+          let y = margin;
+
+          const COLOR_PAGE_BG = [253, 251, 245];
+          const COLOR_CARD_BORDER = [228, 228, 231];
+          const COLOR_BAR_BG = [250, 250, 250];
+          const COLOR_LABEL = [161, 161, 170];
+          const COLOR_TEXT = [39, 39, 42];
+          const COLOR_SUBTEXT = [63, 63, 70];
+          const COLOR_GOLD = [184, 134, 11];
+          const COLOR_GOLD_SOFT = [239, 230, 207];
+          const COLOR_DOC_BG = [250, 250, 249];
+
+          function fillPageBackground() {
+            doc.setFillColor(COLOR_PAGE_BG[0], COLOR_PAGE_BG[1], COLOR_PAGE_BG[2]);
+            doc.rect(0, 0, pageW, pageH, "F");
+          }
+
+          fillPageBackground();
+
+          function ensureSpace(need) {
+            if (y + need > pageH - margin) {
+              doc.addPage();
+              fillPageBackground();
+              y = margin;
+            }
+          }
+
+          function drawCardBorder(startY, endY) {
+            if (endY <= startY) return;
+            doc.setDrawColor(COLOR_CARD_BORDER[0], COLOR_CARD_BORDER[1], COLOR_CARD_BORDER[2]);
+            doc.setLineWidth(0.3);
+            doc.roundedRect(margin, startY, contentW, endY - startY, 1.5, 1.5, "S");
+          }
+
+          function addPageTitle() {
+            ensureSpace(20);
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(19);
+            doc.setTextColor(COLOR_TEXT[0], COLOR_TEXT[1], COLOR_TEXT[2]);
+            doc.text("BAJUS Membership Application", margin, y);
+            y += 6;
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(9);
+            doc.setTextColor(COLOR_LABEL[0], COLOR_LABEL[1], COLOR_LABEL[2]);
+            const dateStr = new Date().toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            });
+            doc.text("Application review summary \u2014 " + dateStr, margin, y);
+            y += 6;
+            doc.setDrawColor(COLOR_GOLD[0], COLOR_GOLD[1], COLOR_GOLD[2]);
+            doc.setLineWidth(0.6);
+            doc.line(margin, y, margin + 28, y);
+            y += 9;
+          }
+
+          function addSectionTitle(title, badgeText) {
+            ensureSpace(12);
+            doc.setFillColor(COLOR_GOLD[0], COLOR_GOLD[1], COLOR_GOLD[2]);
+            doc.rect(margin, y - 3.6, 1.4, 4.8, "F");
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(12.5);
+            doc.setTextColor(COLOR_TEXT[0], COLOR_TEXT[1], COLOR_TEXT[2]);
+            doc.text(title, margin + 4, y);
+
+            if (badgeText) {
+              doc.setFont("helvetica", "bold");
+              doc.setFontSize(7.5);
+              const badgeW = doc.getTextWidth(badgeText) + 6;
+              const badgeX = margin + contentW - badgeW;
+              doc.setFillColor(COLOR_GOLD_SOFT[0], COLOR_GOLD_SOFT[1], COLOR_GOLD_SOFT[2]);
+              doc.roundedRect(badgeX, y - 4, badgeW, 5.5, 1, 1, "F");
+              doc.setTextColor(COLOR_GOLD[0], COLOR_GOLD[1], COLOR_GOLD[2]);
+              doc.text(badgeText, badgeX + 3, y - 0.3);
+            }
+            y += 7;
+          }
+
+          function addCardInnerHeader(title) {
+            ensureSpace(10);
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(11.5);
+            doc.setTextColor(COLOR_TEXT[0], COLOR_TEXT[1], COLOR_TEXT[2]);
+            doc.text(title, margin + cardPad, y);
+            y += 3;
+            doc.setDrawColor(COLOR_CARD_BORDER[0], COLOR_CARD_BORDER[1], COLOR_CARD_BORDER[2]);
+            doc.setLineWidth(0.25);
+            doc.line(margin + cardPad, y, margin + contentW - cardPad, y);
+            y += 5;
+          }
+
+          function addSubheading(text) {
+            ensureSpace(8);
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(8.5);
+            doc.setTextColor(COLOR_SUBTEXT[0], COLOR_SUBTEXT[1], COLOR_SUBTEXT[2]);
+            doc.text(text.toUpperCase(), margin + cardPad, y);
+            y += 5;
+          }
+
+          function addDivider() {
+            y += 1;
+            doc.setDrawColor(COLOR_CARD_BORDER[0], COLOR_CARD_BORDER[1], COLOR_CARD_BORDER[2]);
+            doc.setLineWidth(0.25);
+            doc.line(margin + cardPad, y, margin + contentW - cardPad, y);
+            y += 5;
+          }
+
+          function addFieldRow(label, value, x, width) {
+            const display = value && String(value).trim() ? String(value).trim() : "-";
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(7.2);
+            doc.setTextColor(COLOR_LABEL[0], COLOR_LABEL[1], COLOR_LABEL[2]);
+            doc.text(label.toUpperCase(), x, y);
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(9.5);
+            doc.setTextColor(COLOR_TEXT[0], COLOR_TEXT[1], COLOR_TEXT[2]);
+            const lines = doc.splitTextToSize(display, width);
+            doc.text(lines, x, y + 4);
+            return 4 + lines.length * 4.2 + 3;
+          }
+
+          function addFieldGrid(pairs, cols, innerX, innerW) {
+            const gap = 5;
+            const colW = (innerW - gap * (cols - 1)) / cols;
+
+            for (let i = 0; i < pairs.length; i += cols) {
+              ensureSpace(14);
+              const rowStartY = y;
+              let rowHeight = 0;
+              for (let c = 0; c < cols; c++) {
+                const pair = pairs[i + c];
+                if (!pair) continue;
+                const x = innerX + c * (colW + gap);
+                y = rowStartY;
+                const h = addFieldRow(pair[0], pair[1], x, colW);
+                rowHeight = Math.max(rowHeight, h);
+              }
+              y = rowStartY + rowHeight;
+            }
+          }
+
+          async function addDocumentGrid(items, innerX, innerW, cols) {
+            const gap = 5;
+            const colW = (innerW - gap * (cols - 1)) / cols;
+            const rowH = 18;
+
+            const preloaded = await Promise.all(
+              items.map(async (item) => ({
+                label: item.label,
+                name: getFileDisplayName(item.input),
+                dataUrl: await getDataUrlFromFileInput(item.input),
+              })),
+            );
+
+            for (let i = 0; i < preloaded.length; i += cols) {
+              ensureSpace(rowH + 3);
+              const rowY = y;
+              for (let c = 0; c < cols; c++) {
+                const item = preloaded[i + c];
+                if (!item) continue;
+                const x = innerX + c * (colW + gap);
+
+                doc.setFillColor(COLOR_DOC_BG[0], COLOR_DOC_BG[1], COLOR_DOC_BG[2]);
+                doc.setDrawColor(COLOR_CARD_BORDER[0], COLOR_CARD_BORDER[1], COLOR_CARD_BORDER[2]);
+                doc.setLineWidth(0.25);
+                doc.roundedRect(x, rowY, colW, rowH, 1, 1, "FD");
+
+                const thumbSize = rowH - 4;
+                const thumbX = x + 2;
+                const thumbY = rowY + 2;
+
+                doc.setFillColor(240, 240, 240);
+                doc.rect(thumbX, thumbY, thumbSize, thumbSize, "F");
+
+                if (item.dataUrl) {
+                  try {
+                    const format = item.dataUrl.indexOf("image/png") !== -1 ? "PNG" : "JPEG";
+                    doc.addImage(item.dataUrl, format, thumbX, thumbY, thumbSize, thumbSize);
+                  } catch (err) {
+                    /* keep placeholder fill if embed fails */
+                  }
+                }
+                doc.setDrawColor(COLOR_CARD_BORDER[0], COLOR_CARD_BORDER[1], COLOR_CARD_BORDER[2]);
+                doc.rect(thumbX, thumbY, thumbSize, thumbSize, "S");
+
+                const textX = thumbX + thumbSize + 3;
+                const textW = colW - thumbSize - 8;
+                doc.setFont("helvetica", "bold");
+                doc.setFontSize(6.4);
+                doc.setTextColor(COLOR_LABEL[0], COLOR_LABEL[1], COLOR_LABEL[2]);
+                doc.text(item.label.toUpperCase(), textX, rowY + 6.5);
+
+                const hasFile = !!item.dataUrl || item.name !== "No file uploaded";
+                doc.setFont("helvetica", "normal");
+                doc.setFontSize(7.4);
+                if (hasFile) doc.setTextColor(COLOR_TEXT[0], COLOR_TEXT[1], COLOR_TEXT[2]);
+                else doc.setTextColor(180, 180, 183);
+                const nameLines = doc.splitTextToSize(item.name, textW);
+                doc.text(nameLines.slice(0, 2), textX, rowY + 11);
+              }
+              y = rowY + rowH + 4;
+            }
+          }
+
+          addPageTitle();
+
+          // Owner Profile card
+          ensureSpace(95);
+          {
+            const cardStartY = y;
+            y += cardPad;
+            addCardInnerHeader("Owner Profile");
+            addFieldGrid(
+              [
+                ["Name (English)", getInputValue("owner_name_en")],
+                ["Name (Bangla)", getInputValue("owner_name_bn")],
+                ["Mobile", getInputValue("owner_mobile")],
+                ["Email", getInputValue("owner_email")],
+                ["NID", getInputValue("owner_nid")],
+                ["TIN", getInputValue("owner_tin")],
+                ["Date of Birth", getInputValue("owner_dob")],
+                ["Parent / Husband Name", getInputValue("owner_parent_name")],
+              ],
+              2,
+              margin + cardPad,
+              contentW - cardPad * 2,
+            );
+            addFieldGrid(
+              [["Dealing License", getInputValue("owner_dealing_license")]],
+              1,
+              margin + cardPad,
+              contentW - cardPad * 2,
+            );
+
+            addDivider();
+            addSubheading("Uploaded Documents");
+
+            await addDocumentGrid(
+              [
+                { label: "Owner Photo", input: form.querySelector('[name="owner_photo"]') },
+                { label: "NID Copy", input: form.querySelector('[name="owner_nid_file"]') },
+                { label: "TIN Certificate", input: form.querySelector('[name="owner_tin_file"]') },
+              ],
+              margin + cardPad,
+              contentW - cardPad * 2,
+              3,
+            );
+
+            y += cardPad - 4;
+            drawCardBorder(cardStartY, y);
+            y += 9;
+          }
+
+          // Stores section
+          const storeBlocks = form.querySelectorAll(".store-block");
+          addSectionTitle(
+            "Jewellery Establishments",
+            storeBlocks.length + (storeBlocks.length === 1 ? " STORE" : " STORES"),
+          );
+          y += 2;
+
+          for (let i = 0; i < storeBlocks.length; i++) {
+            const store = collectStoreBlockData(storeBlocks[i], i);
+            ensureSpace(105);
+
+            const cardStartY = y;
+            const headerH = 10;
+            doc.setFillColor(COLOR_BAR_BG[0], COLOR_BAR_BG[1], COLOR_BAR_BG[2]);
+            doc.rect(margin, y, contentW, headerH, "F");
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(10.5);
+            doc.setTextColor(COLOR_TEXT[0], COLOR_TEXT[1], COLOR_TEXT[2]);
+            doc.text(
+              "Store #" + store.index + ": " + (store.shopName || "Unnamed Store"),
+              margin + cardPad,
+              y + 6.5,
+            );
+
+            const badgeText = "ESTABLISHMENT PROFILE";
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(6.5);
+            const badgeW = doc.getTextWidth(badgeText) + 5;
+            const badgeX = margin + contentW - cardPad - badgeW;
+            doc.setFillColor(COLOR_GOLD_SOFT[0], COLOR_GOLD_SOFT[1], COLOR_GOLD_SOFT[2]);
+            doc.roundedRect(badgeX, y + 2.8, badgeW, 4.6, 1, 1, "F");
+            doc.setTextColor(COLOR_GOLD[0], COLOR_GOLD[1], COLOR_GOLD[2]);
+            doc.text(badgeText, badgeX + 2.5, y + 6);
+
+            y += headerH + 6;
+
+            addFieldGrid(
+              [
+                ["Shop Name (Bangla)", store.shopNameBn],
+                ["Mobile", store.mobile],
+                ["Email", store.email],
+                ["Trade License No.", store.tradeLicense],
+                ["Trade Expiry Date", store.tradeLicenseExpiry],
+                ["VAT / BIN", store.vatBin],
+              ],
+              3,
+              margin + cardPad,
+              contentW - cardPad * 2,
+            );
+
+            addDivider();
+            addSubheading("Address Information");
+
+            addFieldGrid(
+              [
+                ["Street", store.street],
+                ["Street (Bangla)", store.streetBn],
+                ["City", store.city],
+                ["City (Bangla)", store.cityBn],
+                ["District", store.district],
+                ["Division / State", store.division],
+                ["ZIP Code", store.zip],
+                ["Country", store.country],
+              ],
+              4,
+              margin + cardPad,
+              contentW - cardPad * 2,
+            );
+
+            addDivider();
+            addSubheading("Uploaded Documents");
+
+            await addDocumentGrid(store.documents, margin + cardPad, contentW - cardPad * 2, 3);
+
+            y += cardPad - 4;
+            drawCardBorder(cardStartY, y);
+            y += 9;
+          }
+
+          doc.save(filename);
+        } catch (err) {
+          if (typeof showToast === "function") {
+            showToast("Could not generate PDF. Please try again.", "error");
+          }
+        } finally {
+          if (downloadPdfBtn) {
+            downloadPdfBtn.disabled = false;
+            downloadPdfBtn.innerHTML = originalLabel;
+          }
+        }
       }
 
       function openModal() {
@@ -710,33 +1244,21 @@
         pOwnerDealing.textContent = getInputValue("owner_dealing_license") || "-";
 
         // 2. Populate Owner Documents
-        pFileOwnerPhoto.textContent = getFileName("owner_photo");
-        pFileOwnerNid.textContent = getFileName("owner_nid_file");
-        pFileOwnerTin.textContent = getFileName("owner_tin_file");
+        if (pOwnerDocsContainer) {
+          const ownerPhotoInput = form.querySelector('[name="owner_photo"]');
+          const ownerNidInput = form.querySelector('[name="owner_nid_file"]');
+          const ownerTinInput = form.querySelector('[name="owner_tin_file"]');
 
-        // 3. Setup Thumbnails
-        function setDocThumbnail(inputName, thumbId, defaultIconClass) {
-          const thumbEl = document.getElementById(thumbId);
-          if (!thumbEl) return;
-          const input = form.querySelector(`[name="${inputName}"]`);
-          if (input && input.files && input.files[0]) {
-            const file = input.files[0];
-            if (file.type.startsWith("image/")) {
-              const imgUrl = URL.createObjectURL(file);
-              thumbEl.innerHTML = `<img src="${imgUrl}" class="size-full object-cover" alt="Document" />`;
-            } else {
-              thumbEl.innerHTML = `<i class="bi bi-file-earmark-pdf text-gold text-lg"></i>`;
-            }
-          } else {
-            thumbEl.innerHTML = `<i class="${defaultIconClass} text-gold text-lg"></i>`;
-          }
+          pOwnerDocsContainer.innerHTML = [
+            makeDocPreviewItem("Owner Photo", ownerPhotoInput, "bi-camera"),
+            makeDocPreviewItem("NID Copy", ownerNidInput, "bi-person-vcard"),
+            makeDocPreviewItem("TIN Certificate", ownerTinInput, "bi-file-earmark-text"),
+          ].join("");
+
+          bindPreviewDocButtons(pOwnerDocsContainer);
         }
 
-        setDocThumbnail("owner_photo", "preview-owner-photo-thumb", "bi bi-camera");
-        setDocThumbnail("owner_nid_file", "preview-owner-nid-thumb", "bi bi-person-vcard");
-        setDocThumbnail("owner_tin_file", "preview-owner-tin-thumb", "bi bi-file-earmark-text");
-
-        // 4. Populate Dynamic Stores Details
+        // 3. Populate Dynamic Stores Details
         pStoresContainer.innerHTML = "";
         const storeBlocks = form.querySelectorAll(".store-block");
 
@@ -800,34 +1322,6 @@
           const fVisiting = block.querySelector(".shop-visiting-card-file-input");
           const fPartnership = block.querySelector(".shop-partnership-file-input");
 
-          function makeDocItem(label, fileInput, defaultIconClass = "bi-file-earmark") {
-            const file = fileInput && fileInput.files ? fileInput.files[0] : null;
-            const name = file ? file.name : "No file uploaded";
-            const textClass = file ? "text-zinc-700 font-medium" : "text-zinc-400 italic";
-
-            let thumbHtml = "";
-            if (file) {
-              if (file.type.startsWith("image/")) {
-                const imgUrl = URL.createObjectURL(file);
-                thumbHtml = `<img src="${imgUrl}" class="size-8 object-cover rounded-sm border border-zinc-200" alt="${label}" />`;
-              } else {
-                thumbHtml = `<div class="size-8 bg-gold/[0.02] border border-gold/50 flex items-center justify-center rounded-sm shrink-0"><i class="bi bi-file-earmark-pdf text-gold"></i></div>`;
-              }
-            } else {
-              thumbHtml = `<div class="size-8 bg-zinc-100 border border-zinc-200 flex items-center justify-center rounded-sm shrink-0"><i class="bi ${defaultIconClass} text-zinc-300"></i></div>`;
-            }
-
-            return `
-              <div class="flex items-center gap-2.5 p-2.5 border border-zinc-150 rounded-sm bg-zinc-50/50">
-                ${thumbHtml}
-                <div class="min-w-0 flex-1">
-                  <span class="text-[9px] font-semibold text-zinc-400 block leading-none uppercase tracking-wider">${label}</span>
-                  <span class="text-[10px] ${textClass} truncate block leading-tight mt-1" title="${name}">${name}</span>
-                </div>
-              </div>
-            `;
-          }
-
           const storeCard = document.createElement("div");
           storeCard.className = "border border-zinc-200/80 bg-white rounded-sm overflow-hidden shadow-sm preview-store-card";
           storeCard.innerHTML = `
@@ -865,11 +1359,11 @@
               <div class="pt-4 border-t border-zinc-100">
                 <h4 class="text-xs font-semibold text-zinc-700 uppercase tracking-wider mb-3">Uploaded Documents</h4>
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3">
-                  ${makeDocItem("Trade License", fTrade, "bi-briefcase")}
-                  ${makeDocItem("Dealing License", fDealing, "bi-shield-check")}
-                  ${makeDocItem("VAT Reg", fVat, "bi-receipt")}
-                  ${makeDocItem("Visiting Card", fVisiting, "bi-person-badge")}
-                  ${makeDocItem("Agreement", fPartnership, "bi-file-earmark-text")}
+                  ${makeDocPreviewItem("Trade License", fTrade, "bi-briefcase")}
+                  ${makeDocPreviewItem("Dealing License", fDealing, "bi-shield-check")}
+                  ${makeDocPreviewItem("VAT Reg", fVat, "bi-receipt")}
+                  ${makeDocPreviewItem("Visiting Card", fVisiting, "bi-person-badge")}
+                  ${makeDocPreviewItem("Agreement", fPartnership, "bi-file-earmark-text")}
                 </div>
               </div>
             </div>
@@ -891,6 +1385,7 @@
           });
 
           pStoresContainer.appendChild(storeCard);
+          bindPreviewDocButtons(storeCard);
         });
 
         // 5. Open animations
@@ -917,6 +1412,66 @@
         }, 300);
       }
 
+      function openSuccessModal() {
+        if (!successModal || !successOverlay || !successBox) return;
+
+        successModal.classList.remove("hidden");
+        successModal.offsetHeight;
+
+        successOverlay.classList.remove("opacity-0");
+        successOverlay.classList.add("opacity-100");
+        successBox.classList.remove("scale-95", "opacity-0");
+        successBox.classList.add("scale-100", "opacity-100");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeSuccessModal() {
+        if (!successModal || !successOverlay || !successBox) return;
+
+        successOverlay.classList.remove("opacity-100");
+        successOverlay.classList.add("opacity-0");
+        successBox.classList.remove("scale-100", "opacity-100");
+        successBox.classList.add("scale-95", "opacity-0");
+        document.body.style.overflow = "";
+
+        setTimeout(() => {
+          successModal.classList.add("hidden");
+        }, 300);
+      }
+
+      function resetApplicationForm() {
+        form.reset();
+        bajusResetUploadTiles(form);
+        form.querySelectorAll(".bajus-datepicker").forEach((input) => {
+          if (input._flatpickr) input._flatpickr.clear();
+          else input.value = "";
+        });
+
+        if (!container) return;
+
+        const storeBlocks = container.querySelectorAll(".store-block");
+        for (let i = 1; i < storeBlocks.length; i++) {
+          storeBlocks[i].remove();
+        }
+
+        const firstBlock = container.querySelector(".store-block");
+        if (firstBlock) {
+          const title = firstBlock.querySelector(".store-title");
+          const mandate = firstBlock.querySelector(".committee-card__mandate");
+          if (title) title.textContent = "Store #1";
+          if (mandate) mandate.textContent = "Shop Registration Details";
+
+          const content = firstBlock.querySelector(".store-content");
+          const chevron = firstBlock.querySelector(".store-chevron");
+          if (content) content.classList.remove("hidden");
+          if (chevron) chevron.classList.remove("-rotate-180");
+
+          bajusResetUploadTiles(firstBlock);
+          bajusPrepareClonedDateInputs(firstBlock);
+          bajusInitDatepickers(firstBlock);
+        }
+      }
+
       // Submit interception
       if (form) {
         // Remove the inline onsubmit attribute if it's there
@@ -924,6 +1479,10 @@
 
         form.addEventListener("submit", function (e) {
           e.preventDefault();
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
           openModal();
         });
       }
@@ -932,47 +1491,26 @@
       if (closeX) closeX.addEventListener("click", closeModal);
       if (editBtn) editBtn.addEventListener("click", closeModal);
       if (previewOverlay) previewOverlay.addEventListener("click", closeModal);
+      if (downloadPdfBtn) downloadPdfBtn.addEventListener("click", downloadApplicationPdf);
 
       // Confirm Submit
       if (confirmSubmitBtn) {
         confirmSubmitBtn.addEventListener("click", function () {
           closeModal();
           setTimeout(() => {
-            alert("Application submitted successfully!\nYour files and information have been registered. (Mockup — backend not connected.)");
-            form.reset();
-            bajusResetUploadTiles(form);
-            form.querySelectorAll(".bajus-datepicker").forEach((input) => {
-              if (input._flatpickr) input._flatpickr.clear();
-              else input.value = "";
-            });
-
-            // Reset dynamic stores back to just 1 store
-            const storeBlocks = container.querySelectorAll(".store-block");
-            for (let i = 1; i < storeBlocks.length; i++) {
-              storeBlocks[i].remove();
-            }
-
-            // Reset first store title and mandate
-            const firstBlock = container.querySelector(".store-block");
-            if (firstBlock) {
-              const title = firstBlock.querySelector(".store-title");
-              const mandate = firstBlock.querySelector(".committee-card__mandate");
-              if (title) title.textContent = "Store #1";
-              if (mandate) mandate.textContent = "Shop Registration Details";
-
-              // Ensure store block is expanded
-              const content = firstBlock.querySelector(".store-content");
-              const chevron = firstBlock.querySelector(".store-chevron");
-              if (content) content.classList.remove("hidden");
-              if (chevron) chevron.classList.remove("-rotate-180");
-
-              bajusResetUploadTiles(firstBlock);
-              bajusPrepareClonedDateInputs(firstBlock);
-              bajusInitDatepickers(firstBlock);
-            }
+            resetApplicationForm();
+            openSuccessModal();
           }, 350);
         });
       }
+
+      if (successCloseBtn) successCloseBtn.addEventListener("click", closeSuccessModal);
+      if (successOverlay) successOverlay.addEventListener("click", closeSuccessModal);
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && successModal && !successModal.classList.contains("hidden")) {
+          closeSuccessModal();
+        }
+      });
     });
   </script>
 </body>

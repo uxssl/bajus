@@ -191,6 +191,96 @@ window.showToast = function(message, type = 'success') {
     });
   }
 
+  function initCommitteeTabs() {
+    const navs = document.querySelectorAll('.committee-tabs__nav');
+    navs.forEach(nav => {
+      const tabs = nav.closest('.committee-tabs');
+      if (!tabs) return;
+      const buttons = nav.querySelectorAll('.committee-tabs__btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-tab');
+          buttons.forEach(b => b.classList.toggle('is-active', b === btn));
+          tabs.querySelectorAll('.committee-tabs__panel').forEach(panel => {
+            panel.classList.toggle('is-active', panel.getAttribute('data-tab-panel') === target);
+          });
+        });
+      });
+    });
+  }
+
+  function initCommitteeGalleryLightbox() {
+    const items = document.querySelectorAll('.committee-gallery-item');
+    if (!items.length) return;
+
+    let lightbox = document.getElementById('committee-gallery-lightbox');
+    let currentPhotos = [];
+    let currentIndex = 0;
+
+    function render() {
+      const img = lightbox.querySelector('img');
+      const photo = currentPhotos[currentIndex];
+      if (!photo) return;
+      img.src = photo.src;
+      img.alt = photo.alt || '';
+    }
+
+    function show(delta) {
+      if (!currentPhotos.length) return;
+      currentIndex = (currentIndex + delta + currentPhotos.length) % currentPhotos.length;
+      render();
+    }
+
+    if (!lightbox) {
+      lightbox = document.createElement('div');
+      lightbox.id = 'committee-gallery-lightbox';
+      lightbox.className = 'committee-gallery-lightbox';
+      lightbox.innerHTML =
+        '<button type="button" class="committee-gallery-lightbox__close" aria-label="Close">&times;</button>' +
+        '<button type="button" class="committee-gallery-lightbox__nav committee-gallery-lightbox__nav--prev" aria-label="Previous photo"><i class="bi bi-chevron-left"></i></button>' +
+        '<img src="" alt="" />' +
+        '<button type="button" class="committee-gallery-lightbox__nav committee-gallery-lightbox__nav--next" aria-label="Next photo"><i class="bi bi-chevron-right"></i></button>';
+      document.body.appendChild(lightbox);
+
+      const closeBtn = lightbox.querySelector('.committee-gallery-lightbox__close');
+      const prevBtn = lightbox.querySelector('.committee-gallery-lightbox__nav--prev');
+      const nextBtn = lightbox.querySelector('.committee-gallery-lightbox__nav--next');
+      const close = () => {
+        lightbox.classList.remove('is-active');
+        lightbox.querySelector('img').src = '';
+      };
+
+      closeBtn.addEventListener('click', close);
+      prevBtn.addEventListener('click', () => show(-1));
+      nextBtn.addEventListener('click', () => show(1));
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) close();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('is-active')) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') show(-1);
+        if (e.key === 'ArrowRight') show(1);
+      });
+    }
+
+    items.forEach(item => {
+      if (item.dataset.lightboxBound) return;
+      item.dataset.lightboxBound = '1';
+      item.addEventListener('click', () => {
+        const list = item.closest('.committee-gallery-list');
+        const groupItems = list ? Array.from(list.querySelectorAll('.committee-gallery-item')) : [item];
+        currentPhotos = groupItems.map(el => {
+          const img = el.querySelector('img');
+          return { src: img ? img.src : '', alt: img ? img.alt : '' };
+        });
+        currentIndex = groupItems.indexOf(item);
+        render();
+        lightbox.classList.add('is-active');
+      });
+    });
+  }
+
   function initCommitteeSearch() {
     const searchInputs = document.querySelectorAll('.committee-search');
     searchInputs.forEach(input => {
@@ -371,7 +461,9 @@ window.showToast = function(message, type = 'success') {
   function init() { 
     initHeroSlider(); 
     initReveal(); 
-    initCommitteesAccordion(); 
+    initCommitteesAccordion();
+    initCommitteeTabs(); 
+    initCommitteeGalleryLightbox();
     initCommitteeSearch(); 
     initFormValidation();
     if (typeof window.initDashboardUserMenu === "function") {

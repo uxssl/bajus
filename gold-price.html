@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Gilda+Display&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -136,6 +136,55 @@
         border-color: var(--color-gold);
         color: var(--color-cream) !important;
       }
+
+      .gp-chart-wrap {
+        height: 380px;
+      }
+
+      .gp-chart-wrap--monthly {
+        height: 440px;
+      }
+
+      @media (max-width: 767px) {
+        .gp-chart-wrap--monthly {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .gp-chart-wrap--monthly canvas {
+          min-width: 42rem;
+        }
+      }
+
+      .gp-chart-filter {
+        flex: 1 1 0;
+        min-width: 0;
+        width: auto;
+        max-width: none;
+      }
+
+      .gp-chart-filters {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 0.75rem;
+        width: 100%;
+      }
+
+      @media (min-width: 640px) {
+        .gp-chart-filter {
+          flex: 0 0 auto;
+          min-width: 9rem;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .gp-chart-filters {
+          width: auto;
+          flex-shrink: 0;
+        }
+      }
     </style>
   </head>
 
@@ -170,7 +219,7 @@
           <button class="gp-tab is-active" data-tab="today">
             Today's Rate
           </button>
-          <button class="gp-tab" data-tab="weekly">Weekly Chart</button>
+          <button class="gp-tab" data-tab="charts">Charts</button>
           <button class="gp-tab" data-tab="intl">International Rate</button>
           <button class="gp-tab" data-tab="archive">Historical Archive</button>
         </div>
@@ -191,15 +240,17 @@
                 class="uppercase tracking-widest text-xs font-semibold text-charcoal"
                 >Effective Date</span
               >
-              <span class="font-serif text-lg text-charcoal"
+              <span id="gp-effective-date-text" class="font-serif text-lg text-charcoal"
                 >02 June, 2026</span
               >
             </div>
-            <a
-              href="#"
+            <button
+              type="button"
+              data-gp-download-pdf
               class="btn-outline inline-flex items-center justify-center gap-2 shrink-0"
-              ><i class="ph ph-file-pdf"></i> View Official PDF</a
             >
+              <i class="ph ph-download-simple"></i> Download PDF
+            </button>
           </div>
           <div class="mb-10 reveal" data-reveal-delay="100">
             <p
@@ -213,98 +264,41 @@
             class="card-shadow border border-gold/30 bg-white mb-12 reveal"
             data-reveal-delay="200"
           >
-            <table class="gp-bullion-table w-full text-left">
+            <table id="gp-gold-table" class="gp-bullion-table w-full text-left">
               <thead
                 class="bg-gold-gradient text-cream text-xs uppercase tracking-widest"
               >
                 <tr>
-                  <th class="py-3 px-3 sm:py-5 sm:px-6 w-[34%]">Product</th>
-                  <th class="py-3 px-3 sm:py-5 sm:px-6 w-[36%]">Description</th>
-                  <th class="py-3 px-3 sm:py-5 sm:px-6 text-right w-[30%]">
-                    Price
-                  </th>
+                  <th class="py-3 px-3 sm:py-5 sm:px-6 w-[28%]">Product</th>
+                  <th class="py-3 px-3 sm:py-5 sm:px-6 w-[32%]">Description</th>
+                  <th class="py-3 px-3 sm:py-5 sm:px-6 text-right w-[20%]">Per Gram</th>
+                  <th class="py-3 px-3 sm:py-5 sm:px-6 text-right w-[20%]">Per Bhori</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gold/20 text-sm">
                 <tr>
-                  <td
-                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
-                  >
-                    22 Karat Gold
-                  </td>
-                  <td
-                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
-                  >
-                    Cadmium (Hallmarked)
-                  </td>
-                  <td
-                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"
-                  >
-                    <span class="font-bangla">৳</span>20,135
-                    <span class="gp-unit text-xs text-zinc-500 font-normal"
-                      >/ gram</span
-                    >
-                  </td>
+                  <td class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg">22 Karat Gold</td>
+                  <td class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm">Cadmium (Hallmarked)</td>
+                  <td class="gp-cell-gram gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"><span class="font-bangla">৳</span>20,135</td>
+                  <td class="gp-cell-bhori gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"><span class="font-bangla">৳</span>2,34,856</td>
                 </tr>
                 <tr>
-                  <td
-                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
-                  >
-                    21 Karat Gold
-                  </td>
-                  <td
-                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
-                  >
-                    Cadmium (Hallmarked)
-                  </td>
-                  <td
-                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"
-                  >
-                    <span class="font-bangla">৳</span>19,220
-                    <span class="gp-unit text-xs text-zinc-500 font-normal"
-                      >/ gram</span
-                    >
-                  </td>
+                  <td class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg">21 Karat Gold</td>
+                  <td class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm">Cadmium (Hallmarked)</td>
+                  <td class="gp-cell-gram gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"><span class="font-bangla">৳</span>19,220</td>
+                  <td class="gp-cell-bhori gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"><span class="font-bangla">৳</span>2,24,262</td>
                 </tr>
                 <tr>
-                  <td
-                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
-                  >
-                    18 Karat Gold
-                  </td>
-                  <td
-                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
-                  >
-                    Cadmium (Hallmarked)
-                  </td>
-                  <td
-                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"
-                  >
-                    <span class="font-bangla">৳</span>16,475
-                    <span class="gp-unit text-xs text-zinc-500 font-normal"
-                      >/ gram</span
-                    >
-                  </td>
+                  <td class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg">18 Karat Gold</td>
+                  <td class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm">Cadmium (Hallmarked)</td>
+                  <td class="gp-cell-gram gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"><span class="font-bangla">৳</span>16,475</td>
+                  <td class="gp-cell-bhori gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"><span class="font-bangla">৳</span>1,92,164</td>
                 </tr>
                 <tr>
-                  <td
-                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
-                  >
-                    Traditional Gold
-                  </td>
-                  <td
-                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
-                  >
-                    Traditional Method
-                  </td>
-                  <td
-                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"
-                  >
-                    <span class="font-bangla">৳</span>13,415
-                    <span class="gp-unit text-xs text-zinc-500 font-normal"
-                      >/ gram</span
-                    >
-                  </td>
+                  <td class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg">Traditional Gold</td>
+                  <td class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm">Traditional Method</td>
+                  <td class="gp-cell-gram gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"><span class="font-bangla">৳</span>13,415</td>
+                  <td class="gp-cell-bhori gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-gold text-base sm:text-lg"><span class="font-bangla">৳</span>1,56,473</td>
                 </tr>
               </tbody>
             </table>
@@ -322,98 +316,41 @@
             class="card-shadow border border-zinc-200 bg-white mb-12 reveal"
             data-reveal-delay="200"
           >
-            <table class="gp-bullion-table w-full text-left">
+            <table id="gp-silver-table" class="gp-bullion-table w-full text-left">
               <thead
                 class="bg-silver-gradient text-cream text-xs uppercase tracking-widest"
               >
                 <tr>
-                  <th class="py-3 px-3 sm:py-5 sm:px-6 w-[34%]">Product</th>
-                  <th class="py-3 px-3 sm:py-5 sm:px-6 w-[36%]">Description</th>
-                  <th class="py-3 px-3 sm:py-5 sm:px-6 text-right w-[30%]">
-                    Price
-                  </th>
+                  <th class="py-3 px-3 sm:py-5 sm:px-6 w-[28%]">Product</th>
+                  <th class="py-3 px-3 sm:py-5 sm:px-6 w-[32%]">Description</th>
+                  <th class="py-3 px-3 sm:py-5 sm:px-6 text-right w-[20%]">Per Gram</th>
+                  <th class="py-3 px-3 sm:py-5 sm:px-6 text-right w-[20%]">Per Bhori</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-zinc-100 text-sm">
                 <tr>
-                  <td
-                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
-                  >
-                    22 Karat Silver
-                  </td>
-                  <td
-                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
-                  >
-                    Cadmium (Hallmarked)
-                  </td>
-                  <td
-                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"
-                  >
-                    <span class="font-bangla">৳</span>485
-                    <span class="gp-unit text-xs text-zinc-500 font-normal"
-                      >/ gram</span
-                    >
-                  </td>
+                  <td class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg">22 Karat Silver</td>
+                  <td class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm">Cadmium (Hallmarked)</td>
+                  <td class="gp-cell-gram gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"><span class="font-bangla">৳</span>485</td>
+                  <td class="gp-cell-bhori gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"><span class="font-bangla">৳</span>5,657</td>
                 </tr>
                 <tr>
-                  <td
-                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
-                  >
-                    21 Karat Silver
-                  </td>
-                  <td
-                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
-                  >
-                    Cadmium (Hallmarked)
-                  </td>
-                  <td
-                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"
-                  >
-                    <span class="font-bangla">৳</span>460
-                    <span class="gp-unit text-xs text-zinc-500 font-normal"
-                      >/ gram</span
-                    >
-                  </td>
+                  <td class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg">21 Karat Silver</td>
+                  <td class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm">Cadmium (Hallmarked)</td>
+                  <td class="gp-cell-gram gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"><span class="font-bangla">৳</span>460</td>
+                  <td class="gp-cell-bhori gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"><span class="font-bangla">৳</span>5,365</td>
                 </tr>
                 <tr>
-                  <td
-                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
-                  >
-                    18 Karat Silver
-                  </td>
-                  <td
-                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
-                  >
-                    Cadmium (Hallmarked)
-                  </td>
-                  <td
-                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"
-                  >
-                    <span class="font-bangla">৳</span>395
-                    <span class="gp-unit text-xs text-zinc-500 font-normal"
-                      >/ gram</span
-                    >
-                  </td>
+                  <td class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg">18 Karat Silver</td>
+                  <td class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm">Cadmium (Hallmarked)</td>
+                  <td class="gp-cell-gram gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"><span class="font-bangla">৳</span>395</td>
+                  <td class="gp-cell-bhori gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"><span class="font-bangla">৳</span>4,607</td>
                 </tr>
                 <tr>
-                  <td
-                    class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg"
-                  >
-                    Traditional Silver
-                  </td>
-                  <td
-                    class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm"
-                  >
-                    Traditional Method
-                  </td>
-                  <td
-                    class="gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"
-                  >
-                    <span class="font-bangla">৳</span>295
-                    <span class="gp-unit text-xs text-zinc-500 font-normal"
-                      >/ gram</span
-                    >
-                  </td>
+                  <td class="gp-cell-product py-3 px-3 sm:py-5 sm:px-6 font-serif text-base sm:text-lg">Traditional Silver</td>
+                  <td class="gp-cell-desc py-3 px-3 sm:py-5 sm:px-6 text-zinc-600 text-sm">Traditional Method</td>
+                  <td class="gp-cell-gram gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"><span class="font-bangla">৳</span>295</td>
+                  <td class="gp-cell-bhori gp-cell-price py-3 px-3 sm:py-5 sm:px-6 text-right font-semibold text-charcoal text-base sm:text-lg"><span class="font-bangla">৳</span>3,441</td>
                 </tr>
               </tbody>
             </table>
@@ -448,27 +385,29 @@
           </div>
         </div>
 
-        <!-- WEEKLY CHART -->
-        <div class="gp-panel" id="panel-weekly">
+        <!-- CHARTS -->
+        <div class="gp-panel" id="panel-charts">
           <div class="bg-white card-shadow p-8 reveal">
-            <div
-              class="flex flex-col md:flex-row md:items-end md:justify-between mb-8 gap-4"
-            >
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
               <div>
-                <p
-                  class="text-[11px] uppercase tracking-[0.3em] text-gold font-semibold mb-2"
-                >
-                  Last 7 Days
-                </p>
-                <h2 class="font-serif text-3xl md:text-4xl">
-                  Weekly Price Trend
-                </h2>
-                <p class="text-sm text-zinc-500 mt-2">
-                  Per Bhori (BDT) — 22K, 21K, 18K Gold
-                </p>
+                <p id="gp-chart-period-label" class="text-[11px] uppercase tracking-[0.3em] text-gold font-semibold mb-2">Last 7 Days</p>
+                <h2 class="font-serif text-3xl md:text-4xl">Price Trend</h2>
+                <p id="gp-chart-subtitle" class="text-sm text-zinc-500 mt-2">Per Bhori (BDT) — 22K, 21K, 18K Gold</p>
+              </div>
+              <div class="gp-chart-filters">
+                <label class="sr-only" for="gp-chart-metal">Metal type</label>
+                <select id="gp-chart-metal" class="gp-input gp-chart-filter">
+                  <option value="gold" selected>Gold</option>
+                  <option value="silver">Silver</option>
+                </select>
+                <label class="sr-only" for="gp-chart-range">Chart period</label>
+                <select id="gp-chart-range" class="gp-input gp-chart-filter">
+                  <option value="weekly" selected>Weekly</option>
+                  <option value="monthly">Monthly</option>
+                </select>
               </div>
             </div>
-            <div style="height: 420px"><canvas id="gp-weekly"></canvas></div>
+            <div class="gp-chart-wrap"><canvas id="gp-price-chart"></canvas></div>
           </div>
         </div>
 
@@ -621,6 +560,8 @@
         bajusInitDatepickers();
       });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="./js/gold-price-pdf.js"></script>
     <script src="./js/main.js"></script>
     <script>
       // Tabs
@@ -640,7 +581,7 @@
               window.bajusObserveReveal(panel);
             }
           });
-          if (btn.dataset.tab === "weekly") renderWeekly();
+          if (btn.dataset.tab === "charts") renderCharts();
         });
       });
 
@@ -670,77 +611,209 @@
         )
         .join("");
 
-      // Weekly chart
-      let weeklyChart;
-      function renderWeekly() {
-        if (weeklyChart) return;
-        const ctx = document.getElementById("gp-weekly");
+      // Charts
+      let priceChart;
+
+      function buildMonthlySeries(endDate, goldEnd, silverEnd) {
+        const days = 30;
+        const labels = [];
+        const gold = { data22: [], data21: [], data18: [] };
+        const silver = { data22: [], data21: [], data18: [] };
+        const end = new Date(endDate);
+
+        for (let i = days - 1; i >= 0; i--) {
+          const d = new Date(end);
+          d.setDate(d.getDate() - i);
+          labels.push(
+            d.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+          );
+
+          const progress = (days - 1 - i) / (days - 1);
+          const wave = Math.sin(i * 0.65) * 120 + Math.cos(i * 0.35) * 60;
+
+          gold.data22.push(Math.round(goldEnd.data22 - (days - 1 - i) * 110 + wave));
+          gold.data21.push(Math.round(goldEnd.data21 - (days - 1 - i) * 105 + wave * 0.95));
+          gold.data18.push(Math.round(goldEnd.data18 - (days - 1 - i) * 90 + wave * 0.82));
+
+          silver.data22.push(Math.round(silverEnd.data22 - (days - 1 - i) * 5.5 + wave * 0.05));
+          silver.data21.push(Math.round(silverEnd.data21 - (days - 1 - i) * 5.2 + wave * 0.05));
+          silver.data18.push(Math.round(silverEnd.data18 - (days - 1 - i) * 4.5 + wave * 0.04));
+        }
+
+        const start = new Date(end);
+        start.setDate(start.getDate() - (days - 1));
+        const periodLabel =
+          start.toLocaleDateString("en-US", { month: "short", day: "numeric" }) +
+          " – " +
+          end.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+
+        return {
+          periodLabel,
+          labels,
+          gold: { ...gold, fillPrimary: false },
+          silver: { ...silver, fillPrimary: false },
+        };
+      }
+
+      const chartRanges = {
+        weekly: {
+          periodLabel: "Last 7 Days",
+          labels: ["May 28", "May 29", "May 30", "May 31", "Jun 1", "Jun 2", "Jun 3"],
+          gold: {
+            data22: [117900, 118000, 118150, 118100, 118200, 118400, 118520],
+            data21: [112567, 112650, 112720, 112800, 112855, 113000, 113160],
+            data18: [96500, 96580, 96650, 96700, 96740, 96880, 97000],
+            fillPrimary: true,
+          },
+          silver: {
+            data22: [5580, 5595, 5610, 5620, 5635, 5645, 5657],
+            data21: [5300, 5315, 5330, 5340, 5350, 5360, 5365],
+            data18: [4550, 4565, 4580, 4590, 4595, 4600, 4607],
+            fillPrimary: true,
+          },
+        },
+        monthly: buildMonthlySeries(
+          "2026-06-02",
+          { data22: 118520, data21: 113160, data18: 97000 },
+          { data22: 5657, data21: 5365, data18: 4607 },
+        ),
+      };
+
+      const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: "bottom",
+            labels: {
+              font: { family: "Inter", size: 12 },
+              color: "#1a1a1a",
+              boxWidth: 12,
+            },
+          },
+        },
+        scales: {
+          y: {
+            ticks: {
+              callback: (v) => "৳" + v.toLocaleString("en-IN"),
+              color: "#71717a",
+            },
+            grid: { color: "#f4f4f5" },
+          },
+          x: {
+            ticks: {
+              color: "#71717a",
+              autoSkip: false,
+              maxRotation: 0,
+              minRotation: 0,
+              font: { family: "Inter", size: 12 },
+            },
+            grid: { display: false },
+          },
+        },
+        layout: {
+          padding: { bottom: 0 },
+        },
+      };
+
+      function applyChartScale(rangeKey) {
+        if (!priceChart) return;
+        const isMonthly = rangeKey === "monthly";
+        const xTicks = priceChart.options.scales.x.ticks;
+
+        xTicks.autoSkip = false;
+        xTicks.maxRotation = isMonthly ? 55 : 0;
+        xTicks.minRotation = isMonthly ? 55 : 0;
+        xTicks.font = { family: "Inter", size: isMonthly ? 10 : 12 };
+        priceChart.options.layout.padding.bottom = isMonthly ? 4 : 0;
+
+        const wrap = document.querySelector(".gp-chart-wrap");
+        if (wrap) wrap.classList.toggle("gp-chart-wrap--monthly", isMonthly);
+      }
+
+      function buildChartDatasets(range, metal) {
+        const series = range[metal];
+        const metalLabel = metal === "gold" ? "Gold" : "Silver";
+        const primaryColor = metal === "gold" ? "#b8860b" : "#52525b";
+        const primaryFill = metal === "gold" ? "rgba(184,134,11,.08)" : "rgba(82,82,91,.08)";
+        const primaryFillSoft = metal === "gold" ? "rgba(184,134,11,.06)" : "rgba(82,82,91,.06)";
+
+        return [
+          {
+            label: "22K " + metalLabel,
+            data: series.data22,
+            borderColor: primaryColor,
+            backgroundColor: series.fillPrimary ? primaryFill : primaryFillSoft,
+            tension: 0.35,
+            fill: series.fillPrimary,
+            borderWidth: 2,
+          },
+          {
+            label: "21K " + metalLabel,
+            data: series.data21,
+            borderColor: "#1a1a1a",
+            backgroundColor: series.fillPrimary ? "rgba(26,26,26,.04)" : "transparent",
+            tension: 0.35,
+            borderWidth: 2,
+          },
+          {
+            label: "18K " + metalLabel,
+            data: series.data18,
+            borderColor: "#9ca3af",
+            backgroundColor: "transparent",
+            tension: 0.35,
+            borderWidth: 2,
+          },
+        ];
+      }
+
+      function updateChart() {
+        const rangeSelect = document.getElementById("gp-chart-range");
+        const metalSelect = document.getElementById("gp-chart-metal");
+        const rangeKey = rangeSelect?.value || "weekly";
+        const metalKey = metalSelect?.value || "gold";
+        const range = chartRanges[rangeKey];
+        if (!range) return;
+
+        const periodLabel = document.getElementById("gp-chart-period-label");
+        const subtitle = document.getElementById("gp-chart-subtitle");
+        if (periodLabel) periodLabel.textContent = range.periodLabel;
+        if (subtitle) {
+          subtitle.textContent =
+            "Per Bhori (BDT) — 22K, 21K, 18K " + (metalKey === "gold" ? "Gold" : "Silver");
+        }
+
+        if (!priceChart) return;
+
+        applyChartScale(rangeKey);
+        priceChart.data.labels = range.labels;
+        priceChart.data.datasets = buildChartDatasets(range, metalKey);
+        priceChart.update();
+      }
+
+      function renderCharts() {
+        if (priceChart) return;
+
+        const ctx = document.getElementById("gp-price-chart");
+        const rangeSelect = document.getElementById("gp-chart-range");
+        const metalSelect = document.getElementById("gp-chart-metal");
         if (!ctx) return;
-        weeklyChart = new Chart(ctx, {
+
+        const initialRange = chartRanges[rangeSelect?.value || "weekly"];
+        const initialMetal = metalSelect?.value || "gold";
+        priceChart = new Chart(ctx, {
           type: "line",
           data: {
-            labels: [
-              "May 28",
-              "May 29",
-              "May 30",
-              "May 31",
-              "Jun 1",
-              "Jun 2",
-              "Jun 3",
-            ],
-            datasets: [
-              {
-                label: "22K Gold",
-                data: [117900, 118000, 118150, 118100, 118200, 118400, 118520],
-                borderColor: "#b8860b",
-                backgroundColor: "rgba(184,134,11,.08)",
-                tension: 0.35,
-                fill: true,
-                borderWidth: 2,
-              },
-              {
-                label: "21K Gold",
-                data: [112567, 112650, 112720, 112800, 112855, 113000, 113160],
-                borderColor: "#1a1a1a",
-                backgroundColor: "rgba(26,26,26,.04)",
-                tension: 0.35,
-                borderWidth: 2,
-              },
-              {
-                label: "18K Gold",
-                data: [96500, 96580, 96650, 96700, 96740, 96880, 97000],
-                borderColor: "#9ca3af",
-                backgroundColor: "transparent",
-                tension: 0.35,
-                borderWidth: 2,
-              },
-            ],
+            labels: initialRange.labels,
+            datasets: buildChartDatasets(initialRange, initialMetal),
           },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: {
-                position: "bottom",
-                labels: {
-                  font: { family: "Inter", size: 12 },
-                  color: "#1a1a1a",
-                  boxWidth: 12,
-                },
-              },
-            },
-            scales: {
-              y: {
-                ticks: {
-                  callback: (v) => "৳" + v.toLocaleString("en-IN"),
-                  color: "#71717a",
-                },
-                grid: { color: "#f4f4f5" },
-              },
-              x: { ticks: { color: "#71717a" }, grid: { display: false } },
-            },
-          },
+          options: chartOptions,
         });
+
+        applyChartScale(rangeSelect?.value || "weekly");
+
+        if (rangeSelect) rangeSelect.addEventListener("change", updateChart);
+        if (metalSelect) metalSelect.addEventListener("change", updateChart);
       }
     </script>
   </body>

@@ -17,7 +17,7 @@
         { href: "about-board.html", label: "Board of Directors" },
         { href: "about-past-leaders.html", label: "Former Leadership" },
         { href: "about-adviser-panel.html", label: "Adviser Panel" },
-        { href: "about-committees.html", label: "Committees" },
+        { href: "about-committees.html", label: "Standing Committees" },
         {
           href: "about-divisional-committee.html",
           label: "Divisional Committee",
