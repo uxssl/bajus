@@ -164,17 +164,6 @@
     }
 
     bindCardTrigger(card, memberId, fallback);
-
-    const institution = institutionData[memberId];
-    if (roleEl && institution && institution.shopName) {
-      let companyEl = card.querySelector(".board-member-card__company");
-      if (!companyEl) {
-        companyEl = document.createElement("div");
-        companyEl.className = "board-member-card__company";
-        roleEl.insertAdjacentElement("afterend", companyEl);
-      }
-      companyEl.textContent = institution.shopName;
-    }
   }
 
   function enhancePresidentHero() {
@@ -183,23 +172,11 @@
 
     const img = hero.querySelector("img");
     const nameEl = hero.querySelector(".board-hero-card__name");
-    const roleEl = hero.querySelector(".board-hero-card__role");
     const bioEl = hero.querySelector(".board-hero-card__bio");
     if (!img || !nameEl) return;
 
     const memberId = photoFilenameToId(img.getAttribute("src") || "");
     if (!memberId) return;
-
-    const institution = institutionData[memberId];
-    if (roleEl && institution && institution.shopName) {
-      let companyEl = hero.querySelector(".board-hero-card__company");
-      if (!companyEl) {
-        companyEl = document.createElement("div");
-        companyEl.className = "board-hero-card__company board-member-card__company";
-        roleEl.insertAdjacentElement("afterend", companyEl);
-      }
-      companyEl.textContent = institution.shopName;
-    }
 
     const fallback = {
       name: nameEl.textContent.trim(),
