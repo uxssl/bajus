@@ -40,6 +40,47 @@
         allowMultiple: false,
       },
     ],
+    "mtg-2026-july-exec": [
+      {
+        id: "poll-1",
+        question:
+          "Do you support the proposed reduction of supplementary duty on raw gold imports from 5% to 3%?",
+        options: [
+          { id: "opt-1a", text: "Yes — approve tariff reduction", votes: 28 },
+          { id: "opt-1b", text: "No — maintain current duty rate", votes: 2 },
+          { id: "opt-1c", text: "Abstain", votes: 5 },
+        ],
+        status: "closed",
+        createdAt: "2026-07-05T09:45:00.000Z",
+        allowMultiple: false,
+      },
+      {
+        id: "poll-2",
+        question:
+          "Should BAJUS adopt the emergency bullion price stabilization protocol when spot prices move more than 3% in one session?",
+        options: [
+          { id: "opt-2a", text: "Yes — adopt immediately", votes: 19 },
+          { id: "opt-2b", text: "Yes — with a 30-day onboarding period", votes: 8 },
+          { id: "opt-2c", text: "No — defer to next executive session", votes: 3 },
+        ],
+        status: "active",
+        createdAt: "2026-07-05T10:15:00.000Z",
+        allowMultiple: false,
+      },
+      {
+        id: "poll-3",
+        question:
+          "Do you support requesting export incentive parity for jewellery exporters in the upcoming national budget?",
+        options: [
+          { id: "opt-3a", text: "Yes — full parity with RMG sector", votes: 0 },
+          { id: "opt-3b", text: "Yes — partial incentives only", votes: 0 },
+          { id: "opt-3c", text: "No — not at this time", votes: 0 },
+        ],
+        status: "disabled",
+        createdAt: "2026-07-05T10:30:00.000Z",
+        allowMultiple: false,
+      },
+    ],
   };
 
   let meetingId = null;
@@ -59,7 +100,30 @@
     const defaults = DEFAULT_POLLS_BY_MEETING[meetingId] || [];
     try {
       const stored = localStorage.getItem(pollsStorageKey);
-      polls = stored ? JSON.parse(stored) : [...defaults];
+      if (!stored) {
+        polls = [...defaults];
+        return;
+      }
+
+      const parsed = JSON.parse(stored);
+      if (!Array.isArray(parsed) || parsed.length === 0) {
+        polls = [...defaults];
+        return;
+      }
+
+      const storedById = new Map(parsed.map((poll) => [poll.id, poll]));
+      polls = defaults.map((defaultPoll) => {
+        const storedPoll = storedById.get(defaultPoll.id);
+        if (!storedPoll) return defaultPoll;
+
+        return {
+          ...defaultPoll,
+          options: defaultPoll.options.map((opt) => {
+            const storedOpt = storedPoll.options?.find((o) => o.id === opt.id);
+            return storedOpt ? { ...opt, votes: storedOpt.votes } : opt;
+          }),
+        };
+      });
     } catch {
       polls = [...defaults];
     }
@@ -100,9 +164,30 @@
     const map = {
       active: "bg-emerald-50 text-emerald-700 border-emerald-200",
       closed: "bg-zinc-200 text-zinc-500 border-zinc-300",
+      disabled: "bg-zinc-100 text-zinc-400 border-zinc-200",
     };
-    const labels = { active: "Open for Voting", closed: "Closed" };
-    return `<span class="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${map[status]}">${labels[status]}</span>`;
+    const labels = {
+      active: "Open for Voting",
+      closed: "Closed",
+      disabled: "Not Yet Open",
+    };
+    const style = map[status] || map.disabled;
+    const label = labels[status] || labels.disabled;
+    return `<span class="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${style}">${label}</span>`;
+  }
+
+  function renderDisabledOptions(poll) {
+    return poll.options
+      .map(
+        (opt) => `
+        <div class="poll-vote-option poll-vote-option--disabled flex items-start gap-3 p-3.5 border border-zinc-200 rounded-sm bg-zinc-50 opacity-70">
+          <span class="poll-vote-radio-wrap" aria-hidden="true">
+            <input type="radio" disabled aria-disabled="true" class="poll-vote-radio" />
+          </span>
+          <span class="text-sm text-zinc-500 leading-snug pt-0.5">${escapeHtml(opt.text)}</span>
+        </div>`,
+      )
+      .join("");
   }
 
   function renderResults(poll, highlightOptionId) {
@@ -166,6 +251,9 @@
     if (poll.status === "active" && !hasVoted) {
       bodyHtml = renderVoteForm(poll);
       footerHtml = `<p class="text-[10px] text-zinc-400 mt-4 uppercase tracking-wider"><i class="ph ph-hand-pointing"></i> Select one option and submit your vote</p>`;
+    } else if (poll.status === "disabled") {
+      bodyHtml = `<div class="space-y-2">${renderDisabledOptions(poll)}</div>`;
+      footerHtml = `<p class="text-[10px] text-zinc-400 mt-4 uppercase tracking-wider"><i class="ph ph-lock"></i> Voting will open when the chair enables this poll</p>`;
     } else {
       bodyHtml = `<div class="space-y-3">${renderResults(poll, votedOptionId)}</div>`;
       if (poll.status === "active" && hasVoted) {
@@ -176,7 +264,7 @@
     }
 
     return `
-      <article class="bg-white border border-zinc-200 rounded-sm p-5 md:p-6 card-shadow" data-poll-id="${poll.id}">
+      <article class="bg-white border border-zinc-200 rounded-sm p-5 md:p-6 card-shadow${poll.status === "disabled" ? " poll-card--disabled" : ""}" data-poll-id="${poll.id}">
         <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
           <h3 class="font-serif text-base md:text-lg text-charcoal leading-snug flex-1">${escapeHtml(poll.question)}</h3>
           ${statusBadge(poll.status)}
@@ -187,7 +275,12 @@
   }
 
   function visiblePolls() {
-    return polls.filter((p) => p.status === "active" || p.status === "closed");
+    return polls.filter(
+      (p) =>
+        p.status === "active" ||
+        p.status === "closed" ||
+        p.status === "disabled",
+    );
   }
 
   function renderPollsList() {

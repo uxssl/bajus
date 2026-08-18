@@ -4185,7 +4185,7 @@ button#bajus-burger {
   main
   button:not(.rounded-full):not([class*="rounded-full"]):not(.profile-tab):not(
     .dash-tab
-  ):not(.meeting-tab),
+  ):not(.meeting-tab):not(.meeting-filter-btn),
 .dashboard-page main a.btn-gold,
 .dashboard-page main a.btn-outline,
 .dashboard-page main a[class*="bg-gold"]:not(.block),
@@ -4483,6 +4483,20 @@ button#bajus-burger {
   background-color: #efe6cf;
 }
 
+.poll-vote-option--disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.poll-card--disabled {
+  background-color: #fcfcfc;
+}
+
+.poll-card--disabled .poll-vote-radio {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
 .poll-option-selected {
   padding: 0.625rem 0.875rem;
   border-radius: var(--radius);
@@ -4509,6 +4523,14 @@ button#bajus-burger {
   border-color: #b8860b;
   background-color: #efe6cf;
   color: #b8860b;
+}
+
+.dashboard-page main .meeting-filter-btn.border-b-2 {
+  border-radius: 0;
+  background: none;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
 }
 
 /* ==========================================

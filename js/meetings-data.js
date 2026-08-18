@@ -72,7 +72,7 @@ const BAJUS_MEETINGS = [
     status: "live",
     agendaItems: 6,
     resolutions: 2,
-    activePolls: 1,
+    activePolls: 2,
     description:
       "Live session addressing international bullion price fluctuations, import duties, and trade tariff adjustments.",
     image: "./assets/news3.jpg",
@@ -170,9 +170,92 @@ function getMeetingStatusBadge(status) {
   return map[status] || "";
 }
 
+const MEETING_DETAIL_CONTENT = {
+  "mtg-2026-july-exec": {
+    agenda: [
+      {
+        time: "3:30 PM",
+        title: "Call to Order & Quorum Verification",
+        description:
+          "Executive Committee Chair opens the session and confirms quorum per BAJUS constitution Article 14.",
+        status: "completed",
+      },
+      {
+        time: "3:35 PM",
+        title: "Reading & Confirmation of Previous Minutes",
+        description:
+          "Minutes of the June 2026 executive session are presented for approval.",
+        status: "completed",
+      },
+      {
+        time: "3:45 PM",
+        title: "International Bullion Price Update",
+        description:
+          "Market intelligence briefing on global gold and silver price movements affecting local trade margins.",
+        status: "completed",
+      },
+      {
+        time: "4:00 PM",
+        title: "Import Duty & Tariff Adjustment Proposals",
+        description:
+          "Review of proposed customs duty revisions on raw gold imports. Members vote via Poll #1.",
+        status: "in-progress",
+      },
+      {
+        time: "4:20 PM",
+        title: "Trade Liaison Committee Report",
+        description:
+          "Update on government negotiations regarding jewellery export incentives and VAT harmonization.",
+        status: "upcoming",
+      },
+      {
+        time: "4:40 PM",
+        title: "Closing Remarks & Adjournment",
+        description:
+          "Summary of decisions taken and formal adjournment of the executive session.",
+        status: "upcoming",
+      },
+    ],
+    resolutions: [
+      {
+        code: "Resolution 01 / 2026",
+        title: "Temporary Gold Import Tariff Reduction",
+        body:
+          "Be it resolved that BAJUS formally requests the National Board of Revenue to reduce the supplementary duty on raw gold imports from 5% to 3% for a six-month stabilization period, effective August 1, 2026.",
+        status: "passed",
+        votesFor: 28,
+        votesAgainst: 2,
+        abstentions: 5,
+        adoptedAt: "July 5, 2026 at 3:52 PM",
+      },
+      {
+        code: "Resolution 02 / 2026",
+        title: "Emergency Bullion Price Stabilization Protocol",
+        body:
+          "Be it resolved that all BAJUS member establishments adopt the centralized daily bullion price reference published by the association whenever international spot prices fluctuate by more than 3% within a single trading session.",
+        status: "under-vote",
+        pollRef: "Poll #2",
+      },
+    ],
+  },
+};
+
+function getMeetingDetailContent(meetingId) {
+  return MEETING_DETAIL_CONTENT[meetingId] || null;
+}
+
+function meetingHasRichContent(meeting) {
+  if (!meeting) return false;
+  if (meeting.id === "mtg-2026-agm") return true;
+  return Boolean(getMeetingDetailContent(meeting.id));
+}
+
 // Attach to window for global access across portal scripts
 if (typeof window !== "undefined") {
   window.BAJUS_MEETINGS = BAJUS_MEETINGS;
   window.getMeetingById = getMeetingById;
   window.getMeetingStatusBadge = getMeetingStatusBadge;
+  window.MEETING_DETAIL_CONTENT = MEETING_DETAIL_CONTENT;
+  window.getMeetingDetailContent = getMeetingDetailContent;
+  window.meetingHasRichContent = meetingHasRichContent;
 }
