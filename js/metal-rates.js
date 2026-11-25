@@ -163,9 +163,9 @@
       t.setAttribute("aria-selected", String(on));
       t.tabIndex = on ? 0 : -1;
     });
-    panel.setAttribute("aria-labelledby", tab.id);
+    if (panel) panel.setAttribute("aria-labelledby", tab.id);
     if (focus) tab.focus();
-    renderCards(current);
+    if (cardsEl) renderCards(current); // calculator-only pages (price page modal) have no cards
     renderCategories(current);
     calculate();
   }
@@ -189,4 +189,34 @@
   weightEl.addEventListener("input", calculate);
 
   selectTab(tabs[0]);
+
+  // Calculator in a native <dialog> (price page): open buttons, close button, backdrop click.
+  var modal = document.getElementById("calc-modal");
+  if (modal && typeof modal.showModal === "function") {
+    var opener = null;
+
+    Array.prototype.forEach.call(document.querySelectorAll("[data-calc-open]"), function (btn) {
+      btn.addEventListener("click", function () {
+        opener = btn;
+        modal.showModal();
+        document.documentElement.classList.add("calc-modal-open");
+        weightEl.focus();
+        weightEl.select();
+      });
+    });
+
+    Array.prototype.forEach.call(modal.querySelectorAll("[data-calc-close]"), function (btn) {
+      btn.addEventListener("click", function () { modal.close(); });
+    });
+
+    // A click on the dialog box itself (not its content) is a click on the backdrop.
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) modal.close();
+    });
+
+    modal.addEventListener("close", function () {
+      document.documentElement.classList.remove("calc-modal-open");
+      if (opener) opener.focus({ preventScroll: true });
+    });
+  }
 })();

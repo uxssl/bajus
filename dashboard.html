@@ -148,22 +148,8 @@
           </div>
         </div>
 
-        <!-- Right Column (Gold Price / Latest Notices) -->
+        <!-- Right Column (Latest Notices) -->
         <div class="lg:col-span-5 space-y-6">
-          <div class="bg-white border border-zinc-200 text-charcoal p-6 rounded-sm">
-            <div class="flex justify-between items-center border-b border-zinc-200 pb-3 mb-4">
-              <h4 class="font-serif text-base text-gold font-medium flex items-center gap-1.5"><i class="ph ph-chart-line-up"></i> Official Gold Rates</h4>
-              <span class="text-[9px] text-zinc-500 uppercase">Jun 03, 2026</span>
-            </div>
-            <div class="space-y-3.5 text-xs">
-              <div class="flex justify-between items-center"><span class="text-zinc-400">22K Gold (Bhori)</span><strong class="text-gold">৳ 1,72,883</strong></div>
-              <div class="flex justify-between items-center"><span class="text-zinc-400">21K Gold (Bhori)</span><strong class="text-gold">৳ 1,65,016</strong></div>
-              <div class="flex justify-between items-center"><span class="text-zinc-400">18K Gold (Bhori)</span><strong class="text-gold">৳ 1,41,449</strong></div>
-              <div class="flex justify-between items-center border-t border-zinc-200 pt-3"><span class="text-zinc-400">Silver 22K (Bhori)</span><strong class="text-charcoal">৳ 2,567</strong></div>
-            </div>
-            <a href="gold-price.html" class="block text-center text-[10px] font-bold text-gold hover:text-gold-light uppercase tracking-widest mt-6 border-t border-zinc-200 pt-3">View Full Price Table →</a>
-          </div>
-
           <div class="space-y-4">
             <h4 class="font-serif text-base text-charcoal border-b border-zinc-100 pb-2">Recent Portal Updates</h4>
             <div class="space-y-3">
@@ -179,6 +165,81 @@
           </div>
         </div>
       </div>
+
+      <!-- TODAY'S RATES + PRICE CALCULATOR (cards & calculator rendered by js/metal-rates.js) -->
+      <section class="metal-rates metal-rates--panel metal-rates--compact text-charcoal" id="metal-rates">
+        <div class="flex items-center justify-between gap-3 border-b border-zinc-100 pb-2 mb-4">
+          <h3 class="font-serif text-lg text-charcoal">Today's Rate <span class="hidden sm:inline text-[10px] font-sans text-zinc-400 uppercase tracking-wider ml-1">Jun 03, 2026 · Per gram</span></h3>
+          <a href="./gold-price.html" class="text-xs text-gold hover:underline whitespace-nowrap">Full Rates</a>
+        </div>
+
+        <div class="metal-tabs" role="tablist" aria-label="Metal" data-metal-tabs>
+          <button type="button" class="metal-tab" role="tab" id="metal-tab-gold" aria-controls="metal-rates-panel" aria-selected="true" data-metal="gold">
+            <span class="metal-tab__dot metal-tab__dot--gold" aria-hidden="true"></span>Gold
+          </button>
+          <button type="button" class="metal-tab" role="tab" id="metal-tab-silver" aria-controls="metal-rates-panel" aria-selected="false" tabindex="-1" data-metal="silver">
+            <span class="metal-tab__dot metal-tab__dot--silver" aria-hidden="true"></span>Silver
+          </button>
+          <button type="button" class="metal-tab" role="tab" id="metal-tab-platinum" aria-controls="metal-rates-panel" aria-selected="false" tabindex="-1" data-metal="platinum">
+            <span class="metal-tab__dot metal-tab__dot--platinum" aria-hidden="true"></span>Platinum
+          </button>
+        </div>
+
+        <div class="grid xl:grid-cols-12 gap-4 mt-4">
+          <div class="xl:col-span-8" id="metal-rates-panel" role="tabpanel" aria-labelledby="metal-tab-gold">
+            <div class="metal-rates-grid" data-metal-cards></div>
+          </div>
+
+          <!-- QUICK CALCULATOR -->
+          <div class="xl:col-span-4">
+            <form class="price-calc" data-price-calc novalidate onsubmit="return false">
+              <div class="price-calc__head">
+                <span class="price-calc__icon" aria-hidden="true"><i class="ph ph-calculator"></i></span>
+                <div>
+                  <h3 class="price-calc__title">Quick calculator</h3>
+                  <p class="price-calc__subtitle">Estimate price by today's rate</p>
+                </div>
+              </div>
+
+              <div class="price-calc__body">
+                <div>
+                  <label class="price-calc__label" for="calc-category">Category</label>
+                  <div class="price-calc__select-wrap">
+                    <select id="calc-category" class="price-calc__input" data-calc-category></select>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label class="price-calc__label" for="calc-weight">Weight</label>
+                    <input id="calc-weight" class="price-calc__input" type="number" inputmode="decimal" min="0" step="any" value="1" data-calc-weight aria-describedby="calc-weight-helper" />
+                  </div>
+                  <div>
+                    <label class="price-calc__label" for="calc-unit">Unit</label>
+                    <div class="price-calc__select-wrap">
+                      <select id="calc-unit" class="price-calc__input" data-calc-unit>
+                        <option value="gram">Gram</option>
+                        <option value="bhori" selected>Bhori</option>
+                        <option value="ana">Ana</option>
+                        <option value="rati">Rati</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <p class="price-calc__helper" id="calc-weight-helper" data-calc-helper></p>
+
+                <div class="price-calc__result" aria-live="polite">
+                  <div class="price-calc__result-label">Estimated total</div>
+                  <div class="price-calc__total" data-calc-total></div>
+                  <div class="price-calc__breakdown" data-calc-breakdown></div>
+                </div>
+
+                <p class="price-calc__note">Metal value only. Making charge and 5% VAT are added by the jeweller.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
   </div>
 
@@ -187,5 +248,6 @@
   <script src="./js/include.js"></script>
   <script src="./js/dashboard-user.js"></script>
   <script src="./js/main.js"></script>
+  <script src="./js/metal-rates.js"></script>
 </body>
 </html>

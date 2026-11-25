@@ -213,8 +213,9 @@
     <!-- TABS -->
     <section class="bg-cream pt-12">
       <div class="max-w-7xl mx-auto px-3 sm:px-6">
+        <div class="flex flex-col-reverse sm:flex-row sm:items-center gap-3 sm:gap-6">
         <div
-          class="grid grid-cols-4 sm:flex sm:flex-nowrap sm:gap-8 md:gap-12 border-b border-zinc-200"
+          class="flex-1 min-w-0 grid grid-cols-4 sm:flex sm:flex-nowrap sm:gap-8 md:gap-12 border-b border-zinc-200"
         >
           <button class="gp-tab is-active" data-tab="today">
             Today's Rate
@@ -222,6 +223,16 @@
           <button class="gp-tab" data-tab="charts">Charts</button>
           <button class="gp-tab" data-tab="intl">International Rate</button>
           <button class="gp-tab" data-tab="archive">Historical Archive</button>
+        </div>
+          <button
+            type="button"
+            data-calc-open
+            aria-haspopup="dialog"
+            aria-controls="calc-modal"
+            class="calc-open-btn"
+          >
+            <i class="ph ph-calculator" aria-hidden="true"></i> Price Calculator
+          </button>
         </div>
       </div>
     </section>
@@ -551,6 +562,72 @@
       </div>
     </section>
 
+    <!-- PRICE CALCULATOR MODAL (logic in js/metal-rates.js) -->
+    <dialog class="calc-modal" id="calc-modal" aria-labelledby="calc-modal-title">
+      <div id="metal-rates">
+        <form class="price-calc" data-price-calc novalidate onsubmit="return false">
+          <div class="price-calc__head">
+            <span class="price-calc__icon" aria-hidden="true"><i class="ph ph-calculator"></i></span>
+            <div class="min-w-0">
+              <h2 class="price-calc__title" id="calc-modal-title">Quick calculator</h2>
+              <p class="price-calc__subtitle">Estimate price by today's rate</p>
+            </div>
+            <button type="button" class="price-calc__close" data-calc-close aria-label="Close calculator">
+              <i class="ph ph-x" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="price-calc__body">
+            <div class="metal-tabs price-calc__metals" role="tablist" aria-label="Metal">
+              <button type="button" class="metal-tab" role="tab" id="metal-tab-gold" aria-selected="true" data-metal="gold">
+                <span class="metal-tab__dot metal-tab__dot--gold" aria-hidden="true"></span>Gold
+              </button>
+              <button type="button" class="metal-tab" role="tab" id="metal-tab-silver" aria-selected="false" tabindex="-1" data-metal="silver">
+                <span class="metal-tab__dot metal-tab__dot--silver" aria-hidden="true"></span>Silver
+              </button>
+              <button type="button" class="metal-tab" role="tab" id="metal-tab-platinum" aria-selected="false" tabindex="-1" data-metal="platinum">
+                <span class="metal-tab__dot metal-tab__dot--platinum" aria-hidden="true"></span>Platinum
+              </button>
+            </div>
+
+            <div>
+              <label class="price-calc__label" for="calc-category">Category</label>
+              <div class="price-calc__select-wrap">
+                <select id="calc-category" class="price-calc__input" data-calc-category></select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="price-calc__label" for="calc-weight">Weight</label>
+                <input id="calc-weight" class="price-calc__input" type="number" inputmode="decimal" min="0" step="any" value="1" data-calc-weight aria-describedby="calc-weight-helper" />
+              </div>
+              <div>
+                <label class="price-calc__label" for="calc-unit">Unit</label>
+                <div class="price-calc__select-wrap">
+                  <select id="calc-unit" class="price-calc__input" data-calc-unit>
+                    <option value="gram">Gram</option>
+                    <option value="bhori" selected>Bhori</option>
+                    <option value="ana">Ana</option>
+                    <option value="rati">Rati</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <p class="price-calc__helper" id="calc-weight-helper" data-calc-helper></p>
+
+            <div class="price-calc__result" aria-live="polite">
+              <div class="price-calc__result-label">Estimated total</div>
+              <div class="price-calc__total" data-calc-total></div>
+              <div class="price-calc__breakdown" data-calc-breakdown></div>
+            </div>
+
+            <p class="price-calc__note">Metal value only. Making charge and 5% VAT are added by the jeweller.</p>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
     <div id="bajus-footer"></div>
     <script src="./js/include.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
@@ -563,6 +640,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="./js/gold-price-pdf.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/metal-rates.js"></script>
     <script>
       // Tabs
       document.querySelectorAll(".gp-tab").forEach((btn) => {
