@@ -7373,3 +7373,432 @@ span.flatpickr-weekday {
 .tracking-wide {
   letter-spacing: 0 !important;
 }
+
+/* ===== Home: metal rate tabs, cards & quick calculator (js/metal-rates.js) ===== */
+.metal-rates {
+  background-image:
+    radial-gradient(55% 45% at 88% 18%, rgba(239, 230, 207, 0.55) 0%, rgba(239, 230, 207, 0) 70%),
+    radial-gradient(45% 40% at 5% 95%, rgba(239, 230, 207, 0.4) 0%, rgba(239, 230, 207, 0) 70%),
+    linear-gradient(180deg, #ffffff 0%, #fdfaf3 100%);
+}
+
+.metal-tabs {
+  display: inline-flex;
+  gap: 0.5rem;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.metal-tabs::-webkit-scrollbar { display: none; }
+
+.metal-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  padding: 0.6rem 1.25rem;
+  border: 1px solid #e4e4e7;
+  border-radius: 999px;
+  background: #fff;
+  color: #52525b;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.metal-tab:hover { border-color: rgba(184, 134, 11, 0.5); color: var(--color-charcoal); }
+.metal-tab:focus-visible { outline: 2px solid var(--color-gold); outline-offset: 2px; }
+.metal-tab[aria-selected="true"] {
+  background: linear-gradient(135deg, #d9a92a 0%, #b8860b 55%, #8f6708 100%);
+  border-color: #b8860b;
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 8px 18px -8px rgba(184, 134, 11, 0.7);
+}
+.metal-tab__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+}
+.metal-tab__dot--gold { background: #d4a017; }
+.metal-tab__dot--silver { background: #a1a1aa; }
+.metal-tab__dot--platinum { background: #8fa3b8; }
+.metal-tab[aria-selected="true"] .metal-tab__dot { background: #fff; }
+
+.metal-rates-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+@media (min-width: 768px) { .metal-rates-grid { gap: 1rem; } }
+@media (max-width: 479px) { .metal-rates-grid { grid-template-columns: 1fr; } }
+/* Side-by-side with the calculator: rows share the calculator's height so both columns line up */
+@media (min-width: 1024px) {
+  .metal-rates-grid { height: 100%; grid-auto-rows: 1fr; }
+}
+
+.metal-card {
+  --card-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--card-line);
+  border-radius: var(--card-radius);
+  background: var(--card-bg);
+  color: var(--color-charcoal);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 12px 26px -22px var(--card-glow);
+  animation: metal-card-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+@media (min-width: 640px) { .metal-card { padding: 1rem 1.15rem; } }
+.metal-card:nth-child(2) { animation-delay: 0.06s; --sheen-delay: 1.5s; }
+.metal-card:nth-child(3) { animation-delay: 0.12s; --sheen-delay: 3s; }
+.metal-card:nth-child(4) { animation-delay: 0.18s; --sheen-delay: 4.5s; }
+@keyframes metal-card-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+.metal-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--card-line-hover);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 20px 36px -24px var(--card-glow);
+}
+
+/* Gold — soft champagne */
+.metal-card--gold {
+  --card-bg:
+    radial-gradient(120% 85% at 100% 0%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 50%),
+    linear-gradient(150deg, #fffaf0 0%, #f9edcd 40%, #f3e2b2 70%, #faf1da 100%);
+  --card-line: rgba(184, 134, 11, 0.3);
+  --card-line-hover: rgba(184, 134, 11, 0.7);
+  --card-glow: rgba(184, 134, 11, 0.45);
+  --price-color: #5e4100;
+  --metal-accent: #7a5600;
+  --metal-dot: #b8860b;
+  --glow-color: rgba(255, 236, 180, 0.9);
+}
+/* Silver — clean polished white */
+.metal-card--silver {
+  --card-bg:
+    radial-gradient(120% 85% at 100% 0%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 50%),
+    linear-gradient(150deg, #ffffff 0%, #f4f5f7 45%, #e9ebee 75%, #f8f9fa 100%);
+  --card-line: #e1e2e6;
+  --card-line-hover: #a1a1aa;
+  --card-glow: rgba(82, 82, 91, 0.35);
+  --price-color: #27272a;
+  --metal-accent: #52525b;
+  --metal-dot: #a1a1aa;
+  --glow-color: rgba(255, 255, 255, 1);
+}
+/* Platinum — cool blue-white */
+.metal-card--platinum {
+  --card-bg:
+    radial-gradient(120% 85% at 100% 0%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 50%),
+    linear-gradient(150deg, #fcfdff 0%, #eff3f8 45%, #e2e9f1 75%, #f7f9fc 100%);
+  --card-line: #dde4ec;
+  --card-line-hover: #8fa3b8;
+  --card-glow: rgba(71, 85, 105, 0.35);
+  --price-color: #1e293b;
+  --metal-accent: #475569;
+  --metal-dot: #8fa3b8;
+  --glow-color: rgba(240, 246, 255, 1);
+}
+
+/* Diagonal light sweep that crosses each card in turn */
+.metal-card__shine {
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: 0;
+  width: 45%;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0) 100%);
+  transform: translateX(-160%) skewX(-20deg);
+  animation: metal-sheen 6s ease-in-out infinite;
+  animation-delay: var(--sheen-delay, 0s);
+}
+@keyframes metal-sheen {
+  0% { transform: translateX(-160%) skewX(-20deg); }
+  22%, 100% { transform: translateX(330%) skewX(-20deg); }
+}
+.metal-card > *:not(.metal-card__shine) { position: relative; z-index: 1; }
+
+.metal-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+.metal-card__media {
+  position: relative;
+  width: 3.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+}
+@media (min-width: 640px) { .metal-card__media { width: 4.25rem; height: 3rem; } }
+.metal-card__glow {
+  position: absolute;
+  inset: -30% -20%;
+  background: radial-gradient(closest-side, var(--glow-color), rgba(255, 255, 255, 0));
+  filter: blur(4px);
+  animation: metal-glow 3.2s ease-in-out infinite;
+}
+@keyframes metal-glow {
+  0%, 100% { opacity: 0.55; transform: scale(0.92); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+.metal-card__img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  filter: drop-shadow(0 8px 10px rgba(80, 50, 0, 0.28));
+  animation: metal-float 4s ease-in-out infinite;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.metal-card:hover .metal-card__img { transform: scale(1.08) rotate(-4deg); }
+@keyframes metal-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -4px; }
+}
+.metal-card--silver .metal-card__img {
+  filter: grayscale(1) brightness(1.12) contrast(1.15) drop-shadow(0 8px 10px rgba(39, 39, 42, 0.25));
+}
+.metal-card--platinum .metal-card__img {
+  filter: grayscale(1) sepia(0.25) hue-rotate(180deg) saturate(0.7) brightness(1.1) contrast(1.08)
+    drop-shadow(0 8px 10px rgba(30, 41, 59, 0.25));
+}
+
+/* Twinkling sparkles around the bar */
+.metal-card__sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.9));
+  animation: metal-twinkle 2.6s ease-in-out infinite;
+}
+.metal-card__sparkle--1 { top: -4px; right: 6%; }
+.metal-card__sparkle--2 { bottom: 8%; left: -6px; width: 7px; height: 7px; animation-delay: 0.9s; }
+.metal-card__sparkle--3 { top: 38%; right: -8px; width: 6px; height: 6px; animation-delay: 1.7s; }
+@keyframes metal-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.3) rotate(0deg); }
+  45% { opacity: 1; transform: scale(1) rotate(45deg); }
+  70% { opacity: 0; transform: scale(0.4) rotate(90deg); }
+}
+
+.metal-card__change {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.metal-card__change--up { color: #047857; border-color: rgba(4, 120, 87, 0.22); }
+.metal-card__change--down { color: #be123c; border-color: rgba(190, 18, 60, 0.22); }
+.metal-card__change--flat { color: #71717a; border-color: rgba(113, 113, 122, 0.22); }
+
+.metal-card__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--metal-accent);
+}
+.metal-card__dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--metal-dot);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.7), 0 0 8px var(--metal-dot);
+}
+.metal-card__name {
+  margin-top: 0.2rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.metal-card__tag {
+  font-weight: 400;
+  color: #52525b;
+  font-size: 0.8125rem;
+}
+.metal-card__tag::before { content: "· "; }
+.metal-card__price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-top: 0.6rem;
+  margin-bottom: 0.85rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.875rem, 2.8vw, 2.375rem);
+  line-height: 1.1;
+}
+.metal-card__amount { color: var(--price-color); }
+.metal-card__per {
+  margin-left: 0.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: #52525b;
+}
+/* Frosted strip for the per-bhori price */
+.metal-card__foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--card-line);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 0.75rem;
+  color: #52525b;
+}
+.metal-card__foot strong { color: var(--price-color); font-weight: 700; }
+
+@media (prefers-reduced-motion: reduce) {
+  .metal-card,
+  .metal-card__shine,
+  .metal-card__glow,
+  .metal-card__img,
+  .metal-card__sparkle { animation: none; transition: none; }
+  .metal-card__shine,
+  .metal-card__sparkle { display: none; }
+}
+
+/* Quick calculator */
+.price-calc {
+  height: 100%;
+  border: 1px solid rgba(184, 134, 11, 0.22);
+  border-radius: calc(var(--radius) * 2);
+  background: #fff;
+  box-shadow: 0 10px 30px -20px rgba(39, 39, 42, 0.35);
+}
+.price-calc__head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid #f0f0f1;
+}
+.price-calc__icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #d9a92a 0%, #b8860b 55%, #8f6708 100%);
+  color: #fff;
+  font-size: 1.2rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 8px 16px -8px rgba(184, 134, 11, 0.7);
+}
+.price-calc__title { font-size: 1.05rem; font-weight: 600; }
+.price-calc__subtitle { font-size: 0.8125rem; color: #71717a; }
+.price-calc__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+}
+.price-calc__label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-charcoal);
+}
+.price-calc__input {
+  width: 100%;
+  height: 2.9rem;
+  padding: 0 0.9rem;
+  border: 1px solid #e4e4e7;
+  border-radius: var(--radius);
+  background: #fff;
+  font-size: 0.95rem;
+  color: var(--color-charcoal);
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.price-calc__input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.15);
+}
+.price-calc__input[aria-invalid="true"] { border-color: #e11d48; }
+.price-calc__select-wrap { position: relative; }
+.price-calc__select-wrap::after {
+  content: "";
+  position: absolute;
+  right: 0.95rem;
+  top: 50%;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 1.5px solid #71717a;
+  border-bottom: 1.5px solid #71717a;
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+.price-calc__select-wrap .price-calc__input { padding-right: 2.25rem; cursor: pointer; }
+.price-calc__helper {
+  margin-top: -0.6rem;
+  font-size: 0.75rem;
+  color: #71717a;
+}
+.price-calc__result {
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(184, 134, 11, 0.3);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(120% 85% at 100% 0%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 50%),
+    linear-gradient(150deg, #fffaf0 0%, #f9edcd 40%, #f3e2b2 70%, #faf1da 100%);
+}
+.price-calc__result-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7a5600;
+}
+.price-calc__total {
+  margin: 0.35rem 0 0.25rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.9rem, 3vw, 2.3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #5e4100;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.price-calc__breakdown { font-size: 0.75rem; color: #52525b; }
+.price-calc__note { font-size: 0.6875rem; line-height: 1.5; color: #a1a1aa; }

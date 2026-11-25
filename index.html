@@ -653,15 +653,15 @@
       </div>
     </section>
 
-    <!-- TODAY'S RATES -->
-    <section class="bg-white text-charcoal py-20">
+    <!-- TODAY'S RATES + PRICE CALCULATOR (cards & calculator rendered by js/metal-rates.js) -->
+    <section class="metal-rates bg-white text-charcoal py-20" id="metal-rates">
       <div class="max-w-7xl mx-auto px-6">
         <div
-          class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 reveal"
+          class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 reveal"
         >
           <div>
             <h2 class="text-3xl md:text-4xl font-serif mb-2 text-charcoal">
-              Today's Gold & Silver Rate
+              Today's Gold, Silver &amp; Platinum Rate
             </h2>
             <div class="text-sm md:text-base text-zinc-500 font-light tracking-wide">
               Effective from 03 June 2026, 11:00 AM · Per gram (BDT)
@@ -687,207 +687,92 @@
           ></a>
         </div>
 
-        <div class="rates-grid grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          <!-- 22K Gold -->
+        <div
+          class="metal-tabs reveal"
+          role="tablist"
+          aria-label="Metal"
+          data-metal-tabs
+        >
+          <button type="button" class="metal-tab" role="tab" id="metal-tab-gold" aria-controls="metal-rates-panel" aria-selected="true" data-metal="gold">
+            <span class="metal-tab__dot metal-tab__dot--gold" aria-hidden="true"></span>Gold
+          </button>
+          <button type="button" class="metal-tab" role="tab" id="metal-tab-silver" aria-controls="metal-rates-panel" aria-selected="false" tabindex="-1" data-metal="silver">
+            <span class="metal-tab__dot metal-tab__dot--silver" aria-hidden="true"></span>Silver
+          </button>
+          <button type="button" class="metal-tab" role="tab" id="metal-tab-platinum" aria-controls="metal-rates-panel" aria-selected="false" tabindex="-1" data-metal="platinum">
+            <span class="metal-tab__dot metal-tab__dot--platinum" aria-hidden="true"></span>Platinum
+          </button>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-6 mt-8 reveal" data-reveal-delay="100">
           <div
-            class="rate-card-gold p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between reveal"
-            data-reveal-delay="0"
+            class="lg:col-span-8"
+            id="metal-rates-panel"
+            role="tabpanel"
+            aria-labelledby="metal-tab-gold"
           >
-            <div>
-              <img
-                src="./assets/gold.png"
-                alt="22K Gold"
-                class="w-full h-14 sm:h-20 object-contain object-left mb-3 sm:mb-5 rounded-[2px] opacity-95 hover:opacity-100 transition-opacity duration-300"
-                loading="lazy"
-              />
-              <div
-                class="text-[10px] font-bold text-gold uppercase tracking-[0.2em] mb-1"
-              >
-                Gold
-              </div>
-              <div class="text-sm sm:text-base text-zinc-600 leading-snug">
-                <span class="font-bold text-charcoal">22 Karat</span> ·
-                Hallmarked
-              </div>
-              <div
-                class="font-serif text-2xl sm:text-3xl lg:text-4xl mt-4 sm:mt-6 mb-2 text-charcoal leading-tight"
-              >
-                <span class="font-bangla">৳</span>12,008
-              </div>
-              <div class="rate-card__unit">
-                per gram
-              </div>
-            </div>
-            <div
-              class="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-emerald-700 bg-white/80 px-2 sm:px-2.5 py-1 rounded-full mt-4 sm:mt-6 w-fit uppercase tracking-wider"
-            >
-              <svg
-                class="w-3 h-3 stroke-[2.5]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"
-                />
-              </svg>
-              <span class="font-sans">৳</span>350 today
-            </div>
+            <div class="metal-rates-grid" data-metal-cards></div>
           </div>
 
-          <!-- 21K Gold -->
-          <div
-            class="rate-card-gold p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between reveal"
-            data-reveal-delay="100"
-          >
-            <div>
-              <img
-                src="./assets/gold-2.png"
-                alt="21K Gold"
-                class="w-full h-14 sm:h-20 object-contain object-left mb-3 sm:mb-5 rounded-[2px] opacity-95 hover:opacity-100 transition-opacity duration-300"
-                loading="lazy"
-              />
-              <div
-                class="text-[10px] font-bold text-gold uppercase tracking-[0.2em] mb-1"
-              >
-                Gold
+          <!-- QUICK CALCULATOR -->
+          <div class="lg:col-span-4">
+            <form class="price-calc" data-price-calc novalidate onsubmit="return false">
+              <div class="price-calc__head">
+                <span class="price-calc__icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                <div>
+                  <h3 class="price-calc__title">Quick calculator</h3>
+                  <p class="price-calc__subtitle">Estimate price by today's rate</p>
+                </div>
               </div>
-              <div class="text-sm sm:text-base text-zinc-600 leading-snug">
-                <span class="font-bold text-charcoal">21 Karat</span> ·
-                Hallmarked
-              </div>
-              <div
-                class="font-serif text-2xl sm:text-3xl lg:text-4xl mt-4 sm:mt-6 mb-2 text-charcoal leading-tight"
-              >
-                <span class="font-bangla">৳</span>11,463
-              </div>
-              <div class="rate-card__unit">
-                per gram
-              </div>
-            </div>
-            <div
-              class="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-emerald-700 bg-white/80 px-2 sm:px-2.5 py-1 rounded-full mt-4 sm:mt-6 w-fit uppercase tracking-wider"
-            >
-              <svg
-                class="w-3 h-3 stroke-[2.5]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"
-                />
-              </svg>
-              <span class="font-sans">৳</span>333 today
-            </div>
-          </div>
 
-          <!-- 18K Gold -->
-          <div
-            class="rate-card-gold p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between reveal"
-            data-reveal-delay="200"
-          >
-            <div>
-              <img
-                src="./assets/gold-3.png"
-                alt="18K Gold"
-                class="w-full h-14 sm:h-20 object-contain object-left mb-3 sm:mb-5 rounded-[2px] opacity-95 hover:opacity-100 transition-opacity duration-300"
-                loading="lazy"
-              />
-              <div
-                class="text-[10px] font-bold text-gold uppercase tracking-[0.2em] mb-1"
-              >
-                Gold
-              </div>
-              <div class="text-sm sm:text-base text-zinc-600 leading-snug">
-                <span class="font-bold text-charcoal">18 Karat</span> ·
-                Hallmarked
-              </div>
-              <div
-                class="font-serif text-2xl sm:text-3xl lg:text-4xl mt-4 sm:mt-6 mb-2 text-charcoal leading-tight"
-              >
-                <span class="font-bangla">৳</span>9,825
-              </div>
-              <div class="rate-card__unit">
-                per gram
-              </div>
-            </div>
-            <div
-              class="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-rose-700 bg-white/80 px-2 sm:px-2.5 py-1 rounded-full mt-4 sm:mt-6 w-fit uppercase tracking-wider"
-            >
-              <svg
-                class="w-3 h-3 stroke-[2.5]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 4.5v15m0 0l-6.75-6.75M12 19.5l6.75-6.75"
-                />
-              </svg>
-              <span class="font-sans">৳</span>120 today
-            </div>
-          </div>
+              <div class="price-calc__body">
+                <div>
+                  <label class="price-calc__label" for="calc-category">Category</label>
+                  <div class="price-calc__select-wrap">
+                    <select id="calc-category" class="price-calc__input" data-calc-category></select>
+                  </div>
+                </div>
 
-          <!-- Silver -->
-          <div
-            class="rate-card-silver p-4 sm:p-6 lg:p-8 min-w-0 flex flex-col justify-between reveal"
-            data-reveal-delay="300"
-          >
-            <div>
-              <img
-                src="./assets/gold.png"
-                alt="Silver"
-                class="w-full h-14 sm:h-20 object-contain object-left mb-3 sm:mb-5 rounded-[2px] filter grayscale brightness-110 contrast-110 opacity-95 hover:opacity-100 transition-opacity duration-300"
-                loading="lazy"
-              />
-              <div
-                class="text-[10px] font-bold text-zinc-500 uppercase tracking-[0.2em] mb-1"
-              >
-                Silver
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label class="price-calc__label" for="calc-weight">Weight</label>
+                    <input
+                      id="calc-weight"
+                      class="price-calc__input"
+                      type="number"
+                      inputmode="decimal"
+                      min="0"
+                      step="any"
+                      value="1"
+                      data-calc-weight
+                      aria-describedby="calc-weight-helper"
+                    />
+                  </div>
+                  <div>
+                    <label class="price-calc__label" for="calc-unit">Unit</label>
+                    <div class="price-calc__select-wrap">
+                      <select id="calc-unit" class="price-calc__input" data-calc-unit>
+                        <option value="gram">Gram</option>
+                        <option value="bhori" selected>Bhori</option>
+                        <option value="ana">Ana</option>
+                        <option value="rati">Rati</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <p class="price-calc__helper" id="calc-weight-helper" data-calc-helper></p>
+
+                <div class="price-calc__result" aria-live="polite">
+                  <div class="price-calc__result-label">Estimated total</div>
+                  <div class="price-calc__total" data-calc-total></div>
+                  <div class="price-calc__breakdown" data-calc-breakdown></div>
+                </div>
+
+                <p class="price-calc__note">
+                  Metal value only. Making charge and 5% VAT are added by the jeweller.
+                </p>
               </div>
-              <div class="text-sm sm:text-base text-zinc-600 leading-snug">
-                <span class="font-bold text-charcoal">22K / 21K / 18K</span> ·
-                Hallmarked
-              </div>
-              <div
-                class="font-serif text-xl sm:text-2xl lg:text-3xl mt-4 sm:mt-7 mb-2 text-charcoal leading-tight"
-              >
-                <span class="font-bangla">৳</span>180<span
-                  class="text-zinc-500 text-sm sm:text-lg"
-                >
-                  / <span class="font-bangla">৳</span>172 /
-                  <span class="font-bangla">৳</span>147</span
-                >
-              </div>
-              <div class="rate-card__unit">
-                per gram · Traditional silver
-                <span class="font-sans">৳</span>110/g
-              </div>
-            </div>
-            <div
-              class="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-emerald-700 bg-white/80 px-2 sm:px-2.5 py-1 rounded-full mt-4 sm:mt-6 w-fit uppercase tracking-wider"
-            >
-              <svg
-                class="w-3 h-3 stroke-[2.5]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"
-                />
-              </svg>
-              <span class="font-sans">৳</span>2 today
-            </div>
+            </form>
           </div>
         </div>
 
@@ -3263,5 +3148,6 @@
     <div id="bajus-footer"></div>
     <script src="./js/include.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/metal-rates.js"></script>
   </body>
 </html>
